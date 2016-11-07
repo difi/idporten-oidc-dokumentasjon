@@ -64,7 +64,7 @@
 							{% elsif page.url contains site.aboutSide %}
 							{% else %}
 								<div class="alert alert-info">
-									Du ser nå på dokumentasjonen for Meldingsutveksling-mellom-offentlige-virksomheter {{ page.url | replace: '/', '' | replace: 'v', ''}}, som ikke er den nyeste versjonen. Den nyeste versjonen er {{ site.currentVersion}} og kan nåes <a href="{{ site.baseurl }}/">her</a>.
+									Du ser nå på dokumentasjonen for Id-porten OpenID Connect provider {{ page.url | replace: '/', '' | replace: 'v', ''}}, som ikke er den nyeste versjonen. Den nyeste versjonen er {{ site.currentVersion}} og kan nåes <a href="{{ site.baseurl }}/">her</a>.
 								</div>
 							{% endif %}
 						</div>
@@ -76,20 +76,6 @@
 					<div id="main" class="with-aside">
 						<section id="content" tabindex="-1">
 							<article class="one-col">
-								{% if site.downloadUrl != "" %}
-									<div class="body">
-										<div class="button custom" data-button-type="0" data-url="{{ site.downloadUrl }}" role="button" tabindex="0">
-											<div class="logo">
-												<img alt="logo" src="//www.difi.no/modules/contrib/difi_ckeditor_widgets/plugins/difibutton/icons/difibutton.png">
-											</div>
-											<div class="text">
-												<div class="title">Ingegrasjonspunktet</div>
-												<div class="sub-title">Trykk her for å laste ned nyeste versjon</div>
-											</div>
-											<div class="arrow">›</div>
-										</div>
-									</div>
-								{% endif %}
 								{{content}}
 							</article>
 						</section>
@@ -123,9 +109,7 @@
 					</div>
 					<address>
 						<ul>
-							<li>Kontakt: <a href="mailto:espen.korra@difi.no">espen.korra@difi.no</a></li>
-							<li>Telefon: +47 95 73 61 03</li>
-							<li>E-post: <a href="mailto:postmottak@difi.no">postmottak@difi.no</a></li>
+							<li>E-post: <a href="mailto:idporten@difi.no">idporten@difi.no</a></li>
 							<li>Org.no: 991 825 827</li>
 							<li ><a href="http://www.difi.no/artikkel/2014/12/difis-nettsteder">Difis nettsteder</a></li>
 							<li class="last"><a href="http://www.difi.no/artikkel/2014/12/personvernerklaering">Personvern</a></li>
