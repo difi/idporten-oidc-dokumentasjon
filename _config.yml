@@ -1,0 +1,65 @@
+# name of the software
+name: Om Id-porten OpenID Connect provider
+siteUrlText: http://difi.github.io/idporten-oidc-dokumentasjon/
+
+# current version of the software
+version: Staging
+
+# licence of the software
+license: GPL-3 License
+licenseUrl: http://opensource.org/licenses/GPL-3.0
+
+#baseurl: "/meldingsutveksling-mellom-offentlige-virksomheter" # the subpath of your site, e.g. /blog/
+baseurl: "/idporten-oidc-dokumentasjon"
+
+##Version handling
+currentCollecion: "vStaging"
+currentVersion: "Staging"
+versions: ["Staging"]
+
+# Collection of versions
+collections:
+  vStaging:  
+    output: true
+    permalink: /vStaging/
+
+aboutSide: "about.html"
+## End of Version handling
+
+# list of additional links on the right of the top menu
+headerLinks:
+  - title: Om I-porten OpenID Connect provider
+    url: /idporten-oidc-dokumentasjon/about.html
+
+# github buttons
+githubButton:
+  user: difi
+  repo: idporten-oidc-dokumentasjon
+
+# twitter buttons
+twitter:
+  enabled: false
+  via:
+  hash:
+  account:
+
+# facebook buttons
+facebook:
+  enabled: false
+  profileUrl:
+
+# google analytics
+analytics:
+  account:
+  domain:
+
+# DON'T MODIFY
+highlight: rouge
+
+gems:
+  - jekyll-redirect-from
+
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile']
+
+kramdown:
+  input: GFM
