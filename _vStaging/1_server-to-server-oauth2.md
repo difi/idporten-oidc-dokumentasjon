@@ -6,15 +6,15 @@ description: Bruk av Idporten sin autorisasjonsserver til autorisasjon for kommu
 isHome: false
 ---
 
-### Introduksjon
+## Introduksjon
 
 ID-porten sin OpenID Connect provider tilbyr funksjonalitet for server-til-server autorisasjon av API'er basert på RFC7523 JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
 
-### Flyt
+## Flyt
 
-![](/assets/images/server_to_server_oauth2_flow.png "Sekvensdiagram som viser server-til-server Oauth2-flyten")
+![](/idporten-oidc-dokumentasjon/assets/images/server_to_server_oauth2_flow.png "Sekvensdiagram som viser server-til-server Oauth2-flyten")
 
-### Krav til JWT for token-forespørsel
+## Krav til JWT for token-forespørsel
  
 Klienten må generere og signere ein jwt med følgende elementer for å forespørre tokens fra autorisasjonsserveren:
 
@@ -60,11 +60,11 @@ mysPd4CUp99ol74cl3lhAviMReLI2kMTmFus8SBozHm3aGJysU2TyX7fBBS7MxbF4Hk7c6s
 thN1oRgnpsziWIg08NDKW2cYOAIHBvz9bBf0D_dhi5kQsm9ippyrtgs5Q
 ```
  
-### Endepunkter
+## Endepunkter
 
 ID-porten auth.server tilbyr følgende endepunkter:
 
-#### Token-endepunkt
+### Token-endepunkt
 
 ```
 URL: http://eid-exttest.difi.no/idporten-oidc-provider/token
@@ -103,7 +103,7 @@ Eksempel på respons:
 }
 ```
 
-#### Tokeninfo-endepunkt
+### Tokeninfo-endepunkt
 
 ```
 URL: http://eid-exttest.difi.no/idporten-oidc-provider/tokeninfo
@@ -154,7 +154,7 @@ Eksempel på en respons ved feilet validering av token:
 }  
 ```
  
-### Eksempel på generering av JWT for token-forespørsel i Java
+## Eksempel på generering av JWT for token-forespørsel i Java
 
 Nimbus JOSE + JWT er et hendig bibliotekt for å håndtere jwt'er i JAVA , se http://connect2id.com/products/nimbus-jose-jwt
 
