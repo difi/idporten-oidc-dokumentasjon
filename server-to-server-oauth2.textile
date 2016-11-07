@@ -15,6 +15,7 @@ Klienten må generere og signere ein jwt med følgende elementer for å forespø
 
 
 *Header:*
+
 |x5c|Inneholde klientens virksomhetssertifikat som er brukt for signering av JWT'en|
 |alg|RS256 - Vi støtter kun RSA-SHA256 som signeringsalgoritme|
 
@@ -30,7 +31,7 @@ Klienten må generere og signere ein jwt med følgende elementer for å forespø
  
 *Eksempel på JWT struktur:*
 
-@
+pre..
 {
   "x5c": [ "MIIFOjCCBCKgAwI......BXYF56Q==" ],
   "alg": "RS256"
@@ -49,7 +50,7 @@ jNpuwrqFRWXyFgmSHCmKx9e-7pkDQlZMDwZfYC5VxDQzS1YvIkDir9H12AhF9b64REbG5sY
 Za8gK64c4lshbk9biyGcihi5jWDENdA-Rb_eJipiOYHrDHGOjcN5GTN2XASfd1UEeET2mT-
 mysPd4CUp99ol74cl3lhAviMReLI2kMTmFus8SBozHm3aGJysU2TyX7fBBS7MxbF4Hk7c6s
 thN1oRgnpsziWIg08NDKW2cYOAIHBvz9bBf0D_dhi5kQsm9ippyrtgs5Q
-@
+p.
  
 h2. Endepunkter
 
@@ -71,24 +72,24 @@ Følgende attributter må sendes inn i requesten:
 
 Eksempel på forespørsel:
 
-@
+pre..
 POST /token
 Content-type: application/x-www-form-urlencoded
  
 grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=<jwt>
-@
+p.
  
 
 Eksempel på respons:
 
-@
+pre..
 {
     "access_token": "fK0dhs5vQsuAUguLL2wxbXEQSE91XbOAL3foY5VR0Uk=",
     "expires_in": 599,
     "scope": "global/kontaktinformasjon.read"
 }
-@
- 
+p.
+
 h3. Tokeninfo-endepunkt
 
 |URL:|http://eid-exttest.difi.no/idporten-oidc-provider/tokeninfo|
@@ -103,15 +104,17 @@ Følgende attributter må sendes inn i requesten:
 |token|<Tokenet som skal valideres>|
 
 Eksempel på request:
-@
+
+pre..
 POST /tokeninfo
 Content-type: application/x-www-form-urlencoded
  
 token=fK0dhs5vQsuAUguLL2wxbXEQSE91XbOAL3foY5VR0Uk=
-@
+p.
  
 Eksempel på en respons ved suksessfull validering av token:
-@
+
+pre..
 {
     "active": true,
     "token_type": "Bearer",
@@ -122,15 +125,16 @@ Eksempel på en respons ved suksessfull validering av token:
     "client_id": "test_rp",
     "client_orgno": "991825827"
 }
-@
+p.
  
 
 Eksempel på en respons ved feilet validering av token:
-@
+
+pre..
 {
     "active": false
 }  
-@
+p.
  
 h2. Eksempel på generering av JWT for token-forespørsel i Java
 
@@ -138,7 +142,7 @@ Nimbus JOSE + JWT er et hendig bibliotekt for å håndtere jwt'er i JAVA , se ht
 
 Her er ein enkel eksempelkode for å generere en JWT for å forespørre tokens:
 
-@
+pre..
 PrivateKey myKey = ... // Read from KeyStore
 X509Certificate certificate = ... // Read from KeyStore
  
@@ -163,4 +167,4 @@ SignedJWT signedJWT = new SignedJWT(jwtHeader, claims);
 signedJWT.sign(signer);
  
 String serializedJwt = signedJWT.serialize();
-@
+p.
