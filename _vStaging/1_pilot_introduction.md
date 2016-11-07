@@ -10,4 +10,16 @@ isHome: true
 
 Difi tilbr nå en skarp pilot av OpenID Connect funksjonalitet i ID-porten. Denne skal gjøre det lettere å realisere en del scenarier som er tunge å implementere med dagens SAML2 baserte grensesnitt i ID-porten. TODO: Dette kapittelet bør skrives av Jørgen
 
-## OpenID Connect
+## Om OpenID Connect
+
+![](/idporten-oidc-dokumentasjon/assets/images/openid.png "OpenID logo")
+
+OpenID Connect er en protokoll for autentisering basert på Oauth2. Se http://openid.net/connect
+
+## Beskrivelse av mulige scenarier
+
+### OpenID Connect som alternativ autentiseringprotokoll for SAML2
+
+### Mobil-app autentisering og langt-levende sesjoner.
+
+### Tilgangskontroll og autentisering av API'er
