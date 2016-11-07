@@ -1,12 +1,10 @@
 ---
-title: Server til server oauth2
+title: Server til server autorisasjon med Oauth2
 pageid: server-to-server-oauth2
 layout: default
-description: Bruk av Idporten sin autorisasjonsserver til sikring av API'er
+description: Bruk av Idporten sin autorisasjonsserver til autorisasjon for kommunikasjon mellom server til server.
 isHome: false
 ---
-
-## Server til server autorisasjon med Oauth2
 
 ### Introduksjon
 
@@ -14,7 +12,7 @@ ID-porten sin OpenID Connect provider tilbyr funksjonalitet for server-til-serve
 
 ### Flyt
 
-![](assets/images/server_to_server_oauth2_flow.png "Sekvensdiagram som viser server-til-server Oauth2-flyten")
+![](/assets/images/server_to_server_oauth2_flow.png "Sekvensdiagram som viser server-til-server Oauth2-flyten")
 
 ### Krav til JWT for token-forespørsel
  
