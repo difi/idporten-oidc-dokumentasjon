@@ -1,6 +1,5 @@
 h1. Server til server autorisasjon med Oauth2
 
-
 h2. Introduksjon
 
 ID-porten sin OpenID Connect provider tilbyr funksjonalitet for server-til-server autorisasjon av API'er basert på RFC7523 JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
@@ -31,8 +30,7 @@ Klienten må generere og signere ein jwt med følgende elementer for å forespø
  
 *Eksempel på JWT struktur:*
 
-pre..
-{
+pre.. {
   "x5c": [ "MIIFOjCCBCKgAwI......BXYF56Q==" ],
   "alg": "RS256"
 }
@@ -50,7 +48,6 @@ jNpuwrqFRWXyFgmSHCmKx9e-7pkDQlZMDwZfYC5VxDQzS1YvIkDir9H12AhF9b64REbG5sY
 Za8gK64c4lshbk9biyGcihi5jWDENdA-Rb_eJipiOYHrDHGOjcN5GTN2XASfd1UEeET2mT-
 mysPd4CUp99ol74cl3lhAviMReLI2kMTmFus8SBozHm3aGJysU2TyX7fBBS7MxbF4Hk7c6s
 thN1oRgnpsziWIg08NDKW2cYOAIHBvz9bBf0D_dhi5kQsm9ippyrtgs5Q
-p.
  
 h2. Endepunkter
 
@@ -72,23 +69,18 @@ Følgende attributter må sendes inn i requesten:
 
 Eksempel på forespørsel:
 
-pre..
-POST /token
+pre.. POST /token
 Content-type: application/x-www-form-urlencoded
  
 grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=<jwt>
-p.
- 
 
-Eksempel på respons:
+p. Eksempel på respons:
 
-pre..
-{
+pre.. {
     "access_token": "fK0dhs5vQsuAUguLL2wxbXEQSE91XbOAL3foY5VR0Uk=",
     "expires_in": 599,
     "scope": "global/kontaktinformasjon.read"
 }
-p.
 
 h3. Tokeninfo-endepunkt
 
@@ -105,17 +97,14 @@ Følgende attributter må sendes inn i requesten:
 
 Eksempel på request:
 
-pre..
-POST /tokeninfo
+pre.. POST /tokeninfo
 Content-type: application/x-www-form-urlencoded
  
 token=fK0dhs5vQsuAUguLL2wxbXEQSE91XbOAL3foY5VR0Uk=
-p.
  
-Eksempel på en respons ved suksessfull validering av token:
+p. Eksempel på en respons ved suksessfull validering av token:
 
-pre..
-{
+pre.. {
     "active": true,
     "token_type": "Bearer",
     "expires_in": 556,
@@ -125,16 +114,12 @@ pre..
     "client_id": "test_rp",
     "client_orgno": "991825827"
 }
-p.
  
+p. Eksempel på en respons ved feilet validering av token:
 
-Eksempel på en respons ved feilet validering av token:
-
-pre..
-{
+pre.. {
     "active": false
 }  
-p.
  
 h2. Eksempel på generering av JWT for token-forespørsel i Java
 
@@ -142,17 +127,16 @@ Nimbus JOSE + JWT er et hendig bibliotekt for å håndtere jwt'er i JAVA , se ht
 
 Her er ein enkel eksempelkode for å generere en JWT for å forespørre tokens:
 
-pre..
-PrivateKey myKey = ... // Read from KeyStore
+pre.. PrivateKey myKey = ... // Read from KeyStore
 X509Certificate certificate = ... // Read from KeyStore
- 
+
 List<Base64> certChain = new ArrayList<>();
 certChain.add(Base64.encode(certificate));
- 
+
 JWSHeader jwtHeader = JWSHeader.Builder(JWSAlgorithm.RS256)
         .x509CertChain(certChain)
         .build();
- 
+
 JWTClaimsSet claims = new JWTClaimsSet.Builder()
         .audience("https://eid-vag-opensso.difi.local/idporten-oidc-provider/")
         .issuer("clientId")
@@ -161,10 +145,10 @@ JWTClaimsSet claims = new JWTClaimsSet.Builder()
         .issueTime(new Date(Clock.systemUTC().millis()))
         .expirationTime(new Date(Clock.systemUTC().millis() + 120000)) // Expiration time is 120 sec.
         .build();
- 
+
 JWSSigner signer = new RSASSASigner(myKey);
 SignedJWT signedJWT = new SignedJWT(jwtHeader, claims);
 signedJWT.sign(signer);
- 
+
 String serializedJwt = signedJWT.serialize();
-p.
+</pre>
