@@ -12,61 +12,59 @@ ID-porten sin OpenID Connect provider tilbyr funksjonalitet for autentisering av
 
 ## Overordna beskrivelse av scenariet
 
+OpenID Connect tilbyr autentisering av brukere til sluttbrukertjenester. Autentiseringen blir utført av ein OpenID Connect provider som utseder ID Token til den aktuelle tjenesten.
+
+Følgende aktører inngår:
+
+* *Sluttbrukeren* \- Ønsker å logge inn til en gitt tjeneste (relaying_party)
+* *Relying party* \- sluttbrukertjenesten som brukeren skal logge inn til
+* *OpenID Connect provider* \- Autentiseringstjeneste der autentiseringen blir utført og som usteder *ID Token* til sluttbrukertjenesten
+
+![](/idporten-oidc-dokumentasjon/assets/images/openid_scenario.png "OpenID Connect scenario")
+
+
 ## Flyt
 
 ![](/idporten-oidc-dokumentasjon/assets/images/server_to_server_oauth2_flow.png "Sekvensdiagram som viser server-til-server Oauth2-flyten")
 
-## Krav til autorisasjonsforespørsel
- 
-Klienten må generere og signere ein jwt med følgende elementer for å forespørre tokens fra autorisasjonsserveren:
-
-
-**Header:**
-
-| Parameter  | Verdi |
-| --- | --- |
-| x5c | Inneholde klientens virksomhetssertifikat som er brukt for signering av JWT'en |
-| alg | RS256 - Vi støtter kun RSA-SHA256 som signeringsalgoritme |
-
-**Body:**
-
-| Parameter  | Verdi |
-| --- | --- |
-|aud| Audience - identifikator for ID-portens OIDC Provider - skal være: https://eid-vag-opensso.difi.local/idporten-oidc-provider/|
-|iss| issuer - client ID som er registert hos ID-porten OIDC-provider|
-|scope| Scope som klient forespør tilgang til, kan sende inn liste av scope separert med whitespace|
-|iat| issued at - tidsstempel for når jwt'en ble generert - **MERK:** Tidsstempelet tar utgangspunkt i UTC-tid|
-|exp| expiration time - tidsstempel for når jwt'en utløper - **MERK:** Tidsstempelet tar utgangspunkt i UTC-tid **MERK:** ID-porten godtar kun maks levetid på jwt'en til 120 sekunder (exp - iat <= 120 )|
-|jti| Optional - JWT ID - unik id på jwt'en som settes av klienten. **MERK:** JWT'er kan ikke gjenbrukes. ID-porten håndterer dette ved å sammenligne en hash-verdi av jwt'en mot tidligere brukte jwt'er. Dette impliserer at dersom klienten ønsker å sende mer enn en token-request i sekundet må jti elementet benytttes.|
-
-**Eksempel på JWT struktur:**
-
-```
-{
-  "x5c": [ "MIIFOjCCBCKgAwI``````BXYF56Q==" ],
-  "alg": "RS256"
-}
-.
-{
-  "aud": "https://eid-vag-opensso.difi.local/idporten-oidc-provider/",
-  "scope": "global/kontaktinformasjon.read global/varslingsstatus.read",
-  "iss": "test_rp",
-  "exp": 1477924061,
-  "iat": 1477923951,
-}
-.
-Bsox4L7yqGi3d1HhW1yXTZGV95MAAFQTWr2J1iF5svzg1v5G-WwM3iGUYvgWlqG-ZrnIPu4
-jNpuwrqFRWXyFgmSHCmKx9e-7pkDQlZMDwZfYC5VxDQzS1YvIkDir9H12AhF9b64REbG5sY
-Za8gK64c4lshbk9biyGcihi5jWDENdA-Rb_eJipiOYHrDHGOjcN5GTN2XASfd1UEeET2mT-
-mysPd4CUp99ol74cl3lhAviMReLI2kMTmFus8SBozHm3aGJysU2TyX7fBBS7MxbF4Hk7c6s
-thN1oRgnpsziWIg08NDKW2cYOAIHBvz9bBf0D_dhi5kQsm9ippyrtgs5Q
-```
  
 ## Endepunkter
 
-ID-porten auth.server tilbyr følgende endepunkter:
+ID-porten OpenID Connect tilbyr følgende endepunkter:
+
+
+### Autorisasjons-endepunkt
+
+Klienten redirecter sluttbrukeren til autorisasjonsendepunktet. Etter at 
+
+```
+URL: http://eid-exttest.difi.no/idporten-oidc-provider/authorization
+```
+
+Følgende header-parametere må brukes på request:
+
+| Parameter  | Verdi |
+| --- | --- |
+|Http-metode|GET|
+
+Følgende attributter må settes på request:
+
+| Parameter  | Verdi |
+| --- | --- |
+|grant_type| Her støtter vi kun _authorization\_code_ |
+| client\_id | Klientens tildelte id |
+| redirect\_uri | URI som sluttbruker skal redirectes tilbake til etter fullført authentisering. Kun forhåndsregistrerte url'er kan brukes |
+| scope | Scope som forespørres. Kan være en liste separert med whitespace. For autentiseringer må _openid_ brukes |
+| state | Verdi som settes av klient og returneres i callback-responsen etter fullført autentisering. Kan benyttes til å implementere CSRF-beskyttelse |
+| nonce | Verdi som settes av klient og returneres som en del av ID token. Kan brukes til å binde en klient-sesjon til et gitt ID-token, og hindre replay attacks  |
+| acr\_values | Ønsket sikkerhetsnivå, kan være *Level3* eller *Level4* |
+| ui\_locales | Ønsket språk brukt i Id-porten. støtter *nb*, *nn*, *en* eller *se* |
+| prompt | Brukes til å styre providerens interaksjon med sluttbrukeren TODO: Må beskrive lovlige verdier og oppførsel |
+
 
 ### Token-endepunkt
+
+Token-endepunktet brukes for utstedelse av tokens. Endepunktet støtter flere typer klient-autentisering
 
 ```
 URL: http://eid-exttest.difi.no/idporten-oidc-provider/token
@@ -76,15 +74,18 @@ Følgende header-parametere må brukes på request:
 
 | Parameter  | Verdi |
 | --- | --- |
-|Http-metode:|POST|
-|Content-type:|application/x-www-form-urlencoded|
+| Http-metode | POST |
+| Content-type | application/x-www-form-urlencoded |
+
 
 Følgende attributter må sendes inn i requesten:
 
 | Attributt  | Verdi |
 | --- | --- |
-|grant_type|urn:ietf:params:oauth:grant-type:jwt-bearer|
-|assertion|\<Den genererte JWT'en for token-requesten\>|
+| grant_type | authorization\_code \| refresh\_token|
+| code | authorization\_gode dersom dette benyttes som grant |
+| client_id | Klientens ID |
+| client_secret | 
 
 Eksempel på forespørsel:
 
@@ -106,6 +107,8 @@ Eksempel på respons:
 ```
 
 ### Tokeninfo-endepunkt
+
+Tokeninfo-endepunktet benyttes av sluttbrukertjenester for å validere gyldigheten av access_tokens
 
 ```
 URL: http://eid-exttest.difi.no/idporten-oidc-provider/tokeninfo
