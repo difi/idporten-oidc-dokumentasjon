@@ -25,7 +25,7 @@ Følgende aktører inngår:
 
 ## Flyt
 
-![](/idporten-oidc-dokumentasjon/assets/images/server_to_server_oauth2_flow.png "Sekvensdiagram som viser server-til-server Oauth2-flyten")
+![](/idporten-oidc-dokumentasjon/assets/images/openid_auth_code_flow.png "Sekvensdiagram som viser server-til-server Oauth2-flyten")
 
  
 ## Endepunkter

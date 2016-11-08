@@ -16,6 +16,15 @@ Difi tilbr nå en skarp pilot av OpenID Connect funksjonalitet i ID-porten. Denn
 
 OpenID Connect er en protokoll for autentisering basert på Oauth2. Se http://openid.net/connect
 
+## Relevante spesifikasjoner
+
+Dei implementerte tjenestene bygger på følgende standarder og spesifikasjoner:
+
+* OpenID Connect Core 1.0 - http://openid.net/specs/openid-connect-core-1_0.html
+* OpenID Connect Session Management 1.0 - http://openid.net/specs/openid-connect-session-1_0.html
+* IETF RFC6749 The OAuth 2.0 Authorization Framework - https://tools.ietf.org/html/rfc6749
+* IETF RFC7523 JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants - https://tools.ietf.org/html/rfc7523
+
 ## Beskrivelse av mulige scenarier
 
 ### OpenID Connect som alternativ autentiseringprotokoll for SAML2
