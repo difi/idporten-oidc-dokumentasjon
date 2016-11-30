@@ -31,4 +31,10 @@ Dei implementerte tjenestene bygger på følgende standarder og spesifikasjoner:
 
 ### Mobil-app autentisering og langt-levende sesjoner.
 
-### Tilgangskontroll og autentisering av API'er
+### Tilgangskontroll og autorisasjon av API'er
+
+* Brukerstyrt tilgang
+
+* Server til server autorisasjon av api'er
+
+![](/idporten-oidc-dokumentasjon/assets/images/server-to-server-oauth2.png "Server til server OAuth2")

@@ -33,6 +33,7 @@
 							<p>{{site.siteUrlText}}</p>
 						</div>
 					</div>
+					<!--
 					<div class="tools">
 						<div class="menu">
 							<h2>Sekundærmeny</h2>
@@ -43,7 +44,7 @@
 							</ul>
 						</div>
 					</div>
-					
+					-->
 				</header>
 				<div id="above-content">
 					<div>
@@ -58,8 +59,9 @@
 								</h1>
 							</div>
 						</section>
+						<!-- 
 						<div class="col-md-9" role="main">
-							<!-- Info box notifying that you are using old documentation -->
+							<!-- Info box notifying that you are using old documentation --
 							{% if page.url contains site.currentVersion %}
 							{% elsif page.url contains site.aboutSide %}
 							{% else %}
@@ -68,6 +70,7 @@
 								</div>
 							{% endif %}
 						</div>
+						-->
 					</div>
 				</div>
 				{% if page.url contains site.aboutSide %}
@@ -76,7 +79,9 @@
 					<div id="main" class="with-aside">
 						<section id="content" tabindex="-1">
 							<article class="one-col">
-								{{content}}
+									<div class="body">
+										{{content}}
+									</div>
 							</article>
 						</section>
 						<aside>
@@ -85,21 +90,21 @@
 									<h2>Innhold</h2>
 								</div>
 								<div class="body">
-									<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix-top" id="aside-nav">
+									<nav class="main-nav">
+									  <ul>
+										{% for p in site.pages %}
+											{% if page.url contains p.url %}
+												{% assign active = "active" %}
+											{% else %}
+												{% assign active = "" %}
+											{% endif %}
+											<li><a href="{{site.baseurl}}/{{p.url}}" class="{{ active }}"> {{ p.title }}</a></li>
+										{% endfor %}
+									  </ul>
 									</nav>
-								</div>
+								</div>								
 							</section>
-							<!-- List of documentation versions -->
-							<div class="list-group col-md-1 list-versions ">
-								{% for version in site.versions %}
-									{% if page.url contains version %}
-										{% assign active = "active" %}
-									{% else %}
-										{% assign active = "" %}
-									{% endif %}
-									<a href="{{site.baseurl}}/v{{version}}/" class="list-group-item {{ active }}"> {{ version }}</a>
-								{% endfor %}
-							</div>
+
 						</aside>
 					</div>
 				{% endif %}

@@ -12,20 +12,6 @@ licenseUrl: http://opensource.org/licenses/GPL-3.0
 #baseurl: "/meldingsutveksling-mellom-offentlige-virksomheter" # the subpath of your site, e.g. /blog/
 baseurl: "/idporten-oidc-dokumentasjon"
 
-##Version handling
-currentCollecion: "vStaging"
-currentVersion: "Staging"
-versions: ["Staging"]
-
-# Collection of versions
-collections:
-  vStaging:  
-    output: true
-    permalink: /vStaging/
-
-aboutSide: "about.html"
-## End of Version handling
-
 # list of additional links on the right of the top menu
 headerLinks:
   - title: Om I-porten OpenID Connect provider
