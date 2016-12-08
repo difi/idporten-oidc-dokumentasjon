@@ -16,7 +16,19 @@ Denne funksjonaliteten er tenkt brukt i forbindelse med [pilot av REST-api for O
 
 ![](/idporten-oidc-dokumentasjon/assets/images/server_to_server_oauth2_flow.png "Sekvensdiagram som viser server-til-server Oauth2-flyten")
 
-TODO: Beskriv stegene i flyten...
+I dette scenariet ønsker en **klient** å bruke en **ressurs (API)** tilbudt av en **ressursserver**. Tilgangen (autorisasjonen) til api'et blir utstedt av en **autorisasjonsserver**. For å aksessere ressursen må klienten forespørre et access_token fra autorisasjonsserveren som klienten så kan bruke til aksessere den aktuelle ressursen.
+
+* Flyten starter med at klienten må generere en **JWT-basert tokenforespørsel** (JWT-bearer authorization grant). Denne inneholder informasjon om hvile ressurser (*scope*) klienten ønsker å aksessere og blir signert med klienten sitt virksomhetssertifikat.
+
+* Når autorisasjonsserveren mottar tokenforespørselen vil den først **validere gyldigheten av JWT'en**. Deretter vil virksomhetssertifikatet (brukt til signering av JWT'en) valideres og en **klientautentisering** utføres på bakgrunn av dette.
+
+* Dersom den autentiserte klienten har tilgang til de forespurte ressursene returneres et **access_token** til klienten
+
+* Klienten kan nå aksessere den ønska ressursen ved bruk av access_tokenet.
+
+* Ressursserveren må nå validere det mottatte access_tokenet mot autorisasjonsservern sitt tokeninfo-endepunkt.
+
+* Dersom access_tokenet er gyldig kan det forespurte ressursen returneres til klienten.
 
 ## Krav til JWT for token-forespørsel
  
@@ -30,6 +42,8 @@ Klienten må generere og signere ein jwt med følgende elementer for å forespø
 | x5c | Inneholde klientens virksomhetssertifikat som er brukt for signering av JWT'en |
 | alg | RS256 - Vi støtter kun RSA-SHA256 som signeringsalgoritme |
 
+&nbsp;
+
 **Body:**
 
 | Parameter  | Verdi |
@@ -40,6 +54,8 @@ Klienten må generere og signere ein jwt med følgende elementer for å forespø
 |iat| issued at - tidsstempel for når jwt'en ble generert - **MERK:** Tidsstempelet tar utgangspunkt i UTC-tid|
 |exp| expiration time - tidsstempel for når jwt'en utløper - **MERK:** Tidsstempelet tar utgangspunkt i UTC-tid **MERK:** ID-porten godtar kun maks levetid på jwt'en til 120 sekunder (exp - iat <= 120 )|
 |jti| Optional - JWT ID - unik id på jwt'en som settes av klienten. **MERK:** JWT'er kan ikke gjenbrukes. ID-porten håndterer dette ved å sammenligne en hash-verdi av jwt'en mot tidligere brukte jwt'er. Dette impliserer at dersom klienten ønsker å sende mer enn en token-request i sekundet må jti elementet benytttes.|
+
+&nbsp;
 
 **Eksempel på JWT struktur:**
 
@@ -70,6 +86,8 @@ ID-porten auth.server tilbyr følgende endepunkter:
 
 ### Token-endepunkt
 
+Token-endepunktet benyttes for utstedelse av tokens basert på JWT-bearer grants.
+
 ```
 URL: http://eid-exttest.difi.no/idporten-oidc-provider/token
 ```
@@ -81,12 +99,16 @@ Følgende header-parametere må brukes på request:
 |Http-metode:|POST|
 |Content-type:|application/x-www-form-urlencoded|
 
+&nbsp;
+
 Følgende attributter må sendes inn i requesten:
 
 | Attributt  | Verdi |
 | --- | --- |
 |grant_type|urn:ietf:params:oauth:grant-type:jwt-bearer|
 |assertion|\<Den genererte JWT'en for token-requesten\>|
+
+&nbsp;
 
 Eksempel på forespørsel:
 
@@ -96,6 +118,8 @@ Content-type: application/x-www-form-urlencoded
  
 grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=<jwt>
 ```
+
+&nbsp;
 
 Eksempel på respons:
 
@@ -109,9 +133,13 @@ Eksempel på respons:
 
 ### Tokeninfo-endepunkt
 
+Tokeninfo-endepunktet benyttes av ressursservere for validering av gyldigheten til mottatte tokens.
+
 ```
 URL: http://eid-exttest.difi.no/idporten-oidc-provider/tokeninfo
 ```
+
+&nbsp;
 
 Følgende header-parametere må brukes på request:
 
@@ -120,11 +148,15 @@ Følgende header-parametere må brukes på request:
 |Http-metode:|POST|
 |Content-type:|application/x-www-form-urlencoded|
 
+&nbsp;
+
 Følgende attributter må sendes inn i requesten:
 
 | Attributt  | Verdi |
 | --- | --- |
 |token|\<Tokenet som skal valideres\>|
+
+&nbsp;
 
 Eksempel på request:
 
@@ -134,6 +166,8 @@ Content-type: application/x-www-form-urlencoded
  
 token=fK0dhs5vQsuAUguLL2wxbXEQSE91XbOAL3foY5VR0Uk=
 ```
+
+&nbsp;
  
 Eksempel på en respons ved suksessfull validering av token:
 
@@ -150,6 +184,8 @@ Eksempel på en respons ved suksessfull validering av token:
 }
 ```
  
+&nbsp;
+ 
 Eksempel på en respons ved feilet validering av token:
 
 ```
@@ -160,7 +196,7 @@ Eksempel på en respons ved feilet validering av token:
  
 ## Eksempel på generering av JWT for token-forespørsel i Java
 
-Nimbus JOSE + JWT er et hendig bibliotekt for å håndtere jwt'er i JAVA , se http://connect2id.com/products/nimbus-jose-jwt
+Nimbus JOSE + JWT er et hendig bibliotekt for å håndtere jwt'er i JAVA , se [http://connect2id.com/products/nimbus-jose-jwt](http://connect2id.com/products/nimbus-jose-jwt)
 
 Her er ein enkel eksempelkode for å generere en JWT for å forespørre tokens:
 
@@ -190,3 +226,7 @@ signedJWT.sign(signer);
  
 String serializedJwt = signedJWT.serialize();
 ```
+
+&nbsp;
+
+For .net og andre platformer gir [jwt.io](http://jwt.io) en fin oversikt over tilgjengelige biblioteker

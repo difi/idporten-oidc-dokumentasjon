@@ -15,7 +15,7 @@ En av de viktigste driverne for å vurder alternative protokoller er fremveksten
 
 Selv etter 10 år med SAML2, opplever Difi fremdels at enkelte virksomheter bruker betydlige ressurser på å sette opp en ordinær SAML2-integrasjon også for tradisjonelle webtjenester. Det er derfor naturlig å evaluere om det finst andre og mer moderne protokoller som har både høy utbredelse og høy sikkerhet.
 
-Dette prosjektet omfatter også en pilot av et enklere REST-api for Kontakt- og reservasjonsregisteret sin Oppslagstjeneste. Denne tjenesten har i dag et API basert på SOAP og WS-Security. Selv om dette ikke er direkte relatert til bruk av OpenID Connect så tilgangskontrollen til dette REST-api'et være basert på OAuth2, og det er derfor naturlig å realisere en felles OAuth2 autorisasjonsserver som gjenbrukes for begge bruksområder.
+Dette prosjektet omfatter også en pilot av et enklere REST-api for Kontakt- og reservasjonsregisteret sin Oppslagstjeneste. Denne tjenesten har i dag et API basert på SOAP og WS-Security. Selv om dette ikke er direkte relatert til bruk av OpenID Connect så vil tilgangskontrollen til dette REST-api'et være basert på OAuth2, og det er derfor naturlig å realisere en felles OAuth2 autorisasjonsserver som gjenbrukes for begge bruksområder.
 
 ## Om OpenID Connect
 

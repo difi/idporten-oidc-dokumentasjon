@@ -8,9 +8,9 @@ isHome: false
 
 ## Introduksjon
 
-Kontaktregistert sin oppslagstjeneste tilbyr i dag eit SOAP-basert grensesnitt beskytta med WS-Security. Målet med denne piloten er å tilby et REST-basert grensesnitt som er enklere å integrere mot.
+Kontaktregisteret sin oppslagstjeneste tilbyr i dag eit SOAP-basert grensesnitt beskytta med WS-Security. Målet med denne piloten er å tilby et REST-basert grensesnitt som gjør det enklere å implementere nye integrasjoner mot tjenesten.
 
-Tilgangskontroll til api'et benytter seg av flyten som er beskrevet i [Server til server autorisasjon med Oauth2](3_server-to-server-oauth2.html)
+Tilgangskontrollen til api'et benytter seg av flyten som er beskrevet i [Server til server autorisasjon med Oauth2](3_server-to-server-oauth2.html)
 
 ## Krav til JWT for token-forespørsel
  
@@ -24,6 +24,8 @@ Klienten må generere og signere ein jwt med følgende elementer for å forespø
 | x5c | Inneholde klientens virksomhetssertifikat som er brukt for signering av JWT'en |
 | alg | RS256 - Vi støtter kun RSA-SHA256 som signeringsalgoritme |
 
+&nbsp;
+
 **JWT-Body:**
 
 | Parameter  | Verdi |
@@ -35,7 +37,6 @@ Klienten må generere og signere ein jwt med følgende elementer for å forespø
 |exp| expiration time - tidsstempel for når jwt'en utløper - **MERK:** Tidsstempelet tar utgangspunkt i UTC-tid **MERK:** ID-porten godtar kun maks levetid på jwt'en til 120 sekunder (exp - iat <= 120 )|
 |jti| Optional - JWT ID - unik id på jwt'en som settes av klienten. **MERK:** JWT'er kan ikke gjenbrukes. ID-porten håndterer dette ved å sammenligne en hash-verdi av jwt'en mot tidligere brukte jwt'er. Dette impliserer at dersom klienten ønsker å sende mer enn en token-request i sekundet må jti elementet benytttes.|
 
- 
 
 ## Tilgjenglige scopes
 
@@ -53,6 +54,8 @@ Oppslagstjenesten sin REST-tjeneste tilbyr følgende endepunkt for søk på 1...
 ```
 URL: http://eid-exttest.difi.no/kontaktinfo-oauth2-server/rest/v1/personer
 ```
+
+&nbsp;
 
 Følgende header-parametere må brukes på request:
 

@@ -1,11 +1,11 @@
 ---
-title: Autentisering med bruk av autorisasjonskode-flyten
-pageid: authentication-using-code-flow
+title: OAuth2 basert autorisasjon og tilgangskontroll til API'er
+pageid: oauth2-based-authorization
 layout: default
-description: Bruk av Idporten sin OpenID Connect provider til autentisering med autorisasjonskode-flyten
+description: Autorisasjon 
 isHome: false
 resource: true
-category: vStaging
+hiddenInToc: true
 ---
 
 ## Introduksjon
@@ -190,33 +190,88 @@ grant_type=authorization_code&code=myrecievedcode&client_id=myclientid
 }
 ```
 
-## Userinfo-endepunkt
+## Tokeninfo-endepunkt
 
-Ved å forespørre scopet *profile* vil klienttjenesten sammen med id tokenet også få utstedt et access_token (og evnt. refresh_token) 
-som kan benyttes mot providerens userinfo-endepunkt. Dette endepunktet kan benyttes for å hente ytterligere data om brukeren enn det som blir eksponert via ID tokenet.
-Da ID-porten generelt har lite data om sluttbrukeren har dette endepunktet begrenset verdi for denne tjenesten. Personnummer og valgt språk under innlogging er de 
-dataene som vil bli eksponert her.
-
+Tokeninfo-endepunktet benyttes av sluttbrukertjenester for å validere gyldigheten av access_tokens
 
 ```
-URL: http://eid-exttest.difi.no/idporten-oidc-provider/userinfo
+URL: http://eid-exttest.difi.no/idporten-oidc-provider/tokeninfo
 ```
-
-&nbsp;
 
 Følgende header-parametere må brukes på request:
 
 | Parameter  | Verdi |
 | --- | --- |
-| Http-metode: | GET |
-| Authorization: | Bearer \<utstedt access_token\> |
+|Http-metode:|POST|
+|Content-type:|application/x-www-form-urlencoded|
+
+Følgende attributter må sendes inn i requesten:
+
+| Attributt  | Verdi |
+| --- | --- |
+|token|\<Tokenet som skal valideres\>|
+
+Eksempel på request:
+
+```
+POST /tokeninfo
+Content-type: application/x-www-form-urlencoded
  
-## Eksempel på respons:
+token=fK0dhs5vQsuAUguLL2wxbXEQSE91XbOAL3foY5VR0Uk=
+```
+ 
+Eksempel på en respons ved suksessfull validering av token:
 
 ```
 {
-  "sub" : "NR8vTTPrM3T7rWf8dXxeWLZpxEMsug4E7pxqJuh9wIM=",
-  "pid" : "23079421936",
-  "locale" : "nb"
+    "active": true,
+    "token_type": "Bearer",
+    "expires_in": 556,
+    "exp": 1477990301,
+    "iat": 1477989701,
+    "scope": "global/kontaktinformasjon.read",
+    "client_id": "test_rp",
+    "client_orgno": "991825827"
 }
+```
+ 
+Eksempel på en respons ved feilet validering av token:
+
+```
+{
+    "active": false
+}  
+```
+ 
+## Eksempel på generering av JWT for token-forespørsel i Java
+
+Nimbus JOSE + JWT er et hendig bibliotekt for å håndtere jwt'er i JAVA , se http://connect2id.com/products/nimbus-jose-jwt
+
+Her er ein enkel eksempelkode for å generere en JWT for å forespørre tokens:
+
+```
+PrivateKey myKey = ``` // Read from KeyStore
+X509Certificate certificate = ``` // Read from KeyStore
+ 
+List<Base64> certChain = new ArrayList<>();
+certChain.add(Base64.encode(certificate));
+ 
+JWSHeader jwtHeader = JWSHeader.Builder(JWSAlgorithm.RS256)
+        .x509CertChain(certChain)
+        .build();
+ 
+JWTClaimsSet claims = new JWTClaimsSet.Builder()
+        .audience("https://eid-vag-opensso.difi.local/idporten-oidc-provider/")
+        .issuer("clientId")
+        .claim("scope", "scope_to_request")
+        .jwtID(UUID.randomUUID().toString())
+        .issueTime(new Date(Clock.systemUTC().millis()))
+        .expirationTime(new Date(Clock.systemUTC().millis() + 120000)) // Expiration time is 120 sec.
+        .build();
+ 
+JWSSigner signer = new RSASSASigner(myKey);
+SignedJWT signedJWT = new SignedJWT(jwtHeader, claims);
+signedJWT.sign(signer);
+ 
+String serializedJwt = signedJWT.serialize();
 ```
