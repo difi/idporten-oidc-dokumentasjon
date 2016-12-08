@@ -4,6 +4,7 @@ pageid: logout_session_management
 layout: default
 description: Bruk av Idporten sin autorisasjonsserver til autorisasjon for kommunikasjon mellom server til server.
 isHome: false
+hiddenInToc: true
 ---
 
 ## Introduksjon

@@ -25,17 +25,17 @@ Følgende aktører inngår:
 ![](/idporten-oidc-dokumentasjon/assets/images/openid_scenario.png "OpenID Connect scenario")
 
 
-## Flyt
+## Beskrivelse av autorisajonskode-flyten
 
 ![](/idporten-oidc-dokumentasjon/assets/images/openid_auth_code_flow.png "Sekvensdiagram som viser server-til-server Oauth2-flyten")
 
 * Flyten starter med at en sluttbruker prøver å aksessere en gitt tjeneste (klient)
-* Tjenesten krever innlogging og en redirect url til OpenID Connect provideren blir generert og returnert til sluttbrukeren. Denne redirecten representerer en autentiseringsforespørsel, og har parametere som identifiserer den aktuelle klienten for provideren.
+* Tjenesten krever innlogging og en redirect url til OpenID Connect provideren blir generert og returnert til sluttbrukeren. Denne redirecten representerer en **autentiseringsforespørsel**, og har parametere som identifiserer den aktuelle klienten for provideren.
 * Sluttbrukeren kommer til **autorisasjonsendepunktet** hos provideren hvor forespørselen blir validert (f.eks. gyldig klient og gyldig redirect_uri tilbake til klienten).
-* Brukeren gjennomfører innlogging i provideren
-* Provideren redirect'er brukeren tilbake til klienten. redirect url'en har satt en *autorisasjonskode*.
+* Brukeren gjennomfører **innlogging i provideren**
+* Provideren redirect'er brukeren tilbake til klienten. redirect url'en har satt en **autorisasjonskode**.
 * Klienten bruker den mottatte autorisasjonskoden til å gjøre et direkteoppslag mot providerens **tokenendepunkt**. Klienten må autentisere seg mot token-endepunktet (enten med client_secret eller en signert forespørsel)
-* Dersom klienten er autentisert valideres den mottatte autorisasjonskoden og et *ID token* blir returnert til klienttjenesten.
+* Dersom klienten er autentisert valideres den mottatte autorisasjonskoden og et **ID token** blir returnert til klienttjenesten.
 * Brukeren er nå autentisert for klienttjenesten og ønsket handling kan utføres
 
 ## Struktur på Id token

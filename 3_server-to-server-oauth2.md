@@ -10,9 +10,13 @@ isHome: false
 
 ID-porten sin OpenID Connect provider tilbyr funksjonalitet for server-til-server autorisasjon av API'er basert på RFC7523 JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
 
-## Flyt
+Denne funksjonaliteten er tenkt brukt i forbindelse med [pilot av REST-api for Oppslagstjenesten](5_pilot_oppslagstjenesten_rest_api.html), og andre DIFI-løsninger som har behov for tilgangskontroll til REST-api'er.
+
+## Beskrivelse av flyt
 
 ![](/idporten-oidc-dokumentasjon/assets/images/server_to_server_oauth2_flow.png "Sekvensdiagram som viser server-til-server Oauth2-flyten")
+
+TODO: Beskriv stegene i flyten...
 
 ## Krav til JWT for token-forespørsel
  

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="no">
+	<header>
+	<title>{{page.title}}</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="shortcut icon" href="//www.difi.no/profiles/difino/themes/difi3_difino/favicon.ico" type="image/vnd.microsoft.icon" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,6 +18,7 @@
 	<script type="text/javascript" src="//www.difi.no/_style/lib/html5shiv/html5shiv-3.7.2.min.js"></script>
 	<script type="text/javascript" src="//www.difi.no/_style/lib/respond/respond-1.4.2.min.js"></script>
 	<![endif]-->
+	</header>
 	<body class="nodetype-blogg content-article aside-right" >
 		<a id="top"/>
 			<div id="skip-link">
@@ -29,8 +32,8 @@
 						</div>
 						<div class="seperator"></div>
 						<div class="sub-portal">
-							<h1>{{site.name}}</h1>
-							<p>{{site.siteUrlText}}</p>
+							<h1><a href="{{site.baseurl}}/">{{site.name}}</a></h1>
+							<p><a href="{{site.baseurl}}/">{{site.siteUrlText}}</a></p>
 						</div>
 					</div>
 					<!--
@@ -85,7 +88,7 @@
 							</article>
 						</section>
 						<aside>
-							<!--
+							
 							<section class="box">
 								<div class="heading hidden-print hidden-xs hidden-sm">
 									<h2>Innhold</h2>
@@ -94,18 +97,20 @@
 									<nav class="main-nav">
 									  <ul>
 										{% for p in site.pages %}
-											{% if page.url contains p.url %}
-												{% assign active = "active" %}
-											{% else %}
-												{% assign active = "" %}
+											{% if p.hiddenInToc != true %}												
+												{% if page.url contains p.url %}
+													{% assign active = "active" %}
+												{% else %}
+													{% assign active = "" %}
+												{% endif %}
+												<li><a href="{{site.baseurl}}/{{p.url}}" class="{{ active }}"> {{ p.title }}</a></li>
 											{% endif %}
-											<li><a href="{{site.baseurl}}/{{p.url}}" class="{{ active }}"> {{ p.title }}</a></li>
 										{% endfor %}
 									  </ul>
 									</nav>
 								</div>								
 							</section>
-							-->
+							
 						</aside>
 					</div>
 				{% endif %}
