@@ -240,16 +240,21 @@ Følgende header-parametere må brukes på request:
 | Parameter  | Verdi |
 | --- | --- |
 | Http-metode: | GET |
-| Accept | application/jose evt. application/json  |
+| Accept: | application/jose  (evt. application/json ) |
 | Authorization: | Bearer \<utstedt access_token\> |
  
 ## Eksempel på respons:
+
+
+Se https://begrep.difi.no/Oppslagstjenesten/Person for definisjon av kodeverket.
+
 
 ```
       {
          "personidentifikator": "23079421936",
          "reservasjon": "NEI",
          "status": "AKTIV",
+		 "varslingsstatus" : "KAN_VARSLES",
          "kontaktinformasjon":
          {
             "epostadresse": "23079421936-test@minid.norge.no",
