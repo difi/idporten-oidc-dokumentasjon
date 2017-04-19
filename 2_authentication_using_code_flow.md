@@ -220,3 +220,40 @@ Følgende header-parametere må brukes på request:
   "locale" : "nb"
 }
 ```
+
+
+
+## Utlevering av kontaktopplysninger 
+
+Digital kontaktinformasjon knyttet til innlogget bruker er tilgjengelig på et eget Oauth2-beskyttet endepunkt, og ikke som del av userinfo-endepunktet.  
+
+Man må forespørre ett eller flere av følgende scopes: *user/kontaktinformasjon.read*, *user/varslingsstatus.read*, *user/digitalpost.read* og *user/sertifikat.read*
+og vil da motta et access_token som kan benyttes mot Kontakt- og Reservasjonsregisteret sitt endepunkt:
+```
+URL: https://oidc-ver2.difi.no/kontaktinfo-oauth2-server/rest/v1/person
+```
+
+&nbsp;
+
+Følgende header-parametere må brukes på request:
+
+| Parameter  | Verdi |
+| --- | --- |
+| Http-metode: | GET |
+| Accept | application/jose evt. application/json  |
+| Authorization: | Bearer \<utstedt access_token\> |
+ 
+## Eksempel på respons:
+
+```
+      {
+         "personidentifikator": "23079421936",
+         "reservasjon": "NEI",
+         "status": "AKTIV",
+         "kontaktinformasjon":
+         {
+            "epostadresse": "23079421936-test@minid.norge.no",
+            "epostadresse_oppdatert": "2010-12-16T13:32:05.000+01:00"
+         }
+      }
+```
