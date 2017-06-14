@@ -10,26 +10,39 @@ hiddenInToc: false
 
 ## Introduksjon
 
-I forbindelse med en OpenID Connect-innlogging kan ID-portens OpenID Connect provider også autorisere en tjeneste til å opptre på vegne av innbyggeren opp mot en ressurs tilbydt av 3.djepart.
+I forbindelse med en OpenID Connect-autentisering kan ID-portens OpenID Connect provider også autorisere en tjeneste til å opptre på vegne av innbyggeren opp mot et API tilbudt av en 3.dje-part.
 
 ## Overordna beskrivelse av scenariet
 
-Dette er den klassise Oauth2-flyten, der innbyggeren samtykker - enten eksplisitt eller implisitt - til at tjenesten kan bruke et API på vegne av seg selv.  I ID-porten sammenheng vil vanligvis samtykket være implisitt, siden det er autentiseringshandlingen som i seg selv tolkes som det informerte samtykket.
+Dette er den klassise Oauth2-flyten, der innbyggeren samtykker - enten eksplisitt eller implisitt - til at tjenesten kan bruke et API på vegne av seg selv.  I ID-porten-sammenheng vil vanligvis samtykket være implisitt, siden det er autentiseringshandlingen som i seg selv tolkes som det informerte samtykket.  For eksplisitte samtykker som skal vare "lenge" ("jeg samtykker til at Banken min kan hente inntektsopplysninger hos Skatteetaten de neste 3 årene") henviser vi til bruk av Samtykkeløsningen i Altinn.
 
-Samtykket, eller autorisasjonen, blir av ID-porten utlevert som et _access_token_. Tjenesten
 
-For samtykker som skal vare "lenge", type "jeg samtykker til at Banken min kan hente inntektsopplysninger hos Skatteetaten", henviser vi til bruk av Samtykkeløsningen i Altinn.
+Samtykket, eller autorisasjonen, blir av ID-porten utlevert som et _access_token_. Tjenesten bruker så dette access_tokenet når den skal aksessere APIet.
+
+Hvilket API/ressurs som skal aksesserers, er styrt av _scopes_.  Klienten må vite hvilke(t) scope som hører til den aktuelle API-operasjonen, og må forespørre dette scopet i autorisasjonsforespørselen.
+
 
 | --- | --- |
 | Roller | Beskrivelse
 | --- | --- |
 | Klient | Sluttbrukertjenesten, som har behov for API-tilgang |
-| Autorisasjonsserver | ID-portens OpenID Connect proviider. |
-| Ressursservere | 3.part, som tilbyr et API som sluttbrukertjenesten ønsker bruke | 
-
-Se XX for beskrivelse av innlogging.
+| Autorisasjonsserver | ID-portens OpenID Connect provider |
+| Ressursserver | 3.part, som tilbyr et API som sluttbrukertjenesten ønsker å benytte | 
 
 (oppdatere med figurer)
+
+Autentiseringsflyten er dokumentert [her](2_authentication_using_code_flow.html). Forskjellen på OpenIDConnect og "plain" Oauth2 er altså at klienten _må_ forspørre 'openid'-scopet for å trigge oppførsel ihht. OpenID Connect-spesifikasjonen. 
+
+Den eneste forskjellen på autentiserings- og autorisasjons-flyten, er at i autorisasjons-tilfellet må klienten forespørre de _scopes_ som er tilordnet det aktuelle APIet.
+
+Eksempler på scopes:
+
+| --- | --- |
+| scope | --- |
+| --- | --- |
+| user/kontaktinformasjon.read | Lese kontaktinformasjon fra Kontakt- og Reservasjonsregistert for innlogget bruker |
+| 
+
 
 ## Typer access_token og validering av disse
 
