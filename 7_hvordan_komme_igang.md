@@ -13,7 +13,6 @@ Registrerte tjenesteleverandører i ID-porten som har godtatt ID-porten sine bru
 
 Se [https://samarbeid.difi.no/id-porten/hvordan-ta-i-bruk-id-porten](https://samarbeid.difi.no/id-porten/hvordan-ta-i-bruk-id-porten) for mer informasjon om hvordan du kan bli tjenesteleverandør i ID-porten
 
-**Merk:** Dette er en pilottjeneste og vil ikke være omfattet av ID-porten sine normale SLA-krav. Tjenesteleverandører må også påregne at det kommer endringer i tjenesten sine api'er.
 
 ## Klientregistrering
 
@@ -38,7 +37,7 @@ Følgende informasjon må registreres om klienter:
 
 OpenID Connect-provideren er på plass i de fleste av Difi sine miljøer.
 
-### idporten-ver2.difi.no
+### VER2 
 
 OpenID Connect provideren sitt discovery-endepunkt finnes her:
 
@@ -63,15 +62,15 @@ Per 2017-06-14 ser konfigurasjonen slik ut:
 }
 ```
 
-### VER1
+### VER1  
 
 [https://oidc-ver1.difi.no/idporten-oidc-provider/.well-known/openid-configuration](https://oidc-ver1.difi.no/idporten-oidc-provider/.well-known/openid-configuration)
 
-### YT2
+### YT2 
 
 [https://oidc-yt2.difi.eon.no/idporten-oidc-provider/.well-known/openid-configuration](https://oidc-yt2.difi.eon.no/idporten-oidc-provider/.well-known/openid-configuration)
 
-### Produksjonsmiljø idporten.difi.no 
+### Produksjonsmiljø (idporten.difi.no)
 
 
 OpenID Connect provideren sitt discovery-endepunkt finnes her:
@@ -96,7 +95,7 @@ OpenID Connect provideren sitt discovery-endepunkt finnes her:
 ```
 
 
-Tjenesten vil snart være tilgjengelig i prod.
+**Merk:** Dette er en pilottjeneste og vil ikke være omfattet av ID-porten sine normale SLA-krav. Tjenesteleverandører må også påregne at det kommer endringer i tjenesten sine api'er.
 
 ## Testbrukere
 
