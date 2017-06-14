@@ -14,7 +14,7 @@ I forbindelse med en OpenID Connect-autentisering kan ID-portens OpenID Connect 
 
 ## Overordna beskrivelse av scenariet
 
-Dette er den klassise Oauth2-flyten, der innbyggeren samtykker - enten eksplisitt eller implisitt - til at tjenesten kan bruke et API på vegne av seg selv.  I ID-porten-sammenheng vil vanligvis samtykket være implisitt, siden det er autentiseringshandlingen som i seg selv tolkes som det informerte samtykket.  For eksplisitte samtykker som skal vare "lenge" ("jeg samtykker til at Banken min kan hente inntektsopplysninger hos Skatteetaten de neste 3 årene") henviser vi til bruk av Samtykkeløsningen i Altinn.
+Dette er den klassise Oauth2-flyten, der innbyggeren samtykker - enten eksplisitt eller implisitt - til at tjenesten kan bruke et API på vegne av seg selv.  I ID-porten-sammenheng vil vanligvis samtykket være implisitt, siden det er autentiseringshandlingen som i seg selv tolkes som det informerte samtykket ("Ved å logge inn i tjenesten godtar du at vi henter opplysninger om deg fra Vegveseent"). For eksplisitte samtykker som skal vare "lenge" ("jeg samtykker til at Banken min kan hente inntektsopplysninger hos Skatteetaten de neste 3 årene") henviser vi til bruk av Samtykkeløsningen i Altinn.
 
 
 Samtykket, eller autorisasjonen, blir av ID-porten utlevert som et _access_token_. Tjenesten bruker så dette access_tokenet når den skal aksessere APIet.
@@ -31,9 +31,8 @@ Hvilket API/ressurs som skal aksesserers, er styrt av _scopes_.  Klienten må vi
 
 (oppdatere med figurer)
 
-Autentiseringsflyten er dokumentert [her](2_authentication_using_code_flow.html). Forskjellen på OpenIDConnect og "plain" Oauth2 er altså at klienten _må_ forspørre 'openid'-scopet for å trigge oppførsel ihht. OpenID Connect-spesifikasjonen. 
+Autentiseringsflyten ihht. OpenID Connect er dokumentert [her](2_authentication_using_code_flow.html). Forskjellen på OpenIDConnect og "plain" Oauth2 er altså at klienten _må_ forspørre 'openid'-scopet for å trigge oppførsel ihht. OpenID Connect-spesifikasjonen.  I begge flytene kan man forspørre så mange andre scopes man ønsker. 
 
-Den eneste forskjellen på autentiserings- og autorisasjons-flyten, er at i autorisasjons-tilfellet må klienten forespørre de _scopes_ som er tilordnet det aktuelle APIet.
 
 Eksempler på scopes:
 
