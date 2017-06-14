@@ -13,7 +13,6 @@ Registrerte tjenesteleverandører i ID-porten som har godtatt ID-porten sine bru
 
 Se [https://samarbeid.difi.no/id-porten/hvordan-ta-i-bruk-id-porten](https://samarbeid.difi.no/id-porten/hvordan-ta-i-bruk-id-porten) for mer informasjon om hvordan du kan bli tjenesteleverandør i ID-porten
 
-**Merk:** Dette er en pilottjeneste og vil ikke være omfattet av ID-porten sine normale SLA-krav. Tjenesteleverandører må også påregne at det kommer endringer i tjenesten sine api'er.
 
 ## Klientregistrering
 
@@ -36,38 +35,68 @@ Følgende informasjon må registreres om klienter:
 
 ## Informasjon om Difi sine miljøer
 
+OpenID Connect-provideren er på plass i de fleste av Difi sine miljøer.
 
-
-### eid-exttest.difi.no
-
-eid-exttest.difi.no er et internt testmiljø driftet hos Difi. Dette medfører at dette miljøet ikke har de samme stabilitet og oppetidskrav som andre ID-porten-miljøer.
+### VER2 
 
 OpenID Connect provideren sitt discovery-endepunkt finnes her:
-[https://eid-exttest.difi.no/idporten-oidc-provider/.well-known/openid-configuration](https://eid-exttest.difi.no/idporten-oidc-provider/.well-known/openid-configuration)
 
+[https://oidc-ver2.difi.no/idporten-oidc-provider/.well-known/openid-configuration](https://oidc-ver2.difi.no/idporten-oidc-provider/.well-known/openid-configuration)
+
+
+Per 2017-06-14 ser konfigurasjonen slik ut:
 ```
 {
-   "issuer": "https://eid-exttest.difi.no/idporten-oidc-provider/",
-   "authorization_endpoint": "https://eid-exttest.difi.no/idporten-oidc-provider/authorize",
-   "token_endpoint": "https://eid-exttest.difi.no/idporten-oidc-provider/token",
-   "end_session_endpoint": "https://eid-exttest.difi.no/idporten-oidc-provider/endsession",
-   "jwks_uri": "https://eid-exttest.difi.no/idporten-oidc-provider/jwk",
-   "response_types_supported": [ "code" ],
-   "subject_types_supported": [ "pairwise" ],
-   "userinfo_endpoint": "https://eid-exttest.difi.no/idporten-oidc-provider/userinfo",
-   "scopes_supported": [ "openid", "profile" ],
-   "ui_locales_supported": [ "nb", "nn", "en", "se" ]
+	"issuer": "https://oidc-ver2.difi.no/idporten-oidc-provider/",
+	"authorization_endpoint": "https://oidc-ver2.difi.no/idporten-oidc-provider/authorize",
+	"token_endpoint": "https://oidc-ver2.difi.no/idporten-oidc-provider/token",
+	"end_session_endpoint": "https://oidc-ver2.difi.no/idporten-oidc-provider/endsession",
+	"revocation_endpoint": "https://oidc-ver2.difi.no/idporten-oidc-provider/revoke",
+	"jwks_uri": "https://oidc-ver2.difi.no/idporten-oidc-provider/jwk",
+	"response_types_supported": ["code"],
+	"response_modes_supported": ["query","form_post"],
+	"subject_types_supported": ["pairwise"],
+	"userinfo_endpoint": "https://oidc-ver2.difi.no/idporten-oidc-provider/userinfo",
+	"scopes_supported": ["openid",	"profile"],
+	"ui_locales_supported": ["nb",	"nn",	"en",	"se"]
 }
 ```
 
-### idporten-ver2.difi.no
+### VER1  
 
-Tjenesten vil snart være tilgjengelig i ver2.
+[https://oidc-ver1.difi.no/idporten-oidc-provider/.well-known/openid-configuration](https://oidc-ver1.difi.no/idporten-oidc-provider/.well-known/openid-configuration)
 
-### idporten.difi.no (ID-porten sitt produksjonsmiljø)
+### YT2 
 
-Tjenesten vil snart være tilgjengelig i prod.
+[https://oidc-yt2.difi.eon.no/idporten-oidc-provider/.well-known/openid-configuration](https://oidc-yt2.difi.eon.no/idporten-oidc-provider/.well-known/openid-configuration)
+
+### Produksjonsmiljø (idporten.difi.no)
+
+
+OpenID Connect provideren sitt discovery-endepunkt finnes her:
+
+[https://oidc.difi.no/idporten-oidc-provider/.well-known/openid-configuration](https://oidc.difi.no/idporten-oidc-provider/.well-known/openid-configuration)
+
+```
+{
+	"issuer": "https://oidc.difi.no/idporten-oidc-provider/",
+	"authorization_endpoint": "https://oidc.difi.no/idporten-oidc-provider/authorize",
+	"token_endpoint": "https://oidc.difi.no/idporten-oidc-provider/token",
+	"end_session_endpoint": "https://oidc.difi.no/idporten-oidc-provider/endsession",
+	"revocation_endpoint": "https://oidc.difi.no/idporten-oidc-provider/revoke",
+	"jwks_uri": "https://oidc.difi.no/idporten-oidc-provider/jwk",
+	"response_types_supported": ["code"],
+	"response_modes_supported": ["query","form_post"],
+	"subject_types_supported": ["pairwise"],
+	"userinfo_endpoint": "https://oidc.difi.no/idporten-oidc-provider/userinfo",
+	"scopes_supported": ["openid",	"profile"],
+	"ui_locales_supported": ["nb",	"nn",	"en",	"se"]
+}
+```
+
+
+**Merk:** Dette er en pilottjeneste og vil ikke være omfattet av ID-porten sine normale SLA-krav. Tjenesteleverandører må også påregne at det kommer endringer i tjenesten sine api'er.
 
 ## Testbrukere
 
-For ver2 vil allerede tildelte testbrukere kunne gjenbrukes. Ta kontakt med **idporten@difi.no** for tildeling av testdata til eid-extest.difi.no
+For ver2 vil allerede tildelte testbrukere kunne gjenbrukes. Ta kontakt med **idporten@difi.no** dersom du mangler testbukere. 
