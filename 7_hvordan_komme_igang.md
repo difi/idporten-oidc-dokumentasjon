@@ -42,8 +42,7 @@ OpenID Connect-provideren er på plass i de fleste av Difi sine miljøer.
 
 OpenID Connect provideren sitt discovery-endepunkt finnes her:
 
-[https://oidc-ver2.difi.no/idporten-oidc-provider/.well-known/openid-configuration]
-(	https://oidc-ver2.difi.no/idporten-oidc-provider/.well-known/openid-configuration)
+[https://oidc-ver2.difi.no/idporten-oidc-provider/.well-known/openid-configuration](https://oidc-ver2.difi.no/idporten-oidc-provider/.well-known/openid-configuration)
 
 
 Per 2017-06-14 ser konfigurasjonen slik ut:
@@ -66,22 +65,20 @@ Per 2017-06-14 ser konfigurasjonen slik ut:
 
 ### VER1
 
-[https://oidc-ver1.difi.no/idporten-oidc-provider/.well-known/openid-configuration]
-(https://oidc-ver1.difi.no/idporten-oidc-provider/.well-known/openid-configuration)
+[https://oidc-ver1.difi.no/idporten-oidc-provider/.well-known/openid-configuration](https://oidc-ver1.difi.no/idporten-oidc-provider/.well-known/openid-configuration)
 
 ### YT2
 
-[https://oidc-yt2.difi.eon.no/idporten-oidc-provider/.well-known/openid-configuration]
-(https://oidc-yt2.difi.eon.no/idporten-oidc-provider/.well-known/openid-configuration)
+[https://oidc-yt2.difi.eon.no/idporten-oidc-provider/.well-known/openid-configuration](https://oidc-yt2.difi.eon.no/idporten-oidc-provider/.well-known/openid-configuration)
 
 ### Produksjonsmiljø idporten.difi.no 
 
 
 OpenID Connect provideren sitt discovery-endepunkt finnes her:
 
-[https://oidc.difi.no/idporten-oidc-provider/.well-known/openid-configuration]
-(https://oidc.difi.no/idporten-oidc-provider/.well-known/openid-configuration)
+[https://oidc.difi.no/idporten-oidc-provider/.well-known/openid-configuration](https://oidc.difi.no/idporten-oidc-provider/.well-known/openid-configuration)
 
+```
 {
 	"issuer": "https://oidc.difi.no/idporten-oidc-provider/",
 	"authorization_endpoint": "https://oidc.difi.no/idporten-oidc-provider/authorize",
