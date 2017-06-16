@@ -45,13 +45,9 @@ Merk: OpenID Connect bygger på OAuth2, og denne flyten er derfinert i OAuth2-sp
 
 ## Autentiseringsforespørsel til autorisasjons-endepunktet
 
-Klienten redirecter sluttbrukeren til autorisasjonsendepunktet. Etter at brukeren har logget inn vil det sendes en redirect url tilbake til klienten. Denne url'en vil inneholde et autorisasjonskode-parameter som kan brukes til oppslag på tokens.
+Klienten sender en autentiseringsforespørsel ved å redirecter sluttbrukeren til autorisasjonsendepunktet. 
 
-```
-URL: http://eid-exttest.difi.no/idporten-oidc-provider/authorization
-```
 
-&nbsp; 
 
 Følgende header-parametere må brukes på request:
 
@@ -69,20 +65,49 @@ Følgende attributter må settes på request:
 | client\_id | Klientens tildelte id |
 | redirect\_uri | URI som sluttbruker skal redirectes tilbake til etter fullført authentisering. Kun forhåndsregistrerte url'er kan brukes |
 | scope | Scope som forespørres. Kan være en liste separert med whitespace. For autentiseringer må _openid_ brukes |
-| state | Verdi som settes av klient og returneres i callback-responsen etter fullført autentisering. Kan benyttes til å implementere CSRF-beskyttelse |
-| nonce | Verdi som settes av klient og returneres som en del av ID token. Kan brukes til å binde en klient-sesjon til et gitt ID-token, og hindre replay attacks  |
+| state | Verdi som settes av klient og returneres i callback-responsen etter fullført autentisering. Bør benyttes til å implementere CSRF-beskyttelse |
+| nonce | Verdi som settes av klient og returneres som en del av ID token. Bør brukes til å binde en klient-sesjon til et gitt ID-token, og hindre replay attacks  |
 | acr\_values | Ønsket sikkerhetsnivå, kan være *Level3* eller *Level4* |
 | ui\_locales | Ønsket språk brukt i Id-porten. støtter *nb*, *nn*, *en* eller *se* |
 | prompt | Brukes til å styre providerens interaksjon med sluttbrukeren. Foreløpig er dette parameteret lite relevant da piloten ikke ivaretar noen sentral brukersesjon |
 
 
+Etter at brukeren har logget inn vil det sendes en redirect url tilbake til klienten. Denne url'en vil inneholde et autorisasjonskode-parameter som kan brukes til oppslag for å hente tokens.
+
+
+### Eksempel på forespørsel
+
+```
+
+GET /authorize
+
+  scope=openid&
+  acr_values=Level3&
+  client_id=test_rp_yt2&
+  redirect_uri=https://eid-exttest.difi.no/idporten-oidc-client/authorize/response&
+  response_type=code&
+  state=min_fine_state_verdi&
+  nonce=min_fine_nonce_verdi&
+  ui_locales=nb
+
+```
+
+### Eksempel på respons:
+
+```
+{
+  "code" : "1JzjKYcPh4MIPP9YWxRfL-IivWblfKdiRLJkZtJFMT0=",
+  "state" : "min_fine_state_verdi"
+}
+```
+
+
+
+
+
 ## Utstedelse av token fra token-endepunktet
 
 Token-endepunktet brukes for utstedelse av tokens. 
-
-```
-URL: http://eid-exttest.difi.no/idporten-oidc-provider/token
-```
 
 &nbsp; 
 
@@ -115,19 +140,22 @@ I pilotfasen støttes to typer autentisering:
 
 ```
 POST /token
-Content-type: application/x-www-form-urlencoded
-Authorization: basic afjkpafjpfm2rpjnpfwjjfp2mfkwp
- 
-grant_type=authorization_code&code=myrecievedcode&client_id=myclientid
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic dGVzdF9ycF95dDI6cGFzc3dvcmQ=
+
+grant_type=authorization_code&redirect_uri=https%3A%2F%2Feid-exttest.difi.no%2Fidporten-oidc-client%2Fauthorize%2Fresponse&code=1JzjKYcPh4MIPP9YWxRfL-IivWblfKdiRLJkZtJFMT0%3D
 ```
 
 ### Eksempel på respons:
 
 ```
 {
-    "access_token": "fK0dhs5vQsuAUguLL2wxbXEQSE91XbOAL3foY5VR0Uk=",
-    "expires_in": 599,
-    "scope": "global/kontaktinformasjon.read"
+  "access_token" : "IxC0B76vlWl3fiQhAwZUmD0hr_PPwC9hSIXRdoUslPU=",
+  "id_token" : "eyJraWQiOiJtcVQ1QTNMT1NJSGJwS3JzY2IzRUhHcnItV0lGUmZMZGFxWl81SjlHUjlzIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiItdi1sY2FlNXJHRy1qbHZ6dXY5WTlIN1I4Tm1BZU0yLWtoMHFXYi12UElFPSIsImF1ZCI6InRlc3RfcnBfeXQyIiwiYWNyIjoiTGV2ZWw0IiwiYXV0aF90aW1lIjoxNDk3NjA1MjE4LCJhbXIiOiJCYW5rSUQiLCJpc3MiOiJodHRwczpcL1wvb2lkYy15dDIuZGlmaS5lb24ubm9cL2lkcG9ydGVuLW9pZGMtcHJvdmlkZXJcLyIsInBpZCI6IjIzMDc5NDEwOTE4IiwiZXhwIjoxNDk3NjA1MzgyLCJsb2NhbGUiOiJuYiIsImlhdCI6MTQ5NzYwNTI2Miwibm9uY2UiOiJtaW5fZmluZV9ub25jZV92ZXJkaSIsImp0aSI6IkhnYjN6d085ZzBiam1TYkNDdFFDeE1vd3NaRXUwMGxDSjJFeGc0Wmh2M2c9In0.Pl9APC3_GGJBLYR3AqZRC8-fjOWdIW3eQAn2zbqstGEyv8AJ6yPLiH0EA4e1RgHxK-dPwtydJF0fV-1aiPjDGYM8d-saN26WBlRyvBRH1j8A9smQv5XxJoXssfxMr-t1ZB5wDM37MOkwMF4zTNPVmyeQ0qM0PAudG7ZpT0gWPksQIWOoSk4A--MoOHPBy41xXWSpOvUh3jBqrnWEcZpqS785Ufofc6cDfXk_wM_-EMAlS-UExMq-hH60nPwXmR0cBNW3GV2xm_frYyqBYnxXoELmzREijpeSyiELTqn2k4nwCjeiGDXXs_Nw12D2KpWLDctqqsUtTTRUhsnCPSoDng",
+  "token_type" : "Bearer",
+  "expires_in" : 599,
+  "refresh_token" : "yBtapz3ThC3uVWufWhxsLtbEidPnEsL7atvfHSBANDs=",
+  "scope" : "openid"
 }
 ```
 
@@ -138,24 +166,25 @@ Det returnerte ID tokenet er en signert JWT struktur i henhold til OpenID Connec
 
 ```
 {
-  "kid" : "igb5CyFMAmFeei4MnXBo6mc93-7mEp7ogrIqWhMTcKc",
+  "kid" : "mqT5A3LOSIHbpKrscb3EHGrr-WIFRfLdaqZ_5J9GR9s",
   "alg" : "RS256"
 }
 ```
 
 ```
 {
-  "sub" : "9lTykiZN9MzrLvLiAdKgPiiA7Q6OEvW1_Q3801Onv3g=",
-  "aud" : "test_rp_eid_exttest_difi",
-  "acr" : "Level3",
-  "auth_time" : 1478698504,
-  "amr" : "Minid-PIN",
-  "iss" : "https://eid-exttest.difi.no/idporten-oidc-provider/",
-  "pid" : "23079422487",
-  "exp" : 1478698626,
+  "sub" : "-v-lcae5rGG-jlvzuv9Y9H7R8NmAeM2-kh0qWb-vPIE=",
+  "aud" : "test_rp_yt2",
+  "acr" : "Level4",
+  "auth_time" : 1497605218,
+  "amr" : "BankID",
+  "iss" : "https://oidc-yt2.difi.eon.no/idporten-oidc-provider/",
+  "pid" : "23079410918",
+  "exp" : 1497605382,
   "locale" : "nb",
-  "iat" : 1478698506,
-  "jti" : "R1ao4koEKFr7R5d5W-Ys8e13sbxF6ms8o3QhCChI6fk="
+  "iat" : 1497605262,
+  "nonce" : "min_fine_nonce_verdi",
+  "jti" : "Hgb3zwO9g0bjmSbCCtQCxMowsZEu00lCJ2Exg4Zhv3g="
 }
 ```
 
