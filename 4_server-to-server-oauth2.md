@@ -1,5 +1,5 @@
 ---
-title: Server til server autorisasjon med Oauth2
+title: Server-til-server autorisasjon med Oauth2
 pageid: server-to-server-oauth2
 layout: default
 description: Bruk av Idporten sin autorisasjonsserver til autorisasjon for kommunikasjon mellom server til server.

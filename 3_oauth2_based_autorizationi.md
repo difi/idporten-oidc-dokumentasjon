@@ -1,5 +1,5 @@
 ---
-title: OAuth2-basert autorisasjon 
+title: Bruker-basert autorisasjon med OAuth2
 pageid: oauth2-based-authorization
 layout: default
 description: Autorisasjon 
