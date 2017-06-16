@@ -40,6 +40,98 @@ Følgende aktører inngår:
 
 Merk: OpenID Connect bygger på OAuth2, og denne flyten er derfinert i OAuth2-spesifikasjonen. Siden *autentisering* ikke er et bergrep i OAuth2 vil en ofte se at begrepet *autorisasjon* blir brukt selv om man egentlig snakker om *autentisering*
 
+
+
+
+## Autentiseringsforespørsel til autorisasjons-endepunktet
+
+Klienten redirecter sluttbrukeren til autorisasjonsendepunktet. Etter at brukeren har logget inn vil det sendes en redirect url tilbake til klienten. Denne url'en vil inneholde et autorisasjonskode-parameter som kan brukes til oppslag på tokens.
+
+```
+URL: http://eid-exttest.difi.no/idporten-oidc-provider/authorization
+```
+
+&nbsp; 
+
+Følgende header-parametere må brukes på request:
+
+| Parameter  | Verdi |
+| --- | --- |
+|Http-metode|GET|
+
+&nbsp; 
+
+Følgende attributter må settes på request:
+
+| Parameter  | Verdi |
+| --- | --- |
+|grant_type| Her støtter vi kun _authorization\_code_ |
+| client\_id | Klientens tildelte id |
+| redirect\_uri | URI som sluttbruker skal redirectes tilbake til etter fullført authentisering. Kun forhåndsregistrerte url'er kan brukes |
+| scope | Scope som forespørres. Kan være en liste separert med whitespace. For autentiseringer må _openid_ brukes |
+| state | Verdi som settes av klient og returneres i callback-responsen etter fullført autentisering. Kan benyttes til å implementere CSRF-beskyttelse |
+| nonce | Verdi som settes av klient og returneres som en del av ID token. Kan brukes til å binde en klient-sesjon til et gitt ID-token, og hindre replay attacks  |
+| acr\_values | Ønsket sikkerhetsnivå, kan være *Level3* eller *Level4* |
+| ui\_locales | Ønsket språk brukt i Id-porten. støtter *nb*, *nn*, *en* eller *se* |
+| prompt | Brukes til å styre providerens interaksjon med sluttbrukeren. Foreløpig er dette parameteret lite relevant da piloten ikke ivaretar noen sentral brukersesjon |
+
+
+## Utstedelse av token fra token-endepunktet
+
+Token-endepunktet brukes for utstedelse av tokens. 
+
+```
+URL: http://eid-exttest.difi.no/idporten-oidc-provider/token
+```
+
+&nbsp; 
+
+Følgende header-parametere må brukes på request:
+
+| Parameter  | Verdi |
+| --- | --- |
+| Http-metode | POST |
+| Content-type | application/x-www-form-urlencoded |
+
+&nbsp;
+
+Følgende attributter må sendes inn i requesten:
+
+| Attributt  | Verdi |
+| --- | --- |
+| grant_type | authorization\_code \| refresh\_token|
+| code | authorization\_gode dersom dette benyttes som grant |
+| client_id | Klientens ID |
+| client_secret | 
+
+### Klientautentisering mot endepunktet
+
+I pilotfasen støttes to typer autentisering:
+
+* client_secret_basic / client_secret_post - Klientautentisering basert på client_secret
+* private_key_jwt - Klientautentisering basert på JWT'er signert med virksomhetssertifikater
+
+### Eksempel på forespørsel
+
+```
+POST /token
+Content-type: application/x-www-form-urlencoded
+Authorization: basic afjkpafjpfm2rpjnpfwjjfp2mfkwp
+ 
+grant_type=authorization_code&code=myrecievedcode&client_id=myclientid
+```
+
+### Eksempel på respons:
+
+```
+{
+    "access_token": "fK0dhs5vQsuAUguLL2wxbXEQSE91XbOAL3foY5VR0Uk=",
+    "expires_in": 599,
+    "scope": "global/kontaktinformasjon.read"
+}
+```
+
+
 ## Struktur på Id token
 
 Det returnerte ID tokenet er en signert JWT struktur i henhold til OpenID Connect spesifikasjonen:
@@ -102,94 +194,6 @@ OuFJaVWQvLY9... <signaturverdi> ...isvpDMfHM3mkI
 Korrekt validering av Id token på klientsiden er kritisk for sikkerheten i løsningen. Tjenesteleverandører som tar i bruk tjenesten må utføre validering i henhold til kapittel *3.1.3.7 - ID Token Validation* i OpenID Connect Core 1.0 spesifikasjonen.
  
 
-## Autorisasjons-endepunkt
-
-Klienten redirecter sluttbrukeren til autorisasjonsendepunktet. Etter at brukeren har logget inn vil det sendes en redirect url tilbake til klienten. Denne url'en vil inneholde et autorisasjonskode-parameter som kan brukes til oppslag på tokens.
-
-```
-URL: http://eid-exttest.difi.no/idporten-oidc-provider/authorization
-```
-
-&nbsp; 
-
-Følgende header-parametere må brukes på request:
-
-| Parameter  | Verdi |
-| --- | --- |
-|Http-metode|GET|
-
-&nbsp; 
-
-Følgende attributter må settes på request:
-
-| Parameter  | Verdi |
-| --- | --- |
-|grant_type| Her støtter vi kun _authorization\_code_ |
-| client\_id | Klientens tildelte id |
-| redirect\_uri | URI som sluttbruker skal redirectes tilbake til etter fullført authentisering. Kun forhåndsregistrerte url'er kan brukes |
-| scope | Scope som forespørres. Kan være en liste separert med whitespace. For autentiseringer må _openid_ brukes |
-| state | Verdi som settes av klient og returneres i callback-responsen etter fullført autentisering. Kan benyttes til å implementere CSRF-beskyttelse |
-| nonce | Verdi som settes av klient og returneres som en del av ID token. Kan brukes til å binde en klient-sesjon til et gitt ID-token, og hindre replay attacks  |
-| acr\_values | Ønsket sikkerhetsnivå, kan være *Level3* eller *Level4* |
-| ui\_locales | Ønsket språk brukt i Id-porten. støtter *nb*, *nn*, *en* eller *se* |
-| prompt | Brukes til å styre providerens interaksjon med sluttbrukeren. Foreløpig er dette parameteret lite relevant da piloten ikke ivaretar noen sentral brukersesjon |
-
-
-## Token-endepunkt
-
-Token-endepunktet brukes for utstedelse av tokens. 
-
-```
-URL: http://eid-exttest.difi.no/idporten-oidc-provider/token
-```
-
-&nbsp; 
-
-Følgende header-parametere må brukes på request:
-
-| Parameter  | Verdi |
-| --- | --- |
-| Http-metode | POST |
-| Content-type | application/x-www-form-urlencoded |
-
-&nbsp;
-
-Følgende attributter må sendes inn i requesten:
-
-| Attributt  | Verdi |
-| --- | --- |
-| grant_type | authorization\_code \| refresh\_token|
-| code | authorization\_gode dersom dette benyttes som grant |
-| client_id | Klientens ID |
-| client_secret | 
-
-### Klientautentisering mot endepunktet
-
-I pilotfasen støttes to typer autentisering:
-
-* client_secret_basic / client_secret_post - Klientautentisering basert på client_secret
-* private_key_jwt - Klientautentisering basert på JWT'er signert med virksomhetssertifikater
-
-### Eksempel på forespørsel
-
-```
-POST /token
-Content-type: application/x-www-form-urlencoded
-Authorization: basic afjkpafjpfm2rpjnpfwjjfp2mfkwp
- 
-grant_type=authorization_code&code=myrecievedcode&client_id=myclientid
-```
-
-### Eksempel på respons:
-
-```
-{
-    "access_token": "fK0dhs5vQsuAUguLL2wxbXEQSE91XbOAL3foY5VR0Uk=",
-    "expires_in": 599,
-    "scope": "global/kontaktinformasjon.read"
-}
-```
-
 ## Userinfo-endepunkt
 
 Ved å forespørre scopet *profile* vil klienttjenesten sammen med id tokenet også få utstedt et access_token (og evnt. refresh_token) 
@@ -221,44 +225,3 @@ Følgende header-parametere må brukes på request:
 }
 ```
 
-
-
-## Utlevering av kontaktopplysninger 
-
-Digital kontaktinformasjon knyttet til innlogget bruker er tilgjengelig på et eget Oauth2-beskyttet endepunkt, og ikke som del av userinfo-endepunktet.  
-
-Man må forespørre ett eller flere av følgende scopes: *user/kontaktinformasjon.read*, *user/varslingsstatus.read*, *user/digitalpost.read* og *user/sertifikat.read*
-og vil da motta et access_token som kan benyttes mot Kontakt- og Reservasjonsregisteret sitt endepunkt:
-```
-URL: https://oidc-ver2.difi.no/kontaktinfo-oauth2-server/rest/v1/person
-```
-
-&nbsp;
-
-Følgende header-parametere må brukes på request:
-
-| Parameter  | Verdi |
-| --- | --- |
-| Http-metode: | GET |
-| Accept: | application/jose  (evt. application/json ) |
-| Authorization: | Bearer \<utstedt access_token\> |
- 
-## Eksempel på respons:
-
-
-Se https://begrep.difi.no/Oppslagstjenesten/Person for definisjon av kodeverket.
-
-
-```
-      {
-         "personidentifikator": "23079421936",
-         "reservasjon": "NEI",
-         "status": "AKTIV",
-		 "varslingsstatus" : "KAN_VARSLES",
-         "kontaktinformasjon":
-         {
-            "epostadresse": "23079421936-test@minid.norge.no",
-            "epostadresse_oppdatert": "2010-12-16T13:32:05.000+01:00"
-         }
-      }
-```
