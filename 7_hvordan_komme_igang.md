@@ -11,7 +11,9 @@ hiddenInToc: false
 
 Registrerte tjenesteleverandører i ID-porten som har godtatt ID-porten sine bruksvilkår kan ta i bruk denne tjenesten.
 
-Se [https://samarbeid.difi.no/id-porten/hvordan-ta-i-bruk-id-porten](https://samarbeid.difi.no/id-porten/hvordan-ta-i-bruk-id-porten) for mer informasjon om hvordan du kan bli tjenesteleverandør i ID-porten
+Se 
+[https://samarbeid.difi.no/difis-felleslosninger/hvilke-virksomheter-kan-ta-i-bruk-difis-felleslosningene](https://samarbeid.difi.no/difis-felleslosninger/hvilke-virksomheter-kan-ta-i-bruk-difis-felleslosningene)
+ for mer informasjon om hvordan du kan bli tjenesteleverandør i ID-porten
 
 
 ## Klientregistrering
