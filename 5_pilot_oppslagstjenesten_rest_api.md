@@ -10,7 +10,7 @@ isHome: false
 
 Kontaktregisteret sin oppslagstjeneste tilbyr i dag eit SOAP-basert grensesnitt beskytta med WS-Security. Målet med denne piloten er å tilby et REST-basert grensesnitt som gjør det enklere å implementere nye integrasjoner mot tjenesten.
 
-Tilgangskontrollen til api'et benytter seg av flyten som er beskrevet i [Server til server autorisasjon med Oauth2](3_server-to-server-oauth2.html)
+Tilgangskontrollen til api'et benytter seg av flyten som er beskrevet i [Server til server autorisasjon med Oauth2](4_server-to-server-oauth2.html)
 
 ## Krav til JWT for token-forespørsel
  
