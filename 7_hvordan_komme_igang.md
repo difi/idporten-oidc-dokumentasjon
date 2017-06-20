@@ -11,7 +11,9 @@ hiddenInToc: false
 
 Registrerte tjenesteleverandører i ID-porten som har godtatt ID-porten sine bruksvilkår kan ta i bruk denne tjenesten.
 
-Se [https://samarbeid.difi.no/id-porten/hvordan-ta-i-bruk-id-porten](https://samarbeid.difi.no/id-porten/hvordan-ta-i-bruk-id-porten) for mer informasjon om hvordan du kan bli tjenesteleverandør i ID-porten
+Se 
+[https://samarbeid.difi.no/difis-felleslosninger/hvilke-virksomheter-kan-ta-i-bruk-difis-felleslosningene](https://samarbeid.difi.no/difis-felleslosninger/hvilke-virksomheter-kan-ta-i-bruk-difis-felleslosningene)
+ for mer informasjon om hvordan du kan bli tjenesteleverandør i ID-porten
 
 
 ## Klientregistrering
@@ -62,6 +64,8 @@ Per 2017-06-14 ser konfigurasjonen slik ut:
 }
 ```
 
+
+
 ### VER1  
 
 [https://oidc-ver1.difi.no/idporten-oidc-provider/.well-known/openid-configuration](https://oidc-ver1.difi.no/idporten-oidc-provider/.well-known/openid-configuration)
@@ -100,3 +104,15 @@ OpenID Connect provideren sitt discovery-endepunkt finnes her:
 ## Testbrukere
 
 For ver2 vil allerede tildelte testbrukere kunne gjenbrukes. Ta kontakt med **idporten@difi.no** dersom du mangler testbukere. 
+
+
+
+## Oauth2-beskyttet endepunkt for kontaktregisteret
+
+Følgende URLer gjelder for KRR:
+
+|---|---|---|
+|Miljø|URL|beskrivelse|
+|---|---|---|
+|VER1|https://oidc-ver1.difi.no/kontaktinfo-oauth2-server/rest/v1/person|Utlevering av enkelt-bruker ifbm. innlogging|
+|    |https://oidc-ver1.difi.no/kontaktinfo-oauth2-server/rest/v1/personer|Server-to-server beskyttet endepunkt|
