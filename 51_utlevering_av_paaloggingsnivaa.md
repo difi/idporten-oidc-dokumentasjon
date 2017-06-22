@@ -31,6 +31,10 @@ For test-miljøer brukes virksomshetssertifiakter fra Buypass / Commfides sine T
 REST-grensesnittet er basert på oppslag på enkelt-personer, og er dokumentert vha. Swagger på følgende URL:
 [https://kontaktinfo-ws-ver2.difi.no/authlevel/swagger-ui.html#/](https://kontaktinfo-ws-ver2.difi.no/authlevel/swagger-ui.html#/)
 
+Dersom ikke _fraDato_ er angitt i førespørselen, skjer søket innenfor siste 18 måneder ihht. eForvaltningsforskriftens §32.  
+
+Personer som eventuelt er sperret i ID-porten vil uteleveres som harbruktnivaa4 = false.
+
 Mulige feilkoder er: 
 
 | --- | --- |
