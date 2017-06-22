@@ -29,14 +29,15 @@ For test-miljøer brukes virksomshetssertifiakter fra Buypass / Commfides sine T
 ## REST-grensesnittet
 
 REST-grensesnittet er basert på oppslag på enkelt-personer, og er dokumentert vha. Swagger på følgende URL:
-[https://kontaktinfo-ws-ver2.difi.no/authlevel/swagger-ui.html#/]
-(https://kontaktinfo-ws-ver2.difi.no/authlevel/swagger-ui.html#/)
+[https://kontaktinfo-ws-ver2.difi.no/authlevel/swagger-ui.html#/](https://kontaktinfo-ws-ver2.difi.no/authlevel/swagger-ui.html#/)
 
 Mulige feilkoder er: 
-400 – Bad request – syntaktisk ugyldig request body.
-401 – Ugyldig access token, f.eks. utløpt
-403 –  Gyldig access token men bundet til feil scope ( sær feilsituasjon ) 
-404 – Forespurt bruker er ikkje registrert som id-porten bruker
+
+| --- | --- |
+|400 | Bad request – syntaktisk ugyldig request body.|
+|401 | Ugyldig access token, f.eks. utløpt|
+|403 |  Gyldig access token men bundet til feil scope ( sær feilsituasjon ) |
+|404 | Forespurt bruker er ikkje registrert som id-porten bruker|
 
 
 ## Eksempel-kode
