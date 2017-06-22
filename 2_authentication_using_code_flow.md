@@ -61,7 +61,7 @@ Følgende attributter må settes på request:
 
 | Parameter  | Verdi |
 | --- | --- |
-|grant_type| Her støtter vi kun _authorization\_code_ |
+| response_type | Her støtter vi kun 'code'|
 | client\_id | Klientens tildelte id |
 | redirect\_uri | URI som sluttbruker skal redirectes tilbake til etter fullført authentisering. Kun forhåndsregistrerte url'er kan brukes |
 | scope | Scope som forespørres. Kan være en liste separert med whitespace. For autentiseringer må _openid_ brukes |
