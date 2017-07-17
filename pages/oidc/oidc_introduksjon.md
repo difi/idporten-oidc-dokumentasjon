@@ -1,10 +1,11 @@
 ---
-title: Pilot av Id-porten OpenID Connect provider
-pageid: pilot-introduction
-layout: default
+title: OpenID Connect i ID-porten
 description: Pilot av OpenID Connect funksjonalitet i Id-porten
+summary: "ID-porten lanserer i 2017 en ny protokoll for integrasjon: OpenID Connect"
+
+layout: page
+sidebar: oidc
 isHome: true
-hiddenInToc: true
 ---
 
 ## Introduksjon og bakgrunn for pilot

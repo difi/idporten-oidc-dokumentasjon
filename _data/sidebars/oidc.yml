@@ -1,12 +1,12 @@
 # This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
 
 entries:
-- title: Oauth2-veileder
-  product: Oauth2
+- title: OIDC i ID-porten
+  product: OIDC
   version: 
   folders:
 
-  - title: oauth2(pdf)
+  - title: oidc(pdf)
     output: pdf
     type: frontmatter
     folderitems:
@@ -28,40 +28,37 @@ entries:
 #      output: web, pdf
 #      type: homepage
 
-  - title: Oversikt over Oauth2
+  - title: Bakgrunn
     output: web, pdf
     folderitems:
 
-    - title: Systemlandskap
-      url: /systemlandskap.html
-      output: web, pdf
-
-    - title: Klienter
-      url: /klienter.html
-      output: web, pdf
       
-  - title: Sikkerhetsmekanismer
+  - title: Bruksområder
     output: web, pdf
     folderitems:
     
-      - title: Protokoll-anbefalinger
-        url: /sec_protocol_recomendations.html
+      - title: Autentisering
+        url: /oidc_autentisering.html
         output: web, pdf
         
-      - title: Transportsikkerhet
-        url: /sec_transport_security.html
+      - title: Autentiserinær autorisasjon
+        url: /oidc_bruker_auth.html
         output: web, pdf
         
-      - title: Håndtering av hemmeligheter
-        url: /sec_key_management.html
+      - title: API-sikring uten brukerkontekst
+        url: /oidc_server_auth.html
         output: web, pdf
         
-      - title: Kryptografiske anbefalinger
-        url: /sec_crypto_recomendations.html
-        output: web, pdf
+  - title: Oauth2-beskytta API'er fra Difi
+    url: /oidc_api.html
+    output: web, pdf
       
-      - title: Klient-anbefalinger
-        url: /sec_client_recomendations.html
+      - title: Kontakt- og Reservasjonsregisteret
+        url: /oidc_api_krr_bruker.html
         output: web, pdf
-    
+
+      - title: Innbyggers påloggingsnivå
+        url: /oidc_api_authlevel.html
+        output: web, pdf
+        
     
