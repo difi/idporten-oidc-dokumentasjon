@@ -19,19 +19,10 @@ entries:
       output: pdf
       type: frontmatter
 
-  - title: Bakgrunn
-    output: web, pdf
-    folderitems:
-
-#    - title: Get started
-#      url: /index.html
-#      output: web, pdf
-#      type: homepage
 
   - title: Bakgrunn
+    url: /oidc_introduksjon.html
     output: web, pdf
-    folderitems:
-
       
   - title: Bruksområder
     output: web, pdf
@@ -52,6 +43,7 @@ entries:
   - title: Oauth2-beskytta API'er fra Difi
     url: /oidc_api.html
     output: web, pdf
+    folderitems:
       
       - title: Kontakt- og Reservasjonsregisteret
         url: /oidc_api_krr_bruker.html
@@ -60,5 +52,3 @@ entries:
       - title: Innbyggers påloggingsnivå
         url: /oidc_api_authlevel.html
         output: web, pdf
-        
-    
