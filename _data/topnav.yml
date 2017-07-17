@@ -4,7 +4,7 @@ topnav:
 - title: Topnav
   items:
     - title: GitHub
-      external_url: https://github.com/difi/idporten-oidc-veileder
+      external_url: https://github.com/difi/idporten-oidc-dokumentasjon
     
 #Topnav dropdowns
 topnav_dropdowns:
@@ -12,8 +12,8 @@ topnav_dropdowns:
   folders:
     - title: Products
       folderitems:
-        - title: Oauth2
-          url: /o2_intro.html
+        - title: OpenID Connect
+          url: /oidc_introduksjon.html
 #        - title: Jekyll Documentation Theme
 #          url: /mydoc_introduction.html
 #        - title: Product 1
