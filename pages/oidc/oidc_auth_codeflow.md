@@ -10,8 +10,6 @@ isHome: true
 ---
 ---
 
-## Introduksjon
-
 ID-porten sin OpenID Connect provider tilbyr funksjonalitet for autentisering av sluttbrukere basert på autorisasjonskode-flyten, slik den er spesifisert i OpenID Connect Core 1.0 spesifikasjonen
 
 ## Overordna beskrivelse av scenariet
@@ -28,7 +26,7 @@ Følgende aktører inngår:
 
 <div class="mermaid">
 graph LR
-  end_user(End user)
+  end_user(Sluttbruker)
   OP(OpenID Connect provider)
   RP(Relying party)
 
@@ -40,7 +38,34 @@ graph LR
 
 ## Beskrivelse av autorisasjonskode-flyten
 
-![](/idporten-oidc-dokumentasjon/assets/images/openid_auth_code_flow.png "Sekvensdiagram som viser server-til-server Oauth2-flyten")
+sequenceDiagram
+
+<div class="mermaid">
+
+Sluttbruker ->> Relying_Party: Klikker login-knapp
+Relying_Party ->> Sluttbruker: Redirect med authorizationsforespørsel
+Sluttbruker ->> OpenID Provider: følg redirect...
+note over Sluttbruker,OpenID Provider: Sluttbruker autentiserer seg (og evt. samtykker til førespurte scopes)
+OpenID Provider ->> Sluttbruker: Redirect med autorisasjonscode
+Sluttbruker ->> Relying_Party: følg redirect...
+Relying_Party ->> OpenID Provider: forespørre token (/token)
+OpenID Provider ->> Relying_Party: id_token (evt. flere tokens)
+note over Sluttbruker,Relying_Party: Innlogget i tjenesten
+</div>
+
+
+
+<div class="mermaid">
+
+Sluttbruker ->> Relying_Party: Klikker login-knapp
+Relying_Party ->> OpenID Provider: Autentiseringsforespørsel /authorize(scope=openid)
+note over Sluttbruker,OpenID Provider: Sluttbruker autentiserer seg (og evt. samtykker til førespurte scopes)
+OpenID Provider ->>  Relying_Party: redirect med autorisasjonskode (code)
+Relying_Party ->> OpenID Provider: forespørre token /token(code)
+OpenID Provider ->> Relying_Party: id_token (evt. flere tokens)
+note over Sluttbruker,Relying_Party: Innlogget i tjenesten
+</div>
+
 
 * Flyten starter med at en sluttbruker prøver å aksessere en gitt tjeneste (klient)
 * Tjenesten krever innlogging og en redirect url til OpenID Connect provideren blir generert og returnert til sluttbrukeren. Denne redirecten representerer en **autentiseringsforespørsel**, og har parametere som identifiserer den aktuelle klienten for provideren.
