@@ -38,9 +38,9 @@ graph LR
 
 ## Beskrivelse av autorisasjonskode-flyten
 
-sequenceDiagram
 
 <div class="mermaid">
+sequenceDiagram
 
 Sluttbruker ->> Relying_Party: Klikker login-knapp
 Relying_Party ->> Sluttbruker: Redirect med authorizationsforespørsel
@@ -54,8 +54,11 @@ note over Sluttbruker,Relying_Party: Innlogget i tjenesten
 </div>
 
 
+fdas
+
 
 <div class="mermaid">
+sequenceDiagram
 
 Sluttbruker ->> Relying_Party: Klikker login-knapp
 Relying_Party ->> OpenID Provider: Autentiseringsforespørsel /authorize(scope=openid)
