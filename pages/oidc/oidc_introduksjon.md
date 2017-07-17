@@ -2,6 +2,7 @@
 title: OpenID Connect i ID-porten
 description: Pilot av OpenID Connect funksjonalitet i Id-porten
 summary: "ID-porten lanserer i 2017 en ny protokoll for integrasjon: OpenID Connect"
+permalink: oidc_introduksjon.html
 
 layout: page
 sidebar: oidc
