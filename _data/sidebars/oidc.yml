@@ -29,7 +29,11 @@ entries:
     folderitems:
     
       - title: Autentisering
-        url: /oidc_autentisering.html
+        url: /oidc_auth_codeflow.html
+        output: web, pdf
+
+      - title: Autentisering over implicit flyt
+        url: /oidc_auth_implicit.html
         output: web, pdf
         
       - title: Autentiserinær autorisasjon
