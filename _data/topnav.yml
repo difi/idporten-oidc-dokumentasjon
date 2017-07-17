@@ -13,7 +13,7 @@ topnav_dropdowns:
     - title: Products
       folderitems:
         - title: OpenID Connect
-          url: /oidc_introduksjon.html
+          url: /index.html
 #        - title: Jekyll Documentation Theme
 #          url: /mydoc_introduction.html
 #        - title: Product 1

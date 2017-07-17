@@ -21,7 +21,7 @@ entries:
 
 
   - title: Bakgrunn
-    url: /oidc_introduksjon.html
+    url: /index.html
     output: web, pdf
       
   - title: Bruksområder
