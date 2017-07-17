@@ -42,32 +42,20 @@ graph LR
 <div class="mermaid">
 sequenceDiagram
 
-Sluttbruker ->> Relying_Party: Klikker login-knapp
-Relying_Party ->> Sluttbruker: Redirect med authorizationsforespørsel
-Sluttbruker ->> OpenID Provider: følg redirect...
-note over Sluttbruker,OpenID Provider: Sluttbruker autentiserer seg (og evt. samtykker til førespurte scopes)
-OpenID Provider ->> Sluttbruker: Redirect med autorisasjonscode
-Sluttbruker ->> Relying_Party: følg redirect...
-Relying_Party ->> OpenID Provider: forespørre token (/token)
-OpenID Provider ->> Relying_Party: id_token (evt. flere tokens)
-note over Sluttbruker,Relying_Party: Innlogget i tjenesten
+  Sluttbruker ->> Relying_Party: Klikker login-knapp
+  Relying_Party ->> Sluttbruker: Redirect med authorizationsforespørsel
+  Sluttbruker ->> OpenID Provider: følg redirect...
+  note over Sluttbruker,OpenID Provider: Sluttbruker autentiserer seg (og evt. samtykker til førespurte scopes)
+  OpenID Provider ->> Sluttbruker: Redirect med autorisasjonscode
+  Sluttbruker ->> Relying_Party: følg redirect...
+  Relying_Party ->> OpenID Provider: forespørre token (/token)
+  OpenID Provider ->> Relying_Party: id_token (evt. flere tokens)
+  note over Sluttbruker,Relying_Party: Innlogget i tjenesten
+  
 </div>
 
 
-fdas
-
-
-<div class="mermaid">
-sequenceDiagram
-
-Sluttbruker ->> Relying_Party: Klikker login-knapp
-Relying_Party ->> OpenID Provider: Autentiseringsforespørsel /authorize(scope=openid)
-note over Sluttbruker,OpenID Provider: Sluttbruker autentiserer seg (og evt. samtykker til førespurte scopes)
-OpenID Provider ->>  Relying_Party: redirect med autorisasjonskode (code)
-Relying_Party ->> OpenID Provider: forespørre token /token(code)
-OpenID Provider ->> Relying_Party: id_token (evt. flere tokens)
-note over Sluttbruker,Relying_Party: Innlogget i tjenesten
-</div>
+asdf asdf asdf sadf sadf saN26WBlRyvBRH1j8A9smQv5XxJoXssfxMr-t1ZB5wDM37MOkwMF4zTNPVmyeQ0qM0PAudG7ZpT0gWPksQIWOoSk4A--MoOHPBy41xXWSpOvUh3jBqrnWEcZpqS785Ufofc6cDfXk_wM_-EMAlS-UExMq-hH60nPwXmR0cBNW3GV2xm_frYyqBYnxXoELmzREijpeSyiELTqn2k4nwCjeiGDXXs_Nw12D2KpWLDctqqsUtTTRUhsnCPSoDng
 
 
 * Flyten starter med at en sluttbruker prøver å aksessere en gitt tjeneste (klient)
