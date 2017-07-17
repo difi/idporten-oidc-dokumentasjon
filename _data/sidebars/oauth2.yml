@@ -1,0 +1,67 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Oauth2-veileder
+  product: Oauth2
+  version: 
+  folders:
+
+  - title: oauth2(pdf)
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage
+      output: pdf
+      type: frontmatter
+
+  - title: Bakgrunn
+    output: web, pdf
+    folderitems:
+
+#    - title: Get started
+#      url: /index.html
+#      output: web, pdf
+#      type: homepage
+
+  - title: Oversikt over Oauth2
+    output: web, pdf
+    folderitems:
+
+    - title: Systemlandskap
+      url: /systemlandskap.html
+      output: web, pdf
+
+    - title: Klienter
+      url: /klienter.html
+      output: web, pdf
+      
+  - title: Sikkerhetsmekanismer
+    output: web, pdf
+    folderitems:
+    
+      - title: Protokoll-anbefalinger
+        url: /sec_protocol_recomendations.html
+        output: web, pdf
+        
+      - title: Transportsikkerhet
+        url: /sec_transport_security.html
+        output: web, pdf
+        
+      - title: Håndtering av hemmeligheter
+        url: /sec_key_management.html
+        output: web, pdf
+        
+      - title: Kryptografiske anbefalinger
+        url: /sec_crypto_recomendations.html
+        output: web, pdf
+      
+      - title: Klient-anbefalinger
+        url: /sec_client_recomendations.html
+        output: web, pdf
+    
+    
