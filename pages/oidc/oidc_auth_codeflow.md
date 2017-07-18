@@ -15,16 +15,15 @@ ID-porten sin OpenID Connect provider tilbyr funksjonalitet for autentisering av
 
 OpenID Connect tilbyr autentisering av brukere til sluttbrukertjenester. Autentiseringen blir utført av en OpenID Connect provider som utsteder ID Token til den aktuelle tjenesten.
 
-```mermaid
+<div class="mermaid">
 graph LR
   end_user(Sluttbruker)
   OP(OpenID Connect provider)
   RP(Nett-tjeneste)
-
   end_user -. autentiserer seg hos .-> OP
   OP -. utsteder id_token .-> RP
   end_user -. logger inn i  .-> RP
-```
+</div>
 
 Følgende aktører inngår:
 
@@ -36,7 +35,7 @@ Følgende aktører inngår:
 
 ## Beskrivelse av autorisasjonskode-flyten
 
-<p class="mermaid">
+<div class="mermaid">
 sequenceDiagram
   Sluttbruker ->> Relying Party: Klikker login-knapp
   Relying Party ->> Sluttbruker: Redirect med autentiseringsforespørsel
@@ -47,7 +46,7 @@ sequenceDiagram
   Relying Party ->> OpenID Provider: forespørre token (/token)
   OpenID Provider ->> Relying Party: id_token (evt. flere tokens)
   note over Sluttbruker,Relying Party: Innlogget i tjenesten
-</p>
+</div>
 
 * Flyten starter med at en sluttbruker prøver å aksessere en gitt tjeneste (klient)
 * Tjenesten krever innlogging og en redirect url til OpenID Connect provideren blir generert og returnert til sluttbrukeren. Denne redirecten representerer en **autentiseringsforespørsel**, og har parametere som identifiserer den aktuelle tjenesten for provideren.
