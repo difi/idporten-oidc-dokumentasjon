@@ -17,17 +17,13 @@ OpenID Connect tilbyr autentisering av brukere til sluttbrukertjenester. Autenti
 
 Følgende aktører inngår:
 
-| --- | --- | --- | --- |
-| Aktør |
+ Aktør | Beskrivelse | Begrep OIDC | Begrep Oauth2 | Begrep SAML2
+ -|-|-|-|-|
+ Innbygger | Ønsker å logge inn til en offentlig tjeneste | End User | User | End User
+ Nett-tjeneste | Sluttbruker-tjeneste tilbudt av en offentlig etat | Relying Party (RP) | Client | Service Provider (SP) |
+ ID-porten | ID-porten sin autentiseringstjeneste som usteder *ID Token* til aktuelle tjenesten| OpenID Provider (OP) | Authorization server (AS) | Identity Provider (IDP)
 
-
-* *Sluttbrukeren* \- Ønsker å logge inn til en gitt tjeneste (relying_party)
-* *Relying party* (også kjent som klienten) - Tjenesten som brukeren skal logge inn til
-* *OpenID Connect provider* \- Autentiseringstjeneste der autentiseringen blir utført og som usteder *ID Token* til aktuelle tjenesten
-
-
-
-```mermaid {class:"mermaid"}
+``` mermaid
 graph LR
   end_user(Sluttbruker)
   OP(OpenID Connect provider)
@@ -35,12 +31,10 @@ graph LR
 
   end_user -. autentiserer seg hos .-> OP
   OP -. utsteder id_token .-> RP
-  end_user -. logger inni  .-> RP
+  end_user -. logger inn i  .-> RP
 ```
 
-
 ## Beskrivelse av autorisasjonskode-flyten
-
 
 <div class="mermaid">
 sequenceDiagram
