@@ -17,21 +17,25 @@ OpenID Connect tilbyr autentisering av brukere til sluttbrukertjenester. Autenti
 
 Følgende aktører inngår:
 
+| --- | --- | --- | --- |
+| Aktør |
+
+
 * *Sluttbrukeren* \- Ønsker å logge inn til en gitt tjeneste (relying_party)
 * *Relying party* (også kjent som klienten) - Tjenesten som brukeren skal logge inn til
 * *OpenID Connect provider* \- Autentiseringstjeneste der autentiseringen blir utført og som usteder *ID Token* til aktuelle tjenesten
 
 
 
-```mermaid
+```mermaid {class:"mermaid"}
 graph LR
   end_user(Sluttbruker)
   OP(OpenID Connect provider)
-  RP(Relying party)
+  RP(Nett-tjeneste)
 
-  end_user -. authenticates .-> OP
-  OP -. issues id_token .-> RP
-  end_user -. logs into .-> RP
+  end_user -. autentiserer seg hos .-> OP
+  OP -. utsteder id_token .-> RP
+  end_user -. logger inni  .-> RP
 ```
 
 
