@@ -23,7 +23,7 @@ Følgende aktører inngår:
  Nett-tjeneste | Sluttbruker-tjeneste tilbudt av en offentlig etat | Relying Party (RP) | Client | Service Provider (SP) |
  ID-porten | ID-porten sin autentiseringstjeneste som usteder *ID Token* til aktuelle tjenesten| OpenID Provider (OP) | Authorization server (AS) | Identity Provider (IDP)
 
-```
+```mermaid {class:"mermaid"}
 graph LR
   end_user(Sluttbruker)
   OP(OpenID Connect provider)
