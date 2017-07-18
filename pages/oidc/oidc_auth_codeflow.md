@@ -8,13 +8,12 @@ layout: page
 sidebar: oidc
 isHome: true
 ---
----
 
 ID-porten sin OpenID Connect provider tilbyr funksjonalitet for autentisering av sluttbrukere basert på autorisasjonskode-flyten, slik den er spesifisert i OpenID Connect Core 1.0 spesifikasjonen
 
 ## Overordna beskrivelse av scenariet
 
-OpenID Connect tilbyr autentisering av brukere til sluttbrukertjenester. Autentiseringen blir utført av ein OpenID Connect provider som utseder ID Token til den aktuelle tjenesten.
+OpenID Connect tilbyr autentisering av brukere til sluttbrukertjenester. Autentiseringen blir utført av en OpenID Connect provider som utsteder ID Token til den aktuelle tjenesten.
 
 Følgende aktører inngår:
 
@@ -24,7 +23,7 @@ Følgende aktører inngår:
 
 
 
-<div class="mermaid">
+```mermaid
 graph LR
   end_user(Sluttbruker)
   OP(OpenID Connect provider)
@@ -33,7 +32,7 @@ graph LR
   end_user -. authenticates .-> OP
   OP -. issues id_token .-> RP
   end_user -. logs into .-> RP
-</div>
+```
 
 
 ## Beskrivelse av autorisasjonskode-flyten
@@ -51,7 +50,7 @@ sequenceDiagram
   Relying_Party ->> OpenID Provider: forespørre token (/token)
   OpenID Provider ->> Relying_Party: id_token (evt. flere tokens)
   note over Sluttbruker,Relying_Party: Innlogget i tjenesten
-  
+
 </div>
 
 
@@ -74,7 +73,7 @@ Merk: OpenID Connect bygger på OAuth2, og denne flyten er derfinert i OAuth2-sp
 
 ## Autentiseringsforespørsel til autorisasjons-endepunktet
 
-Klienten sender en autentiseringsforespørsel ved å redirecter sluttbrukeren til autorisasjonsendepunktet. 
+Klienten sender en autentiseringsforespørsel ved å redirecter sluttbrukeren til autorisasjonsendepunktet.
 
 
 
@@ -84,7 +83,7 @@ Følgende header-parametere må brukes på request:
 | --- | --- |
 |Http-metode|GET|
 
-&nbsp; 
+&nbsp;
 
 Følgende attributter må settes på request:
 
@@ -136,9 +135,9 @@ GET /authorize
 
 ## Utstedelse av token fra token-endepunktet
 
-Token-endepunktet brukes for utstedelse av tokens. 
+Token-endepunktet brukes for utstedelse av tokens.
 
-&nbsp; 
+&nbsp;
 
 Følgende header-parametere må brukes på request:
 
@@ -156,7 +155,7 @@ Følgende attributter må sendes inn i requesten:
 | grant_type | authorization\_code \| refresh\_token|
 | code | authorization\_gode dersom dette benyttes som grant |
 | client_id | Klientens ID |
-| client_secret | 
+| client_secret |
 
 ### Klientautentisering mot endepunktet
 
@@ -220,7 +219,7 @@ Det returnerte ID tokenet er en signert JWT struktur i henhold til OpenID Connec
 ```
 OuFJaVWQvLY9... <signaturverdi> ...isvpDMfHM3mkI
 ```
- 
+
 
 ### ID tokenets header:
 
@@ -250,13 +249,13 @@ OuFJaVWQvLY9... <signaturverdi> ...isvpDMfHM3mkI
 ## Validering av Id token
 
 Korrekt validering av Id token på klientsiden er kritisk for sikkerheten i løsningen. Tjenesteleverandører som tar i bruk tjenesten må utføre validering i henhold til kapittel *3.1.3.7 - ID Token Validation* i OpenID Connect Core 1.0 spesifikasjonen.
- 
+
 
 ## Userinfo-endepunkt
 
-Ved å forespørre scopet *profile* vil klienttjenesten sammen med id tokenet også få utstedt et access_token (og evnt. refresh_token) 
+Ved å forespørre scopet *profile* vil klienttjenesten sammen med id tokenet også få utstedt et access_token (og evnt. refresh_token)
 som kan benyttes mot providerens userinfo-endepunkt. Dette endepunktet kan benyttes for å hente ytterligere data om brukeren enn det som blir eksponert via ID tokenet.
-Da ID-porten generelt har lite data om sluttbrukeren har dette endepunktet begrenset verdi for denne tjenesten. Personnummer og valgt språk under innlogging er de 
+Da ID-porten generelt har lite data om sluttbrukeren har dette endepunktet begrenset verdi for denne tjenesten. Personnummer og valgt språk under innlogging er de
 dataene som vil bli eksponert her.
 
 
@@ -272,7 +271,7 @@ Følgende header-parametere må brukes på request:
 | --- | --- |
 | Http-metode: | GET |
 | Authorization: | Bearer \<utstedt access_token\> |
- 
+
 ## Eksempel på respons:
 
 ```
@@ -282,4 +281,3 @@ Følgende header-parametere må brukes på request:
   "locale" : "nb"
 }
 ```
-
