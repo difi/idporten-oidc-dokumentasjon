@@ -23,7 +23,8 @@ Følgende aktører inngår:
  Nett-tjeneste | Sluttbruker-tjeneste tilbudt av en offentlig etat | Relying Party (RP) | Client | Service Provider (SP) |
  ID-porten | ID-porten sin autentiseringstjeneste som usteder *ID Token* til aktuelle tjenesten| OpenID Provider (OP) | Authorization server (AS) | Identity Provider (IDP)
 
-```mermaid {class:"mermaid"}
+```mermaid
+<div class="mermaid">
 graph LR
   end_user(Sluttbruker)
   OP(OpenID Connect provider)
@@ -32,10 +33,11 @@ graph LR
   end_user -. autentiserer seg hos .-> OP
   OP -. utsteder id_token .-> RP
   end_user -. logger inn i  .-> RP
+</div>
 ```
 
 ## Beskrivelse av autorisasjonskode-flyten
-
+```mermaid
 <div class="mermaid">
 sequenceDiagram
 
@@ -50,7 +52,7 @@ sequenceDiagram
   note over Sluttbruker,Relying_Party: Innlogget i tjenesten
 
 </div>
-
+```
 
 asdf asdf asdf sadf sadf saN26WBlRyvBRH1j8A9smQv5XxJoXssfxMr-t1ZB5wDM37MOkwMF4zTNPVmyeQ0qM0PAudG7ZpT0gWPksQIWOoSk4A--MoOHPBy41xXWSpOvUh3jBqrnWEcZpqS785Ufofc6cDfXk_wM_-EMAlS-UExMq-hH60nPwXmR0cBNW3GV2xm_frYyqBYnxXoELmzREijpeSyiELTqn2k4nwCjeiGDXXs_Nw12D2KpWLDctqqsUtTTRUhsnCPSoDng
 
