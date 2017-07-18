@@ -15,16 +15,7 @@ ID-porten sin OpenID Connect provider tilbyr funksjonalitet for autentisering av
 
 OpenID Connect tilbyr autentisering av brukere til sluttbrukertjenester. Autentiseringen blir utført av en OpenID Connect provider som utsteder ID Token til den aktuelle tjenesten.
 
-Følgende aktører inngår:
-
- Aktør | Beskrivelse | Begrep OIDC | Begrep Oauth2 | Begrep SAML2
- -|-|-|-|-|
- Innbygger | Ønsker å logge inn til en offentlig tjeneste | End User | User | End User
- Nett-tjeneste | Sluttbruker-tjeneste tilbudt av en offentlig etat | Relying Party (RP) | Client | Service Provider (SP) |
- ID-porten | ID-porten sin autentiseringstjeneste som usteder *ID Token* til aktuelle tjenesten| OpenID Provider (OP) | Authorization server (AS) | Identity Provider (IDP)
-
 ```mermaid
-<div class="mermaid">
 graph LR
   end_user(Sluttbruker)
   OP(OpenID Connect provider)
@@ -33,38 +24,39 @@ graph LR
   end_user -. autentiserer seg hos .-> OP
   OP -. utsteder id_token .-> RP
   end_user -. logger inn i  .-> RP
-</div>
 ```
 
-## Beskrivelse av autorisasjonskode-flyten
-```mermaid
-<div class="mermaid">
-sequenceDiagram
+Følgende aktører inngår:
 
-  Sluttbruker ->> Relying_Party: Klikker login-knapp
-  Relying_Party ->> Sluttbruker: Redirect med authorizationsforespørsel
+ Aktør | Beskrivelse | Begrep OIDC | Begrep Oauth2 | Begrep SAML2
+ -|-|-|-|-|
+ Innbygger | Ønsker å logge inn til en offentlig tjeneste | End User | User | End User
+ Nett-tjeneste | Sluttbruker-tjeneste tilbudt av en offentlig etat | Relying Party (RP) | Client | Service Provider (SP) |
+ ID-porten | ID-porten sin autentiseringstjeneste som usteder *ID Token* til aktuelle tjenesten| OpenID Provider (OP) | Authorization server (AS) | Identity Provider (IDP)
+
+## Beskrivelse av autorisasjonskode-flyten
+
+<p class="mermaid">
+sequenceDiagram
+  Sluttbruker ->> Relying Party: Klikker login-knapp
+  Relying Party ->> Sluttbruker: Redirect med autentiseringsforespørsel
   Sluttbruker ->> OpenID Provider: følg redirect...
   note over Sluttbruker,OpenID Provider: Sluttbruker autentiserer seg (og evt. samtykker til førespurte scopes)
   OpenID Provider ->> Sluttbruker: Redirect med autorisasjonscode
-  Sluttbruker ->> Relying_Party: følg redirect...
-  Relying_Party ->> OpenID Provider: forespørre token (/token)
-  OpenID Provider ->> Relying_Party: id_token (evt. flere tokens)
-  note over Sluttbruker,Relying_Party: Innlogget i tjenesten
-
-</div>
-```
-
-asdf asdf asdf sadf sadf saN26WBlRyvBRH1j8A9smQv5XxJoXssfxMr-t1ZB5wDM37MOkwMF4zTNPVmyeQ0qM0PAudG7ZpT0gWPksQIWOoSk4A--MoOHPBy41xXWSpOvUh3jBqrnWEcZpqS785Ufofc6cDfXk_wM_-EMAlS-UExMq-hH60nPwXmR0cBNW3GV2xm_frYyqBYnxXoELmzREijpeSyiELTqn2k4nwCjeiGDXXs_Nw12D2KpWLDctqqsUtTTRUhsnCPSoDng
-
+  Sluttbruker ->> Relying Party: følg redirect...
+  Relying Party ->> OpenID Provider: forespørre token (/token)
+  OpenID Provider ->> Relying Party: id_token (evt. flere tokens)
+  note over Sluttbruker,Relying Party: Innlogget i tjenesten
+</p>
 
 * Flyten starter med at en sluttbruker prøver å aksessere en gitt tjeneste (klient)
-* Tjenesten krever innlogging og en redirect url til OpenID Connect provideren blir generert og returnert til sluttbrukeren. Denne redirecten representerer en **autentiseringsforespørsel**, og har parametere som identifiserer den aktuelle klienten for provideren.
-* Sluttbrukeren kommer til **autorisasjonsendepunktet** hos provideren hvor forespørselen blir validert (f.eks. gyldig klient og gyldig redirect_uri tilbake til klienten).
+* Tjenesten krever innlogging og en redirect url til OpenID Connect provideren blir generert og returnert til sluttbrukeren. Denne redirecten representerer en **autentiseringsforespørsel**, og har parametere som identifiserer den aktuelle tjenesten for provideren.
+* Sluttbrukeren kommer til **autorisasjonsendepunktet** hos provideren hvor forespørselen blir validert (f.eks. gyldig tjeneste og gyldig redirect_uri tilbake til tjenesten).
 * Brukeren gjennomfører **innlogging i provideren**
-* Provideren redirect'er brukeren tilbake til klienten. redirect url'en har satt en **autorisasjonskode**.
-* Klienten bruker den mottatte autorisasjonskoden til å gjøre et direkteoppslag mot providerens **token-endepunkt**. Klienten må autentisere seg mot token-endepunktet (enten med client_secret eller en signert forespørsel)
-* Dersom klienten er autentisert valideres den mottatte autorisasjonskoden og et **ID token** blir returnert til klienttjenesten.
-* Brukeren er nå autentisert for klienttjenesten og ønsket handling kan utføres
+* Provideren redirect'er brukeren tilbake til tjenesten. redirect url'en har satt en **autorisasjonskode**.
+* Tjenesten bruker den mottatte autorisasjonskoden til å gjøre et direkteoppslag mot providerens **token-endepunkt**. Tjenesten må autentisere seg mot token-endepunktet (enten med client_secret eller en signert forespørsel)
+* Dersom tjenesten kan autentiseres, valideres den mottatte autorisasjonskoden og et **ID token** blir returnert til tjenesten.
+* Brukeren er nå autentisert for tjenesten og ønsket handling kan utføres
 
 Merk: OpenID Connect bygger på OAuth2, og denne flyten er derfinert i OAuth2-spesifikasjonen. Siden *autentisering* ikke er et bergrep i OAuth2 vil en ofte se at begrepet *autorisasjon* blir brukt selv om man egentlig snakker om *autentisering*
 
