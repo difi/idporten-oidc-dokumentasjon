@@ -9,46 +9,74 @@ sidebar: oidc
 isHome: true
 ---
 
+## Autentiseringstjenester i ID-porten
+
+Arkitekturen for den nye løsningen ser slik ut:
+
+<div class="mermaid">
+graph LR
+  subgraph Difi
+    subgraph Eksisterende funksjonalitet
+      idp[ID-porten]
+      end
+    OIDC[OIDC Provider]
+  end
+  subgraph Kunde
+     ny[Nye tjenester]
+     gammel[Eksiterende tjenester]
+  end
+  ny --  OpenID Connect  --- OIDC
+  gammel --  SAML2 ---idp
+  OIDC -- SAML2 ---idp
+</div>
+
+ID-portens OIDC provider tilbyr **autentisering** av sluttbrukere opp mot netttjenester.  Funksjonaliteten er grunnleggende den samme som dagens SAML2-basert løsning.
+
+ID-portens OIDC Provider er en frittstående applikasjon som står foran den eksisterende ID-porten og snakker SAML2 med denne, tilsvarende eksisterende tjenester hos kundene.
+
+Det er ID-porten som håndterer SSO-sesjoner både for SAML2 og OIDC.  Dette medfører at kunder får single-signon (SSO) både mellom OIDC-baserte tjenester, og mellom SAML2- og OIDC-baserte tjenester.
+
+## Autorisasjonstjenester
+
+OpenID Connect-provideren kan også utstede **autorisasjoner** for API-tilgang hos 3dje.part.    
+
+<div class="mermaid">
+graph LR
+  subgraph 3djepart
+    API
+  end
+  subgraph Difi
+    OIDC[OIDC Provider]
+  end
+  subgraph Kunde
+     ny[Tjeneste]
+  end
+  OIDC -->|3.utsteder token|ny
+  Innbygger ---|2.autentiserer og autoriserer|OIDC
+  ny -->|1. forspør tilgang|OIDC
+  ny -->|4.bruker token mot|API
+</div>
+
+API-tilgangen kan være brukerstyrt, implisitt, eller maskin-til-maskin-basert. I de to første tilfellene gjelder tilgang kun en enkelt innbygger, mens det siste tilfellet er tiltenkt hjemmelsbasert tilgang for hele befolkningen.
 
 
+## Oauth2-beskytta APIer fra Difi
 
+<div class="mermaid">
+graph LR
+  subgraph Eksisterende funksjonalitet
+    idp[ID-porten]
+    Oppslagstjenesten
+  end
+  subgraph Oauth2-beskytta APIer
+    KRR[KRR-Oauth2]
+    authlevel
+  end
+  authlevel --- idp
+  KRR -- SOAP --- Oppslagstjenesten
+</div>
 
-## Overordna beskrivelse av bruksområdet
+Difi tilbyr to Oauth2-beskytta APIer:
 
-Tilsvarende [Single-page applikasjoner](oidc_auth_spa.html), så kan ikke en mobil-app beskytte hemlighetene sine på en tilfredstillende måte. Den er altså en Oauth2 public klient, og kalles ofte **native app** i oauth2-dokumentasjonen.
-
-I [OAuth 2.0 for Native Apps](https://tools.ietf.org/html/draft-ietf-oauth-native-apps-12) er det gitt anbefalinger for hvordan bruke Oauth2/OpenID Connect på mobil-app'er. Vi anbefaler tjenesteeiere å studere dette dokumentet nøye. Vi vil trekke frem følgende:
-* Autentisering må skje i ekstern browser (ikke embedded web-view).
-* PKCE må brukes for å beskytte seg mot app'er som kan sniffe trafikken og stjele dialogen.
-* Implisittflyt er _ikke_ anbefalt for mobil-app'er.
-* Mobil-app'er _kan_ behandles som Oauth2 confidential klienter, dersom man bruker instans-spesifikke klient-hemmeligheter provisjonert ved bruk av Dynamic Client Registration.
-
-
-
-## Beskrivelse av flyten for mobil-app'er
-
-Flyten er identisk som for [autorisasjonskode-flyten](oidc_auth_codeflow.html), men med bruk av [PKCE](oidc_func_pkce.html).
-
-
-### Autentiseringsforespørsel til autorisasjons-endepunktet
-
-Følgende ekstra attributter må settes på request:
-
-| Parameter  | Verdi |
-| --- | --- |
-| t(code_verifier) | hash'et verdi |
-| code_challenge_method | Kun `S256` er støttet i ID-porten.  |
-
-
-### Utstedelse av token fra token-endepunktet
-
-Følgende ekstra attributter må sendes inn i requesten:
-
-| Attributt  | Verdi |
-| --- | --- |
-| code_verifier | Påkrevd dersom t(code_verifier) ble sendt i autentiseringsforspørsel. |
-
-
-## Struktur på Id token
-
-ID-tokenet er identisk som ved bruk av [autorisasjonskode-flyten]([oidc_auth_codeflow#idtoken).
+* KRR-Oauth2 replikerer funksjonaliteten og begrepene i Oppslagstjenesten
+* authlevel er et nytt API for utlevering av innbyggers høyeste brukte sikkertsnivå i ID-porten.  
