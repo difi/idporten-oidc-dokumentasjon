@@ -11,7 +11,7 @@ isHome: true
 
 ID-porten sin OpenID Connect provider tilbyr funksjonalitet for autentisering av sluttbrukere basert på autorisasjonskode-flyten, slik den er spesifisert i OpenID Connect Core 1.0 spesifikasjonen
 
-## Overordna beskrivelse av scenariet
+## Overordna beskrivelse av bruksområdet
 
 OpenID Connect tilbyr autentisering av brukere til sluttbrukertjenester. Autentiseringen blir utført av en OpenID Connect provider som utsteder ID Token til den aktuelle tjenesten.
 
@@ -57,7 +57,8 @@ sequenceDiagram
 * Dersom tjenesten kan autentiseres, valideres den mottatte autorisasjonskoden og et **ID token** blir returnert til tjenesten.
 * Brukeren er nå autentisert for tjenesten og ønsket handling kan utføres
 
-Merk: OpenID Connect bygger på OAuth2, og denne flyten er derfinert i OAuth2-spesifikasjonen. Siden *autentisering* ikke er et bergrep i OAuth2 vil en ofte se at begrepet *autorisasjon* blir brukt selv om man egentlig snakker om *autentisering*
+Merk: OpenID Connect bygger på OAuth2, og denne flyten er derfinert i OAuth2-spesifikasjonen. Siden *autentisering* ikke er et begrep i OAuth2 vil en ofte se at begrepet *autorisasjon* blir brukt selv om man egentlig snakker om *autentisering*
+Merk: OpenID Connect bygger på OAuth2, og denne flyten er derfinert i OAuth2-spesifikasjonen. Siden *autentisering* ikke er et begrep i OAuth2 vil en ofte se at begrepet *autorisasjon* blir brukt selv om man egentlig snakker om *autentisering*
 
 
 
@@ -179,7 +180,7 @@ grant_type=authorization_code&redirect_uri=https%3A%2F%2Feid-exttest.difi.no%2Fi
 ```
 
 
-## Struktur på Id token
+## Struktur på Id token {#idtoken}
 
 Det returnerte ID tokenet er en signert JWT struktur i henhold til OpenID Connect spesifikasjonen:
 

@@ -3,7 +3,7 @@
 entries:
 - title: OIDC i ID-porten
   product: OIDC
-  version: 
+  version:
   folders:
 
   - title: oidc(pdf)
@@ -21,38 +21,62 @@ entries:
 
 
   - title: Bakgrunn
-    url: /index.html
     output: web, pdf
-      
+    folderitems:
+
+      - title: Introduksjon
+        url: /index.html
+        output: web,pdf
+
+      - title: Arkitektur
+        url: /oidc_arch.html
+        output: web,pdf
+
   - title: Bruksområder
     output: web, pdf
     folderitems:
-    
+
       - title: Autentisering
         url: /oidc_auth_codeflow.html
         output: web, pdf
 
-      - title: Autentisering over implicit flyt
-        url: /oidc_auth_implicit.html
+      - title: Autentisering til SPAer
+        url: /oidc_auth_spa.html
         output: web, pdf
-        
+
       - title: Autentiserinær autorisasjon
         url: /oidc_bruker_auth.html
         output: web, pdf
-        
+
       - title: API-sikring uten brukerkontekst
         url: /oidc_server_auth.html
         output: web, pdf
-        
+
   - title: Oauth2-beskytta API'er fra Difi
     url: /oidc_api.html
     output: web, pdf
     folderitems:
-      
+
       - title: Kontakt- og Reservasjonsregisteret
         url: /oidc_api_krr_bruker.html
         output: web, pdf
 
       - title: Innbyggers påloggingsnivå
         url: /oidc_api_authlevel.html
+        output: web, pdf
+
+  - title: Funksjonalitet
+    output: web, pdf
+    folderitems:
+
+      - title: Single sign-on og -logout
+        url: oidc_func_sso.html
+        output: web, pdf
+
+      - title: Klientautentisering
+        url: oidc_func_clientauth.html
+        output: web, pdf
+
+      - title: PKCE
+        url: oidc_func_pkce.html
         output: web, pdf

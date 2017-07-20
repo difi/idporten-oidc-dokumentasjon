@@ -21,7 +21,7 @@ Difi introduserser derfor OpenID Connect (OIDC) som ny føderasjonsprotokoll i I
 
 ## Om OpenID Connect
 
-![](/idporten-oidc-dokumentasjon/assets/images/oidc.png "OpenID Connect logo")
+![](/idporten-oidc-dokumentasjon/images/oidc.png "OpenID Connect logo")
 
 OpenID Connect er en protokoll for autentisering basert på OAuth2. Se [http://openid.net/connect/faq/](http://openid.net/connect/faq/) for mer informasjon.
 
@@ -32,5 +32,3 @@ De implementerte tjenestene bygger på (deler av) følgende standarder og spesif
 * OpenID Connect Core 1.0 - [http://openid.net/specs/openid-connect-core-1_0.html](http://openid.net/specs/openid-connect-core-1_0.html)
 * IETF RFC6749 The OAuth 2.0 Authorization Framework - [https://tools.ietf.org/html/rfc6749](https://tools.ietf.org/html/rfc6749)
 * IETF RFC7523 JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants - [https://tools.ietf.org/html/rfc7523](https://tools.ietf.org/html/rfc7523)
-
-
