@@ -232,7 +232,7 @@ Nimbus JOSE + JWT er et hendig bibliotekt for å håndtere jwt'er i JAVA , se [h
 
 Her er ein enkel eksempelkode for å generere en JWT for å forespørre tokens:
 
-```
+```java
 PrivateKey myKey = ``` // Read from KeyStore
 X509Certificate certificate = ``` // Read from KeyStore
 

@@ -32,7 +32,7 @@ Følgende ekstra attributter må settes på request:
 
 | Parameter  | Verdi |
 | --- | --- |
-| t(code_verifier) | hash'et verdi |
+| t(code_verifier) | hash'et hemmelighet |
 | code_challenge_method | Kun `S256` er støttet i ID-porten.  |
 
 
@@ -42,7 +42,7 @@ Følgende ekstra attributter må sendes inn i requesten:
 
 | Attributt  | Verdi |
 | --- | --- |
-| code_verifier | Påkrevd dersom t(code_verifier) ble sendt i autentiseringsforspørsel. |
+| code_verifier | hemmelighet i klartekst. Påkrevd dersom t(code_verifier) ble sendt i autentiseringsforspørsel. |
 
 
 ## Struktur på Id token
