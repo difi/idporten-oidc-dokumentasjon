@@ -273,3 +273,7 @@ Følgende header-parametere må brukes på request:
   "locale" : "nb"
 }
 ```
+
+## Kontaktopplysninger fra Kontakt- og Reservasjonsregisteret
+
+Kontakt-opplysninger knyttet til innlogget bruker, er [tilgjengelig på et eget endepunkt](oidc_api_krr_user.html)
