@@ -49,25 +49,13 @@ entries:
         output: web, pdf
 
       - title: Autentiserinær autorisasjon
-        url: /oidc_bruker_auth.html
+        url: /oidc_auth_oauth2.html
         output: web, pdf
 
-      - title: API-sikring uten brukerkontekst
-        url: /oidc_server_auth.html
+      - title: Server-to-server autorisasjon
+        url: /oidc_auth_server-to-server-oauth2.html
         output: web, pdf
 
-  - title: Oauth2-beskytta API'er fra Difi
-    url: /oidc_api.html
-    output: web, pdf
-    folderitems:
-
-      - title: Kontakt- og Reservasjonsregisteret
-        url: /oidc_api_krr_bruker.html
-        output: web, pdf
-
-      - title: Innbyggers påloggingsnivå
-        url: /oidc_api_authlevel.html
-        output: web, pdf
 
   - title: Funksjonalitet
     output: web, pdf
@@ -83,4 +71,18 @@ entries:
 
       - title: PKCE
         url: oidc_func_pkce.html
+        output: web, pdf
+
+
+  - title: Oauth2-beskytta API'er fra Difi
+    url: /oidc_api.html
+    output: web, pdf
+    folderitems:
+
+      - title: Kontakt- og Reservasjonsregisteret
+        url: /oidc_api_krr_bruker.html
+        output: web, pdf
+
+      - title: Innbyggers påloggingsnivå
+        url: /oidc_api_authlevel.html
         output: web, pdf

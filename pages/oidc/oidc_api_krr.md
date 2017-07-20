@@ -1,19 +1,23 @@
 ---
-title: OAuth2 beskytta REST-api for oppslagstjenesten
-pageid: pilot-oppslagstjensten-rest-api
-layout: default
-description: Pilot av REST-api for Oppslagstjensten.
-isHome: false
+title: OAuth2 beskytta REST-API for Kontakt- og Reservasjonsregisteret
+description: OAuth2 beskytta REST-API for Kontakt- og Reservasjonsregisteret
+summary: "Funksjonaliteten i Kontakt- og Reservasjonsregisteret sin Oppslagstjeneste er nå også tilgjengelig over et Oauth2-beskyttet REST-API."
+permalink: oidc_api_krr.html
+
+layout: page
+sidebar: oidc
 ---
 
 ## Introduksjon
 
-Kontaktregisteret sin oppslagstjeneste tilbyr i dag eit SOAP-basert grensesnitt beskytta med WS-Security. Målet med denne piloten er å tilby et REST-basert grensesnitt som gjør det enklere å implementere nye integrasjoner mot tjenesten.
+Kontaktregisteret sin oppslagstjeneste tilbyr i dag eit SOAP-basert grensesnitt beskytta med WS-Security. Som del av lanseringen av OpenID Connect i ID-porten  tilbyr Difi nå også et alternativt REST-basert grensesnitt som gjør det enklere å implementere nye integrasjoner mot registeret.
 
-Tilgangskontrollen til api'et benytter seg av flyten som er beskrevet i [Server til server autorisasjon med Oauth2](4_server-to-server-oauth2.html)
+Tilgangskontrollen til api'et benytter seg av flyten som er beskrevet i [Server til server autorisasjon med Oauth2](oidc_auth_server-to-server-oauth2.html)
+
+Merk at funksjoanlitet for lokal kopi (endringsmeldinger) ikke er støttet over Oauth2-grensenittet.
 
 ## Krav til JWT for token-forespørsel
- 
+
 Klienten må generere og signere ein jwt med følgende elementer for å forespørre tokens fra autorisasjonsserveren:
 
 
@@ -40,19 +44,23 @@ Klienten må generere og signere ein jwt med følgende elementer for å forespø
 
 ## Tilgjenglige scopes
 
-Det er 1-1 mapping mellom OAuth2 scopes og informasjonsbehov-elementet brukt i SOAP-API’et. Det vil alltid returneres reservasjonsstatus for brukeren
+Det er 1-1 mapping mellom OAuth2 scopes og informasjonsbehov-elementet brukt i SOAP-API’et. Se [begrepskatalogen for Kontaktregisteret](https://begrep.difi.no/Oppslagstjenesten/).
 
+| scope | beskrivelse |
+|-|-|
 | global/kontaktinformasjon.read | Returnerer epostadresse og mobilnummer + tidspunkt for sist oppdatering |
 | global/varslingsstatus.read | Returnerer status for om kontaktinfomasjonen kan brukast for varsling iht. eForvaltningsforskrifta sin §32 |
 | global/sikkerdigitalpost.read | Returnerer adresse for digital post til innbygger |
 | global/sertifikat.read | Returnerer brukerens krypteringssertifikat ved sending av digital post |
 
-## Endepunkter
+Det vil alltid returneres reservasjonsstatus for brukeren.
+
+## Endepunkt
 
 Oppslagstjenesten sin REST-tjeneste tilbyr følgende endepunkt for søk på 1...1000 personer:
 
 ```
-URL: http://eid-exttest.difi.no/kontaktinfo-oauth2-server/rest/v1/personer
+URL: https://<miljø>/kontaktinfo-oauth2-server/rest/v1/personer
 ```
 
 &nbsp;
@@ -61,22 +69,24 @@ Følgende header-parametere må brukes på request:
 
 | Parameter  | Verdi |
 | --- | --- |
-| Http-metode | GET |
+| Http-metode | POST |
 | Authorization | Generert JWT-Bearer grant |
 
-## Eksempel på forespørsel
+Body i requesten er en JSON-struktur med et element `personidentifikatorer` som skal inneholde en liste med inntil 1000 personidentifikatorer.
+
+### Eksempel på forespørsel
 
 ```
 POST /rest/v1/personer
 Content-type: application/json
 Authorization: Bearer SWDQ_pVct3HIzsIaC3zHDuMmIqffr4ORr508N3p0Mtg=
- 
+
 {
  "personidentifikatorer" : [ "23079422568" ]
 }
 ```
 
-## Eksempel på respons
+### Eksempel på respons
 
 ```
 {
@@ -95,4 +105,3 @@ Authorization: Bearer SWDQ_pVct3HIzsIaC3zHDuMmIqffr4ORr508N3p0Mtg=
    ]
 }
 ```
-
