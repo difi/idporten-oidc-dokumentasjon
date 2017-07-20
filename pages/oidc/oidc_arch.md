@@ -1,13 +1,17 @@
 ---
-title: Autentisering til mobil-app'er
-description: Bruk av Idporten sin OpenID Connect provider til autentisering til mobil-app'er
-summary: "Ved innlogging til en mobil-app, er det anbefalt å bruke PKCE sammen med autorisasjonskode-flyten"
-permalink: oidc_auth_app.html
+title: OIDC arkitektur
+description: Arkitekturen til ID-portens OIDC Provider
+summary: "OIDC Provideren til ID-porten er realisert som en frittstående applikasjon 'foran' ID-porten"
+permalink: oidc_arch.html
 
 layout: page
 sidebar: oidc
 isHome: true
 ---
+
+
+
+
 
 ## Overordna beskrivelse av bruksområdet
 
@@ -47,4 +51,4 @@ Følgende ekstra attributter må sendes inn i requesten:
 
 ## Struktur på Id token
 
-ID-tokenet er identisk som ved bruk av [autorisasjonskode-flyten](oidc_auth_codeflow#idtoken).
+ID-tokenet er identisk som ved bruk av [autorisasjonskode-flyten]([oidc_auth_codeflow#idtoken).

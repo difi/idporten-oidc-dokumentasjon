@@ -40,8 +40,12 @@ entries:
         url: /oidc_auth_codeflow.html
         output: web, pdf
 
-      - title: Autentisering til SPAer
+      - title: Autentisering til SPA'er
         url: /oidc_auth_spa.html
+        output: web, pdf
+
+      - title: Autentisering til mobil-app'er
+        url: /oidc_auth_app.html
         output: web, pdf
 
       - title: Autentiserinær autorisasjon

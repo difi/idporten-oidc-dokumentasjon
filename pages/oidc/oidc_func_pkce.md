@@ -11,7 +11,7 @@ isHome: true
 
 ## Om funksjonaliteten
 
-PKCE (ut. "pixy") er en metode som beskytter public klienter som benytter autorisasjonskodeflyten (typisk mobil-app'er) mot stjeling av autorisasjonskoden.
+PKCE - Proof Key  for Code Exchange - (utt. "pixy") er en metode som beskytter public klienter som benytter autorisasjonskodeflyten (typisk mobil-app'er) mot stjeling av autorisasjonskoden.
 
 Metoden er basert på at klienten genererer en hemmelighet `code_verifier` ved hver autentiseringsforespørsel og sender en hash'et versjon `t(code_verifier)` av denne som en del av forespørselen. Når autorisasjonskoden etterpå skal utveksles i tokens, må code_verifier sendes med. En eventuell angriper som har snappet opp autorisasjonskoden, kjenner ikke hemmeligheten, og vil derfor ikke får utlevert tokens.
 

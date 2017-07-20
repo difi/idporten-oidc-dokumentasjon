@@ -96,7 +96,7 @@ GET /authorize
 
 ## Struktur på Id token
 
-ID-tokenet er identisk som ved bruk av [autorisasjonskode-flyten]([oidc_auth_codeflow#idtoken).
+ID-tokenet er identisk som ved bruk av [autorisasjonskode-flyten](oidc_auth_codeflow#idtoken).
 
 
 ## Validering av Id token
