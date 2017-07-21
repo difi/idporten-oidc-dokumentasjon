@@ -23,7 +23,7 @@ Denne tjenesten er en tilleggstjeneste i ID-porten. Se [https://samarbeid.difi.n
 
 Tjenesten baserer seg på [autentiseringsnær autorisasjon](oidc_auth_oauth2.html).
 
-## Endepunkt
+
 Man må forespørre ett eller flere av følgende scopes:
 
 
@@ -34,8 +34,9 @@ Man må forespørre ett eller flere av følgende scopes:
 | user/sikkerdigitalpost.read | Returnerer adresse for digital post til innbygger |
 | user/sertifikat.read | Returnerer brukerens krypteringssertifikat ved sending av digital post |
 
-og vil da motta et access_token som kan benyttes mot Kontakt- og Reservasjonsregisteret sitt endepunkt:
+og vil da motta et access_token som kan benyttes mot Kontakt- og Reservasjonsregisteret sitt endepunkt.
 
+## API-endepunkt
 
 |miljø|url|
 |-|-|

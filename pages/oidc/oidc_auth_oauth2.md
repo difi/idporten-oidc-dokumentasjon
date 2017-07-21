@@ -67,11 +67,14 @@ sequenceDiagram
 </div>
 
 
-Starten av flyten er identisk med [autorisasjonskode-flyten for autentisering](oidc_auth_codeflow.html)
+Starten av flyten er identisk med [autorisasjonskode-flyten for autentisering](oidc_auth_codeflow.html).
+* I **autentiseringsresponsen** fra OpenID Provider får klient også utlevert et *access_token* (og eventuelt et *refresh_token*) som gir tilgang til forespurte scopes.  
+* Etter innlogging kan da klienten bruke access_tokenet opp mot det relevante APIet.  
+  * Access_token har vanligvis kort levetid (30 sekunder). Dersom tokenet er utløpt, kan klienten forespørre nytt acess_token ved å bruke *refresh_tokenet* mot token-endepunktet til OpenID Provideren.  Det gjennomføres da en klient-autentisering, for å sikre at tokens ikke blir utlevert til feil part.
 
 Forskjellen på *autentisering* (OpenIDConnect) og *autorisasjon* med "plain" Oauth2 er altså minimal:
 1. For å sikre at autentisering-oppførselen blir ihht. OpenID Connect-spesifikasjonen **må** man benytte 'openid'-scopet
-2. OpenID Connect forholder seg ikke til ressurs-servere /API-er, men man kan fint forespørre ekstra scopes i ein OIDC autentiseringsforespørsel, og således oppnå kombinert autorisasjon og autentisering.
+2. OpenID Connect forholder seg ikke til ressurs-servere /API-er, men man kan fint forespørre ekstra scopes i en OIDC autentiseringsforespørsel, og således oppnå kombinert autorisasjon og autentisering.
 
 
 
