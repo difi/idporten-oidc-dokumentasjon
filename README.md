@@ -1,3 +1,3 @@
 ## Dokumentasjon av ID-portens OpenID Connect Provider
 
-Formatert dokumentasjon er [her](https://difi.github.io/idporten-oidc-dokumentasjon/).
+Formatert dokumentasjon finner du  [her](https://difi.github.io/idporten-oidc-dokumentasjon/).
