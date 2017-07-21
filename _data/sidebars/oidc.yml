@@ -1,0 +1,98 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: OIDC i ID-porten
+  product: OIDC i ID-porten
+  version:
+  folders:
+
+  - title: oidc(pdf)
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage
+      output: pdf
+      type: frontmatter
+
+
+  - title: Bakgrunn
+    output: web, pdf
+    folderitems:
+
+      - title: Introduksjon
+        url: /index.html
+        output: web,pdf
+
+      - title: Hvordan komme igang?
+        url: /oidc_hvordan_komme_igang.html
+        output: web,pdf
+
+      - title: Arkitektur
+        url: /oidc_arch.html
+        output: web,pdf
+
+  - title: Bruksområder
+    output: web, pdf
+    folderitems:
+
+      - title: Autentisering
+        url: /oidc_auth_codeflow.html
+        output: web, pdf
+
+      - title: Autentisering til SPA'er
+        url: /oidc_auth_spa.html
+        output: web, pdf
+
+      - title: Autentisering til mobil-app'er
+        url: /oidc_auth_app.html
+        output: web, pdf
+
+      - title: Autentiserinær autorisasjon
+        url: /oidc_auth_oauth2.html
+        output: web, pdf
+
+      - title: Server-to-server autorisasjon
+        url: /oidc_auth_server-to-server-oauth2.html
+        output: web, pdf
+
+  - title: Funksjonalitet
+    output: web, pdf
+    folderitems:
+
+      - title: Single sign-on og -logout
+        url: /oidc_func_sso.html
+        output: web, pdf
+
+      - title: Klientautentisering
+        url: /oidc_func_clientauth.html
+        output: web, pdf
+
+      - title: Klientregistrering
+        url: /oidc_func_clientreg.html
+        output: web, pdf
+
+      - title: PKCE
+        url: /oidc_func_pkce.html
+        output: web, pdf
+
+  - title: Oauth2-beskytta API'er fra Difi
+    url: /oidc_api.html
+    output: web, pdf
+    folderitems:
+
+      - title: Kontakt- og Reservasjonsregisteret
+        url: /oidc_api_krr.html
+        output: web, pdf
+
+      - title: Kontakt- og Reservasjonsregisteret (innlogget bruker)
+        url: /oidc_api_krr_user.html
+        output: web, pdf
+
+      - title: Innbyggers påloggingsnivå
+        url: /oidc_api_authlevel.html
+        output: web, pdf
