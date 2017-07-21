@@ -25,8 +25,6 @@ Difi introduserser derfor OpenID Connect (OIDC) som ny føderasjonsprotokoll i I
 
 OpenID Connect er en protokoll for autentisering basert på OAuth2. Se [http://openid.net/connect/faq/](http://openid.net/connect/faq/) for mer informasjon.
 
-## Relevante spesifikasjoner
-
 De implementerte tjenestene bygger på (deler av) følgende standarder og spesifikasjoner:
 
 * OpenID Connect Core 1.0 - [http://openid.net/specs/openid-connect-core-1_0.html](http://openid.net/specs/openid-connect-core-1_0.html)
