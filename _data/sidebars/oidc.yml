@@ -96,3 +96,12 @@ entries:
       - title: Innbyggers påloggingsnivå
         url: /oidc_api_authlevel.html
         output: web, pdf
+
+
+  - title: Vedlegg
+    output: web, pdf
+    folderitems:
+
+      - title: Om disse sidene
+        url: /oidc_about.html
+        output: web, pdf
