@@ -35,9 +35,14 @@ Man må forespørre ett eller flere av følgende scopes:
 | user/sertifikat.read | Returnerer brukerens krypteringssertifikat ved sending av digital post |
 
 og vil da motta et access_token som kan benyttes mot Kontakt- og Reservasjonsregisteret sitt endepunkt:
-```
-URL: https://<miljø>/kontaktinfo-oauth2-server/rest/v1/person
-```
+
+
+|miljø|url|
+|-|-|
+|VER1|[https://oidc-ver1.difi.no/kontaktinfo-oauth2-server/rest/v1/person](https://oidc-ver1.difi.no/kontaktinfo-oauth2-server/rest/v1/person)|
+|VER2|[https://oidc-ver2.difi.no/kontaktinfo-oauth2-server/rest/v1/person](https://oidc-ver2.difi.no/kontaktinfo-oauth2-server/rest/v1/person)|
+|YT2|[https://oidc-yt2.difi.eon.no/kontaktinfo-oauth2-server/rest/v1/person](https://oidc-yt2.difi.eon.no/kontaktinfo-oauth2-server/rest/v1/person)|
+|PROD|[https://oidc.difi.no/kontaktinfo-oauth2-server/rest/v1/person](https://oidc.difi.no/kontaktinfo-oauth2-server/rest/v1/person)|
 
 
 {% include note.html content="Merk den lille forskjellen mellom 'person' (dette endepunktet) og 'personer' ([server-til-server endepunktet](oidc_api_krr.html)" %}

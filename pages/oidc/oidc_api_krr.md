@@ -12,11 +12,13 @@ sidebar: oidc
 
 Kontaktregisteret sin oppslagstjeneste tilbyr i dag eit SOAP-basert grensesnitt beskytta med WS-Security. Som del av lanseringen av OpenID Connect i ID-porten  tilbyr Difi nå også et alternativt REST-basert grensesnitt som gjør det enklere å implementere nye integrasjoner mot registeret.
 
+## Bruk av Oauth2
+
 Tilgangskontrollen til api'et benytter seg av flyten som er beskrevet i [Server til server autorisasjon med Oauth2](oidc_auth_server-to-server-oauth2.html)
 
 Merk at funksjoanlitet for lokal kopi (endringsmeldinger) ikke er støttet over Oauth2-grensenittet.
 
-## Krav til JWT for token-forespørsel
+#### Krav til JWT for token-forespørsel
 
 Klienten må generere og signere ein jwt med følgende elementer for å forespørre tokens fra autorisasjonsserveren:
 
@@ -28,7 +30,6 @@ Klienten må generere og signere ein jwt med følgende elementer for å forespø
 | x5c | Inneholde klientens virksomhetssertifikat som er brukt for signering av JWT'en |
 | alg | RS256 - Vi støtter kun RSA-SHA256 som signeringsalgoritme |
 
-&nbsp;
 
 **JWT-Body:**
 
@@ -42,7 +43,7 @@ Klienten må generere og signere ein jwt med følgende elementer for å forespø
 |jti| Optional - JWT ID - unik id på jwt'en som settes av klienten. **MERK:** JWT'er kan ikke gjenbrukes. ID-porten håndterer dette ved å sammenligne en hash-verdi av jwt'en mot tidligere brukte jwt'er. Dette impliserer at dersom klienten ønsker å sende mer enn en token-request i sekundet må jti elementet benytttes.|
 
 
-## Tilgjenglige scopes
+#### Tilgjenglige scopes
 
 Det er 1-1 mapping mellom OAuth2 scopes og informasjonsbehov-elementet brukt i SOAP-API’et. Se [begrepskatalogen for Kontaktregisteret](https://begrep.difi.no/Oppslagstjenesten/).
 
