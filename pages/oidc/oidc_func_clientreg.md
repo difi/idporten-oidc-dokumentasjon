@@ -26,6 +26,7 @@ Følgende informasjon må registreres om klienter:
 Difi vil tildele *client_secret*. Kunde kan til en viss grad velge *client_id* selv, men vi foretrekker en bestemt syntaks.
 
 I tillegg _kan_ man registrere følgende:
+
 | attributt | beskrivelse |
 |-|-|
 | scopes | Liste over scopes som klienten kan forespørre. For OpenID Connect er aktuelle scopes *openid* og *profile* |

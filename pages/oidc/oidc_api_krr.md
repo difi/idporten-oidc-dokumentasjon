@@ -18,7 +18,7 @@ Tilgangskontrollen til api'et benytter seg av flyten som er beskrevet i [Server 
 
 Merk at funksjoanlitet for lokal kopi (endringsmeldinger) ikke er støttet over Oauth2-grensenittet.
 
-#### Krav til JWT for token-forespørsel
+### Krav til JWT for token-forespørsel
 
 Klienten må generere og signere ein jwt med følgende elementer for å forespørre tokens fra autorisasjonsserveren:
 
@@ -43,7 +43,7 @@ Klienten må generere og signere ein jwt med følgende elementer for å forespø
 |jti| Optional - JWT ID - unik id på jwt'en som settes av klienten. **MERK:** JWT'er kan ikke gjenbrukes. ID-porten håndterer dette ved å sammenligne en hash-verdi av jwt'en mot tidligere brukte jwt'er. Dette impliserer at dersom klienten ønsker å sende mer enn en token-request i sekundet må jti elementet benytttes.|
 
 
-#### Tilgjenglige scopes
+### Tilgjenglige scopes
 
 Det er 1-1 mapping mellom OAuth2 scopes og informasjonsbehov-elementet brukt i SOAP-API’et. Se [begrepskatalogen for Kontaktregisteret](https://begrep.difi.no/Oppslagstjenesten/).
 
