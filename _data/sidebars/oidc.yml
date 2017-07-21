@@ -28,10 +28,6 @@ entries:
         url: /index.html
         output: web,pdf
 
-      - title: Quick-start
-        url: /oidc_quickstart.html
-        output: web,pdf
-
       - title: Hvordan komme igang?
         url: /oidc_hvordan_komme_igang.html
         output: web,pdf

@@ -38,9 +38,9 @@ Ta ellers kontakt på epost på idporten@difi.no.  Se og kontaktinfomasjonen på
 
 OpenID Connect-provideren er på plass i de fleste av Difi sine miljøer.
 
-
 ### Well-known endepunkt:
-|miljø|url|
+
+|Miljø|URL|
 |-|-|
 |VER1|[https://oidc-ver1.difi.no/idporten-oidc-provider/.well-known/openid-configuration](https://oidc-ver1.difi.no/idporten-oidc-provider/.well-known/openid-configuration)|
 |VER2|[https://oidc-ver2.difi.no/idporten-oidc-provider/.well-known/openid-configuration](https://oidc-ver2.difi.no/idporten-oidc-provider/.well-known/openid-configuration)|
