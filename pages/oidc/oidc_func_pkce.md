@@ -6,7 +6,6 @@ permalink: oidc_func_pkce.html
 
 layout: page
 sidebar: oidc
-isHome: true
 ---
 
 ## Om funksjonaliteten

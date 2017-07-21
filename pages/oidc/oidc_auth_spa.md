@@ -6,7 +6,6 @@ permalink: oidc_auth_spa.html
 
 layout: page
 sidebar: oidc
-isHome: true
 ---
 
 ## Overordna beskrivelse av bruksområdet

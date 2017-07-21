@@ -1,7 +1,7 @@
 ---
 title: OAuth2 beskytta REST-API for Kontakt- og Reservasjonsregisteret
 description: OAuth2 beskytta REST-API for Kontakt- og Reservasjonsregisteret
-summary: "Funksjonaliteten i Kontakt- og Reservasjonsregisteret sin Oppslagstjeneste er nå også tilgjengelig over et Oauth2-beskyttet REST-API."
+summary: "Funksjonaliteten i Kontakt- og Reservasjonsregisteret sin webservice *Oppslagstjenesten* er nå også tilgjengelig over et Oauth2-beskyttet REST-API."
 permalink: oidc_api_krr.html
 
 layout: page
@@ -59,11 +59,15 @@ Det vil alltid returneres reservasjonsstatus for brukeren.
 
 Oppslagstjenesten sin REST-tjeneste tilbyr følgende endepunkt for søk på 1...1000 personer:
 
-```
-URL: https://<miljø>/kontaktinfo-oauth2-server/rest/v1/personer
-```
 
-&nbsp;
+|miljø|url|
+|-|-|
+|VER1|[https://oidc-ver1.difi.no/kontaktinfo-oauth2-server/rest/v1/personer](https://oidc-ver1.difi.no/kontaktinfo-oauth2-server/rest/v1/personer)|
+|VER2|[https://oidc-ver2.difi.no/kontaktinfo-oauth2-server/rest/v1/personer](https://oidc-ver2.difi.no/kontaktinfo-oauth2-server/rest/v1/personer)|
+|YT2|[https://oidc-yt2.difi.eon.no/kontaktinfo-oauth2-server/rest/v1/personer](https://oidc-yt2.difi.eon.no/kontaktinfo-oauth2-server/rest/v1/personer)|
+|PROD|[https://oidc.difi.no/kontaktinfo-oauth2-server/rest/v1/personer](https://oidc.difi.no/kontaktinfo-oauth2-server/rest/v1/personer)|
+
+**Merk:** Man vil oppnå vesentlig bedre ytelse (målt i personer/sekund) ved å slå opp 1000 personer i gangen kontra 1000 enkelt-oppslag.
 
 Følgende header-parametere må brukes på request:
 

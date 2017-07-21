@@ -6,7 +6,6 @@ permalink: oidc_auth_codeflow.html
 
 layout: page
 sidebar: oidc
-isHome: true
 ---
 
 ID-porten sin OpenID Connect provider tilbyr funksjonalitet for autentisering av sluttbrukere basert på autorisasjonskode-flyten, slik den er spesifisert i OpenID Connect Core 1.0 spesifikasjonen
@@ -29,7 +28,7 @@ Følgende aktører inngår:
 
  Aktør | Beskrivelse | Begrep OIDC | Begrep Oauth2 | Begrep SAML2
  -|-|-|-|-|
- Innbygger | Ønsker å logge inn til en offentlig tjeneste | End User | User | End User
+ Sluttbruker | Ønsker å logge inn til en offentlig tjeneste | End User | User | End User
  Nett-tjeneste | Sluttbruker-tjeneste tilbudt av en offentlig etat | Relying Party (RP) | Client | Service Provider (SP) |
  ID-porten | ID-porten sin autentiseringstjeneste som usteder *ID Token* til aktuelle tjenesten| OpenID Provider (OP) | Authorization server (AS) | Identity Provider (IDP)
 

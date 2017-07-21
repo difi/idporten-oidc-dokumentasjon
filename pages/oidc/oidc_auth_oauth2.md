@@ -6,7 +6,6 @@ permalink: oidc_auth_oauth2.html
 
 layout: page
 sidebar: oidc
-isHome: true
 ---
 
 
@@ -45,17 +44,10 @@ Følgende aktører inngår:
  Sluttbruker | Ønsker å logge inn til en offentlig tjeneste | End User | User | End User
  Nett-tjeneste | Sluttbruker-tjeneste tilbudt av en offentlig etat | Relying Party (RP) | Client | Service Provider (SP) |
  ID-porten | ID-porten sin OpenID Connect provider som usteder *access_token* til aktuelle tjenesten| OpenID Provider (OP) | Authorization server (AS) | Identity Provider (IDP)
- | API | 3.part, som tilbyr et API som sluttbrukertjenesten ønsker å benytte |   | Resource server (RS) | |
+ | API | 3.part, som tilbyr et API som sluttbrukertjenesten ønsker å benytte | | Resource server (RS) |
 
 
  ## Beskrivelse av Oauth2-flyten
-
-Starten av flyten er lik med [autorisasjonskode-flyten for autentisering](oidc_auth_codeflow.html)
-
-Forskjellen på *autentisering* (OpenIDConnect) og *autorisasjon* med "plain" Oauth2 er altså minimal:
-1. For å sikre at autentisering-oppførselen blir ihht. OpenID Connect-spesifikasjonen **må** man benytte 'openid'-scopet
-2. OpenID Connect forholder seg ikke til ressurs-servere /API-er, men man kan fint forespørre ekstra scopes i ein OIDC autentiseringsforespørsel, og således oppnå kombinert autorisasjon og autentisering.
-
 
 <div class="mermaid">
 sequenceDiagram
@@ -73,6 +65,15 @@ sequenceDiagram
   OpenID Provider ->> API: token informasjon
   API->>Klient: Resultat av API-operasjon
 </div>
+
+
+Starten av flyten er identisk med [autorisasjonskode-flyten for autentisering](oidc_auth_codeflow.html)
+
+Forskjellen på *autentisering* (OpenIDConnect) og *autorisasjon* med "plain" Oauth2 er altså minimal:
+1. For å sikre at autentisering-oppførselen blir ihht. OpenID Connect-spesifikasjonen **må** man benytte 'openid'-scopet
+2. OpenID Connect forholder seg ikke til ressurs-servere /API-er, men man kan fint forespørre ekstra scopes i ein OIDC autentiseringsforespørsel, og således oppnå kombinert autorisasjon og autentisering.
+
+
 
 ## Typer access_token og validering av disse
 
