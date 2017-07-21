@@ -1,7 +1,7 @@
 ---
 title: "Authentiseringsnær autorisasjon  med OAuth2 og OpenID Connect"
 description: "Authentiseringsnær autorisasjon  med OAuth2 og OpenID Connect"
-summary: "I forbindelse med en OpenID Connect-*autentisering* kan ID-portens OpenID Connect provider også *autorisere* en tjeneste til å opptre på vegne av innbyggeren opp mot et API tilbudt av en 3.dje-part."
+summary: "I forbindelse med en OpenID Connect-autentisering kan ID-portens OpenID Connect provider også autorisere en tjeneste til å opptre på vegne av innbyggeren opp mot et API tilbudt av en 3.dje-part."
 permalink: oidc_auth_oauth2.html
 
 layout: page
@@ -44,7 +44,7 @@ Følgende aktører inngår:
  Sluttbruker | Ønsker å logge inn til en offentlig tjeneste | End User | User | End User
  Nett-tjeneste | Sluttbruker-tjeneste tilbudt av en offentlig etat | Relying Party (RP) | Client | Service Provider (SP) |
  ID-porten | ID-porten sin OpenID Connect provider som usteder *access_token* til aktuelle tjenesten| OpenID Provider (OP) | Authorization server (AS) | Identity Provider (IDP)
- | API | 3.part, som tilbyr et API som sluttbrukertjenesten ønsker å benytte | | Resource server (RS) |
+ | API | 3.part, som tilbyr et API som sluttbrukertjenesten ønsker å benytte | - | Resource server (RS) | - |
 
 
  ## Beskrivelse av Oauth2-flyten
