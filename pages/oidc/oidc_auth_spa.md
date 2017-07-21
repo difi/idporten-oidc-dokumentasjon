@@ -16,7 +16,7 @@ Single-page applikasjoner (SPA) har økende popularitet. Disse skiller seg fra t
 
 En utfordring med SPAer er at de ikke klarer å beskytte klient-hemmeligheten (evt. virksomhetssertifikatets privatnøkkel) siden hele klienten lever i brukers nettleser. SPAer er altså det som i Oauth2-verdenen kalles **public klienter**. For slike klienter er det anbefalt å bruke _implicit flow_, og ID-portens OpenID Connect provider tilbyr slik funksjonalitet.
 
-Sidan det ikke er klient-autentisering ved bruk av implicit flow, kan i prinsippet hvem som helst lage en falsk SPA som bruker samme client-id, og da fremstår som tjenesteeiers tjeneste ovenfor ID-porten. Sikkerheten ved bruk av implisitt-flyten er derfor helt avhengig av at brukeren er tilstede og forstår at han har blitt lurt til å bruke en falsk applikasjon.
+Sidan det ikke er klient-autentisering ved bruk av implicit flow, kan i prinsippet hvem som helst lage en falsk SPA som bruker samme client-id, og da fremstår som tjenesteeiers tjeneste ovenfor ID-porten. Sikkerheten ved bruk av implisitt-flyten er derfor helt avhengig av at brukeren er tilstede og forstår om han har blitt lurt til å bruke en falsk applikasjon.
 
 Man bør også vurdere om SPAen i det hele tatt har behov for å et id_token fra ID-porten.  En SPA vil alltid måtte aksessere bakenforliggende APIer, enten hos tjenesteeier selv eller hos andre, og kanskje kan man klare seg med "ren" Oauth2, siden autorisasjonsserveren ved utstedelse av access_token uansett vil gjennomføre en autentisering av brukeren.
 

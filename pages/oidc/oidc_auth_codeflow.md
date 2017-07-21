@@ -212,7 +212,7 @@ OuFJaVWQvLY9... <signaturverdi> ...isvpDMfHM3mkI
 ```
 
 
-#### ID tokenets header:
+### ID tokenets header:
 
 | claim | verdi |
 | --- | --- |
@@ -220,7 +220,7 @@ OuFJaVWQvLY9... <signaturverdi> ...isvpDMfHM3mkI
 | alg | "algorithm" - signeringsalgoritme, Id-porten støtter kun RS256 (RSA-SHA256)
 
 
-#### ID tokenets body:
+### ID tokenets body:
 
 | claim | verdi |
 | --- | --- |
@@ -263,7 +263,7 @@ Følgende header-parametere må brukes på request:
 | Http-metode: | GET |
 | Authorization: | Bearer \<utstedt access_token\> |
 
-#### Eksempel på respons:
+### Eksempel på respons:
 
 ```
 {

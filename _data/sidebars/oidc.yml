@@ -60,23 +60,25 @@ entries:
         url: /oidc_auth_server-to-server-oauth2.html
         output: web, pdf
 
-
   - title: Funksjonalitet
     output: web, pdf
     folderitems:
 
       - title: Single sign-on og -logout
-        url: oidc_func_sso.html
+        url: /oidc_func_sso.html
         output: web, pdf
 
       - title: Klientautentisering
-        url: oidc_func_clientauth.html
+        url: /oidc_func_clientauth.html
+        output: web, pdf
+
+      - title: Klientregistrering
+        url: /oidc_func_clientreg.html
         output: web, pdf
 
       - title: PKCE
-        url: oidc_func_pkce.html
+        url: /oidc_func_pkce.html
         output: web, pdf
-
 
   - title: Oauth2-beskytta API'er fra Difi
     url: /oidc_api.html
