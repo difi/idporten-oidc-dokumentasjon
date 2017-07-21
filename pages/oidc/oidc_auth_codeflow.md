@@ -155,7 +155,7 @@ I pilotfasen støttes to typer autentisering:
 * client_secret_basic / client_secret_post - Klientautentisering basert på client_secret
 * private_key_jwt - Klientautentisering basert på JWT'er signert med virksomhetssertifikater
 
-### Eksempel på forespørsel
+#### Eksempel på forespørsel
 
 ```
 POST /token
@@ -165,7 +165,7 @@ Authorization: Basic dGVzdF9ycF95dDI6cGFzc3dvcmQ=
 grant_type=authorization_code&redirect_uri=https%3A%2F%2Feid-exttest.difi.no%2Fidporten-oidc-client%2Fauthorize%2Fresponse&code=1JzjKYcPh4MIPP9YWxRfL-IivWblfKdiRLJkZtJFMT0%3D
 ```
 
-### Eksempel på respons:
+#### Eksempel på respons:
 
 ```
 {
@@ -212,7 +212,7 @@ OuFJaVWQvLY9... <signaturverdi> ...isvpDMfHM3mkI
 ```
 
 
-### ID tokenets header:
+#### ID tokenets header:
 
 | claim | verdi |
 | --- | --- |
@@ -220,7 +220,7 @@ OuFJaVWQvLY9... <signaturverdi> ...isvpDMfHM3mkI
 | alg | "algorithm" - signeringsalgoritme, Id-porten støtter kun RS256 (RSA-SHA256)
 
 
-### ID tokenets body:
+#### ID tokenets body:
 
 | claim | verdi |
 | --- | --- |
@@ -251,7 +251,7 @@ dataene som vil bli eksponert her.
 
 
 ```
-URL: http://eid-exttest.difi.no/idporten-oidc-provider/userinfo
+URL: https://<<miljø>>/idporten-oidc-provider/userinfo
 ```
 
 &nbsp;
@@ -263,7 +263,7 @@ Følgende header-parametere må brukes på request:
 | Http-metode: | GET |
 | Authorization: | Bearer \<utstedt access_token\> |
 
-## Eksempel på respons:
+#### Eksempel på respons:
 
 ```
 {
