@@ -56,7 +56,7 @@ entries:
         url: /oidc_auth_oauth2.html
         output: web, pdf
 
-      - title: Maskin-til-maskin API-autorisasjon
+      - title: Server-til-server API-autorisasjon
         url: /oidc_auth_server-to-server-oauth2.html
         output: web, pdf
 
