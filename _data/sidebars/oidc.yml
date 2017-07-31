@@ -52,11 +52,11 @@ entries:
         url: /oidc_auth_app.html
         output: web, pdf
 
-      - title: Autentiserinær autorisasjon
+      - title: API-autorisasjon
         url: /oidc_auth_oauth2.html
         output: web, pdf
 
-      - title: Server-to-server autorisasjon
+      - title: Server-til-server API-autorisasjon
         url: /oidc_auth_server-to-server-oauth2.html
         output: web, pdf
 

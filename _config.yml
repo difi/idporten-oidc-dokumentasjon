@@ -12,7 +12,7 @@ site_title: OpenID Connect i ID-porten
 company_name: Direktoratet for forvaltning og IKT
 # this appears in the footer
 
-github_editme_path: difi/idporten-oidc-dokumentasjon/blob/gh-pages/
+#github_editme_path: difi/idporten-oidc-dokumentasjon/blob/gh-pages/
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
 
 disqus_shortname:
@@ -94,7 +94,7 @@ defaults:
       search: true
       sidebar: oauth2
       topnav: topnav
-  
+
 # these are defaults used for the frontmatter for these file types
 
 sidebars:
