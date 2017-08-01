@@ -47,7 +47,7 @@ Følgende aktører inngår:
  API | 3.part, som tilbyr et API som sluttbrukertjenesten ønsker å benytte | - | Resource server (RS) | -
 
 
- ## Beskrivelse av Oauth2-flyten
+## Beskrivelse av Oauth2-flyten
 
 
 <div class="mermaid">
