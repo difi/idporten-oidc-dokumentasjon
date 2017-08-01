@@ -44,10 +44,11 @@ Følgende aktører inngår:
  Sluttbruker | Ønsker å logge inn til en offentlig tjeneste | End User | User | End User
  Nett-tjeneste | Sluttbruker-tjeneste tilbudt av en offentlig etat | Relying Party (RP) | Client | Service Provider (SP) |
  ID-porten | ID-porten sin OpenID Connect provider som usteder *access_token* til aktuelle tjenesten| OpenID Provider (OP) | Authorization server (AS) | Identity Provider (IDP)
- API | 3.part, som tilbyr et API som sluttbrukertjenesten ønsker å benytte | - | Resource server (RS) | - |
+ API | 3.part, som tilbyr et API som sluttbrukertjenesten ønsker å benytte | - | Resource server (RS) | -
 
 
  ## Beskrivelse av Oauth2-flyten
+
 
 <div class="mermaid">
 sequenceDiagram
