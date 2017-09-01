@@ -31,13 +31,23 @@ Vi baserer oss på følgende spesifikasjoner:
 
 Merk at begge disse spesifikasjonene er per juli 2017 i draft status.
 
+### Initiering av SLO (Session Management)
 
-{% include note.html content="TODO Her trengs det grundigere dok." %}
+Tjenesteeier ber om logout med en redirect til ID-porten OIDC Provider endsession-endepunkt.  Adressen til endepunktet er definert i ID-porten OpenID Connect-tjenestens konfigurasjonsendepunkt.  ID-porten OIDC Provider sender en redirect til *post_logout_redirect_uri*, dersom denne er angitt og definert for klient.
 
-- kva må TE gjere?
-  - post logout redirect uri?
-  - lage en usynlig iframe ?
+### Motta informasjon om SLO (Front Channel Logout)
 
-- korleis virker det i detalj.
-  - end Session endepunktet
-  
+ID-porten OIDC Provider støtter Front Channel Logout og kan sende melding til tjenesteiere integrert med OIDC som støtter dette.  
+
+ID-porten OIDC Provider samler opp informasjon om hvilke tjenester en bruker benytter infor en sesjon.  For OIDC-klienter som støtter Front Channel Logout, sender ID-porten OIDC Provider en GET-forespørsel til klientens *frontchannel_logout_uri*.  Parameterne *iss* og *sid* inkluderes for klienter som krever *frontchannel_logout_session_required*.
+
+Klient som starter utlogging med kall på endsession-endepunktet, mottar ikke melding via front channel logout.
+
+### Samspill mellom SAML SLO og OpenID Connect SLO
+
+ID-porten OIDC provider er integrert med ID-portens via SAML.  
+
+Dersom en tjenesteeier starter SAML SLO, vil ID-porten OIDC Provider delta i SAML SLO.  ID-porten OIDC Provider finner alle klienter i samme sesjon, og sender melding til de av klientene som støtter Front Channel Logout.  Deretter sendes brukeren tilbae til ID-porten.
+
+Dersom en tjenesteeier starter utlogging med OIDC endsession, vil ID-porten sende melding til de av klientene som støtter Front Channel Logout.  Den vil også sende beskjed om SAML utlogging til ID-porten.  Avslutningsvis vil det sendes en redirect til OIDC-klienten, dersom denne er konfigurert for det.
+
