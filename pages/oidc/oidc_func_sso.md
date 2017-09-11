@@ -39,7 +39,7 @@ Tjenesteeier ber om logout med en redirect til ID-porten OIDC Provider endsessio
 
 ID-porten OIDC Provider støtter Front Channel Logout og kan sende melding til tjenesteiere integrert med OIDC som støtter dette.  
 
-ID-porten OIDC Provider samler opp informasjon om hvilke tjenester en bruker benytter infor en sesjon.  For OIDC-klienter som støtter Front Channel Logout, sender ID-porten OIDC Provider en GET-forespørsel til klientens *frontchannel_logout_uri*.  Parameterne *iss* og *sid* inkluderes for klienter som krever *frontchannel_logout_session_required*.
+ID-porten OIDC Provider samler opp informasjon om hvilke tjenester en bruker benytter infor en sesjon.  For OIDC-klienter som støtter Front Channel Logout, sender ID-porten OIDC Provider en GET-forespørsel til klientens *frontchannel_logout_uri*.  Parameterne *iss* og *sid* inkluderes for klienter som krever *frontchannel_logout_session_required*.  *sid* har samme verdi som claim *sid* i id_token.
 
 Klient som starter utlogging med kall på endsession-endepunktet, mottar ikke melding via front channel logout.
 
