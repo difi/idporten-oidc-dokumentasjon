@@ -33,6 +33,8 @@ I tillegg _kan_ man registrere følgende:
 | authorization_lifetime | Levetid for registrert autorisasjon. I en OpenID Connect sammenheng vil dette være tilgangen til userinfo-endepunktet |
 | access_token_lifetime | Levetid for utstedt access_token |
 | refresh_token_lifetime |Levetid for utstedt refresh_token |
+| frontchannel_logout_uri | URL som provideren sender request til ved utlogging trigget av annen klient i samme sesjon |
+| frontchannel_logout_session_required | Flagg som bestemmer om parameterne for issuer og sesjons-id skal sendes med frontchannel_logout_uri |
 
 
 ## Well-known endepunkt
