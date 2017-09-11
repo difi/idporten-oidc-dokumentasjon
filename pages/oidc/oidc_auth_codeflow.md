@@ -235,6 +235,7 @@ OuFJaVWQvLY9... <signaturverdi> ...isvpDMfHM3mkI
 | locale | Språk valgt av sluttbrukeren under innlogging i Id-porten |
 | iat | Tidspunkt for utstedelse av tokenet |
 | jti | jwt id - unik identifikator for det aktuelle Id tokenet |
+| sid | sesjonsid - en unik identifikator for brukerens sesjon med ID-porten OIDC Provider |
 
 
 ## Validering av Id token
