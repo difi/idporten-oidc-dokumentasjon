@@ -93,7 +93,7 @@ ID-porten kan utstede to typer access_token.  Ressursservere som mottar access_t
 Når "by value" access token benyttes er det returnerte tokenet en signert JWT struktur med følgende struktur:
 
 
-### Access tokenets header:
+Access tokenets header:
 
 | claim | verdi |
 | --- | --- |
@@ -101,7 +101,7 @@ Når "by value" access token benyttes er det returnerte tokenet en signert JWT s
 | alg | "algorithm" - signeringsalgoritme, Id-porten støtter kun RS256 (RSA-SHA256) |
 
 
-### Access tokenets body:
+Access tokenets body:
 
 | claim | verdi |
 | --- | --- |
