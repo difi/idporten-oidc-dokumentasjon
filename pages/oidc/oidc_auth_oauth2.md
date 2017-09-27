@@ -88,9 +88,38 @@ ID-porten kan utstede to typer access_token.  Ressursservere som mottar access_t
 |by reference| Tokenet inneholder kun en referanse til autorisasjonen internt i ID-porten.  Ressursserveren må sjekke opp mot tokeninfo-endpunktet til ID-porten for å få om tokenet fremdeles er gyldig, hvem brukeren er, hvilke scopes som ble forespurt, og hvilken klient (inkludert dennes org.nr.) det var utstedt til. |
 |by value | Tokenet er såkalt self-contained, dvs. det inneholder all informasjon som man ellers kunne sjekke mot tokeninfo-endpunktet.  Slike tokens kan ikke trekkes tilbake, og bør derfor ha kort levetid |
 
-###  Eksempel på bruk av tokeninfo-endepunktet
+## Struktur på "by value" access token
+
+Når "by value" access token benyttes er det returnerte tokenet en signert JWT struktur med følgende struktur:
 
 
+### Access tokenets header:
+
+| claim | verdi |
+| --- | --- |
+| kid | "Key identifier" - unik identifikator for signeringsnøkkel brukt av provideren. Nøkkel og sertifikat hentes fra providerens JWK-endepunkt |
+| alg | "algorithm" - signeringsalgoritme, Id-porten støtter kun RS256 (RSA-SHA256) |
+
+
+### Access tokenets body:
+
+| claim | verdi |
+| --- | --- |
+| sub | "subject identifier" - unik identifikator for den autentiserte brukeren. Verdien er her *pairwise* - dvs en klient får alltid samme verdi for samme bruker. Men ulike klienter vil få ulik verdi for samme bruker |
+| aud | "audience" - client_id til klienten som er mottaker av dette tokenet |
+| client_orgno | Klienten sitt organisasjonsnummer |
+| scope | Liste over de scopes som dette access tokenet er bundet mot |
+| pid | Personidentifikator - fødselsnummer på den autentiserte sluttbrukeren. MERK: Dette claimet blir ikke utlevert dersom scopet no_pid er benyttet |
+| token_type | Type token. pr. nå¨støttes kun "Bearer" |
+| iss | Identifikator for provideren som har utstedt token'et. For ID-porten sitt ext-test miljø er dette *https://eid-exttest.difi.no/idporten-oidc-provider/* |
+| exp | Expire - Utløpstidspunktet for tokenet. Klienten skal ikke akseptere token'et etter dette tidspunktet |
+| iat | Tidspunkt for utstedelse av tokenet |
+| jti | jwt id - unik identifikator for det aktuelle Id tokenet |
+
+
+## Bruk av tokeninfo-endepunktet
+
+ID-porten tilbyr endepunkt for validering av token basert på RFC7662  OAuth 2.0 Token Introspection
 
 Følgende header-parametere må brukes på request:
 
@@ -98,12 +127,30 @@ Følgende header-parametere må brukes på request:
 | --- | --- |
 |Http-metode:|POST|
 |Content-type:|application/x-www-form-urlencoded|
+| Authorization:|Basic http autentication | MERK: Valgfritt, men ved bruk av no_pid scope vil ikke pid claim returneres dersom foresprøselen er uautentisert |
 
 Følgende attributter må sendes inn i requesten:
 
 | Attributt  | Verdi |
 | --- | --- |
 |token|\<Tokenet som skal valideres\>|
+
+Struktur på respons:
+
+| claim | verdi |
+| --- | --- |
+| active | true / false |
+| token_type | Type token. pr. nå¨støttes kun "Bearer" |
+| sub | "subject identifier" - unik identifikator for den autentiserte brukeren. Verdien er her *pairwise* - dvs en klient får alltid samme verdi for samme bruker. Men ulike klienter vil få ulik verdi for samme bruker |
+| client_id | client_id til klienten som er mottaker av dette tokenet |
+| client_orgno | Klienten sitt organisasjonsnummer |
+| scope | Liste over de scopes som dette access tokenet er bundet mot |
+| pid | Personidentifikator - fødselsnummer på den autentiserte sluttbrukeren. MERK: Dette claimet blir ikke utlevert dersom scopet no_pid er benyttet og forespørselen mot tokeninfo er uautentisert |
+| exp | Expire - Utløpstidspunktet for tokenet. Klienten skal ikke akseptere token'et etter dette tidspunktet |
+| iat | Tidspunkt for utstedelse av tokenet |
+| expires_in | antall sekunder til tokenet utløper |
+
+
 
 Eksempel på request:
 
