@@ -72,7 +72,7 @@ defaults:
       layout: "page"
       comments: true
       search: true
-      sidebar: oauth2
+      sidebar: oidc
       topnav: topnav
   -
     scope:
