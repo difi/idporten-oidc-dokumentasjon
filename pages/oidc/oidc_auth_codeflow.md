@@ -111,7 +111,7 @@ GET /authorize
 
 ```
 
-### Eksempel på respons:
+### Eksempel på respons: {#authresponse}
 
 ```
 {
@@ -128,9 +128,12 @@ GET /authorize
 
 Token-endepunktet brukes for utstedelse av tokens.
 
-&nbsp;
+Bruk av endepunktet varierer litt med hvilken klient-autentiseringsmetode som benyttes. Følgende autentiseringsmetoder fra [OIDC kap. 9](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) støttes:
 
-Følgende header-parametere må brukes på request:
+* **client_secret_basic** / **client_secret_post** - Klientautentisering basert på client_secret
+* **private_key_jwt** - Klientautentisering basert på JWT'er signert med virksomhetssertifikater
+
+Felles for alle metoder er at følgende header-parametere må brukes på request:
 
 | Parameter  | Verdi |
 | --- | --- |
@@ -139,33 +142,86 @@ Følgende header-parametere må brukes på request:
 
 &nbsp;
 
-Følgende attributter må sendes inn i requesten:
+samt at følgende attributter må sendes inn i requesten:
 
 | Attributt  | Verdi |
 | --- | --- |
-| grant_type | authorization\_code \| refresh\_token|
-| code | authorization\_gode dersom dette benyttes som grant |
 | client_id | Klientens ID |
-| client_secret |
+| grant_type | Valgt grant-metode, en av: <ul><li>`authorization_code`</li><li>`refresh_token`</li></ul>|
+| code | autorisasjonskode (*code*) motatt i [autentiseringsresponsen](#authrespoonse) |
+| redirect_uri | ønsket redirect_uri, skal være identisk med verdi brukt i autentiseringsforespørsel |
 
-### Klientautentisering mot endepunktet
 
-I pilotfasen støttes to typer autentisering:
 
-* client_secret_basic / client_secret_post - Klientautentisering basert på client_secret
-* private_key_jwt - Klientautentisering basert på JWT'er signert med virksomhetssertifikater
+### Klientautentisering med statisk klienthemmelighet
 
-#### Eksempel på forespørsel
+Her benyttes tidligere utlevert statisk hemmelighet(*client_secret*) til autentisering ved å legge på en standard HTTP Basic autentiserings-header (base64-enkoda sammensatt streng av client_id, kolon og client_secret).
+
+
+##### Eksempel på forespørsel
 
 ```
 POST /token
 Content-Type: application/x-www-form-urlencoded
 Authorization: Basic dGVzdF9ycF95dDI6cGFzc3dvcmQ=
 
-grant_type=authorization_code&redirect_uri=https%3A%2F%2Feid-exttest.difi.no%2Fidporten-oidc-client%2Fauthorize%2Fresponse&code=1JzjKYcPh4MIPP9YWxRfL-IivWblfKdiRLJkZtJFMT0%3D
+grant_type=authorization_code&
+  redirect_uri=https%3A%2F%2Feid-exttest.difi.no%2Fidporten-oidc-client%2Fauthorize%2Fresponse&
+  code=1JzjKYcPh4MIPP9YWxRfL-IivWblfKdiRLJkZtJFMT0%3D
 ```
 
-#### Eksempel på respons:
+
+
+### Klientautentisering med JWT token
+
+Klienten må generere et JWT token med claims som definert under `private_key_jwt`-avsnittet i  [kapittel 9 av OIDC-spesifikasjonen](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication), og signere dette med et gyldig virksomhetssertifikat ihht [Rammeverk for autentisering og uavviselighet i elektronisk kommunikasjon med og i offentlig sektor](https://www.regjeringen.no/no/dokumenter/rammeverk-for-autentisering-og-uavviseli/id505958/).
+
+Forespørselen må utvides med følgende attributter:
+
+| Attributt  | Verdi |
+| --- | --- |
+| client_assertion_type | `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`|
+| client_assertion | JWT ihht. kravene under   |
+
+#### Krav til JWT for token-forespørsel
+
+Klienten må generere og signere ein jwt med følgende elementer for å forespørre tokens fra autorisasjonsserveren:
+
+
+**Header:**
+
+| Parameter  | Verdi |
+| --- | --- |
+| x5c | Inneholde klientens virksomhetssertifikat som er brukt for signering av JWT'en |
+| alg | RS256 - Vi støtter kun RSA-SHA256 som signeringsalgoritme |
+
+&nbsp;
+
+**Body:**
+
+| Parameter  | Verdi |
+| --- | --- |
+|aud| Audience - identifikator for ID-portens OIDC Provider.  Se ID-portens `well-known`-endepunkt for aktuelt miljø for å finne riktig verdi. |
+|iss| issuer - client ID som er registert hos ID-porten OIDC-provider|
+|scope| Scope som klient forespør tilgang til, kan sende inn liste av scope separert med whitespace|
+|iat| issued at - tidsstempel for når jwt'en ble generert - **MERK:** Tidsstempelet tar utgangspunkt i UTC-tid|
+|exp| expiration time - tidsstempel for når jwt'en utløper - **MERK:** Tidsstempelet tar utgangspunkt i UTC-tid **MERK:** ID-porten godtar kun maks levetid på jwt'en til 120 sekunder (exp - iat <= 120 )|
+|jti| Optional - JWT ID - unik id på jwt'en som settes av klienten. **MERK:** JWT'er kan ikke gjenbrukes. ID-porten håndterer dette ved å sammenligne en hash-verdi av jwt'en mot tidligere brukte jwt'er. Dette impliserer at dersom klienten ønsker å sende mer enn en token-request i sekundet må jti elementet benytttes.|
+
+#### Eksempel på forespørsel:
+
+```
+POST /token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&
+   code=n0esc3NRze7LTCu7iYzS6a5acc3f0ogp4&
+   client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&
+   client_assertion=< jwt >
+```
+
+
+### Eksempel på respons fra token-endepunktet:
 
 ```
 {
@@ -177,6 +233,10 @@ grant_type=authorization_code&redirect_uri=https%3A%2F%2Feid-exttest.difi.no%2Fi
   "scope" : "openid"
 }
 ```
+
+
+
+
 
 
 ## Struktur på Id token {#idtoken}
