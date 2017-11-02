@@ -148,7 +148,7 @@ samt at følgende attributter må sendes inn i requesten:
 | --- | --- |
 | client_id | Klientens ID |
 | grant_type | Valgt grant-metode, en av: <ul><li>`authorization_code`</li><li>`refresh_token`</li></ul>|
-| code | autorisasjonskode (*code*) motatt i [autentiseringsresponsen](#authrespoonse) |
+| code | autorisasjonskode (*code*) motatt i [autentiseringsresponsen](#authresponse) |
 | redirect_uri | ønsket redirect_uri, skal være identisk med verdi brukt i autentiseringsforespørsel |
 
 
