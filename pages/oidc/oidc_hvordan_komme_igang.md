@@ -18,13 +18,17 @@ Se
 [https://samarbeid.difi.no/difis-felleslosninger/hvilke-virksomheter-kan-ta-i-bruk-difis-felleslosningene](https://samarbeid.difi.no/difis-felleslosninger/hvilke-virksomheter-kan-ta-i-bruk-difis-felleslosningene)
  for mer informasjon om hvordan du kan bli tjenesteeierr i ID-porten
 
-  **Merk:** Dette er en pilottjeneste og vil ikke være omfattet av ID-porten sine normale SLA-krav. Tjenesteleverandører må også påregne at det kommer endringer i tjenesten sine api'er, selv om disse selvsagt vil tilstrebes å være bakoverkompatible.
-
 ## Fremgangsmåte
- 1.  Be om å få en klient-integrasjon ved å sende mail til  idporten@difi.no.  Hugs å oppgi ønska redirect-uri'er og annen nødvendig informasjon, se [klient-registreing](oidc_func_clientreg.html)
+ 1.  Be om å få en klient-integrasjon ved å sende mail til  idporten@difi.no.  Hugs å oppgi ønska redirect-uri'er og annen nødvendig informasjon, se [klient-registrering](oidc_func_clientreg.html)
 
  2. Konfigurer din føderasjonsprogramvare med informasjonen mottatt i punkt 1, og pek den mot ID-portens well-known endepunkt.
  3. Det skal nå være mulig å logge inn
+
+
+Vi ber kunder om å studere [OAuth 2.0 Threat Model and Security Considerations](https://tools.ietf.org/html/rfc6819) og
+[OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html).
+Kunder som skal lage mobil-apper bør lese [OAuth 2.0 for Native Apps](https://tools.ietf.org/html/rfc8252).
+
 
 En ikke-uttømmende liste over biblioteker og programvare som skal støtte OpenID Connect finnes [hos OpenID Foundation](http://openid.net/developers/certified/). Per juli 2017 har vi notert oss at iallefall IdentityServer4, .Net Core og ADFS fungerer opp mot ID-portens OIDC Provider.
 
@@ -70,4 +74,4 @@ Eksempel på konfigurasjon slik den var i VER2 per 2017-06-14:
 
 ## Testbrukere
 
-For ver2 vil allerede tildelte testbrukere kunne gjenbrukes. Ta kontakt med **idporten@difi.no** dersom du mangler testbukere.
+For VER1 og VER2 vil allerede tildelte testbrukere kunne gjenbrukes. Ta kontakt med **idporten@difi.no** dersom du mangler testbukere.

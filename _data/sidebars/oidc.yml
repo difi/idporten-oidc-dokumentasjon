@@ -80,6 +80,15 @@ entries:
         url: /oidc_func_pkce.html
         output: web, pdf
 
+      - title: OnBehalfOf
+        url: /oidc_func_onbehalfof.html
+        output: web, pdf
+
+      - title: Pseudonymisert innlogging
+        url: /oidc_func_nopid.html
+        output: web, pdf
+
+
   - title: Oauth2-beskytta API'er fra Difi
     url: /oidc_api.html
     output: web, pdf

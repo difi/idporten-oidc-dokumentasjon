@@ -16,8 +16,7 @@ Men kunder kan også motta kontaktopplysninger kun tilhørende innlogget bruker,
 
 ## Hvordan få tilgang ?
 
-Denne tjenesten er en tilleggstjeneste i ID-porten. Se [https://samarbeid.difi.no/difis-felleslosninger/tilleggstjenester](https://samarbeid.difi.no/difis-felleslosninger/tilleggstjenester) for generelle vilkår for tilleggstjenester.
-
+Kunde må godkjenne bruksvilkår for Kontakt- og Reservasjonsregisteret for å kunne motta kontaktopplysningene.
 
 ## Bruk av Oauth2
 
