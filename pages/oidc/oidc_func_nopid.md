@@ -20,3 +20,5 @@ Klientet kan sende ```no_pid``` scopet i autentiseringsforespørselen for å tri
 Pseudonyumisering vil skje uansett om klienten har også har brukt  ```openid``` eller ```profile``` scope.
 
 En klient kan også pre-registreres/overstyres til alltid måtte behandles for no_pid, uavhengig av hva som blir sendt i en konkret forespørsel.
+
+Klienter/Ressursservere som har tilgang til scope ```tokeninfo``` kan validere inn et pseudoymisert token ved kall på /tokeninfo-endepunktet, gitt vellykka klientautentisering.
