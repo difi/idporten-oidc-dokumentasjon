@@ -30,15 +30,16 @@ De implementerte tjenestene bygger på (deler av) følgende standarder og spesif
 * OpenID Connect Core 1.0 - [http://openid.net/specs/openid-connect-core-1_0.html](http://openid.net/specs/openid-connect-core-1_0.html)
 * OpenID Connect Discovery
 [http://openid.net/specs/openid-connect-discovery-1_0.html](http://openid.net/specs/openid-connect-discovery-1_0.html)
-*OpenID Connect Session Management
+
+* OpenID Connect Session Management
 [http://openid.net/specs/openid-connect-session-1_0.html](http://openid.net/specs/openid-connect-session-1_0.html)
-*OpenID Connect Front-Channel Logout
+* OpenID Connect Front-Channel Logout
 [http://openid.net/specs/openid-connect-frontchannel-1_0.html](http://openid.net/specs/openid-connect-frontchannel-1_0.html)
-*OAuth 2.0 Form Post Response Mode
+* OAuth 2.0 Form Post Response Mode
 [http://openid.net/specs/oauth-v2-form-post-response-mode-1_0.html](http://openid.net/specs/oauth-v2-form-post-response-mode-1_0.html)
-*OAuth 2.0 Token Introspection
+* OAuth 2.0 Token Introspection
 [https://tools.ietf.org/html/rfc7662](https://tools.ietf.org/html/rfc7662)
-*Proof Key for Code Exchange by OAuth Public Clients
+* Proof Key for Code Exchange by OAuth Public Clients
 [https://tools.ietf.org/html/rfc7636](https://tools.ietf.org/html/rfc7636)
 
 * IETF RFC6749 The OAuth 2.0 Authorization Framework - [https://tools.ietf.org/html/rfc6749](https://tools.ietf.org/html/rfc6749)
