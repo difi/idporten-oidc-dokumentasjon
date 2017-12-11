@@ -106,6 +106,9 @@ entries:
         url: /oidc_api_authlevel.html
         output: web, pdf
 
+      - title: API for administrasjon av onbehalfof-registreringer
+        url: /oidc_api_admin_onbehalfof.html
+        output: web, pdf
 
   - title: Vedlegg
     output: web, pdf
