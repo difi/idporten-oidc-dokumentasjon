@@ -42,6 +42,8 @@ For test-miljøer brukes virksomshetssertifiakter fra Buypass / Commfides sine T
 
 Følgende endepunkter er tilgjengelige i API'et:
 
+| Metode  | Sti | Beskrivelse |
+| --- | --- | --- |
 | GET |	/client/{client_id} | Henter klient med gitt klient_id |
 | GET |	/client/{client_id}/onbehalfof/{onbehalfof_id} | Henter aktuell onbehalfof registrering |
 | POST | /client/{client_id}/onbehalfof/{onbehalfof_id} | Oppretter ny onbehalfof registering |
