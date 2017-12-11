@@ -6,7 +6,6 @@ permalink: oidc_api_admin_onbehalfof.html
 
 layout: page
 sidebar: oidc
-isHome: true
 ---
 
 > API'et er under utvikling og vil være klart til bruk i løpet av vinteren 2018
