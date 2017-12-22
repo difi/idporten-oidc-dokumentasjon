@@ -68,9 +68,9 @@ entries:
         url: /oidc_func_sso.html
         output: web, pdf
 
-      - title: Klientautentisering
-        url: /oidc_func_clientauth.html
-        output: web, pdf
+#     - title: Klientautentisering
+#       url: /oidc_func_clientauth.html
+#       output: web, pdf
 
       - title: Klientregistrering
         url: /oidc_func_clientreg.html
