@@ -43,5 +43,5 @@ OpenID Connect baserer seg på at aktørene tilgjengeliggjør sin konfigurasjon 
 
 ID-portens well-known endepunkt er her:
 ```
-https://oidc.difi.no/idporten-oidc-provider/.well-known/openid-configuration
+https://oidc.difi.no/.well-known/openid-configuration
 ```
