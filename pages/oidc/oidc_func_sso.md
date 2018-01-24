@@ -33,7 +33,7 @@ Merk at begge disse spesifikasjonene er per juli 2017 i draft status.
 
 ### Initiering av SLO (Session Management)
 
-Tjenesteeier ber om logout med en redirect til ID-porten OIDC Provider endsession-endepunkt.  Adressen til endepunktet er definert i ID-porten OpenID Connect-tjenestens konfigurasjonsendepunkt.  ID-porten OIDC Provider sender en redirect til *post_logout_redirect_uri*, dersom denne er angitt og definert for klient.
+Tjenesteeier ber om logout med en redirect til ID-porten OIDC Provider endsession-endepunkt.  Adressen til endepunktet er definert i ID-porten OpenID Connect-tjenestens konfigurasjonsendepunkt.  Dersom parameterene *id_token_hint* og *post_logout_redirect_uri* sendes med, vil ID-porten OIDC Provider sender en redirect til *post_logout_redirect_uri*.  Verdien må være definert for klienten.
 
 ### Motta informasjon om SLO (Front Channel Logout)
 
