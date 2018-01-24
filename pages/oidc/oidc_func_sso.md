@@ -53,9 +53,6 @@ https://oidc-ver2.difi.no/idporten-oidc-provider/endsession
 	&state=fe93c125-4d69-4ee3-8ca5-299ac6e3e499
 ```
 
-
-
-
 ### Motta informasjon om SLO (Front Channel Logout)
 
 Dersom brukeren logger ut fra en annen tjeneste, vil ID-porten initere utlogging fra alle tjenester som er konfigurert med støtte for Front Channel Logout.  
