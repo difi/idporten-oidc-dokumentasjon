@@ -60,7 +60,7 @@ Denne er tilsvarende som ved [autorisasjonskodeflyten](oidc_auth_codeflow.html),
 | nonce | Påkrevd.|
 
 
-Etter at brukeren har logget inn vil det sendes en redirect url tilbake til klienten. Denne url'en vil inneholde et autorisasjonskode-parameter som kan brukes til oppslag for å hente tokens.
+Etter at brukeren har logget inn vil det sendes en redirect url tilbake til klienten. Denne url'en vil inneholde tokens direkte som et URI fragment. 
 
 
 ### Eksempel på forespørsel
