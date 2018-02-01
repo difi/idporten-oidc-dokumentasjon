@@ -41,10 +41,10 @@ sequenceDiagram
   end
 </div>
 
-* Klienten sender en **autentiseringsforespørsel** til OpenID Connect provideren med _response_type_ lik `id_token` eller `id_token token`.  Bruk av _nonce_ er påkrevd.   
+* Klienten sender en **autentiseringsforespørsel** til OpenID Connect provideren med _response_type_ lik `id_token` eller `id_token token` for å få utlevere id_token med OIDC.  Fortrinnsvis kan kun `token` benyttes for å bruke Oauth2 istedenfor, gjerne kombinert med egne scopes.  Bruk av _nonce_ er påkrevd.   
 * Providerens **autorisasjonsendepunkt** validerer forespørselen (f.eks. gyldig tjeneste og gyldig redirect_uri tilbake til tjenesten).
 * Brukeren gjennomfører **innlogging i provideren**
-* Provideren redirect'er brukeren tilbake til tjenesten. Redirect url'en inneholder **id_token** direkte som et URI fragment.
+* Provideren redirect'er brukeren tilbake til tjenesten. Redirect url'en inneholder **id_token** og/eller et **access_token** direkte som et URI fragment.
 * Brukeren er nå autentisert for tjenesten og ønsket handling kan utføres
 
 
@@ -56,43 +56,66 @@ Denne er tilsvarende som ved [autorisasjonskodeflyten](oidc_auth_codeflow.html),
 
 | Parameter  | Verdi |
 | --- | --- |
-| response_type | Må vere `id_token` eller `id_token token`|
+| response_type | Må vere `id_token` eller `id_token token` for bruk av OIDC.<br/>Må vere `token` for bruk av Oauth2.|
 | nonce | Påkrevd.|
 
 
-Etter at brukeren har logget inn vil det sendes en redirect url tilbake til klienten. Denne url'en vil inneholde et autorisasjonskode-parameter som kan brukes til oppslag for å hente tokens.
+Etter at brukeren har logget inn vil det sendes en redirect url tilbake til klienten. Denne url'en vil inneholde tokens direkte som et URI fragment.
 
 
 ### Eksempel på forespørsel
+Eksempelet viser ikke OIDC, men en "ren" oauth2 implisitt flyt uten utlevering av id_token.
 
-{% include note.html content="Ikkje oppdatert" %}
 
 ```
-GET /authorize
-
-  scope=openid&
+https://oidc-ver2.difi.no/idporten-oidc-provider/authorize?
+  scope=profile&
   acr_values=Level3&
-  client_id=test_rp_yt2&
+  client_id=test_rp_ver2&
   redirect_uri=https://eid-exttest.difi.no/idporten-oidc-client/authorize/response&
-  response_type=id_token&
-  state=min_fine_state_verdi&
-  nonce=min_fine_nonce_verdi&
+  response_type=token&
+  nonce=nnnnnnnn&
   ui_locales=nb
+
 ```
 
 ### Eksempel på respons:
+Her mottas kun access_token.
+```
 
-{% include note.html content="Ikkje oppdatert" %}
+GET
+http://eid-exttest.difi.no:80/idporten-oidc-client/authorize/response#
 
+access_token=33uOLzudBXEHFkhZePVsEzX3OTL24Jg9f8JAF7RU_so=&
+token_type=Bearer&
+expires_in=599
+```
+
+### Eksempel på å hente fødselsnummer
+API (ressursserver) som mottar access_token, kan kalle ID-portens /tokeninfo-endepunkt for å hente fødselsnummeret:
+
+```
+POST https://oidc-ver2.difi.no/idporten-oidc-provider/tokeninfo HTTP/1.1
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+token=33uOLzudBXEHFkhZePVsEzX3OTL24Jg9f8JAF7RU_so%3D
+```
+response
 ```
 {
-  "code" : "1JzjKYcPh4MIPP9YWxRfL-IivWblfKdiRLJkZtJFMT0=",
-  "state" : "min_fine_state_verdi"
+  "active" : true,
+  "token_type" : "Bearer",
+  "expires_in" : 570,
+  "exp" : 1517492113,
+  "iat" : 1517491513,
+  "sub" : "4CD_nqnUhfff1868ccDjfh4PQs_oL13_PjG6hYYbMEU=",
+  "pid" : "23079417653",
+  "scope" : "profile",
+  "client_id" : "test_rp_ver2",
+  "client_orgno" : "991825827"
 }
 ```
-
-
-
 ## Struktur på Id token
 
 ID-tokenet er identisk som ved bruk av [autorisasjonskode-flyten](oidc_auth_codeflow#idtoken).
@@ -107,6 +130,6 @@ Korrekt validering av Id token på klientsiden er kritisk for sikkerheten i løs
 
 ## Andre aspekt
 
-Implicit flow tillater ikke bruk av refresh_token, siden den ikke kan beskytte dette på en god måte over lengre tid.
+Implicit flow tillater ikke bruk av refresh_token, siden klienten ikke kan beskytte dette på en god måte over lengre tid.
 
-En alternativ løsning til implicit flow er at tjenesteeier setter en minimal  backend-tjeneste imellom ID-porten og SPAen og bruker autorisasjonskode-flyten til innlogging. ID-porten kan da være sikker på at sterk identitet kun bli utlevert til riktig tjenesteeier.   id_token vil kun flyte til backend-tjenesten, som oversetter til en lokal sesjon/tokens mellom SPAen og egen APIer.  For eksterne APIer kan ID-porten utstede access_tokens by reference.
+En alternativ løsning til implicit flow er at tjenesteeier setter en minimal  backend-tjeneste imellom ID-porten og SPAen og bruker autorisasjonskode-flyten til innlogging. ID-porten kan da være sikker på at sterk identitet kun bli utlevert til riktig tjenesteeier. id_token vil kun flyte til backend-tjenesten, som da må oversette til en lokal sesjon/tokens mellom SPAen og egen APIer.
