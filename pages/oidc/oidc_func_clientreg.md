@@ -17,19 +17,23 @@ Følgende informasjon må registreres om klienter:
 | attributt | beskrivelse |
 |-|-|
 | client_id | Unik identifikator for klienten |
-| client_secret | Hemmlighet som benyttes ved *client_secret_basic* klientautentisering. |
-| client_orgno | Klientens organisasjonsnummer. Brukes ved validering av virksomhetssertifikat |
+| client_type | Type klient ihht [Oauth2 kap 2.1](https://tools.ietf.org/html/rfc6749#section-2.1). Skal være  `public` for mobil-app'er og SPAer, eller `confidential` for klienter som hostes  i sikkert driftsmiljø. |
+| Ønsket metode for klient-autentisering | `client_secret_basic` eller `private_key_jwt` |
+| client_orgno | Klientens organisasjonsnummer.  <br/> For klientautentisering med `private_key_jwt` valideres denne verdien mot org.nummer i virksomhetssertifikatet som signerer grantet.  |
 | display_name | Klientens organisasjonsnavn som benyttes ved visning på web |
 | redirect_uris | Liste over gyldige url'er som provideren kan redirecte tilbake til etter vellykket autorisasjonsforespørsel. |
 | post_logout_redirect_uris | Liste over url'er som provideren redirecter til etter fullført utlogging. |
 
-Difi vil tildele *client_secret*. Kunde kan til en viss grad velge *client_id* selv, men vi foretrekker en bestemt syntaks.
+Difi vil tildele *client_secret* til kunder som ønsker slik klientautentisering. Kunde kan til en viss grad velge *client_id* selv, men vi foretrekker en bestemt syntaks.
+
+
+
 
 I tillegg _kan_ man registrere følgende:
 
 | attributt | beskrivelse |
 |-|-|
-| scopes | Liste over scopes som klienten kan forespørre. For OpenID Connect er aktuelle scopes *openid* og *profile* |
+| scopes | Liste over scopes som klienten kan forespørre. For OpenID Connect er aktuelle scopes *openid* og *profile*. For API-sikring, ta kontakt med oss. |
 | authorization_lifetime | Levetid for registrert autorisasjon. I en OpenID Connect sammenheng vil dette være tilgangen til userinfo-endepunktet |
 | access_token_lifetime | Levetid for utstedt access_token |
 | refresh_token_lifetime |Levetid for utstedt refresh_token |
