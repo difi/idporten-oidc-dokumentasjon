@@ -109,7 +109,7 @@ Access tokenets body:
 | aud | "audience" - client_id til klienten som er mottaker av dette tokenet |
 | client_orgno | Klienten sitt organisasjonsnummer |
 | scope | Liste over de scopes som dette access tokenet er bundet mot |
-| pid | Personidentifikator - fødselsnummer på den autentiserte sluttbrukeren. MERK: Dette claimet blir ikke utlevert dersom scopet no_pid er benyttet |
+| pid | Personidentifikator - fødselsnummer/d-nummer på den autentiserte sluttbrukeren. MERK: Dette claimet blir ikke utlevert dersom scopet no_pid er benyttet |
 | token_type | Type token. pr. nå¨støttes kun "Bearer" |
 | iss | Identifikator for provideren som har utstedt token'et. For ID-porten sitt ext-test miljø er dette *https://eid-exttest.difi.no/idporten-oidc-provider/* |
 | exp | Expire - Utløpstidspunktet for tokenet. Klienten skal ikke akseptere token'et etter dette tidspunktet |
@@ -145,7 +145,7 @@ Struktur på respons:
 | client_id | client_id til klienten som er mottaker av dette tokenet |
 | client_orgno | Klienten sitt organisasjonsnummer |
 | scope | Liste over de scopes som dette access tokenet er bundet mot |
-| pid | Personidentifikator - fødselsnummer på den autentiserte sluttbrukeren. MERK: Dette claimet blir ikke utlevert dersom scopet no_pid er benyttet og forespørselen mot tokeninfo er uautentisert |
+| pid | Personidentifikator - fødselsnummer/d-nummer på den autentiserte sluttbrukeren. MERK: Dette claimet blir ikke utlevert dersom scopet no_pid er benyttet og forespørselen mot tokeninfo er uautentisert |
 | exp | Expire - Utløpstidspunktet for tokenet. Klienten skal ikke akseptere token'et etter dette tidspunktet |
 | iat | Tidspunkt for utstedelse av tokenet |
 | expires_in | antall sekunder til tokenet utløper |
