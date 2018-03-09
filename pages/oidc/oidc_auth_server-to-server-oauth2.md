@@ -197,13 +197,13 @@ vil dette typisk se slik ut etter dekoding:
 {
   "aud": "test_rp",
   "client_onbehalfof_orgno": "964967725",
+  "client_onbehalfof": "leikanger_kommune",
+  "client_orgno": "991825827",
   "scope": "global/kontaktinformasjon.read global/postadresse.read global/sertifikat.read global/varslingsstatus.read global/navn.read",
   "iss": "https://oidc-test1.difi.eon.no/idporten-oidc-provider/",
   "token_type": "Bearer",
   "exp": 1520591841,
   "iat": 1520591241,
-  "client_onbehalfof": "leikanger_kommune",
-  "client_orgno": "991825827",
   "jti": "EliLSzqRatQovNiVndanlc6dXfWRNawaFkUL7tpveis="
 }
 ```
