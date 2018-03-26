@@ -34,7 +34,7 @@ I tillegg _kan_ man registrere følgende:
 | attributt | beskrivelse |
 |-|-|
 | scopes | Liste over scopes som klienten kan forespørre. For OpenID Connect er aktuelle scopes *openid* og *profile*. For API-sikring, ta kontakt med oss. |
-| authorization_lifetime | Levetid for registrert autorisasjon. I en OpenID Connect sammenheng vil dette være tilgangen til userinfo-endepunktet |
+| authorization_lifetime | Levetid for registrert autorisasjon. I en OpenID Connect sammenheng vil dette være tilgangen til userinfo-endepunktet. |
 | access_token_lifetime | Levetid for utstedt access_token |
 | refresh_token_lifetime |Levetid for utstedt refresh_token |
 | frontchannel_logout_uri | URL som provideren sender request til ved utlogging trigget av annen klient i samme sesjon |

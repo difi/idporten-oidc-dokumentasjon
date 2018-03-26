@@ -89,27 +89,31 @@ Klienten må generere og signere ein jwt med følgende elementer for å forespø
 
 &nbsp;
 
-**Eksempel på JWT struktur:**
+### Eksempel på JWT-grant struktur
+
+Selve grantet kan se slik ut:
+```
+eyJ4NWMiOlsiTUlJRkVUQ0NBXC9tZ0F3SUJBZ0lMQVVrblRnempPNTM2MHk4d0RRWUpLb1pJaHZjTkFRRUxCUUF3VVRFTE1Ba0dBMVVFQmhNQ1RrOHhIVEFiQmdOVkJBb01GRUoxZVhCaGMzTWdRVk10T1Rnek1UWXpNekkzTVNNd0lRWURWUVFEREJwQ2RYbHdZWE56SUVOc1lYTnpJRE1nVkdWemREUWdRMEVnTXpBZUZ3MHhOekEyTVRJd09EVTJNVEZhRncweU1EQTJNVEl5TVRVNU1EQmFNSGN4Q3pBSkJnTlZCQVlUQWs1UE1Td3dLZ1lEVlFRS0RDTkVTVkpGUzFSUFVrRlVSVlFnUms5U0lFWlBVbFpCVEZST1NVNUhJRTlISUVsTFZERVNNQkFHQTFVRUN3d0pUMGxFUXlCMFpYTjBNUkl3RUFZRFZRUUREQWxFU1VaSklGUkZVMVF4RWpBUUJnTlZCQVVUQ1RrNU1UZ3lOVGd5TnpDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTmduVWJpWFBtZ0E4T0J4blBhNFpsUkhLTlNpUjFPUUlqMXdZS0hyejRVMUhvV21HNStWVFpQWGJobVJ4MjBsR3FRV3JDMG1xVjJsXC9CclNUVHBNdW1vdFBNV01RTW1sVXdXcTBBWGRRRHgzSDVCR1lhNjZzVjU2eEl2QzRsektJMkVBR2pzeGRkZThYdzdheXBFNXVKXC9PVk15Y2JcL3c2bHFvRGlzOHRIeGlOMEs0WitJbFVMdnBmQ1k1NlA3QytjdVN6RlU3VVlramJ6OStYdVdabGdKRmZ3MmpBQVhnNnN6elorbHZsZUFJKzZvVXUzSGZwbnVKZUJST1wveGZEdmtjXC8wY0lQRlJIQUVlWjhuUXdic0VpK09WU0VGeVludFNXM1MwUGI5WW1KazBDSWl1Y0xuVlhKNVZCd3lsNldzYkRyY2tZZDZKT21iWEpHRVRcL050ZWhNQ0F3RUFBYU9DQWNJd2dnRytNQWtHQTFVZEV3UUNNQUF3SHdZRFZSMGpCQmd3Rm9BVVA2NzFlQXVTbzNBZ05WOWErdmNrb0ZJQjhFRXdIUVlEVlIwT0JCWUVGRWV5ZGR0S2tjZGl5RnR5dmIxblp3d0ViblRBTUE0R0ExVWREd0VCXC93UUVBd0lHUURBV0JnTlZIU0FFRHpBTk1Bc0dDV0NFUWdFYUFRQURBakNCdXdZRFZSMGZCSUd6TUlHd01EZWdOYUF6aGpGb2RIUndPaTh2WTNKc0xuUmxjM1EwTG1KMWVYQmhjM011Ym04dlkzSnNMMEpRUTJ4aGMzTXpWRFJEUVRNdVkzSnNNSFdnYzZCeGhtOXNaR0Z3T2k4dmJHUmhjQzUwWlhOME5DNWlkWGx3WVhOekxtNXZMMlJqUFVKMWVYQmhjM01zWkdNOVRrOHNRMDQ5UW5WNWNHRnpjeVV5TUVOc1lYTnpKVEl3TXlVeU1GUmxjM1EwSlRJd1EwRWxNakF6UDJObGNuUnBabWxqWVhSbFVtVjJiMk5oZEdsdmJreHBjM1F3Z1lvR0NDc0dBUVVGQndFQkJINHdmREE3QmdnckJnRUZCUWN3QVlZdmFIUjBjRG92TDI5amMzQXVkR1Z6ZERRdVluVjVjR0Z6Y3k1dWJ5OXZZM053TDBKUVEyeGhjM016VkRSRFFUTXdQUVlJS3dZQkJRVUhNQUtHTVdoMGRIQTZMeTlqY25RdWRHVnpkRFF1WW5WNWNHRnpjeTV1Ynk5amNuUXZRbEJEYkdGemN6TlVORU5CTXk1alpYSXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBRWNqS3FKdTNOb2FPRUNZVGVrNjZ3TmZqVzlpUnowVllMbHBiYzVBRkVjMmN1RWlld05SNlNoME1vNFRmeFpEVkFsaTJaaUVXYytybHZGYVMyaGJlYlIrYktVcnlQY1ZGU0NBdEM3MkQ0amE2ek1qdStOcHZFZXRUbjZrODFXZ2ZzZ2p4NlhOakpZY1wvNlFOanZUNE4yMmFkRXd5TXZoRThsamtTZzRkXC91ZFF5aTJEUWRIdDBTaHFcL1dLMDY4TitoS1JnK1JJSWRDdTZJbDlGU25keVlPMGF6V1pwY2p1akhWSDdwOHFLVlo1OEc4N0hEaUM2RmNwZVpCT216VFwvTzdYaVN5MTQxVTQzSmVGS0JYa1Z1cEMwT1lQb3NZR1BubXpFeHFXTHliZ2tiT1wvZFNsOG9EVHpJSWlmdnh5Q2QyaU1FQWMwNytPdUVlZkVUekF4anFCSE09Il0sImFsZyI6IlJTMjU2In0.eyJhdWQiOiJodHRwczpcL1wvb2lkYy10ZXN0MS5kaWZpLmVvbi5ub1wvaWRwb3J0ZW4tb2lkYy1wcm92aWRlclwvIiwic2NvcGUiOiJnbG9iYWxcL2tvbnRha3RpbmZvcm1hc2pvbi5yZWFkIGdsb2JhbFwvdmFyc2xpbmdzc3RhdHVzLnJlYWQgZ2xvYmFsXC9uYXZuLnJlYWQgZ2xvYmFsXC9wb3N0YWRyZXNzZS5yZWFkIGdsb2JhbFwvc2VydGlmaWthdC5yZWFkIiwiaXNzIjoidGVzdF9ycCIsImV4cCI6MTUyMDU4OTkyOCwiaWF0IjoxNTIwNTg5ODA4LCJqdGkiOiI0MTVlYzdhYy0zM2ViLTRjZTMtYmM4Ni02YWQ0MGUyOTc2OGYifQ.adPOxFus4Bq5okDfI2dTvmRM6Ip8tZRbJ5FQGUsvj9MCyXJg2eKhsWit99CKAZD9AO3CLNjWmXyXTTjRJiSNNulBqlLdNMByzjV1F_Y8qYNt22Y2X_5TM0gE-44vMoUoRxRW38zebzFVi_EAlbVmOoKnTgpKjREWaFRRZH5BX9l0pgCk9-s6ZazR__zFgdpr28XOzGoZHGLbbac40uXAAJk2qKxatouKybYKLWUwN6Y6gFyqY8-BrX-P-yCGlaj3NUfSiaRODMzVqbxaqW5NuVHpomQU7ycZpKgCd_xm40lohgv-k2z9QfdNXKFwPRD8yE4EGL3KYU9nar1gpcA_Ug
+```
+
+som dekoda blir:
 
 ```
 {
-  "x5c": [ "MIIFOjCCBCKgAwI``````BXYF56Q==" ],
+  "x5c": [ "MIIFETCCA/mgAwIB``````EefETzAxjqBHM=" ],
   "alg": "RS256"
 }
 .
 {
-  "aud": "https://eid-vag-opensso.difi.local/idporten-oidc-provider/",
-  "scope": "global/kontaktinformasjon.read global/varslingsstatus.read",
+  "aud": "https://oidc-test1.difi.eon.no/idporten-oidc-provider/",
+  "scope": "global/kontaktinformasjon.read global/varslingsstatus.read global/navn.read global/postadresse.read global/sertifikat.read",
   "iss": "test_rp",
-  "exp": 1477924061,
-  "iat": 1477923951,
+  "exp": 1520589928,
+  "iat": 1520589808,
+  "jti": "415ec7ac-33eb-4ce3-bc86-6ad40e29768f"
 }
 .
-Bsox4L7yqGi3d1HhW1yXTZGV95MAAFQTWr2J1iF5svzg1v5G-WwM3iGUYvgWlqG-ZrnIPu4
-jNpuwrqFRWXyFgmSHCmKx9e-7pkDQlZMDwZfYC5VxDQzS1YvIkDir9H12AhF9b64REbG5sY
-Za8gK64c4lshbk9biyGcihi5jWDENdA-Rb_eJipiOYHrDHGOjcN5GTN2XASfd1UEeET2mT-
-mysPd4CUp99ol74cl3lhAviMReLI2kMTmFus8SBozHm3aGJysU2TyX7fBBS7MxbF4Hk7c6s
-thN1oRgnpsziWIg08NDKW2cYOAIHBvz9bBf0D_dhi5kQsm9ippyrtgs5Q
+<<signaturverdi>>
 ```
 
 ## Endepunkter
@@ -153,13 +157,58 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=<jwt>
 
 &nbsp;
 
-Eksempel på respons:
+#### Eksempel på by-reference access token respons:
+
+Dersom klienten er konfigurert til å motta by-reference tokens, blir responsen slik:
 
 ```
 {
     "access_token": "fK0dhs5vQsuAUguLL2wxbXEQSE91XbOAL3foY5VR0Uk=",
     "expires_in": 599,
     "scope": "global/kontaktinformasjon.read"
+}
+```
+
+#### Eksempel på self-contained access-token :
+Dersom klienten derimot er konfigurert til å motta self-contained access-tokenet, vil access_tokenet være en JWT:
+```
+eyJraWQiOiJIdFlaMU1UbFZXUGNCV0JQVWV3TmxZd1RCRklicU1Hb081OFJ4bmN6TWJNIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJ0ZXN0X3JwIiwic2NvcGUiOiJnbG9iYWxcL2tvbnRha3RpbmZvcm1hc2pvbi5yZWFkIGdsb2JhbFwvcG9zdGFkcmVzc2UucmVhZCBnbG9iYWxcL3NlcnRpZmlrYXQucmVhZCBnbG9iYWxcL3ZhcnNsaW5nc3N0YXR1cy5yZWFkIGdsb2JhbFwvbmF2bi5yZWFkIiwiaXNzIjoiaHR0cHM6XC9cL29pZGMtdGVzdDEuZGlmaS5lb24ubm9cL2lkcG9ydGVuLW9pZGMtcHJvdmlkZXJcLyIsInRva2VuX3R5cGUiOiJCZWFyZXIiLCJleHAiOjE1MjA1OTA0MDksImlhdCI6MTUyMDU4OTgwOSwiY2xpZW50X29yZ25vIjoiOTkxODI1ODI3IiwianRpIjoid1RCWUM3RTJ6RjZ2bWZsaFFtOE9ZRjlXUXlZUkFpMkV1SmVuUXNJbzlraz0ifQ.TyhXLD-ibFjtVWQuXaEdnXbX9bJ0FBomscjudVNeFbGVYXTeJ7pe-Z7mxINgiiWjYE1U9ochMMyNAsqYmnZu7rZOOi_nQ_2c_E4hVFdOtv4NAwGDxXFUXlPUdcbpOdaW0Hint6Izd1xKwW3wzt7uG_RR1xdNw9JAUiZj0cHO4Rlgy2EJI6xL2DdGWSX7E4oD5bdEetj4aeqrWuV0CEob-demfe5stRs6PS93MPgQydKcX4RLFAsoY44Q5skF_k53md9Lq4pcyAzEg8so4A_Q96rj8gGuprtQI6t_9fRkeZAbBqRV8YQalAS0czXqRCg4Onc4XQdZSODKzqwyMIn6wQ
+```
+som typisk vil se slik ut etter dekoding:
+```
+{
+  "kid": "HtYZ1MTlVWPcBWBPUewNlYwTBFIbqMGoO58RxnczMbM",
+  "alg": "RS256"
+}
+.
+{
+  "aud": "test_rp",
+  "scope": "global/kontaktinformasjon.read global/postadresse.read global/sertifikat.read global/varslingsstatus.read global/navn.read",
+  "iss": "https://oidc-test1.difi.eon.no/idporten-oidc-provider/",
+  "token_type": "Bearer",
+  "exp": 1520590409,
+  "iat": 1520589809,
+  "client_orgno": "991825827",
+  "jti": "wTBYC7E2zF6vmflhQm8OYF9WQyYRAi2EuJenQsIo9kk="
+}.
+<<signaturverdi>>
+```
+
+#### Eksempel på self-contained acces token der klient bruker OnBehalfOf
+
+Ved bruk av onBehalfof, vil man få informasjon om begge klienter i access_token:
+```
+{
+  "aud": "test_rp",
+  "client_onbehalfof_orgno": "964967725",
+  "client_onbehalfof": "leikanger_kommune",
+  "client_orgno": "991825827",
+  "scope": "global/kontaktinformasjon.read global/postadresse.read global/sertifikat.read global/varslingsstatus.read global/navn.read",
+  "iss": "https://oidc-test1.difi.eon.no/idporten-oidc-provider/",
+  "token_type": "Bearer",
+  "exp": 1520591841,
+  "iat": 1520591241,
+  "jti": "EliLSzqRatQovNiVndanlc6dXfWRNawaFkUL7tpveis="
 }
 ```
 
@@ -188,9 +237,8 @@ Følgende attributter må sendes inn i requesten:
 | --- | --- |
 |token|\<Tokenet som skal valideres\>|
 
-&nbsp;
 
-Eksempel på request:
+#### Eksempel på request:
 
 ```
 POST /tokeninfo
@@ -199,9 +247,8 @@ Content-type: application/x-www-form-urlencoded
 token=fK0dhs5vQsuAUguLL2wxbXEQSE91XbOAL3foY5VR0Uk=
 ```
 
-&nbsp;
 
-Eksempel på en respons ved suksessfull validering av token:
+#### Eksempel på en respons ved suksessfull validering av token:
 
 ```
 {
@@ -216,9 +263,8 @@ Eksempel på en respons ved suksessfull validering av token:
 }
 ```
 
-&nbsp;
 
-Eksempel på en respons ved feilet validering av token:
+#### Eksempel på en respons ved feilet validering av token:
 
 ```
 {
@@ -230,7 +276,7 @@ Eksempel på en respons ved feilet validering av token:
 
 Nimbus JOSE + JWT er et hendig bibliotekt for å håndtere jwt'er i JAVA , se [http://connect2id.com/products/nimbus-jose-jwt](http://connect2id.com/products/nimbus-jose-jwt)
 
-Her er ein enkel eksempelkode for å generere en JWT for å forespørre tokens:
+Her er en enkel eksempelkode for å generere en JWT for å forespørre tokens:
 
 ```java
 PrivateKey myKey = ``` // Read from KeyStore
