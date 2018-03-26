@@ -13,8 +13,10 @@ sidebar: oidc
 
 Utvalgte OIDC-klienter kan få tilgang til å administrere integrasjonar i ID-porten. APIet muliggjør for eksempel:
 * Kunde kan opprette/endre nye klienter knyttet til eget org.nummer
+* Leverandør kan opprette/endre selvstendige klienter knyttet til egne kunder
 * Leverandør kan opprette/endre onbehalfof-klienter på vegne av egne kunder
 
+APIet lanseres i april 2018.
 
 ## Hvordan få tilgang ?
 
@@ -30,8 +32,8 @@ Klienten må få tildelt scopes for å få tilgang til APIet:
 | scope | beskrivelse |
 |-|-|
 |idporten:dcr.read|Gir tilgang til å lese klientregistreringer for klienter bundet mot samme org.nr. som gitt i access_token. Gir også lesetilgang til onbehalfof-registreringer|
-|idporten:dcr.write|Gir tilgang til å opprette nye klientregistreringer for klienter bundet mot samme org.nr. som gitt i access_token. Gir også lesetilgang til onbehalfof-registreringer|
 |idporten:dcr.modify|Gir tilgang til å endre klientregistreringer for klienter bundet mot samme org.nr. som gitt i access_token. Gir også lesetilgang til onbehalfof-registreringer|
+|idporten:dcr.write|Gir tilgang til å opprette nye klientregistreringer for klienter bundet mot samme org.nr. som gitt i access_token. Gir også lesetilgang til onbehalfof-registreringer|
 |idporten:dcr/onbehalfof:write|Gir tilgang til å vise, opprette, endre og slette onbehalfofregistreringer tilhørende en gitt klient. Gir ikke mulighet til å endre andre parametere på selve klienten.|
 
 
