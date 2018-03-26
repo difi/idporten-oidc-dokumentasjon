@@ -157,7 +157,9 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=<jwt>
 
 &nbsp;
 
-#### Eksempel på respons:
+#### Eksempel på by-reference access token respons:
+
+Dersom klienten er konfigurert til å motta by-reference tokens, blir responsen slik:
 
 ```
 {
@@ -168,11 +170,11 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=<jwt>
 ```
 
 #### Eksempel på self-contained access-token :
-Dersom access-tokenet i responsen er såkalt self-contained:
+Dersom klienten derimot er konfigurert til å motta self-contained access-tokenet, vil access_tokenet være en JWT:
 ```
 eyJraWQiOiJIdFlaMU1UbFZXUGNCV0JQVWV3TmxZd1RCRklicU1Hb081OFJ4bmN6TWJNIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJ0ZXN0X3JwIiwic2NvcGUiOiJnbG9iYWxcL2tvbnRha3RpbmZvcm1hc2pvbi5yZWFkIGdsb2JhbFwvcG9zdGFkcmVzc2UucmVhZCBnbG9iYWxcL3NlcnRpZmlrYXQucmVhZCBnbG9iYWxcL3ZhcnNsaW5nc3N0YXR1cy5yZWFkIGdsb2JhbFwvbmF2bi5yZWFkIiwiaXNzIjoiaHR0cHM6XC9cL29pZGMtdGVzdDEuZGlmaS5lb24ubm9cL2lkcG9ydGVuLW9pZGMtcHJvdmlkZXJcLyIsInRva2VuX3R5cGUiOiJCZWFyZXIiLCJleHAiOjE1MjA1OTA0MDksImlhdCI6MTUyMDU4OTgwOSwiY2xpZW50X29yZ25vIjoiOTkxODI1ODI3IiwianRpIjoid1RCWUM3RTJ6RjZ2bWZsaFFtOE9ZRjlXUXlZUkFpMkV1SmVuUXNJbzlraz0ifQ.TyhXLD-ibFjtVWQuXaEdnXbX9bJ0FBomscjudVNeFbGVYXTeJ7pe-Z7mxINgiiWjYE1U9ochMMyNAsqYmnZu7rZOOi_nQ_2c_E4hVFdOtv4NAwGDxXFUXlPUdcbpOdaW0Hint6Izd1xKwW3wzt7uG_RR1xdNw9JAUiZj0cHO4Rlgy2EJI6xL2DdGWSX7E4oD5bdEetj4aeqrWuV0CEob-demfe5stRs6PS93MPgQydKcX4RLFAsoY44Q5skF_k53md9Lq4pcyAzEg8so4A_Q96rj8gGuprtQI6t_9fRkeZAbBqRV8YQalAS0czXqRCg4Onc4XQdZSODKzqwyMIn6wQ
 ```
-vil dette typisk se slik ut etter dekoding:
+som typisk vil se slik ut etter dekoding:
 ```
 {
   "kid": "HtYZ1MTlVWPcBWBPUewNlYwTBFIbqMGoO58RxnczMbM",
@@ -193,6 +195,8 @@ vil dette typisk se slik ut etter dekoding:
 ```
 
 #### Eksempel på self-contained acces token der klient bruker OnBehalfOf
+
+Ved bruk av onBehalfof, vil man få informasjon om begge klienter i access_token:
 ```
 {
   "aud": "test_rp",
@@ -272,7 +276,7 @@ token=fK0dhs5vQsuAUguLL2wxbXEQSE91XbOAL3foY5VR0Uk=
 
 Nimbus JOSE + JWT er et hendig bibliotekt for å håndtere jwt'er i JAVA , se [http://connect2id.com/products/nimbus-jose-jwt](http://connect2id.com/products/nimbus-jose-jwt)
 
-Her er ein enkel eksempelkode for å generere en JWT for å forespørre tokens:
+Her er en enkel eksempelkode for å generere en JWT for å forespørre tokens:
 
 ```java
 PrivateKey myKey = ``` // Read from KeyStore
