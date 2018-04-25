@@ -77,3 +77,20 @@ ID-porten OIDC provider er integrert med ID-portens via SAML.
 Dersom en tjenesteeier starter SAML SLO, vil ID-porten OIDC Provider delta i SAML SLO. ID-porten OIDC Provider finner alle klienter i samme sesjon, og sender melding til de av klientene som støtter Front Channel Logout. Deretter sendes brukeren tilbake til ID-porten, for avsluttende redirect tilbake til tjenesteeieren som startet SAML SLO.
 
 Dersom en tjenesteeier starter utlogging med OIDC endsession, vil ID-porten sende melding til de av klientene som støtter Front Channel Logout.  Den vil også sende beskjed om SAML utlogging til ID-porten.  Avslutningsvis vil det sendes en redirect til OIDC-klienten, dersom denne er konfigurert for det.
+
+
+<div class="mermaid">
+sequenceDiagram
+  Browser ->> Din tjeneste SAML: Klikker login-knapp
+	Din tjeneste SAML ->> ID_porten SAML: LogoutRequest
+	ID_porten SAML ->> ID_porten OIDC: LogoutRequest
+	OIDC_provider ->> OIDC tjeneste A : GET frontchannel_logout_uri
+	OIDC_provider ->> OIDC tjeneste B : GET frontchannel_logout_uri
+	OIDC_provider ->> ID_porten SAML: LogoutResponse
+	ID_porten SAML ->> SAML tjeneste C: LogoutRequest
+	SAML tjeneste C ->> ID_porten SAML: LogoutResponse
+	ID_pporten SAML ->> SAML tjeneste D: LogoutRequest
+	SAML tjeneste D ->> ID_porten SAML: LogoutResponse
+	ID_porten SAML ->> Din tjeneste SAML: LogoutResponse
+
+</div>
