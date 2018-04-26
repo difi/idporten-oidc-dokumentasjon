@@ -18,11 +18,10 @@ ID-porten tilbyr to typer eidas-støtte over OIDC:
 
 Alternativene er oppsummert i følgende tabell:
 
-|Alternativ ||	Parametre tilstades i autentiseringsforespørsel	||||Respons||
-|-|-|-|-|-|-|-|-|-|-|
+|Alternativ | |	Parametre tilstades i autentiseringsforespørsel	||||Respons||
 |Flyt	|Krever gjenkjenning (1)|login_hint = eidas:true|scope = edias (utlevere eidas-kjerneattributter)| claims{identitymatch} (aksepterte tilleggsgjenkjenningsalgoritmer) | claims {eidas_*} (sektor-spesifikke-attributter)|eidas_identitymatch (Benytta gjenkjenningsalgoritme)|acr Sikkerhetsnivå|
-|-|-|-|-|-|-|-|
-|Enkel|JA|ja|nei|nei|nei|tom  (2)|	Level3 Level4|
+| --- | --- | --- |--- | --- | --- | --- | --- |
+|Enkel| JA    |ja |nei |nei  | nei |tom  (2)|	Level3 Level4|
 |Avansert	|JA|	ja|	ja	|nei|	mulig|	tom (2)	|Level3 Level4 |
 |||||BEST_EFFORT| mulig | UNAMBIGUOUS BEST_EFFORT|Level3 Level4 |
 |Avansert	|NEI	|ja	|ja	|NOT_FOUND	|mulig| UNAMBIGUOUS NOT_FOUND ERROR |Level3 Level4|
