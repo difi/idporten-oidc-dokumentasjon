@@ -8,7 +8,7 @@ layout: page
 sidebar: oidc
 ---
 
-# Oversikt eIDAS-støtte over OIDC:
+## Oversikt eIDAS-støtte over OIDC:
 
 ID-porten tilbyr to typer eidas-støtte over OIDC:
 
@@ -34,11 +34,11 @@ Alternativene er oppsummert i følgende tabell:
 
 
 
-# Tilgjengelig eIDAS-funksjonalitet i autentiseringsforespørsel
+## Tilgjengelig eIDAS-funksjonalitet i autentiseringsforespørsel
 
 Se http://openid.net/specs/openid-connect-core-1_0.html#AuthRequest for korrekt syntax og valideringsregler.
 
-## 1: eIDAS-støtte
+### 1: eIDAS-støtte
 
 Alle som vil motta eidas-pålogging sender inn "{eidas:true}" som "login_hint".
 
@@ -50,7 +50,8 @@ Det er ingen sentral tilgongsstyring i OIDC provider på kven som skal ha tilgon
 
 Ein gong i fremtida (2020?) vil ID-porten aktivere enkel eidas-støtte for alle OIDC-tenester.
 
-## 2: Utlevere eidas kjerneattributter
+### 2: Utlevere eidas kjerneattributter
+
 Ved å sende 'eidas' som et scope i autentiseringsforespørsel, vil eidas kjerneattributter (Minimum Data Set) verte utlevert i id_token:
 
 * 4 obligatoriske eidas attributter (PersonIdentifier, fornavn, etternavn, fødselsdato)
@@ -58,7 +59,8 @@ Ved å sende 'eidas' som et scope i autentiseringsforespørsel, vil eidas kjerne
 
 Denne funksjonaliteten medfører implisitt aktivering av "avansert" eidas-oppførsel, der mao: resterende funksjonalitet i dette kan avsnittet kan også då benyttast.
 
-## 3: Forespørre tilleggsgjenkjenningsalgoritmer  (herunder "kreve gjenkjenning")
+### 3: Forespørre tilleggsgjenkjenningsalgoritmer  (herunder "kreve gjenkjenning")
+
 Klienter kan forespørre ekstra gjenkjenningsalgoritmer, som vil bli forsøkt i tillegg til standard-oppførselen med entydig identifikator-basert gjenkjenning ('UNAMBIGUOUS').
 
 Dette gjøres ved å bruke standard OIDC-funksjonalitet for å forespørre claims i id_token, se http://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter .  Klienten må inkludere en array over ønska identitymatch-verdier, slik:
@@ -85,7 +87,8 @@ Den algoritmen som ligger til grunn for norsk personidentifikator i reponsen vil
 
 Dersom verdien "NOT_FOUND" er tilstede i array'en over forespurte gjenkjenningsalgoritmer, medfører dette at standardoppførselen "kreve gjenkjenning" blir deaktivert, og tjenesten vil også kunne motta ikkje-gjenkjente eIDAS-brukere. Claimet "pid" vil da ikke være tilstede i id_token. Ikke-gjenkjente eIDAS-brukeres sikkerhetsnivå mappes fremdeles til norske nivåer. 'sub'-claimet vil være en pairwise verdi basert på eidas-PersonIdentifier, som medfører at dersom samme eidas-brukere senere blir gjenkjent, vil 'sub' endre seg.
 
-##  4: Forespørre sektor-spesifikke attributter
+###  4: Forespørre sektor-spesifikke attributter
+
 eIDAS-infrasturen kan transparent overføre attributter som ikke er del av eIDAS-spesifikasjonen, såkalte sektor-spesifikke attributter.  En klient forespør slike attributter ved å prefixe dem med "eidas_" og be om dem som i claims i autentiseringsforespørselen, se forrige avsnitt. Dette er kun mulig dersom scope=eidas også er forespurt.
 
 ID-porten vil da be om disse attributtene fra den utenlandske IDP'en. Ikke alle land/IDPer kan fremskaffe attributtene, men de som ID-porten eventuelt mottar, vil bli utlevert i ID-token.
