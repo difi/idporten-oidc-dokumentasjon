@@ -78,15 +78,29 @@ Dersom en tjenesteeier starter SAML SLO, vil ID-porten OIDC Provider delta i SAM
 
 Dersom en tjenesteeier starter utlogging med OIDC endsession, vil ID-porten sende melding til de av klientene som støtter Front Channel Logout.  Den vil også sende beskjed om SAML utlogging til ID-porten.  Avslutningsvis vil det sendes en redirect til OIDC-klienten, dersom denne er konfigurert for det.
 
-### Eksempel på utlogging startet fra SAML-tjeneste
+
+### Eksempel på SLO-utlogging startet fra OIDC-tjeneste
 
 <div class="mermaid">
 sequenceDiagram
-note left of Initierende tjeneste SAML: Alle kall er redirects via browser
+	Initierende tjeneste OIDC ->> ID_porten OIDC: /endsession
+	ID_porten OIDC ->> OIDC tjenester : GET frontchannel_logout_uri
+
+	ID_porten OIDC ->> ID_porten SAML: LogoutRequest
+	ID_porten SAML ->> SAML tjenester: LogoutRequest
+	SAML tjenester ->> ID_porten SAML: LogoutResponse
+	ID_porten SAML ->> ID_porten OIDC: LogoutResponse
+	ID_porten OIDC ->> Initierende tjeneste OIDC: redirect post_logout_redirect_uri
+
+</div>
+
+### Eksempel på SLO-utlogging startet fra SAML-tjeneste
+
+<div class="mermaid">
+sequenceDiagram
 	Initierende tjeneste SAML ->> ID_porten SAML: LogoutRequest
 	ID_porten SAML ->> ID_porten OIDC: LogoutRequest
 	ID_porten OIDC ->> OIDC tjenester : GET frontchannel_logout_uri
-	note right of OIDC tjenester: "Fire and forget" (Ikke fra brukers browser)
 	ID_porten OIDC ->> ID_porten SAML: LogoutResponse
 	ID_porten SAML ->> SAML tjenester: LogoutRequest
 	SAML tjenester ->> ID_porten SAML: LogoutResponse
