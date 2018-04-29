@@ -10,6 +10,10 @@ sidebar: oidc
 
 ## Oversikt eIDAS-støtte over OIDC:
 
+
+{% include warning.html content="Støtte for eIDAS kommer i testmiljø før sommeren 2018. Lanseres etter planen i 18-09 releasen." %}
+
+
 ID-porten tilbyr to typer eidas-støtte over OIDC:
 
 * **Enkel**: Her sees eIDAS på lik linje med en norsk eID, slik at tjenesten kun vil motta innlogginger der eIDAS-brukeren er blitt entydig gjenkjent i Folkeregisteret med F/D-nummer. De fleste tjenester vil ønske denne oppførselen
