@@ -88,6 +88,10 @@ entries:
         url: /oidc_func_nopid.html
         output: web, pdf
 
+      - title: eIDAS
+        url: /oidc_func_eidas.html
+        output: web, pdf
+
 
   - title: Oauth2-beskytta API'er fra Difi
     url: /oidc_api.html

@@ -35,6 +35,15 @@ Klienten må få tildelt scopes for å få tilgang til APIet:
 |idporten:dcr.modify|Gir tilgang til å endre klientregistreringer for klienter bundet mot samme org.nr. som gitt i access_token. Gir også lesetilgang til onbehalfof-registreringer|
 |idporten:dcr.write|Gir tilgang til å opprette nye klientregistreringer for klienter bundet mot samme org.nr. som gitt i access_token. Gir også lesetilgang til onbehalfof-registreringer|
 |idporten:dcr/onbehalfof:write|Gir tilgang til å vise, opprette, endre og slette onbehalfofregistreringer tilhørende en gitt klient. Gir ikke mulighet til å endre andre parametere på selve klienten.|
+|idporten:dcr/supplier:write|Gir tilgang til å vise, opprette, endre og slette selvstendige OIDC-integrasjoner der eget org.no er angitt som leverandør (supplier_orgno). |
+
+
+## Selvstendige vs. onbehalfof-integrasjoner
+
+Leverandører kan velge to måter å integrere sine kunder på:
+
+* Bruke onbehalfofknyttet til Leverandørens egen integrasjon, som dokumentert [her](/oidc_func_onbehalfof.html).
+* Selvstendige integrasjoner, der hver integrasjon har egen client_id og klientautentisering, og der client_orgno settes like egen kunde sitt organisasjonsnummer. Leverandøren kan opprette integrasjoner på vilkårlige client_orgno, og Leverandørens eget orgno blir automatisk satt som `supplier_orgno`.  Ved endring og sletting tillater APIet kun operasjoner på integrasjoner der eget orgno er lagret som supplier_orgno fra før.
 
 
 ## REST-grensesnittet
@@ -42,6 +51,8 @@ Klienten må få tildelt scopes for å få tilgang til APIet:
 Se Open-API dokumentasjon her:
 
 [https://integrasjon-ver2.difi.no/swagger-ui.html#/](https://integrasjon-ver2.difi.no/swagger-ui.html#/)
+
+Merk at ID-porten vil opprette client_id og client_secret.
 
 
 ## Eksempel
