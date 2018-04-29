@@ -35,6 +35,7 @@ Klienten må få tildelt scopes for å få tilgang til APIet:
 |idporten:dcr.modify|Gir tilgang til å endre klientregistreringer for klienter bundet mot samme org.nr. som gitt i access_token. Gir også lesetilgang til onbehalfof-registreringer|
 |idporten:dcr.write|Gir tilgang til å opprette nye klientregistreringer for klienter bundet mot samme org.nr. som gitt i access_token. Gir også lesetilgang til onbehalfof-registreringer|
 |idporten:dcr/onbehalfof:write|Gir tilgang til å vise, opprette, endre og slette onbehalfofregistreringer tilhørende en gitt klient. Gir ikke mulighet til å endre andre parametere på selve klienten.|
+|idporten:dcr/supplier:write|Gir tilgang til å vise, opprette, endre og slette selvstendige OIDC-integrasjoner der eget org.no er angitt som leverandør (supplier_orgno). |
 
 
 ## REST-grensesnittet
