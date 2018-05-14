@@ -17,8 +17,6 @@ I [OAuth 2.0 for Native Apps](https://tools.ietf.org/html/draft-ietf-oauth-nativ
 * Autentisering må skje i ekstern browser (ikke embedded web-view).
 * PKCE må brukes for å beskytte seg mot app'er som kan sniffe trafikken og stjele dialogen.
 * Implisittflyt er _ikke_ anbefalt for mobil-app'er.
-* Mobil-app'er _kan_ behandles som Oauth2 confidential klienter, dersom man bruker instans-spesifikke klient-hemmeligheter provisjonert ved bruk av Dynamic Client Registration.
-
 
 
 ## Beskrivelse av flyten for mobil-app'er
