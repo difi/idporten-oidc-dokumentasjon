@@ -10,8 +10,6 @@ sidebar: oidc
 
 ## Overordna beskrivelse av bruksområdet
 
-{% include warning.html content="Støtten for implicit flow er eksperimentell i ID-porten. Gitt sikkerhetsutfordringene er det usikker om vi ønsker å tilby denne funksjonaliteten." %}
-
 Single-page applikasjoner (SPA) har økende popularitet. Disse skiller seg fra tradisjonelle nettjenester ved at SPAen er realisert som en ren javascript-applikasjon i brukers browser, kontra tradisjonelle nettjtenester der en sentral applikasjonserver generer HTML som blir vist i browseren.
 
 En utfordring med SPAer er at de ikke klarer å beskytte klient-hemmeligheten (evt. virksomhetssertifikatets privatnøkkel) siden hele klienten lever i brukers nettleser. SPAer er altså det som i Oauth2-verdenen kalles **public klienter**. For slike klienter er det anbefalt å bruke _implicit flow_, og ID-portens OpenID Connect provider tilbyr slik funksjonalitet.
@@ -19,6 +17,15 @@ En utfordring med SPAer er at de ikke klarer å beskytte klient-hemmeligheten (e
 Sidan det ikke er klient-autentisering ved bruk av implicit flow, kan i prinsippet hvem som helst lage en falsk SPA som bruker samme client-id, og da fremstår som tjenesteeiers tjeneste ovenfor ID-porten. Sikkerheten ved bruk av implisitt-flyten er derfor helt avhengig av at brukeren er tilstede og forstår om han har blitt lurt til å bruke en falsk applikasjon.
 
 Man bør også vurdere om SPAen i det hele tatt har behov for å et id_token fra ID-porten.  En SPA vil alltid måtte aksessere bakenforliggende APIer, enten hos tjenesteeier selv eller hos andre, og kanskje kan man klare seg med "ren" Oauth2, siden autorisasjonsserveren ved utstedelse av access_token uansett vil gjennomføre en autentisering av brukeren.
+
+## Anbefalinger / krav til bruk av SPAer
+
+Trusselbildet er forskjellig ved bruk av implisittflyt kontra tjenester som bruker ordinær autorisasjonskodeflyt.  Siden access_token blir eksporert ut i brukers browser, er det øka risiko for at token lettere kan komme på avveie eller byttes ut/manipuleres.
+
+
+Tjenesteeiere må:
+ * Lese [Oauth2 threat model](https://tools.ietf.org/html/rfc6819) og følge anbefalingene i denne
+ * Gjennomføre en risikovurdering av de dataene som blir eksport av APIet og vurdere om de sikringsmekanismer som implisittflyten tilbyr,gir tilstrekkelig beskyttelse.
 
 
 ## Beskrivelse av implisitt-flyten
