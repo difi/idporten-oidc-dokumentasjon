@@ -16,7 +16,7 @@ Utvalgte OIDC-klienter kan få tilgang til å administrere integrasjonar i ID-po
 * Leverandør kan opprette/endre selvstendige klienter knyttet til egne kunder
 * Leverandør kan opprette/endre onbehalfof-klienter på vegne av egne kunder
 
-APIet lanseres i april 2018.
+APIet lanseres i juni 2018.
 
 ## Hvordan få tilgang ?
 
@@ -35,14 +35,14 @@ Klienten må få tildelt scopes for å få tilgang til APIet:
 |idporten:dcr.modify|Gir tilgang til å endre klientregistreringer for klienter bundet mot samme org.nr. som gitt i access_token. Gir også lesetilgang til onbehalfof-registreringer|
 |idporten:dcr.write|Gir tilgang til å opprette nye klientregistreringer for klienter bundet mot samme org.nr. som gitt i access_token. Gir også lesetilgang til onbehalfof-registreringer|
 |idporten:dcr/onbehalfof:write|Gir tilgang til å vise, opprette, endre og slette onbehalfofregistreringer tilhørende en gitt klient. Gir ikke mulighet til å endre andre parametere på selve klienten.|
-|idporten:dcr/supplier:write|Gir tilgang til å vise, opprette, endre og slette selvstendige OIDC-integrasjoner der eget org.no er angitt som leverandør (supplier_orgno). |
+|idporten:dcr/supplier:write|Gir leverandører tilgang til å vise, opprette, endre og slette selvstendige OIDC-integrasjoner for andre organisasjoner. Eget org.no blir koblet til disse integrasjonene.  |
 
 
 ## Selvstendige vs. onbehalfof-integrasjoner
 
 Leverandører kan velge to måter å integrere sine kunder på:
 
-* Bruke onbehalfofknyttet til Leverandørens egen integrasjon, som dokumentert [her](/oidc_func_onbehalfof.html).
+* Bruke *onbehalfof* "under-integrasjoner" knyttet til Leverandørens egen integrasjon, som dokumentert [her](/oidc_func_onbehalfof.html).
 * Selvstendige integrasjoner, der hver integrasjon har egen client_id og klientautentisering, og der client_orgno settes like egen kunde sitt organisasjonsnummer. Leverandøren kan opprette integrasjoner på vilkårlige client_orgno, og Leverandørens eget orgno blir automatisk satt som `supplier_orgno`.  Ved endring og sletting tillater APIet kun operasjoner på integrasjoner der eget orgno er lagret som supplier_orgno fra før.
 
 
@@ -60,7 +60,7 @@ Merk at ID-porten vil opprette client_id og client_secret.
 ### Eksempel på å lese klientregistrering:
 
 ```
-GET /client/oidc/oidc_eksempel_klient
+GET /clients/oidc_eksempel_klient
 Accept: application/json
 Authorization: Bearer <my_access_token_value>
 
@@ -105,7 +105,7 @@ Respons:
 
 Forespørsel
 ```
-GET /client/oidc/oidc_eksempel_klient/onbehalof/example_onbehalof
+GET /clients/oidc_eksempel_klient/onbehalof/example_onbehalof
 Accept: application/json
 Authorization: Bearer <my_access_token_value>
 ```
@@ -128,7 +128,7 @@ Status code 200
 
 Forespørsel
 ```
-POST /client/oidc/oidc_eksempel_klient/onbehalof/
+POST /clients/oidc_eksempel_klient/onbehalof/
 Accept: application/json
 Authorization: Bearer <my_access_token_value>
 {
@@ -158,7 +158,7 @@ Status code 200
 
 Forespørsel
 ```
-PUT /client/oidc/oidc_eksempel_klient/onbehalof/example_onbehalof
+PUT /clients/oidc_eksempel_klient/onbehalof/example_onbehalof
 Content-type: application/json
 Authorization: Bearer <my_access_token_value>
 
@@ -177,7 +177,7 @@ Tilsvarende respons som ved nyregistrering
 
 Forespørsel
 ```
-DELETE /client/oidc/oidc_eksempel_klient/onbehalof/example_onbehalof
+DELETE /clients/oidc_eksempel_klient/onbehalof/example_onbehalof
 Authorization: Bearer <my_access_token_value>
 ```
 
