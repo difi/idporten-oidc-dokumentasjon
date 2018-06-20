@@ -46,6 +46,28 @@ Leverandører kan velge to måter å integrere sine kunder på:
 * Selvstendige integrasjoner, der hver integrasjon har egen client_id og klientautentisering, og der client_orgno settes like egen kunde sitt organisasjonsnummer. Leverandøren kan opprette integrasjoner på vilkårlige client_orgno, og Leverandørens eget orgno blir automatisk satt som `supplier_orgno`.  Ved endring og sletting tillater APIet kun operasjoner på integrasjoner der eget orgno er lagret som supplier_orgno fra før.
 
 
+## Ulike typer integrasjonar
+
+Man kan opprette to typer integrajonser over APIet:
+
+### 1: OIDC-integrasjon for person-autentisering
+
+Dersom minimum følgende claims er tilstede ved opprettelse/endring, vil klienten bli aktivert for person-innlogging.
+
+|claim|beskrivelse|
+|-|-|
+|client_name|Navn på klient, blir vist ved innlogging|
+|description|Beskrivelse av klienten, ikke synlig for innbyggere, men blir lagret i Difis støttesystemer|
+|client_uri|URL til klient (blir brukt på tilbake-knapp og ved feil)|
+|logo_uri| URL til logo som vises ved innlogging|
+|scopes| Må være minst `["openid"]`|
+|redirect_uris| liste med redirect-uri'er|
+
+### 2: Maskin-til-maskin-integrasjonar
+
+Registreringer som ikke oppfyller kravene i forrige avsnitt, blir opprettet som maskin-til-maskin integrasjoner.  Personinnlogging vil ikke fungere.
+
+
 ## REST-grensesnittet
 
 Se Open-API dokumentasjon her:
