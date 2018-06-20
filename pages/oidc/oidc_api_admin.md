@@ -38,12 +38,23 @@ Klienten må få tildelt scopes for å få tilgang til APIet:
 |idporten:dcr/supplier:write|Gir leverandører tilgang til å vise, opprette, endre og slette selvstendige OIDC-integrasjoner for andre organisasjoner. Eget org.no blir koblet til disse integrasjonene.  |
 
 
-## Selvstendige vs. onbehalfof-integrasjoner
+## Eierskap til integrasjoner
 
 Leverandører kan velge to måter å integrere sine kunder på:
 
-* Bruke *onbehalfof* "under-integrasjoner" knyttet til Leverandørens egen integrasjon, som dokumentert [her](/oidc_func_onbehalfof.html).
-* Selvstendige integrasjoner, der hver integrasjon har egen client_id og klientautentisering, og der client_orgno settes like egen kunde sitt organisasjonsnummer. Leverandøren kan opprette integrasjoner på vilkårlige client_orgno, og Leverandørens eget orgno blir automatisk satt som `supplier_orgno`.  Ved endring og sletting tillater APIet kun operasjoner på integrasjoner der eget orgno er lagret som supplier_orgno fra før.
+### 1: onbehalfof-integrasjoner
+
+Bruke *onbehalfof* "under-integrasjoner" knyttet til Leverandørens egen integrasjon, som dokumentert [her](/oidc_func_onbehalfof.html).
+
+### 2: Selvstendige integrasjoner
+
+Med selvstendige integrasjoner har hver integrasjon har egen client_id og klientautentisering.    
+* Leverandøren må sette client_orgno lik egen kunde sitt organisasjonsnummer.
+* Leverandøren kan opprette integrasjoner på vilkårlige client_orgno
+* Leverandørens eget organisasjonnummer blir *automatisk* satt som `supplier_orgno` (basert på virksomhetssertifikatet som blir brukt mot admin-APIet)
+* (På sikt vil) access_tokens utsted til klienten vil innholde både leverandørens og kundens organisasjonsnummer.
+
+Ved endring og sletting tillater APIet kun operasjoner på integrasjoner der eget orgno er lagret som supplier_orgno fra før.
 
 
 ## Ulike typer integrasjonar
@@ -67,6 +78,11 @@ Dersom minimum følgende claims er tilstede ved opprettelse/endring, vil kliente
 
 Registreringer som ikke oppfyller kravene i forrige avsnitt, blir opprettet som maskin-til-maskin integrasjoner.  Personinnlogging vil ikke fungere.
 
+## Rotering av client_secret
+
+For integrasjoner som bruker symmetrisk nøkkel (client_secret) som klientautentiseringsmetode, kan man generere ny secret ved å kalle [/clients/{client_id}/secret](https://eid-systest-web01.dmz.local/serviceprovider-api/swagger-ui.html#/oidc-client-controller/updateSecretUsingPOST)
+
+Merk: Difi vil på sikt innføre maks-levetid på client_secret.
 
 ## REST-grensesnittet
 
