@@ -16,8 +16,6 @@ Utvalgte OIDC-klienter kan få tilgang til å administrere integrasjonar i ID-po
 * Leverandør kan opprette/endre selvstendige klienter knyttet til egne kunder
 * Leverandør kan opprette/endre onbehalfof-klienter på vegne av egne kunder
 
-APIet lanseres i juni 2018.
-
 ## Hvordan få tilgang ?
 
 Ta kontakt med idporten@difi.no for å få tilgang til å bruke tjenesten.
