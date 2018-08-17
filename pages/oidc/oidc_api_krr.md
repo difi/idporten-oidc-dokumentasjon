@@ -75,7 +75,7 @@ Følgende header-parametere må brukes på request:
 | Parameter  | Verdi |
 | --- | --- |
 | Http-metode | POST |
-| Authorization | Bearer <access_token utstedt fra idporten-oidc-provider på bakgrunn av generert jwt-grant> |
+| Authorization | Bearer ``<access_token utstedt fra idporten-oidc-provider på bakgrunn av generert JWT-bearer grant>`` |
 
 Body i requesten er en JSON-struktur med et element `personidentifikatorer` som skal inneholde en liste med inntil 1000 personidentifikatorer.
 
