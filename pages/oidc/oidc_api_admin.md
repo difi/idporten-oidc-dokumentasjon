@@ -78,7 +78,7 @@ Registreringer som ikke oppfyller kravene i forrige avsnitt, blir opprettet som 
 
 ## Rotering av client_secret
 
-For integrasjoner som bruker symmetrisk nøkkel (client_secret) som klientautentiseringsmetode, kan man generere ny secret ved å kalle [/clients/{client_id}/secret](https://eid-systest-web01.dmz.local/serviceprovider-api/swagger-ui.html#/oidc-client-controller/updateSecretUsingPOST)
+For integrasjoner som bruker symmetrisk nøkkel (client_secret) som klientautentiseringsmetode, kan man generere ny secret ved å kalle [/clients/{client_id}/secret](https://integrasjon-ver2.difi.no/swagger-ui.html#/oidc-client-controller/updateSecretUsingPOST)
 
 Merk: Difi vil på sikt innføre maks-levetid på client_secret.
 
