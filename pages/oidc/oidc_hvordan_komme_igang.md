@@ -46,10 +46,10 @@ OpenID Connect-provideren er på plass i de fleste av Difi sine miljøer.
 
 |Miljø|URL|
 |-|-|
-|VER1|[https://oidc-ver1.difi.no/.well-known/openid-configuration](https://oidc-ver1.difi.no/.well-known/openid-configuration)|
-|VER2|[https://oidc-ver2.difi.no/.well-known/openid-configuration](https://oidc-ver2.difi.no/.well-known/openid-configuration)|
-|YT2|[https://oidc-yt2.difi.eon.no/.well-known/openid-configuration](https://oidc-yt2.difi.eon.no/.well-known/openid-configuration)|
-|PROD|[https://oidc.difi.no/.well-known/openid-configuration](https://oidc.difi.no/.well-known/openid-configuration)|
+|VER1|[https://oidc-ver1.difi.no/idporten-oidc-provider/.well-known/openid-configuration](https://oidc-ver1.difi.no/idporten-oidc-provider/.well-known/openid-configuration)|
+|VER2|[https://oidc-ver2.difi.no/idporten-oidc-provider/.well-known/openid-configuration](https://oidc-ver2.difi.no/idporten-oidc-provider/.well-known/openid-configuration)|
+|YT2|[https://oidc-yt2.difi.eon.no/idporten-oidc-provider/.well-known/openid-configuration](https://oidc-yt2.difi.eon.no/idporten-oidc-provider/.well-known/openid-configuration)|
+|PROD|[https://oidc.difi.no/idporten-oidc-provider/.well-known/openid-configuration](https://oidc.difi.no/idporten-oidc-provider/.well-known/openid-configuration)|
 
 
 Eksempel på konfigurasjon slik den var i VER2 per 2017-06-14:

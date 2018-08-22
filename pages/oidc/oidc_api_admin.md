@@ -16,8 +16,6 @@ Utvalgte OIDC-klienter kan få tilgang til å administrere integrasjonar i ID-po
 * Leverandør kan opprette/endre selvstendige klienter knyttet til egne kunder
 * Leverandør kan opprette/endre onbehalfof-klienter på vegne av egne kunder
 
-APIet lanseres i juni 2018.
-
 ## Hvordan få tilgang ?
 
 Ta kontakt med idporten@difi.no for å få tilgang til å bruke tjenesten.
@@ -80,7 +78,7 @@ Registreringer som ikke oppfyller kravene i forrige avsnitt, blir opprettet som 
 
 ## Rotering av client_secret
 
-For integrasjoner som bruker symmetrisk nøkkel (client_secret) som klientautentiseringsmetode, kan man generere ny secret ved å kalle [/clients/{client_id}/secret](https://eid-systest-web01.dmz.local/serviceprovider-api/swagger-ui.html#/oidc-client-controller/updateSecretUsingPOST)
+For integrasjoner som bruker symmetrisk nøkkel (client_secret) som klientautentiseringsmetode, kan man generere ny secret ved å kalle [/clients/{client_id}/secret](https://integrasjon-ver2.difi.no/swagger-ui.html#/oidc-client-controller/updateSecretUsingPOST)
 
 Merk: Difi vil på sikt innføre maks-levetid på client_secret.
 
