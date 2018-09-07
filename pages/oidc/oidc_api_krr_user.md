@@ -37,7 +37,7 @@ Man må forespørre ett eller flere av følgende scopes:
 
 ## API-endepunkt
 
-OpenAPI-dokumentasjon ligg her: [https://oidc-ver2.difi.no/kontaktinfo-oauth2-server/rest/swagger-ui.html#/Person/patchUserUsingPATCH](https://oidc-ver2.difi.no/kontaktinfo-oauth2-server/rest/swagger-ui.html#/Person/patchUserUsingPATCH)
+OpenAPI-dokumentasjon ligg her: [https://oidc-ver2.difi.no/kontaktinfo-oauth2-server/rest/swagger-ui.html#/Person](https://oidc-ver2.difi.no/kontaktinfo-oauth2-server/rest/swagger-ui.html#/Person)
 
 |miljø|url|
 |-|-|

@@ -16,7 +16,7 @@ Kontaktregisteret sin oppslagstjeneste tilbyr i dag eit SOAP-basert grensesnitt 
 
 Tilgangskontrollen til api'et benytter seg av flyten som er beskrevet i [Server til server autorisasjon med Oauth2](oidc_auth_server-to-server-oauth2.html)
 
-Merk at funksjoanlitet for lokal kopi (endringsmeldinger) ikke er støttet over Oauth2-grensenittet.
+Merk at funksjonalitet for lokal kopi (endringsmeldinger) ikke er støttet over Oauth2-grensenittet.
 
 
 ### Tilgjenglige scopes
@@ -37,6 +37,7 @@ Det vil alltid returneres reservasjonsstatus for brukeren.
 
 Oppslagstjenesten sin REST-tjeneste tilbyr følgende endepunkt for søk på 1...1000 personer:
 
+OpenAPI-dokumentasjon ligg her: [https://oidc-ver2.difi.no/kontaktinfo-oauth2-server/rest/swagger-ui.html#/Personer](https://oidc-ver2.difi.no/kontaktinfo-oauth2-server/rest/swagger-ui.html#/Personer)
 
 |miljø|url|
 |-|-|
