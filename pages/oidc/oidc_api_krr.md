@@ -18,30 +18,6 @@ Tilgangskontrollen til api'et benytter seg av flyten som er beskrevet i [Server 
 
 Merk at funksjoanlitet for lokal kopi (endringsmeldinger) ikke er støttet over Oauth2-grensenittet.
 
-### Krav til JWT for token-forespørsel
-
-Klienten må generere og signere ein jwt med følgende elementer for å forespørre tokens fra autorisasjonsserveren:
-
-
-**JWT-Header:**
-
-| Parameter  | Verdi |
-| --- | --- |
-| x5c | Inneholde klientens virksomhetssertifikat som er brukt for signering av JWT'en |
-| alg | RS256 - Vi støtter kun RSA-SHA256 som signeringsalgoritme |
-
-
-**JWT-Body:**
-
-| Parameter  | Verdi |
-| --- | --- |
-|aud| Audience - identifikator for ID-portens OIDC Provider - skal være: https://eid-vag-opensso.difi.local/idporten-oidc-provider/|
-|iss| issuer - klient-ID som er registert hos ID-porten OIDC-provider|
-|scope| Scope som klient forespør tilgang til, kan sende inn liste av scope separert med whitespace|
-|iat| issued at - tidsstempel for når jwt'en ble generert - **MERK:** Tidsstempelet tar utgangspunkt i UTC-tid|
-|exp| expiration time - tidsstempel for når jwt'en utløper - **MERK:** Tidsstempelet tar utgangspunkt i UTC-tid **MERK:** ID-porten godtar kun maks levetid på jwt'en til 120 sekunder (exp - iat <= 120 )|
-|jti| Optional - JWT ID - unik id på jwt'en som settes av klienten. **MERK:** JWT'er kan ikke gjenbrukes. ID-porten håndterer dette ved å sammenligne en hash-verdi av jwt'en mot tidligere brukte jwt'er. Dette impliserer at dersom klienten ønsker å sende mer enn en token-request i sekundet må jti elementet benytttes.|
-
 
 ### Tilgjenglige scopes
 
@@ -53,6 +29,7 @@ Det er 1-1 mapping mellom OAuth2 scopes og informasjonsbehov-elementet brukt i S
 | global/varslingsstatus.read | Returnerer status for om kontaktinfomasjonen kan brukast for varsling iht. eForvaltningsforskrifta sin §32 |
 | global/sikkerdigitalpost.read | Returnerer adresse for digital post til innbygger |
 | global/sertifikat.read | Returnerer brukerens krypteringssertifikat ved sending av digital post |
+| global/spraak.read | Returnerer brukerens foretrukne språk for kommunikasjon med det offentlige.  |
 
 Det vil alltid returneres reservasjonsstatus for brukeren.
 
@@ -68,7 +45,7 @@ Oppslagstjenesten sin REST-tjeneste tilbyr følgende endepunkt for søk på 1...
 |YT2|[https://oidc-yt2.difi.eon.no/kontaktinfo-oauth2-server/rest/v1/personer](https://oidc-yt2.difi.eon.no/kontaktinfo-oauth2-server/rest/v1/personer)|
 |PROD|[https://oidc.difi.no/kontaktinfo-oauth2-server/rest/v1/personer](https://oidc.difi.no/kontaktinfo-oauth2-server/rest/v1/personer)|
 
-**Merk:** Man vil oppnå vesentlig bedre ytelse (målt i personer/sekund) ved å slå opp 1000 personer i gangen kontra 1000 enkelt-oppslag.
+**Merk:** Man vil oppnå vesentlig bedre ytelse (målt i personer/sekund) ved å slå opp 1000 personer i gangen kontra tusen enkelt-oppslag.
 
 Følgende header-parametere må brukes på request:
 

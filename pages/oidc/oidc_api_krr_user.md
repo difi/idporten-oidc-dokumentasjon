@@ -32,10 +32,12 @@ Man må forespørre ett eller flere av følgende scopes:
 | user/varslingsstatus.read | Returnerer status for om kontaktinfomasjonen kan brukast for varsling iht. eForvaltningsforskrifta sin §32 |
 | user/sikkerdigitalpost.read | Returnerer adresse for digital post til innbygger |
 | user/sertifikat.read | Returnerer brukerens krypteringssertifikat ved sending av digital post |
-
-og vil da motta et access_token som kan benyttes mot Kontakt- og Reservasjonsregisteret sitt endepunkt.
+| user/spraak.read | Returnerer brukerens foretrukne språk for kommunikasjon med det offentlige.  |   
+| user/spraak.write | Endrer brukerens foretrukne språk for kommunikasjon med det offentlige. |
 
 ## API-endepunkt
+
+OpenAPI-dokumentasjon ligg her: [https://oidc-ver2.difi.no/kontaktinfo-oauth2-server/rest/swagger-ui.html#/Person/patchUserUsingPATCH](https://oidc-ver2.difi.no/kontaktinfo-oauth2-server/rest/swagger-ui.html#/Person/patchUserUsingPATCH)
 
 |miljø|url|
 |-|-|
@@ -75,3 +77,18 @@ Se https://begrep.difi.no/Oppslagstjenesten/Person for definisjon av kodeverket.
          }
       }
 ```
+
+### Eksempel på endring av språk:
+
+Forspørselen nedenfor vil endre innlogget bruker sitt foretrukne språk i Kontaktregisteret til engelsk:
+
+```
+PATCH /rest/v1/personer
+Content-type: application/json
+Authorization: Bearer SWDQ_pVct3HIzsIaC3zHDuMmIqffr4ORr508N3p0Mtg=
+
+{
+ "spraak" : "en"
+}
+```
+Se også [OpenAPI-dokumentasjonen](https://oidc-ver2.difi.no/kontaktinfo-oauth2-server/rest/swagger-ui.html#/Person/patchUserUsingPATCH).
