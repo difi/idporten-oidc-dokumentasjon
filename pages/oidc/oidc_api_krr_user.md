@@ -49,7 +49,7 @@ OpenAPI-dokumentasjon ligg her: [https://oidc-ver2.difi.no/kontaktinfo-oauth2-se
 
 {% include note.html content="Merk den lille forskjellen mellom 'person' (dette endepunktet) og 'personer' ([server-til-server endepunktet](oidc_api_krr.html))" %}
 
-
+ 
 Følgende header-parametere må brukes på request:
 
 | Parameter  | Verdi |
