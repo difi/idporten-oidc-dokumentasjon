@@ -91,7 +91,7 @@ Følgende attributter må settes på request:
 | prompt | Brukes til å styre providerens interaksjon med sluttbrukeren. Foreløpig er dette parameteret lite relevant da piloten ikke ivaretar noen sentral brukersesjon |
 
 
-Etter at brukeren har logget inn vil det sendes en redirect url tilbake til klienten. Denne url'en vil inneholde et autorisasjonskode-parameter som kan brukes til oppslag for å hente tokens.
+Etter at brukeren har logget inn vil det sendes en redirect url tilbake til klienten. Denne url'en vil inneholde et autorisasjonskode-parameter `code` som kan brukes til oppslag for å hente tokens.  Koden er base64-enkoda og URL-safe.
 
 
 ### Eksempel på forespørsel
@@ -148,7 +148,7 @@ samt at følgende attributter må sendes inn i requesten:
 | --- | --- |
 | client_id | Klientens ID |
 | grant_type | Valgt grant-metode, en av: <ul><li>`authorization_code`</li><li>`refresh_token`</li></ul>|
-| code | autorisasjonskode (*code*) motatt i [autentiseringsresponsen](#authresponse) |
+| code | autorisasjonskode (*code*) motatt i [autentiseringsresponsen](#authresponse).   |
 | redirect_uri | ønsket redirect_uri, skal være identisk med verdi brukt i autentiseringsforespørsel |
 
 
