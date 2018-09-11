@@ -82,6 +82,7 @@ Klienten må generere og signere ein jwt med følgende elementer for å forespø
 | --- | --- |
 |aud| Audience - identifikator for ID-portens OIDC Provider.  Se ID-portens `well-known`-endepunkt for aktuelt miljø for å finne riktig verdi. |
 |iss| issuer - client ID som er registert hos ID-porten OIDC-provider|
+|iss_onbehalfof| onbehalfof - verdi for organisasjonen som klienten opptrår på vegne av|
 |scope| Scope som klient forespør tilgang til, kan sende inn liste av scope separert med whitespace|
 |iat| issued at - tidsstempel for når jwt'en ble generert - **MERK:** Tidsstempelet tar utgangspunkt i UTC-tid|
 |exp| expiration time - tidsstempel for når jwt'en utløper - **MERK:** Tidsstempelet tar utgangspunkt i UTC-tid **MERK:** ID-porten godtar kun maks levetid på jwt'en til 120 sekunder (exp - iat <= 120 )|
@@ -108,6 +109,29 @@ som dekoda blir:
   "aud": "https://oidc-test1.difi.eon.no/idporten-oidc-provider/",
   "scope": "global/kontaktinformasjon.read global/varslingsstatus.read global/navn.read global/postadresse.read global/sertifikat.read",
   "iss": "test_rp",
+  "exp": 1520589928,
+  "iat": 1520589808,
+  "jti": "415ec7ac-33eb-4ce3-bc86-6ad40e29768f"
+}
+.
+<<signaturverdi>>
+```
+
+### Eksempel på JWT-grant struktur med onbehalfof-verdi
+
+Eksempel på jwt-grant for klient med klientID "test_rp" og bruk av onbehalfof-verdi "leikanger_kommune" :
+
+```
+{
+  "x5c": [ "MIIFETCCA/mgAwIB``````EefETzAxjqBHM=" ],
+  "alg": "RS256"
+}
+.
+{
+  "aud": "https://oidc-test1.difi.eon.no/idporten-oidc-provider/",
+  "scope": "global/kontaktinformasjon.read global/varslingsstatus.read global/navn.read global/postadresse.read global/sertifikat.read",
+  "iss": "test_rp",
+  "iss_onbehalfof": "leikanger_kommune",
   "exp": 1520589928,
   "iat": 1520589808,
   "jti": "415ec7ac-33eb-4ce3-bc86-6ad40e29768f"
