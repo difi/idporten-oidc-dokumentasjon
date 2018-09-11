@@ -49,7 +49,7 @@ OpenAPI-dokumentasjon ligg her: [https://oidc-ver2.difi.no/kontaktinfo-oauth2-se
 
 {% include note.html content="Merk den lille forskjellen mellom 'person' (dette endepunktet) og 'personer' ([server-til-server endepunktet](oidc_api_krr.html))" %}
 
- 
+
 Følgende header-parametere må brukes på request:
 
 | Parameter  | Verdi |
@@ -83,7 +83,7 @@ Se https://begrep.difi.no/Oppslagstjenesten/Person for definisjon av kodeverket.
 Forspørselen nedenfor vil endre innlogget bruker sitt foretrukne språk i Kontaktregisteret til engelsk:
 
 ```
-PATCH /rest/v1/personer
+PATCH /rest/v1/person
 Content-type: application/json
 Authorization: Bearer SWDQ_pVct3HIzsIaC3zHDuMmIqffr4ORr508N3p0Mtg=
 
@@ -91,4 +91,7 @@ Authorization: Bearer SWDQ_pVct3HIzsIaC3zHDuMmIqffr4ORr508N3p0Mtg=
  "spraak" : "en"
 }
 ```
+
+Det er viktig at kunder som bruker skrive-API informerer brukeren om at endringer skjer i et nasjonalt register, og ikke kun for denne tjenesten.
+
 Se også [OpenAPI-dokumentasjonen](https://oidc-ver2.difi.no/kontaktinfo-oauth2-server/rest/swagger-ui.html#/Person/patchUserUsingPATCH).

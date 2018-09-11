@@ -79,7 +79,7 @@ claims=
 {
   "id_token":
      {
-      "identitymatch": { "values": ["besteffort", "notfound"] }
+      "identitymatch":  { "values": ["BEST_EFFORT", "NOT_FOUND"] }
      }
 }
 
