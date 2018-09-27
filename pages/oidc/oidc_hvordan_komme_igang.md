@@ -16,7 +16,7 @@ Man kan gjerne teste løsningen i testmiljø før man godtar bruksvilkårene.
 
 Se
 [https://samarbeid.difi.no/bruksvilkar/bruksvilkar-difis-felleslosninger](https://samarbeid.difi.no/bruksvilkar/bruksvilkar-difis-felleslosninger#1.%20Generelle%20bruksvilk%C3%A5r%20for%20Difis%20fellesl%C3%B8sninger)
- for mer informasjon om hvordan du kan bli tjenesteeierr i ID-porten
+ for mer informasjon om hvordan du kan bli tjenesteeier i ID-porten
 
 ## Fremgangsmåte
  1.  Be om å få en klient-integrasjon ved å sende mail til  idporten@difi.no.  Hugs å oppgi ønska redirect-uri'er og annen nødvendig informasjon, se [klient-registrering](oidc_func_clientreg.html)
