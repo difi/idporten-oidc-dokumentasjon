@@ -82,7 +82,7 @@ Authorization: Bearer SWDQ_pVct3HIzsIaC3zHDuMmIqffr4ORr508N3p0Mtg=
          "kontaktinformasjon":
          {
             "epostadresse": "23079421936-test@minid.norge.no",
-            "epostadresse_oppdatert": "2010-12-16T13:32:05.000+01:00"
+            "epostadresse_oppdatert": "2018-06-29T10:14:52+02",
          }
       }
    ]
