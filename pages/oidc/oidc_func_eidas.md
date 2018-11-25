@@ -59,6 +59,15 @@ Det er ingen sentral tilgongsstyring i OIDC provider på kven som skal ha tilgon
 
 Ein gong i fremtida (2020?) vil ID-porten aktivere enkel eidas-støtte for alle OIDC-tenester.
 
+```
+https://oidc-ver2.difi.no/idporten-oidc-provider/authorize?
+ ...
+  login_hint=eidas:true
+ ...
+```
+
+
+
 ### 2: Utlevere eidas kjerneattributter
 
 Ved å sende 'eidas' som et scope i autentiseringsforespørsel, vil eidas kjerneattributter (Minimum Data Set) verte utlevert i id_token:
@@ -67,6 +76,18 @@ Ved å sende 'eidas' som et scope i autentiseringsforespørsel, vil eidas kjerne
 * 5 valfrie eidas attributter (om desse eksisterer) (todo)
 
 Denne funksjonaliteten medfører implisitt aktivering av "avansert" eidas-oppførsel, der mao: resterende funksjonalitet i dette kan avsnittet kan også då benyttast.
+
+#### Eksempel:
+
+```
+https://oidc-ver2.difi.no/idporten-oidc-provider/authorize?
+ ...
+  scope=openid profile eidas
+  login_hint=eidas:true
+ ...
+```
+
+
 
 ### 3: Forespørre tilleggsgjenkjenningsalgoritmer  (herunder "kreve gjenkjenning")
 
@@ -96,6 +117,20 @@ Den algoritmen som ligger til grunn for norsk personidentifikator i reponsen vil
 
 Dersom verdien "NOT_FOUND" er tilstede i array'en over forespurte gjenkjenningsalgoritmer, medfører dette at standardoppførselen "kreve gjenkjenning" blir deaktivert, og tjenesten vil også kunne motta ikkje-gjenkjente eIDAS-brukere. Claimet "pid" vil da ikke nødvendigvis være tilstede i id_token. Ikke-gjenkjente eIDAS-brukeres sikkerhetsnivå mappes fremdeles til norske nivåer. 'sub'-claimet vil være en pairwise verdi basert på eidas-PersonIdentifier, som medfører at dersom samme eidas-brukere senere blir gjenkjent, vil 'sub' endre seg.
 
+#### Eksempel:
+
+```
+https://oidc-ver2.difi.no/idporten-oidc-provider/authorize?
+ ...
+  scope=openid profile eidas&
+  login_hint=eidas:true&
+  claims={"id_token": { "identitymatch": { "values": ["BEST_EFFORT", "NOT_FOUND"] }}}
+ ...
+```
+
+
+
+
 ###  4: Forespørre sektor-spesifikke attributter
 
 eIDAS-infrasturen kan transparent overføre attributter som ikke er del av eIDAS-spesifikasjonen, såkalte sektor-spesifikke attributter.  En klient forespør slike attributter ved å prefixe dem med "eidas_" og be om dem som i claims i autentiseringsforespørselen, se forrige avsnitt. Dette er kun mulig dersom scope=eidas også er forespurt.
@@ -103,15 +138,17 @@ eIDAS-infrasturen kan transparent overføre attributter som ikke er del av eIDAS
 ID-porten vil da be om disse attributtene fra den utenlandske IDP'en. Ikke alle land/IDPer kan fremskaffe attributtene, men de som ID-porten eventuelt mottar, vil bli utlevert i ID-token.
 
 
-### Eksempel på request
+#### Eksempel på request
 ```
 https://oidc.difi.no/authorize?             
    ...              
    &scopes=openid eidas             
-   &login_hint={eidas:true}             
-   &claims={"idtoken":{"eidas_sector_att_1":null, "eidas_sector_att_2":null, "identitymatch":{ "values": ["besteffort", "notfound"] }}}      
+   &login_hint=eidas:true             
+   &claims={"idtoken":{"eidas_sector_att_1":null, "eidas_sector_att_2":null, "identitymatch": { "values": ["BEST_EFFORT", "NOT_FOUND"] } }}      
     ...                                          
 ```
+
+
 
 
 ## Autentiserings-respons
@@ -179,3 +216,20 @@ Ved bruk av tilleggsgjenkjenningsalgoritmer vil  tjenesteeier kunne motta to ide
 
 
 Merk av ved bruk av tilleggsgjenkjenningsalgoritmer, vil fravær av verdi i feltet *pid* ikke  garantere at personen ikke har fått tildelt d/f-nummer.
+
+## Utenlandske testbrukere
+
+Det er dessverre ikke mange land som tilbyr dedikerte testbrukere ennå.  Vi anbefaler tjenesteeiere å velge *Sverige* som innloggingsland, og deretter velge "Test ID-tjänst",  her vil man få en nedtrekksliste med tilgjengelige testbrukere.  
+
+Den først i lista, Mohamed Al Samed, er hardkoda i den norske eIDAS Noden til å bli  entydig gjenkjent med norsk D-nummer 59125502061.  ID-token for en autentisering på eidas-nivå 'substantial' vil se slik ut:
+
+```
+ "amr" : [ "eIDAS" ],
+ "pid" : "59125502061",
+ "eidas-identitymatch" : "UNAMBIGUOUS",
+ "eidas-personidentifier" : "SE/NO/199008199391",
+ "eidas-firstname" : "Mohamed",
+ "eidas-familyname" : "Al Samed",
+ "eidas-dateofbirth" : "1990-08-19",
+ "acr" : "Level3",
+ ```
