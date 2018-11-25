@@ -16,10 +16,6 @@ ID-porten er knyttet til EUs infrastruktur for autentisering på tvers av landeg
 ## Overordnet om eIDAS-støtte
 
 
-{% include warning.html content="Støtte for eIDAS kommer i testmiljø før sommeren 2018. Gresensnittet er foreløbig.  Lanseres etter planen i 18-09 releasen i september." %}
-
-
-
 ID-porten tilbyr to typer eidas-støtte over OIDC:
 
 * **Enkel**: Her sees eIDAS på lik linje med en norsk eID, slik at tjenesten kun vil motta innlogginger der eIDAS-brukeren er blitt entydig gjenkjent i Folkeregisteret med F/D-nummer. De fleste tjenester vil ønske denne oppførselen.
@@ -233,3 +229,9 @@ Den først i lista, Mohamed Al Samed, er hardkoda i den norske eIDAS Noden til �
  "eidas-dateofbirth" : "1990-08-19",
  "acr" : "Level3",
  ```
+
+## Integrerte land i produksjonsmiljøet
+
+Per November 2018 er det ingen land tilgjengelig i produksjonsmiljøet.    Vi forventer å ha Tyskland, Italia, Portugal, Estland, Spania og Luxemburg i løpet av 2019, etterhvert som de blir formelt *notifisert* og fagfellevurdert av EU-kommisjonen.  For en oppdatert status, se EU-kommisjonen sin side: [https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS)
+
+I testmiljøet vi for tiden 19 land integrert.
