@@ -2,7 +2,7 @@
 title: OAuth2 beskytta REST-API for administrasjon av Maskinporten
 description: API som gir brukere av Maskinporten  mulighet til å administrere API-sikring.
 summary: "Oauth2-beskyttet REST-grensesnitt som gir utvalgte kunder mulighet til å selv-administrere tilgang til sine APIer i Maskinporten."
-permalink: oidc_api_admin.html
+permalink: oidc_api_admin_maskinporten.html
 
 layout: page
 sidebar: oidc
