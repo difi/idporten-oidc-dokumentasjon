@@ -51,9 +51,7 @@ Standard gjenkjenningsalgoritme basert på entydig, identifikator-basert gjenkje
 
 eIDAS sikkerhetstnivå "high" mappes til "Level4" og nivå "substantial" mappes til "Level3" i acr-claimet i id_token.
 
-Det er ingen sentral tilgongsstyring i OIDC provider på kven som skal ha tilgong, alle som vil ha får tilgong til eidas.
-
-Ein gong i fremtida (2020?) vil ID-porten aktivere enkel eidas-støtte for alle OIDC-tenester.
+Det er ingen sentral tilgongsstyring i OIDC provider på kven som skal ha tilgong, alle klienter kan sende login_hint. Ein gong i fremtida (2020?) vil ID-porten aktivere enkel eidas-støtte for alle OIDC-tenester.
 
 ```
 https://oidc-ver2.difi.no/idporten-oidc-provider/authorize?
@@ -72,6 +70,8 @@ Ved å sende 'eidas' som et scope i autentiseringsforespørsel, vil eidas kjerne
 * 5 valfrie eidas attributter (om desse eksisterer) (todo)
 
 Denne funksjonaliteten medfører implisitt aktivering av "avansert" eidas-oppførsel, der mao: resterende funksjonalitet i dette kan avsnittet kan også då benyttast.
+
+Den aktuelle Oauth2-klienten må pre-registreres med tilgang til 'eidas'-scope, for at dette skal virke.
 
 #### Eksempel:
 
