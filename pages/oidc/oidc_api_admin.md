@@ -21,7 +21,7 @@ Utvalgte OIDC-klienter kan få tilgang til å administrere integrasjonar i ID-po
 Ta kontakt med idporten@difi.no for å få tilgang til å bruke tjenesten.
 
 
-## Bruk av Oauth2
+## Bruk av Oauth2{#scopes}
 
 APIet er sikret vha. [server-til-server Oauth](https://difi.github.io/idporten-oidc-dokumentasjon//oidc_auth_server-to-server-oauth2.html), dvs. med bruk av virksomhetssertifikat.
 
