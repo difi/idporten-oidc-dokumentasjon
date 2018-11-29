@@ -106,12 +106,20 @@ entries:
         url: /oidc_api_krr_user.html
         output: web, pdf
 
-      - title: Innbyggers påloggingsnivå
+      - title: Innbyggers innloggingsnivå
         url: /oidc_api_authlevel.html
+        output: web, pdf
+
+      - title: Innbyggers innloggingshistorikk
+        url: /oidc_api_logghistorikk.html
         output: web, pdf
 
       - title: Administrasjon av OICD-integrasjoner
         url: /oidc_api_admin.html
+        output: web, pdf
+
+      - title: Administrasjon av Maskinporten
+        url: /oidc_api_admin_maskinporten.html
         output: web, pdf
 
   - title: Vedlegg
