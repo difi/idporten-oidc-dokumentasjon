@@ -1,7 +1,7 @@
 ---
-title: "OAuth2 beskytta REST-API for administrasjon av Maskinporten"
+title: "	API for administrasjon av Maskinporten"
 description: "API som gir brukere av Maskinporten  mulighet til å administrere API-sikring."
-summary: "Oauth2-beskyttet REST-grensesnitt som gir utvalgte kunder mulighet til å selv-administrere tilgang til sine APIer i Maskinporten."
+summary: "Oauth2-beskyttet REST-grensesnitt som gir utvalgte kunder mulighet til å selv-administrere API-tilgang gjennom  Maskinporten."
 permalink: oidc_api_admin_maskinporten.html
 
 layout: page
@@ -11,7 +11,7 @@ sidebar: oidc
 
 ## Introduksjon
 
-"Maskinporten" er en egenskap ved ID-portens OIDC provider som tilbyr en enkel modell for API-sikring basert på såkalt "2-legged Oauth", se [server-to-server Oauth2](/oidc_auth_server-to-server.html).
+"Maskinporten" er en egenskap ved ID-portens OIDC provider som tilbyr en enkel modell for API-sikring basert på såkalt "2-legged Oauth", se [server-to-server Oauth2](oidc_auth_server-to-server.html), innspirert av [Google sine system-kontoer](https://developers.google.com/identity/protocols/OAuth2ServiceAccount)
 
 På denne siden dokumenterer vi APIet som gir API-konsumenter og API-tilbydere mulighet til selvbetjening av API-tilgang.  Maskinporten sitt API er i praksis en liten utvidelse av [ID-porten sitt API for selvbetjening av integrasjoner](oidc_api_admin.html).
 
@@ -24,7 +24,7 @@ Ta kontakt med idporten@difi.no for å få tilgang til å bruke APIet.
 
 ### Bruk av Oauth2
 
-APIet er også sikret vha. [server-til-server Oauth](https://difi.github.io/idporten-oidc-dokumentasjon//oidc_auth_server-to-server-oauth2.html), dvs. med bruk av virksomhetssertifikat, og klienten må få tildelt scopes for å få tilgang til APIet:
+APIet er også sikret vha. [server-til-server Oauth](oidc_auth_server-to-server-oauth2.html), dvs. med bruk av virksomhetssertifikat, og klienten må få tildelt scopes for å få tilgang til APIet:
 
 API-tilbydere må ha:
 
@@ -33,7 +33,7 @@ API-tilbydere må ha:
 |idporten:scopes.write|Gir tilgang til å opprette/endre APIer, og gi/fjerne tilgang til konsumenter|
 
 
-API-konsumenter bruker scopes som definert i [ID-porten sitt API for selvbetjening av integrasjoner](/oidc_api_admin.html#scopes)
+API-konsumenter bruker scopes som definert i [ID-porten sitt API for selvbetjening av integrasjoner](oidc_api_admin.html#scopes)
 
 ### OpenAPI-dokumentasjon
 
