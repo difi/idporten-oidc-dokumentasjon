@@ -13,7 +13,7 @@ sidebar: oidc
 
 "Maskinporten" er en egenskap ved ID-portens OIDC provider som tilbyr en enkel modell for API-sikring basert på såkalt "2-legged Oauth", se [server-to-server Oauth2](/oidc_auth_server-to-server.html).
 
-På denne siden dokumenterer vi APIet som gir API-konsumenter og API-tilbydere mulighet til selvbetjening av API-tilgang.  Maskinporten sitt API er i praksis en liten utvidelse av [ID-porten sitt API for selvbetjening av integrasjoner](/oidc_api_admin.html).
+På denne siden dokumenterer vi APIet som gir API-konsumenter og API-tilbydere mulighet til selvbetjening av API-tilgang.  Maskinporten sitt API er i praksis en liten utvidelse av [ID-porten sitt API for selvbetjening av integrasjoner](oidc_api_admin.html).
 
 
 ## Om selvbetjenings-APIet
