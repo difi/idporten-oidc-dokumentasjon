@@ -37,7 +37,7 @@ API-konsumenter bruker scopes som definert i [ID-porten sitt API for selvbetjeni
 
 ### OpenAPI-dokumentasjon
 
-REST-grensesnittet er [dokumentert her](https://integrasjon-ver2.difi.no/swagger-ui.html#).
+REST-grensesnittet er [dokumentert her](https://integrasjon-ver2.difi.eon.no/swagger-ui.html#).
 
 Merk at du må manuelt velge riktig spec' oppe i høyre hjørne.  For Maskinporten er det "Scopes" du skal se på.
 
