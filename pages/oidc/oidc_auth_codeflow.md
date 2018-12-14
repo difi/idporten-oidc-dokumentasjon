@@ -76,19 +76,19 @@ Følgende header-parametere må brukes på request:
 
 &nbsp;
 
-Følgende attributter må settes på request:
+Følgende attributter kan settes på request:
 
 | Parameter  | Verdi |
 | --- | --- |
-| response_type | Her støtter vi kun 'code'|
-| client\_id | Klientens tildelte id |
-| redirect\_uri | URI som sluttbruker skal redirectes tilbake til etter fullført authentisering. Kun forhåndsregistrerte url'er kan brukes |
+| response_type | Verdien 'code' gir autorisasjonskodeflyt. Må oppgis.|
+| client\_id | Klientens tildelte id. Må oppgis. |
+| redirect\_uri | URI som sluttbruker skal redirectes tilbake til etter fullført authentisering. Kun forhåndsregistrerte url'er kan brukes. Må oppgis. |
 | scope | Scope som forespørres. Kan være en liste separert med whitespace. For autentiseringer må _openid_ brukes |
 | state | Verdi som settes av klient og returneres i callback-responsen etter fullført autentisering. Bør benyttes til å implementere CSRF-beskyttelse |
 | nonce | Verdi som settes av klient og returneres som en del av ID token. Bør brukes til å binde en klient-sesjon til et gitt ID-token, og hindre replay attacks  |
 | acr\_values | Ønsket sikkerhetsnivå, kan være *Level3* eller *Level4* |
 | ui\_locales | Ønsket språk brukt i Id-porten. støtter *nb*, *nn*, *en* eller *se* |
-| prompt | Brukes til å styre providerens interaksjon med sluttbrukeren. Foreløpig er dette parameteret lite relevant da piloten ikke ivaretar noen sentral brukersesjon |
+| prompt | Kan brukes til å styre providerens interaksjon med sluttbrukeren. Foreløpig er dette parameteret lite relevant da piloten ikke ivaretar noen sentral brukersesjon |
 
 
 Etter at brukeren har logget inn vil det sendes en redirect url tilbake til klienten. Denne url'en vil inneholde et autorisasjonskode-parameter `code` som kan brukes til oppslag for å hente tokens.  Koden er base64-enkoda og URL-safe.
