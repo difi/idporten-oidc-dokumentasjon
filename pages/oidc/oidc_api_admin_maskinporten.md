@@ -24,7 +24,7 @@ Ta kontakt med idporten@difi.no for å få tilgang til å bruke APIet.
 
 ### Bruk av Oauth2
 
-APIet er også selv sikret vha. [server-til-server Oauth](oidc_auth_server-to-server-oauth2.html), dvs. med bruk av virksomhetssertifikat, og klienten må få tildelt scopes for å få tilgang til APIet:
+APIet er også selv sikret vha. [server-til-server Oauth](oidc_auth_server-to-server-oauth2.html), dvs. med bruk av virksomhetssertifikat, og virksomheten sin administrasjons-klient må manuelt få tildelt scopes for å få tilgang til selvbetjeningsAPIet:
 
 API-tilbydere må ha:
 
@@ -34,6 +34,9 @@ API-tilbydere må ha:
 
 
 API-konsumenter bruker scopes som definert i [ID-porten sitt API for selvbetjening av integrasjoner](oidc_api_admin.html#scopes)
+
+Vi krever at virksomhetene oppretter en egen administrasjons-klient som kun får lov til å utføre selvbetjening.
+
 
 ### OpenAPI-dokumentasjon
 
@@ -54,7 +57,7 @@ En full verdikjede for API-sikring med Maskinporten består av følgende steg:
 Tilgang er nå etablert.  Når API'et så skal brukes, gjennomføres følgende steg:
 
 4. Konsumenten sin Oauth2-klient forespør token fra Maskinporten
-5. Konsumenten inkluderer tokeni kall til APIet.
+5. Konsumenten inkluderer token i kall til APIet.
 6. API-tilbyder validerer tokenet, utførerer evt. fin-granulert tilgangskontroll og returnerer forespurt ressurs.
 
 I løpet av 2019 håper vi å få på plass mulighet for at Konsument kan delegere sin tilgang videre til en Leverandør, for eksempel vha. Altinn Autorisasjon.
