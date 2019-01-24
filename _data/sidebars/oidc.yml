@@ -28,7 +28,7 @@ entries:
         url: /oidc_hvordan_komme_igang.html
         output: web,pdf
 
-      - title: Integrasjonsguide ID-porten OIDC
+      - title: Integrasjonsguide ID-porten
         url: /oidc_guide_idporten.html
         output: web,pdf
 
