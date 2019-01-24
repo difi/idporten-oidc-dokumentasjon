@@ -27,11 +27,11 @@ graph LR
 
 Følgende aktører inngår:
 
- Aktør | Beskrivelse | Begrep OIDC |
- -|-|-|-|-|
- Sluttbruker | Ønsker å logge inn til en offentlig tjeneste | End User |
- Nett-tjeneste | Sluttbruker-tjeneste tilbudt av en offentlig etat | Relying Party (RP) | 
- ID-porten | ID-porten sin autentiseringstjeneste som usteder *ID Token* til aktuelle tjenesten| OpenID Provider (OP) |
+| Aktør | Beskrivelse | Begrep OIDC |
+| -|-|-|-|-|
+| Sluttbruker | Ønsker å logge inn til en offentlig tjeneste | End User |
+| Nett-tjeneste | Sluttbruker-tjeneste tilbudt av en offentlig etat | Relying Party (RP) | 
+| ID-porten | ID-porten sin autentiseringstjeneste som usteder *ID Token* til aktuelle tjenesten| OpenID Provider (OP) |
 
 ## Beskrivelse av autorisasjonskode-flyten
 
@@ -68,7 +68,7 @@ ID-porten sender ikke en forespørsel om utlogging til tjenesteleverandør når 
 
 ### Levetid for Sesjoner
 
-I føderasjon skal medlemmene konfigurere systemene, slik at sesjoner utløper ved inaktivitet etter høyst 30 minutter.
+I en føderasjon skal medlemmene konfigurere systemene, slik at sesjoner utløper ved inaktivitet etter høyst 30 minutter.
 
 I ID-porten måles maksimum sesjonstid for en brukers sesjon og denne settes til 120 minutter.
 
