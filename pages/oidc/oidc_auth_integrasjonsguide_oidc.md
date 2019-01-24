@@ -28,9 +28,9 @@ graph LR
 Følgende aktører inngår:
 
 | Aktør | Beskrivelse | Begrep OIDC |
-| -|-|-|-|-|
+| -|-|-|
 | Sluttbruker | Ønsker å logge inn til en offentlig tjeneste | End User |
-| Nett-tjeneste | Sluttbruker-tjeneste tilbudt av en offentlig etat | Relying Party (RP) | 
+| Nett-tjeneste | Sluttbruker-tjeneste tilbudt av en offentlig etat | Relying Party (RP) / Client | 
 | ID-porten | ID-porten sin autentiseringstjeneste som usteder *ID Token* til aktuelle tjenesten| OpenID Provider (OP) |
 
 ## Beskrivelse av autorisasjonskode-flyten
