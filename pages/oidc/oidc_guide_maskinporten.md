@@ -18,14 +18,14 @@ sidebar: oidc
 
 <div class="mermaid">
 graph LR
-  subgraph 3djepart
+  subgraph API-tilbyder
     API
   end
   subgraph Difi
     OIDC[OIDC Provider]
   end
-  subgraph Kunde
-     ny[Tjeneste]
+  subgraph API-konsument
+     ny[Klient]
   end
   OIDC -->|2.utsteder token|ny
   ny -->|1. forspør tilgang|OIDC
@@ -33,6 +33,54 @@ graph LR
 </div>
 
 Kunder og API-eiere kan bruke denne funksjonaliteten for å styre tilgang i de tilfellene der informasjonsverdiene APIet tilbyr er regulert av lovhjemmel, og ikke krever samtykke av brukeren.
+
+
+
+### Overordnet prosedyre for API-sikring
+
+En full verdikjede for API-sikring med Maskinporten består av følgende steg:
+
+1. API-tilbyder oppretter et API
+2. API-tilbyder gir tilgang til en konsument
+3. Konsument provisjonerer tilgangen ned til en aktuell oauth2-klient
+
+Provisjonering av tilgang er nå etablert.  Når API'et så skal brukes, gjennomføres følgende steg:
+
+4. Konsumenten sin Oauth2-klient forespør token fra Maskinporten
+5. Konsumenten inkluderer token i kall til APIet.
+6. API-tilbyder validerer tokenet, utførerer evt. fin-granulert tilgangskontroll og returnerer forespurt ressurs.
+
+Merk at både API-tilbyder og API-konsument må lage en egen selvbetjeningsapplikasjon.  
+
+### Prosedyre for API-tilbyder
+
+Først må du bli manuelt provisjonert som API-tilbyder:  Du må bestemme:
+* et `scope-prefix` du ønsker bruke for dine APIer
+* ønsket `client_id` for din selvbetjenings-applikasjon
+* ditt `organisasjonsnummer`
+
+og sende dette til idporten (at) difi.no
+
+Du må så lage en tilhørende Oauth2-klient som benytter selvbetjeningsAPIet til Maskinporten.  Se [oidc_api_admin_maskinporten.html](oidc_api_admin_maskinporten.html) for detaljer.
+
+Når du skal opprette et API-scope, sender du scope-definisjon sammen med en beskrivelse, slik:
+
+```
+POST /scopes HTTP/1.1
+Host: integrasjon-ver2.difi.no
+Content-Type: application/json
+Authorization: Bearer 0pLY6hwU6tkzBPoGTVlObex-QfIBw_yU9tXy7SKrgOU=
+cache-control: no-cache
+{
+	"prefix": "difi",
+	"subscope": "api3",
+	"description": "Difi sitt API nummer 3 for demo-formål"
+}
+```
+Autorization-headeren i eksempelet er et access_token som selvbetjeningsklienten din først har fått fra Maskinporten. Dette tokenet må ha "idporten:scopes.write" scope.
+
+
+
 
 ## Beskrivelse av flyt
 
