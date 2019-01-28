@@ -17,7 +17,7 @@ Se [bruksvilkår i samarbeidsportalen](https://samarbeid.difi.no/difis-felleslos
 ## Rutine for tilgang
 Følg stegvis veiledning på [samarbeidsportalen](https://samarbeid.difi.no/felleslosninger/id-porten/ta-i-bruk-id-porten)
 
-## Planlegging
+### Planlegging
 Følgende punkter bør være en del av planleggingen (gjøres i samarbeid med Difi)
 
     Tidsplan
@@ -29,38 +29,26 @@ Følgende punkter bør være en del av planleggingen (gjøres i samarbeid med Di
 ## Etablerering i test og produksjon
 Difi krever at tjenester som skal beskyttes av ID-porten må gjennom et verifikasjonsløp før tjenesten kan produksjonssettes. Det er derfor nødvendig at tjenesteleverandør fødererer en testbasert versjon av sin tjeneste i Difi sitt verifikasjonsmiljø. Her skal det kun benyttes fiktive data, og ikke reelle brukere. Ved test av varsling pr sms og/eller e-post må tjenesteleverandør passe på at en bruker egnet kontaktinformasjon da varslingen sender ut reelle meldinger til eieren av kontaktinformasjonen.
 
-## Verifikasjonstester
+### Verifikasjonstester
 Difi har etablert et standardsett av tester for verifisering og godkjenning av integrasjon mot ID-porten. Tjenesteleverandør skal utføre denne og bekrefte til Difi at testing er utført ok før tjenesten kan i produksjon.  [Les om verifikasjonstester ](https://difi.github.io/idporten-integrasjonsguide//96_verifikasjonstest.html)
 
-## Bruk av sertifikater
+### Bruk av sertifikater
 Anbefalt autentiseringsmetode vil være klientautentisering basert på JWT'er signert med virksomhetssertifikater. Metoden krever at tjenesteeier anskaffer test-virksomhetssertifikat for testmiljø, og virksomhetssertifikat for produksjonsmiljø. Det kreves at tjenesteleverandør benytter nøkler utstedt som virksomhetssertifikater iht. [kravspesifikasjon PKI](https://www.difi.no/fagomrader-og-tjenester/digitalisering-og-samordning/standarder/referansekatalogen/bruk-av-pki-med-og-i-offentlig-sektor), og at sertifikatutstederen er selvdeklarert for dette hos Nasjonal kommunikasjonsmyndighet (NKOM). Pr dags dato er det bare Buypass og Commfides som er selvdeklarert for utstedelse av virksomhetssertifikater hos NKOM, og dermed kun disse som kan utstede gyldige virksomhetssertifikater for bruk mot ID-porten. 
 
-## Tjenesteeiers logo
+### Tjenesteeiers logo
 Innloggingbildet i ID-porten viser tjenesteeiers logo. Logo i rett format må derfor utveksles med Difi på forhånd.
+
+### Informasjon om Difi sine miljøer
+OpenID Connect-provideren er på plass i de fleste av Difi sine miljøer.
+
+### Testbrukere
+For VER1 og VER2 vil allerede tildelte testbrukere kunne gjenbrukes. Ta kontakt med **idporten@difi.no** dersom du mangler testbukere.
 
 ## Fremgangsmåte
  1.  Be om å få en klient-integrasjon ved å sende mail til  idporten@difi.no.  Hugs å oppgi ønska redirect-uri'er og annen nødvendig informasjon, se [klient-registrering](oidc_func_clientreg.html)
 
  2. Konfigurer din føderasjonsprogramvare med informasjonen mottatt i punkt 1, og pek den mot ID-portens well-known endepunkt.
  3. Det skal nå være mulig å logge inn
-
-
-Vi ber kunder om å studere [OAuth 2.0 Threat Model and Security Considerations](https://tools.ietf.org/html/rfc6819) og
-[OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html).
-Kunder som skal lage mobil-apper bør lese [OAuth 2.0 for Native Apps](https://tools.ietf.org/html/rfc8252).
-
-
-En ikke-uttømmende liste over biblioteker og programvare som skal støtte OpenID Connect finnes [hos OpenID Foundation](http://openid.net/developers/certified/). Per juli 2017 har vi notert oss at iallefall IdentityServer4, .Net Core og ADFS fungerer opp mot ID-portens OIDC Provider.
-
-## Kommentarer, feil eller problemer ?
-
-Difi foretrekker at kunder [oppretter GitHub-issues i repoet *difi/idporten-oidc-dokumentasjon*](https://github.com/difi/idporten-oidc-dokumentasjon/issues) dersom de har problemer, opplever feil, eller har kommentarar til dokumentasjon og funksjonalitet, slik at kunnskap blir delt med andre etater.
-
-Ta ellers kontakt på epost på idporten@difi.no.  Se og kontaktinfomasjonen på [samarbeidsportalen](https://samarbeid.difi.no/).
-
-## Informasjon om Difi sine miljøer
-
-OpenID Connect-provideren er på plass i de fleste av Difi sine miljøer.
 
 ### Well-known endepunkt:
 
@@ -90,8 +78,22 @@ Eksempel på konfigurasjon slik den var i VER2 per 2017-06-14:
 }
 ```
 
+Vi ber kunder om å studere [OAuth 2.0 Threat Model and Security Considerations](https://tools.ietf.org/html/rfc6819) og
+[OpenID Connect Basic Client Implementer's Guide 1.0](https://openid.net/specs/openid-connect-basic-1_0.html).
+Kunder som skal lage mobil-apper bør lese [OAuth 2.0 for Native Apps](https://tools.ietf.org/html/rfc8252).
 
 
-## Testbrukere
+En ikke-uttømmende liste over biblioteker og programvare som skal støtte OpenID Connect finnes [hos OpenID Foundation](http://openid.net/developers/certified/). Per juli 2017 har vi notert oss at iallefall IdentityServer4, .Net Core og ADFS fungerer opp mot ID-portens OIDC Provider.
 
-For VER1 og VER2 vil allerede tildelte testbrukere kunne gjenbrukes. Ta kontakt med **idporten@difi.no** dersom du mangler testbukere.
+## Kommentarer, feil eller problemer ?
+
+Difi foretrekker at kunder [oppretter GitHub-issues i repoet *difi/idporten-oidc-dokumentasjon*](https://github.com/difi/idporten-oidc-dokumentasjon/issues) dersom de har problemer, opplever feil, eller har kommentarar til dokumentasjon og funksjonalitet, slik at kunnskap blir delt med andre etater.
+
+Ta ellers kontakt på epost på idporten@difi.no.  Se og kontaktinfomasjonen på [samarbeidsportalen](https://samarbeid.difi.no/).
+
+
+
+
+
+
+
