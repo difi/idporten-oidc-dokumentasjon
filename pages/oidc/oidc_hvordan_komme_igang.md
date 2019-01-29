@@ -9,10 +9,9 @@ sidebar: oidc
 ---
 
 ## Hvem kan bruke ID-porten OpenID Connect provider?
-
 Tjenesteeiere som har godtatt ID-porten sine bruksvilkår kan ta i bruk denne tjenesten i produksjonsmiljø.
 Man kan gjerne teste løsningen i testmiljø før man godtar bruksvilkårene.
-Se [bruksvilkår i samarbeidsportalen](https://samarbeid.difi.no/difis-felleslosninger/hvilke-virksomheter-kan-ta-i-bruk-difis-felleslosningene) for mer informasjon om hvordan du kan bli tjenesteeier i ID-porten
+Se bruksvilkår i [samarbeidsportalen](https://samarbeid.difi.no/bruksvilkar/bruksvilkar-difis-felleslosninger)
 
 ## Rutine for tilgang
 Følg stegvis veiledning på [samarbeidsportalen](https://samarbeid.difi.no/felleslosninger/id-porten/ta-i-bruk-id-porten)
@@ -33,19 +32,19 @@ Difi krever at tjenester som skal beskyttes av ID-porten må gjennom et verifika
 Difi har etablert et standardsett av tester for verifisering og godkjenning av integrasjon mot ID-porten. Tjenesteleverandør skal utføre denne og bekrefte til Difi at testing er utført ok før tjenesten kan i produksjon.  [Les om verifikasjonstester ](https://difi.github.io/idporten-integrasjonsguide//96_verifikasjonstest.html)
 
 ### Bruk av sertifikater
-Anbefalt autentiseringsmetode vil være klientautentisering basert på JWT'er signert med virksomhetssertifikater. Metoden krever at tjenesteeier anskaffer test-virksomhetssertifikat for testmiljø, og virksomhetssertifikat for produksjonsmiljø. Det kreves at tjenesteleverandør benytter nøkler utstedt som virksomhetssertifikater iht. [kravspesifikasjon PKI](https://www.difi.no/fagomrader-og-tjenester/digitalisering-og-samordning/standarder/referansekatalogen/bruk-av-pki-med-og-i-offentlig-sektor), og at sertifikatutstederen er selvdeklarert for dette hos Nasjonal kommunikasjonsmyndighet (NKOM). Pr dags dato er det bare Buypass og Commfides som er selvdeklarert for utstedelse av virksomhetssertifikater hos NKOM, og dermed kun disse som kan utstede gyldige virksomhetssertifikater for bruk mot ID-porten. 
+Anbefalt autentiseringsmetode vil være klientautentisering basert på JWT'er signert med virksomhetssertifikater. Metoden krever at tjenesteeier anskaffer test-virksomhetssertifikat for testmiljø, og virksomhetssertifikat for produksjonsmiljø. Det kreves at tjenesteleverandør benytter nøkler utstedt som virksomhetssertifikater iht. [kravspesifikasjon PKI](https://www.difi.no/fagomrader-og-tjenester/digitalisering-og-samordning/standarder/referansekatalogen/bruk-av-pki-med-og-i-offentlig-sektor), og at sertifikatutstederen er selvdeklarert for utstedelse av virksomhetssertifikater hos Nasjonal kommunikasjonsmyndighet (NKOM). Pr dags dato er det bare Buypass og Commfides som er selvdeklarert hos NKOM, og dermed kun disse som kan utstede gyldige virksomhetssertifikater for bruk mot ID-porten. 
 
 ### Tjenesteeiers logo
 Innloggingbildet i ID-porten viser tjenesteeiers logo. Logo i rett format må derfor utveksles med Difi på forhånd.
 
 ### Informasjon om Difi sine miljøer
-OpenID Connect-provideren er på plass i de fleste av Difi sine miljøer.
+I tillegg til produksjonsmiljøet tilbyr Difi tre testmiljøer; ”verifikasjon 1”, ”verifikasjon 2” og ”ytelsestestmiljø”. Testmiljøene er beregnet til funksjonell testing av integrasjoner. Les om bruk av de ulike miljøene i [samarbeidsportalen](https://samarbeid.difi.no/node/232)
 
 ### Testbrukere
 For VER1 og VER2 vil allerede tildelte testbrukere kunne gjenbrukes. Ta kontakt med **idporten@difi.no** dersom du mangler testbukere.
 
 ## Fremgangsmåte
- 1.  Be om å få en klient-integrasjon ved å sende mail til  idporten@difi.no.  Hugs å oppgi ønska redirect-uri'er og annen nødvendig informasjon, se [klient-registrering](oidc_func_clientreg.html)
+ 1.  Be om å få en klient-integrasjon ved å sende mail til  idporten@difi.no.  Husk å oppgi ønskede redirect-uri'er og annen nødvendig informasjon, se [klient-registrering](oidc_func_clientreg.html)
 
  2. Konfigurer din føderasjonsprogramvare med informasjonen mottatt i punkt 1, og pek den mot ID-portens well-known endepunkt.
  3. Det skal nå være mulig å logge inn
