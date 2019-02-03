@@ -232,6 +232,6 @@ Den først i lista, Mohamed Al Samed, er hardkoda i den norske eIDAS Noden til �
 
 ## Integrerte land i produksjonsmiljøet
 
-Per November 2018 er det ingen land tilgjengelig i produksjonsmiljøet.    Vi forventer å ha Tyskland, Italia, Portugal, Estland, Spania og Luxemburg i løpet av 2019, etterhvert som de blir formelt *notifisert* og fagfellevurdert av EU-kommisjonen.  For en oppdatert status, se EU-kommisjonen sin side: [https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS)
+Per Januar 2019 er Estland koblet på i produksjonsmiljøet.    Vi forventer å ha Tyskland, Italia, Portugal, Spania og Luxemburg i løpet av 2019, etterhvert som de blir formelt *notifisert* og fagfellevurdert av EU-kommisjonen.  For en oppdatert status, se EU-kommisjonen sin side: [https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS)
 
-I testmiljøet vi for tiden 19 land integrert.
+I testmiljøet har vi for tiden 19 land integrert.
