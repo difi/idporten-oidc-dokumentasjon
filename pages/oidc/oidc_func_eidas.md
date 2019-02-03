@@ -45,7 +45,7 @@ Se http://openid.net/specs/openid-connect-core-1_0.html#AuthRequest for korrekt 
 
 ### 1: eIDAS-støtte
 
-Alle som vil motta eidas-pålogging sender inn "{eidas:true}" som "login_hint".
+Alle som vil motta eidas-pålogging sender inn `eidas:true` som "login_hint".
 
 Standard gjenkjenningsalgoritme basert på entydig, identifikator-basert gjenkjenning ('UNAMBIGUOUS')  vil bli forsøkt. Dersom ingen folkeregisterperson ble gjenkjent, vil innloggingsflyten da stoppe med at ID-porten OIDC-provider viser en feilmelding ("This service require a norwegian D-number, but none could be found" (Denne oppførselen kalles "kreve gjenkjenning").
 
