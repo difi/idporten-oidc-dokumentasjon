@@ -89,7 +89,7 @@ https://oidc-ver2.difi.no/idporten-oidc-provider/authorize?
 
 Klienter kan forespørre ekstra gjenkjenningsalgoritmer, som vil bli forsøkt i tillegg til standard-oppførselen med entydig identifikator-basert gjenkjenning ('UNAMBIGUOUS').
 
-Dette gjøres ved å bruke standard OIDC-funksjonalitet for å forespørre claims i id_token, se http://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter .  Klienten må inkludere en array over ønska identitymatch-verdier, slik:
+Dette gjøres ved å bruke standard OIDC-funksjonalitet for å forespørre claims i id_token, se [http://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter](http://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter) .  Klienten må inkludere en array over ønska identitymatch-verdier, slik:
 
 ```
 claims=
