@@ -25,7 +25,7 @@ entries:
     folderitems:
 
       - title: Hvordan komme igang?
-        url: /oidc_hvordan_komme_igang.html
+        url: /index.html
         output: web,pdf
 
       - title: Integrasjonsguide ID-porten
@@ -76,6 +76,10 @@ entries:
         url: /oidc_func_nopid.html
         output: web, pdf
 
+      - title: Javascript-applikasjoner
+        url: /oidc_auth_spa.html
+        output: web, pdf
+
       - title: eIDAS
         url: /oidc_func_eidas.html
         output: web, pdf
@@ -101,9 +105,6 @@ entries:
         url: /oidc_auth_codeflow.html
         output: web, pdf
 
-#      - title: Autentisering til SPA'er
-#        url: /oidc_auth_spa.html
-#        output: web, pdf
 
       - title: Autentisering til mobil-app'er
         url: /oidc_auth_app.html
