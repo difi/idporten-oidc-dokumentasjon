@@ -1,6 +1,6 @@
 ---
-title: Hvordan ta i bruk tjenesten
-description: Hvordan ta i bruk tjenesten
+title: OpenID Connect i ID-porten
+description: OpenID Connect i ID-porten
 summary: "Ta kontakt med oss på idporten@difi.no for å komme i gang!"
 permalink: index.html
 
