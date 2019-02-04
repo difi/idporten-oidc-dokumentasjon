@@ -3,6 +3,7 @@ title: Ofte stilte spørsmål
 description: Ofte stilte spørsmål
 summary: "Her finner du ofte stilte spørsmål"
 permalink: oidc_guide_faq.html
+toc: false
 
 layout: page
 sidebar: oidc
@@ -27,7 +28,7 @@ svar
 ## Sertifikat
 
 Må vi anskaffe virksomhetssertifikat for å få etablert tilgang til ID-porten via OIDC?
-Nei, men vi anbefaler Klientautentisering basert på JWT’er signert med virksomhetssertifikater. Vi støtter: 
+Nei, men vi anbefaler Klientautentisering basert på JWT’er signert med virksomhetssertifikater. Vi støtter:
 
 -   **client_secret_basic**  /  **client_secret_post**  - Klientautentisering basert på client_secret
 -   **private_key_jwt**  - Klientautentisering basert på JWT’er signert med virksomhetssertifikater
@@ -37,13 +38,13 @@ https://difi.github.io/idporten-oidc-dokumentasjon/oidc_auth_codeflow.html#utste
 
 #### Vi har valgt klientautentisering basert på JWT’er signert med virksomhetssertifikater. Kan vi i testmiljøet bruke selvgenererete sertifiakter? Og hvordan er dette i testmiljøet?
 
-Selvgenererete sertifiakter kan ikke benyttes i test og produksjon. I testmiljøet kan kun testvirksomhetssertifikatet benyttes. 
+Selvgenererete sertifiakter kan ikke benyttes i test og produksjon. I testmiljøet kan kun testvirksomhetssertifikatet benyttes.
 
 ## Utlogging
 
 #### Gjelder Redirect tilbake til nettsted etter utlogging. Vi blir stående på utloggingsskjermen til ID-porten. Mener post_logout_redirect_uri skal være satt i logout-requesten. Hva er feil?
 
-Etter at en har trigga utlogging blir en sendt tilbake til post_logout_redirect_uri. Denne må være forhåndsregistrert i ID-porten, det er ikke nok å bare sette den i requesten. så dersom dere stopper på utloggingssida i ID-porten, så mangler post_redirect_logout_uri pi klientregistreringen. 
+Etter at en har trigga utlogging blir en sendt tilbake til post_logout_redirect_uri. Denne må være forhåndsregistrert i ID-porten, det er ikke nok å bare sette den i requesten. så dersom dere stopper på utloggingssida i ID-porten, så mangler post_redirect_logout_uri pi klientregistreringen.
 
 ***
 
@@ -57,7 +58,3 @@ Dette er opptil dere selv. Begge varianter er mulig. Det enkleste kan være å h
 Om en logger ut fra annen tjeneste enn egen, vil tjenesten få informasjon via frontchannel logout dersom dette er satt opp for og støttet av klienten. Om sesjonen hos ID-porten er invalidert, finnes den ikke lengre. Om tjenesten da trigger endsession-endepunktet, vil vi ikke finne en sesjon hos oss. Vi returnerer bare til angitt post_logout_redirect_uri dersom vi får et id_token vi kan se at vi har utstedt OG at sesjonen eksisterer OG at klienten som har fått id_token har pre-registrert aktuelle post_logout_reduirect_uri.
 
 ***
-
-
-
-
