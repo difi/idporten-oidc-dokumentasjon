@@ -62,7 +62,7 @@ I dette scenariet ønsker en **klient** å bruke en **ressurs (API)** tilbudt av
 
 * Dersom access_tokenet er gyldig kan det forespurte ressursen returneres til klienten.
 
-## Krav til JWT for token-forespørsel
+## Krav til JWT for token-forespørsel{#grant}
 
 Klienten må generere og signere ein jwt med følgende elementer for å forespørre tokens fra autorisasjonsserveren:
 
@@ -82,11 +82,11 @@ Klienten må generere og signere ein jwt med følgende elementer for å forespø
 | --- | --- |
 |aud| Audience - identifikator for ID-portens OIDC Provider.  Se ID-portens `well-known`-endepunkt for aktuelt miljø for å finne riktig verdi. |
 |iss| issuer - client ID som er registert hos ID-porten OIDC-provider|
-|iss_onbehalfof| onbehalfof - verdi for organisasjonen som klienten opptrår på vegne av|
+|iss_onbehalfof| Optional: onbehalfof - verdi for organisasjonen som klienten opptrår på vegne av (se [onbehalfof](oidc_func_onbehalfof.html))|
 |scope| Scope som klient forespør tilgang til, kan sende inn liste av scope separert med whitespace|
 |iat| issued at - tidsstempel for når jwt'en ble generert - **MERK:** Tidsstempelet tar utgangspunkt i UTC-tid|
 |exp| expiration time - tidsstempel for når jwt'en utløper - **MERK:** Tidsstempelet tar utgangspunkt i UTC-tid **MERK:** ID-porten godtar kun maks levetid på jwt'en til 120 sekunder (exp - iat <= 120 )|
-|jti| Optional - JWT ID - unik id på jwt'en som settes av klienten. **MERK:** JWT'er kan ikke gjenbrukes. ID-porten håndterer dette ved å sammenligne en hash-verdi av jwt'en mot tidligere brukte jwt'er. Dette impliserer at dersom klienten ønsker å sende mer enn en token-request i sekundet må jti elementet benytttes.|
+|jti| Optional: JWT ID - unik id på jwt'en som settes av klienten. **MERK:** JWT'er kan ikke gjenbrukes. ID-porten håndterer dette ved å sammenligne en hash-verdi av jwt'en mot tidligere brukte jwt'er. Dette impliserer at dersom klienten ønsker å sende mer enn en token-request i sekundet må jti elementet benytttes.|
 
 &nbsp;
 

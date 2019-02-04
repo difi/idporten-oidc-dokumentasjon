@@ -20,49 +20,37 @@ entries:
       type: frontmatter
 
 
-  - title: Bakgrunn
+  - title: Kom i gang
     output: web, pdf
     folderitems:
 
-      - title: Introduksjon
+      - title: Hvordan komme igang?
         url: /index.html
         output: web,pdf
 
-      - title: Hvordan komme igang?
-        url: /oidc_hvordan_komme_igang.html
+      - title: Integrasjonsguide ID-porten
+        url: /oidc_guide_idporten.html
         output: web,pdf
         
       - title: Hurtigguide for autorisasjonsflyt
         url: /oidc_hurtigguide_autorisasjonsflyt.html
         output: web,pdf
 
-      - title: Arkitektur
-        url: /oidc_arch.html
+      - title: Integrasjonsguide Maskinporten
+        url: /oidc_guide_maskinporten.html
         output: web,pdf
 
-  - title: Bruksområder
-    output: web, pdf
-    folderitems:
+      - title: Ofte stilte spørsmål
+        url: /oidc_guide_faq.html
+        output: web,pdf
 
-      - title: Autentisering
-        url: /oidc_auth_codeflow.html
-        output: web, pdf
+      - title: Getting started
+        url: /oidc_guide_english.html
+        output: web,pdf
 
-      - title: Autentisering til SPA'er
-        url: /oidc_auth_spa.html
-        output: web, pdf
-
-      - title: Autentisering til mobil-app'er
-        url: /oidc_auth_app.html
-        output: web, pdf
-
-      - title: API-autorisasjon
-        url: /oidc_auth_oauth2.html
-        output: web, pdf
-
-      - title: Server-til-server API-autorisasjon
-        url: /oidc_auth_server-to-server-oauth2.html
-        output: web, pdf
+#  - title: Eksempler
+#    output: web, pdf
+#    folderitems:
 
   - title: Funksjonalitet
     output: web, pdf
@@ -92,8 +80,46 @@ entries:
         url: /oidc_func_nopid.html
         output: web, pdf
 
+      - title: Javascript-applikasjoner
+        url: /oidc_auth_spa.html
+        output: web, pdf
+
       - title: eIDAS
         url: /oidc_func_eidas.html
+        output: web, pdf
+
+      - title: Administrasjon av OICD-integrasjoner
+        url: /oidc_api_admin.html
+        output: web, pdf
+
+      - title: Administrasjon av Maskinporten
+        url: /oidc_api_admin_maskinporten.html
+        output: web, pdf
+
+
+  - title: Arkitektur
+    output: web, pdf
+    folderitems:
+
+      - title: Arkitektur
+        url: /oidc_arch.html
+        output: web,pdf
+
+      - title: Autentisering med code-flow
+        url: /oidc_auth_codeflow.html
+        output: web, pdf
+
+
+      - title: Autentisering til mobil-app'er
+        url: /oidc_auth_app.html
+        output: web, pdf
+
+      - title: API-autorisasjon innlogget bruker
+        url: /oidc_auth_oauth2.html
+        output: web, pdf
+
+      - title: Server-til-server API-autorisasjon
+        url: /oidc_auth_server-to-server-oauth2.html
         output: web, pdf
 
 
@@ -118,13 +144,10 @@ entries:
         url: /oidc_api_logghistorikk.html
         output: web, pdf
 
-      - title: Administrasjon av OICD-integrasjoner
-        url: /oidc_api_admin.html
-        output: web, pdf
+#      - title: Introduksjon
+#        url: /index.html
+#        output: web,pdf
 
-      - title: Administrasjon av Maskinporten
-        url: /oidc_api_admin_maskinporten.html
-        output: web, pdf
 
   - title: Vedlegg
     output: web, pdf

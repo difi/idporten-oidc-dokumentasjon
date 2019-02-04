@@ -45,7 +45,7 @@ Se http://openid.net/specs/openid-connect-core-1_0.html#AuthRequest for korrekt 
 
 ### 1: eIDAS-støtte
 
-Alle som vil motta eidas-pålogging sender inn "{eidas:true}" som "login_hint".
+Alle som vil motta eidas-pålogging sender inn `eidas:true` som "login_hint".
 
 Standard gjenkjenningsalgoritme basert på entydig, identifikator-basert gjenkjenning ('UNAMBIGUOUS')  vil bli forsøkt. Dersom ingen folkeregisterperson ble gjenkjent, vil innloggingsflyten da stoppe med at ID-porten OIDC-provider viser en feilmelding ("This service require a norwegian D-number, but none could be found" (Denne oppførselen kalles "kreve gjenkjenning").
 
@@ -89,7 +89,7 @@ https://oidc-ver2.difi.no/idporten-oidc-provider/authorize?
 
 Klienter kan forespørre ekstra gjenkjenningsalgoritmer, som vil bli forsøkt i tillegg til standard-oppførselen med entydig identifikator-basert gjenkjenning ('UNAMBIGUOUS').
 
-Dette gjøres ved å bruke standard OIDC-funksjonalitet for å forespørre claims i id_token, se http://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter .  Klienten må inkludere en array over ønska identitymatch-verdier, slik:
+Dette gjøres ved å bruke standard OIDC-funksjonalitet for å forespørre claims i id_token, se [http://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter](http://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter) .  Klienten må inkludere en array over ønska identitymatch-verdier, slik:
 
 ```
 claims=
@@ -232,6 +232,6 @@ Den først i lista, Mohamed Al Samed, er hardkoda i den norske eIDAS Noden til �
 
 ## Integrerte land i produksjonsmiljøet
 
-Per November 2018 er det ingen land tilgjengelig i produksjonsmiljøet.    Vi forventer å ha Tyskland, Italia, Portugal, Estland, Spania og Luxemburg i løpet av 2019, etterhvert som de blir formelt *notifisert* og fagfellevurdert av EU-kommisjonen.  For en oppdatert status, se EU-kommisjonen sin side: [https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS)
+Per Januar 2019 er Estland koblet på i produksjonsmiljøet.    Vi forventer å ha Tyskland, Italia, Portugal, Spania og Luxemburg i løpet av 2019, etterhvert som de blir formelt *notifisert* og fagfellevurdert av EU-kommisjonen.  For en oppdatert status, se EU-kommisjonen sin side: [https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Overview+of+pre-notified+and+notified+eID+schemes+under+eIDAS)
 
-I testmiljøet vi for tiden 19 land integrert.
+I testmiljøet har vi for tiden 19 land integrert.
