@@ -1,7 +1,7 @@
 ---
-title: Integrasjonsguide - Autentisering i Id-porten over OpenID Connect
-description: Bruk av Idporten sin OpenID Connect provider til autentisering med autorisasjonskode-flyten
-summary: "Autorisasjonskode-flyten er den vanlige flyten som blir brukt i OpenID Connect, og er anbefalt flyt for dei fleste tjenester."
+title: Integrasjonsguide - Autentisering i ID-porten over OpenID Connect
+description: Bruk av ID-porten sin OpenID Connect provider til autentisering med autorisasjonskode-flyten
+summary: "Autorisasjonskode-flyten er den vanlige flyten som blir brukt i OpenID Connect, og er anbefalt flyt for de fleste tjenester."
 permalink: oidc_guide_idporten.html
 
 layout: page
@@ -68,7 +68,7 @@ ID-porten sender ikke en forespørsel om utlogging til tjenesteleverandør når 
 
 ### Levetid for Sesjoner
 
-I en føderasjon skal medlemmene konfigurere systemene, slik at sesjoner utløper ved inaktivitet etter høyst 30 minutter.
+I en føderasjon skal medlemmene konfigurere systemene slik at sesjoner utløper ved inaktivitet etter høyst 30 minutter.
 
 I ID-porten måles maksimum sesjonstid for en brukers sesjon og denne settes til 120 minutter.
 
