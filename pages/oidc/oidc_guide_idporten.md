@@ -2,14 +2,14 @@
 title: Integrasjonsguide - Autentisering i Id-porten over OpenID Connect
 description: Bruk av Idporten sin OpenID Connect provider til autentisering med autorisasjonskode-flyten
 summary: "Autorisasjonskode-flyten er den vanlige flyten som blir brukt i OpenID Connect, og er anbefalt flyt for dei fleste tjenester."
-permalink: oidc_auth_integrasjonsguide_oidc.html
+permalink: oidc_guide_idporten.html
 
 layout: page
 sidebar: oidc
 ---
 
 ID-porten sin OpenID Connect provider tilbyr funksjonalitet for autentisering av sluttbrukere basert på autorisasjonskode-flyten, slik den er spesifisert i OpenID Connect Core 1.0 spesifikasjonen.
-Dette vil være den foretrukne flyten for de aller fleste tjenester som skal bruke Id-porten som autentiseringstjeneste. Det kan finnes unntak, som for eksempel Mobilapp'er, som vil ha en litt annen måte å bruke denne flyten på. 
+Dette vil være den foretrukne flyten for de aller fleste tjenester som skal bruke Id-porten som autentiseringstjeneste. Det kan finnes unntak, som for eksempel Mobilapp'er, som vil ha en litt annen måte å bruke denne flyten på.
 
 ## Overordna beskrivelse av bruksområdet
 
@@ -30,7 +30,7 @@ Følgende aktører inngår:
 | Aktør | Beskrivelse | Begrep OIDC |
 | -|-|-|
 | Sluttbruker | Ønsker å logge inn til en offentlig tjeneste | End User |
-| Nett-tjeneste | Sluttbruker-tjeneste tilbudt av en offentlig etat | Relying Party (RP) / Client | 
+| Nett-tjeneste | Sluttbruker-tjeneste tilbudt av en offentlig etat | Relying Party (RP) / Client |
 | ID-porten | ID-porten sin autentiseringstjeneste som usteder *ID Token* til aktuelle tjenesten| OpenID Provider (OP) |
 
 ## Beskrivelse av autorisasjonskode-flyten
