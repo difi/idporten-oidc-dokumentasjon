@@ -1,5 +1,5 @@
 ---
-title: "	API for administrasjon av Maskinporten"
+title: "API for administrasjon av Maskinporten"
 description: "API som gir brukere av Maskinporten  mulighet til å administrere API-sikring."
 summary: "Oauth2-beskyttet REST-grensesnitt som gir utvalgte kunder mulighet til å selv-administrere API-tilgang gjennom  Maskinporten."
 permalink: oidc_api_admin_maskinporten.html

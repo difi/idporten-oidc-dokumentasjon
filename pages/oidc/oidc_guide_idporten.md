@@ -9,7 +9,8 @@ sidebar: oidc
 ---
 
 ID-porten sin OpenID Connect provider tilbyr funksjonalitet for autentisering av sluttbrukere basert på autorisasjonskode-flyten, slik den er spesifisert i OpenID Connect Core 1.0 spesifikasjonen.
-Dette vil være den foretrukne flyten for de aller fleste tjenester som skal bruke Id-porten som autentiseringstjeneste. Det kan finnes unntak, som for eksempel Mobilapp'er, som vil ha en litt annen måte å bruke denne flyten på.
+
+**Dette er den foretrukne flyten for de aller fleste tjenester** som skal bruke Id-porten som autentiseringstjeneste. Det kan finnes unntak, som for eksempel Mobilapp'er, som vil ha en litt annen måte å bruke denne flyten på.
 
 ## Overordna beskrivelse av bruksområdet
 
