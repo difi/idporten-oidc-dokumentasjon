@@ -300,35 +300,6 @@ token=fK0dhs5vQsuAUguLL2wxbXEQSE91XbOAL3foY5VR0Uk=
 
 Nimbus JOSE + JWT er et hendig bibliotekt for å håndtere jwt'er i JAVA , se [http://connect2id.com/products/nimbus-jose-jwt](http://connect2id.com/products/nimbus-jose-jwt)
 
-Her er en enkel eksempelkode for å generere en JWT for å forespørre tokens:
-
-```java
-PrivateKey myKey = ``` // Read from KeyStore
-X509Certificate certificate = ``` // Read from KeyStore
-
-List<Base64> certChain = new ArrayList<>();
-certChain.add(Base64.encode(certificate));
-
-JWSHeader jwtHeader = JWSHeader.Builder(JWSAlgorithm.RS256)
-        .x509CertChain(certChain)
-        .build();
-
-JWTClaimsSet claims = new JWTClaimsSet.Builder()
-        .audience("https://eid-vag-opensso.difi.local/idporten-oidc-provider/")
-        .issuer("clientId")
-        .claim("scope", "scope_to_request")
-        .jwtID(UUID.randomUUID().toString())
-        .issueTime(new Date(Clock.systemUTC().millis()))
-        .expirationTime(new Date(Clock.systemUTC().millis() + 120000)) // Expiration time is 120 sec.
-        .build();
-
-JWSSigner signer = new RSASSASigner(myKey);
-SignedJWT signedJWT = new SignedJWT(jwtHeader, claims);
-signedJWT.sign(signer);
-
-String serializedJwt = signedJWT.serialize();
-```
-
-&nbsp;
+Venligst se [https://github.com/difi/jwt-grant-generator](https://github.com/difi/jwt-grant-generator)  for eksempel på hvordan korrekt generer en slik JWT i Java.
 
 For .net og andre platformer gir [jwt.io](http://jwt.io) en fin oversikt over tilgjengelige biblioteker
