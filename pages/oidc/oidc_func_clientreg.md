@@ -14,6 +14,7 @@ ID-porten støtter flere typer klienter, og det er kundens ansvar å sørge for 
 
 Valg av klient-type er en sikkerhetsvurdering kunden skal utføre.  Vi kategoriserer klienter ved hvordan de autentiserer og identifiserer seg opp mot ID-porten. Dette er i sin tur avhengig av kjøretidsmiljøet til klienten. Vi legger til grunn  på definisjonene fra  [Oauth2 kap 2.1](https://tools.ietf.org/html/rfc6749#section-2.1).
 
+
 **skriv noko om rutiner for utstedelse, identifikasjon,  oppbevaring av nøkler**
 
 ### 1: Standard-klient
@@ -26,9 +27,9 @@ Vi tilbyr tre ulike metoder for klientautentisering for slike klienter:
 
 |Metode|Beskrivelse|
 |-|-|
-| Statisk hemmelighet | En statisk hemmelighet (*client_secret*) som blir utvekslet manuelt, eller tilgjengeliggjort via selvbetjening.  Maks levetid er satt til 180 dager. Det er kundens ansvar å få rotert hemmeligheten før utløp for å sikre kontinuerlig tjenesteleveranse. (*)|
+| Statisk hemmelighet | En statisk hemmelighet (*client_secret*) som Difi genererer og blir utvekslet manuelt, eller tilgjengeliggjort via selvbetjening.  Maks tillatt levetid er satt til 180 dager. Det er kundens ansvar å få rotert hemmeligheten før utløp for å sikre kontinuerlig tjenesteleveranse. |
 | Virksomhetssertifikat   |  Klienten bruker et gyldig virksomhetssertifikat fra Buypass eller Commfides. Organisasjonsnummeret i sertifikatet må stemme med klient-registreringa. Kunden kan valgfritt velge å "låse" klienten til bare et spesifikt virksomhetssertifikat. |
-| Asymmetrisk nøkkel  | Den offentlige nøkkelen fra et egen-generert asymmetrisk nøkkelpar blir registrert på klient, og klienten bruker privatnøkkelen til å autentisere seg.  For å få lov til å registere slike klienter, må kunden etablere en egen  selvbetjeningsapplikasjon (som selv må bruke virksomhetssertifikat)  |
+| Asymmetrisk nøkkel  | Den offentlige nøkkelen fra et egen-generert asymmetrisk nøkkelpar blir registrert på klient, og klienten bruker privatnøkkelen til å autentisere seg.  For å få lov til å registere slike klienter, må kunden etablere en [egen  selvbetjeningsapplikasjon](oidc_api_admin.html) (som selv må bruke virksomhetssertifikat)  |
 
 Difi anbefaler bruk av virksomhetssertifikat til klientautentisering,  da prosedyren for utstedelsen av slike er grundig regulert i lovverk, og gitt at eieren oppbevarer sertifikatet i henhold til beste praksis, gir dette både Difi og API-tilbydere en god og sikker identifisering av kunden.   
 
