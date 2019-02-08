@@ -56,7 +56,7 @@ Mobil-apper skal bruke autorisasjonskodeflyten og bruk av PKCE er påkrevd.
 
 Tabellen viser hvordan de ulike klient-typene vil se ut ved registrering over selvbetjingsapi:
 
-![](/assets/oidc_func_clientreg-6b63a43b.png)
+![klienttyper](assets/oidc_func_clientreg-6b63a43b.png)
 
 
 ## Metadata
