@@ -1,7 +1,7 @@
 ---
 title: Registrering av OIDC klienter
 description: Registrering av OIDC klienter
-summary: "Konfigurasjon av klienter (tjenester) er enkelt ved hjelp av .well-known-endepunktet, men noe informasjon må manuelt utveksles først"
+summary: "ID-porten støtter flere typer klienter. Klienter må forhåndsregisteres, og korrekt registering av klient er viktig at sikkerheten skal være ivaretatt."
 permalink: oidc_func_clientreg.html
 
 layout: page
@@ -32,6 +32,7 @@ Vi tilbyr tre ulike metoder for klientautentisering for slike klienter:
 
 Difi anbefaler bruk av virksomhetssertifikat til klientautentisering,  da prosedyren for utstedelsen av slike er grundig regulert i lovverk, og gitt at eieren oppbevarer sertifikatet i henhold til beste praksis, gir dette både Difi og API-tilbydere en god og sikker identifisering av kunden.   
 
+Maskin-til-maskin klienter faller alltid i 'standardklient'-kategorien, men her tillates ikke statiske hemmeligheter.
 
 
 ### 2: Brower-basert applikasjon / SPA
