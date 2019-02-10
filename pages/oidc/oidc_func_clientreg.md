@@ -14,7 +14,7 @@ ID-porten støtter flere typer klienter, og det er kundens ansvar å sørge for 
 
 Valg av klient-type er en sikkerhetsvurdering kunden skal utføre.  Vi kategoriserer klienter ved hvordan de autentiserer og identifiserer seg opp mot ID-porten. Dette er i sin tur avhengig av kjøretidsmiljøet til klienten. Vi legger til grunn  på definisjonene fra  [Oauth2 kap 2.1](https://tools.ietf.org/html/rfc6749#section-2.1).
 
-
+Difi forutsetter at
 **skriv noko om rutiner for utstedelse, identifikasjon,  oppbevaring av nøkler**
 
 ### 1: Standard-klient
@@ -40,7 +40,7 @@ Maskin-til-maskin klienter faller alltid i 'standardklient'-kategorien, men her 
 
 Typisk en javascript-klient som fullt og helt lever i brukerens browser.  En slik klient kan ikke beskytte en klient-hemmelighet/virksomhetssertfikat, og blir derfor en *public* klient.
 
-Vi følger [de siste anbefalingene fra IETF](https://tools.ietf.org/html/draft-ietf-oauth-browser-based-apps-00), som sier at slike klienter skal bruke autorisasjonskodeflyten, og at både PKCE og state-parameter er påkrevd.  Nonce er anbefalt.
+Vi følger [de siste anbefalingene fra IETF](https://tools.ietf.org/html/draft-ietf-oauth-browser-based-apps-00), som sier at slike klienter skal bruke autorisasjonskodeflyten, og at både PKCE og state-parameter er påkrevd.
 
 Merk at vi tidligere støttet *implicit* flyt for slike klienter.  Denne støtten vil bli faset ut.   Vi støtter heller ikke prompt=none.
 
@@ -51,15 +51,13 @@ En mobil-app kalles *native app* i Oauth2-spesifikasjonene.  [RFC8252](https://t
 
 Mobil-apper skal bruke autorisasjonskodeflyten og bruk av PKCE er påkrevd.
 
-"Langt-levende" innlogginger på app'er støttes dersom app'en har lokal sikring med touch-id el. annen tilfredstillende lokal sikring.  I tilegg krever vi at innbyggere skal kunne se slike langt-levende innlogginger i en sentral oversikt i ID-portens brukerprofil der det er  mulighet for å trekke tilbake innloggingen sentralt. Dette håndteres vha. eget oauth2 scope.
-
+[Les mer om mobil-app'er](oidc_auth_app.html).
 
 #### Oppsummert: tabell over klient-typer
 
-Tabellen viser hvordan de ulike klient-typene vil se ut ved registrering over selvbetjingsapi:
+Tabellen viser hvordan de ulike klient-typene vil se ut ved registrering over selvbetjeningsapi:
 
-![klienttyper](assets/oidc_func_clientreg-6b63a43b.png)
-
+![klienttyper](assets/oidc_func_clientreg-1ef33602.png)
 
 ## Metadata
 
@@ -104,45 +102,3 @@ Vi har 3 måter du kan få registrert din klient:
 - Manuelt, ved å sende epost til idporten@difi.no
 - Selvbetjening, ved å logge inn på [Samarbeidsportalen](https://samarbeid.difi.no/)
 - Selvbetjening, ved å bruke vårt [selvbetjenings-API](/oidc_api_admin.html)
-
-
-
-Føl
-|-|-|
-|-|-|
-|   |   |
-
-
-
-
-I produksjonsmiljøet utleveres ikke i klartekst over e-post, men i ein kryptert zip-fil. Passord til denne filen sendes på sms. Derfor er det viktig at du angir mobiltelefonnummer for i bestillinge
-
-
-
-Foreløpig er dette en manuell prosess og interesserte tjenesteleverandører kan henvende seg til **idporten@difi.no**
-
-Følgende informasjon må registreres om klienter:
-
-| attributt | beskrivelse |
-|-|-|
-| client_id | Unik identifikator for klienten |
-| client_type | Type klient ihht [Oauth2 kap 2.1](https://tools.ietf.org/html/rfc6749#section-2.1). Skal være  `public` for mobil-app'er og SPAer, eller `confidential` for klienter som hostes  i sikkert driftsmiljø. |
-| Ønsket metode for klient-autentisering | `client_secret_basic` eller `private_key_jwt` |
-| client_orgno | Klientens organisasjonsnummer.  <br/> For klientautentisering med `private_key_jwt` valideres denne verdien mot org.nummer i virksomhetssertifikatet som signerer grantet.  |
-| display_name | Klientens organisasjonsnavn som benyttes ved visning på web |
-| redirect_uris | Liste over gyldige url'er som provideren kan redirecte tilbake til etter vellykket autorisasjonsforespørsel. |
-| post_logout_redirect_uris | Liste over url'er som provideren redirecter til etter fullført utlogging. |
-
-Difi vil tildele *client_secret* til kunder som ønsker slik klientautentisering. Kunde kan til en viss grad velge *client_id* selv, men vi foretrekker en bestemt syntaks.
-
-
-
-
-## Well-known endepunkt
-
-OpenID Connect baserer seg på at aktørene tilgjengeliggjør sin konfigurasjon på et såkalt well-known endepunkt. Her skal både metadata som URLer og sertifikater være tilgjengelig.
-
-ID-portens well-known endepunkt er her:
-```
-https://oidc.difi.no/idporten-oidc-provider/.well-known/openid-configuration
-```
