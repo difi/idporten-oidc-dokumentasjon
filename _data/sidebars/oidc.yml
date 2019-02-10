@@ -31,10 +31,10 @@ entries:
       - title: Integrasjonsguide ID-porten
         url: /oidc_guide_idporten.html
         output: web,pdf
-        
-      - title: Hurtigguide for autorisasjonsflyt
-        url: /oidc_hurtigguide_autorisasjonsflyt.html
-        output: web,pdf
+
+#      - title: Hurtigguide for autorisasjonsflyt
+#        url: /oidc_hurtigguide_autorisasjonsflyt.html
+#        output: web,pdf
 
       - title: Integrasjonsguide Maskinporten
         url: /oidc_guide_maskinporten.html
