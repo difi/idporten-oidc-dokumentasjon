@@ -101,7 +101,7 @@ Vi har 3 måter du kan få registrert din klient:
 
 - Manuelt, ved å sende epost til idporten@difi.no
 - Selvbetjening, ved å logge inn på [Samarbeidsportalen](https://samarbeid.difi.no/)
-- Selvbetjening, ved å bruke vårt [selvbetjenings-API](/oidc_api_admin.html)
+- Selvbetjening, ved å bruke vårt [selvbetjenings-API](oidc_api_admin.html)
 
 
 ## Well-known endepunkt
