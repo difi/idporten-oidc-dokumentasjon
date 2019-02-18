@@ -56,6 +56,15 @@ entries:
     output: web, pdf
     folderitems:
 
+      - title: Metadata
+        url: /oidc_func_wellknown.html
+        output: web, pdf
+
+      - title: Klientregistrering
+        url: /oidc_func_clientreg.html
+        output: web, pdf
+
+
       - title: Single sign-on og -logout
         url: /oidc_func_sso.html
         output: web, pdf
@@ -64,9 +73,6 @@ entries:
 #       url: /oidc_func_clientauth.html
 #       output: web, pdf
 
-      - title: Klientregistrering
-        url: /oidc_func_clientreg.html
-        output: web, pdf
 
       - title: PKCE
         url: /oidc_func_pkce.html
