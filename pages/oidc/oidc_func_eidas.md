@@ -10,8 +10,9 @@ sidebar: oidc
 
 ## Om eIDAS
 
-ID-porten er knyttet til EUs infrastruktur for autentisering på tvers av landegrenser.  For mer info om eIDAS, se  [https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/How+does+it+work+-+eIDAS+solution](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/How+does+it+work+-+eIDAS+solution).
+ID-porten er knyttet til EUs infrastruktur for autentisering på tvers av landegrenser.  For mer info om eIDAS, se  [https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/How+does+it+work+-+eIDAS+solution](https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/How+does+it+work+-+eIDAS+solution).  Funksjonaliteten har blitt utvikled med støtte fra EU-kommisjonen.
 
+<img src="assets/oidc_func_eidas-931dea0a.png" alt="CEF logo" width="150" />
 
 ## Overordnet om eIDAS-støtte
 
