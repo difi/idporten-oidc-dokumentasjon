@@ -17,7 +17,7 @@ Funksjonaliteten har blitt utviklet med støtte fra EU-kommisjonen, se [Connecti
 <img src="pages/oidc/assets/oidc_func_eidas-931dea0a.png" alt="CEF logo" width="150" />
 
 
-{% include image.html file="assets/oidc_func_eidas-931dea0a.png" url="https://www.difi.no/fagomrader-og-tjenester/digitalisering-og-samordning/europeisk-infrastruktur/cef-digital" alt="CEF logo" max-width="150" %}
+{% include image.html file="oidc_func_eidas-931dea0a.png" url="https://www.difi.no/fagomrader-og-tjenester/digitalisering-og-samordning/europeisk-infrastruktur/cef-digital" alt="CEF logo" max-width="150" %}
 
 ## Overordnet om eIDAS-støtte
 
