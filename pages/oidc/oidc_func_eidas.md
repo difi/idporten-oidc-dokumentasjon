@@ -14,10 +14,8 @@ ID-porten er knyttet til EUs infrastruktur for autentisering på tvers av landeg
 
 Funksjonaliteten har blitt utviklet med støtte fra EU-kommisjonen, se [Connecting Europe Facility Norge](https://www.difi.no/fagomrader-og-tjenester/digitalisering-og-samordning/europeisk-infrastruktur/cef-digital).
 
-<img src="pages/oidc/assets/oidc_func_eidas-931dea0a.png" alt="CEF logo" width="150" />
 
-
-{% include image.html file="oidc_func_eidas-931dea0a.png" url="https://www.difi.no/fagomrader-og-tjenester/digitalisering-og-samordning/europeisk-infrastruktur/cef-digital" alt="CEF logo" max-width="150" %}
+{% include image.html file="oidc_func_eidas-931dea0a.png" url="https://www.difi.no/fagomrader-og-tjenester/digitalisering-og-samordning/europeisk-infrastruktur/cef-digital" alt="CEF logo" max-width="200" %}
 
 ## Overordnet om eIDAS-støtte
 
