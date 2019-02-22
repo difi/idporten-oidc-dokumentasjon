@@ -113,9 +113,20 @@ Dersom token er by-reference, må du sende dette til  Maskinporten sitt /tokenin
 
 ### 4: Konfigurere Oauth2-klient
 
-Når tilgang er gitt i steg 3, må Konsumenten provisjonere tilgangen ned til en aktuell Oauth2 klient, før han kan få utstedt tokens.  Dette gjøres ved å oppdatere Oauth2 klienten som skal ha tilgangen med det nye scopet, via [ID-porten sitt API for selvbetjening av integrasjoner](oidc_api_admin.html#scopes).
+Når tilgang er gitt i steg 3, må Konsumenten provisjonere tilgangen ned til en aktuell Oauth2 klient, før han kan få utstedt tokens.  Dette gjøres via [ID-porten sitt API for selvbetjening av integrasjoner](oidc_api_admin.html#scopes).
 
-Først henter du aktuell klient-konfigurasjon med GET, og tar utgangspunkt i denne for å generere en modifisert objekt  tilbake:
+Det kan være en sikkerhetsrisiko  å la samme klient ha tilgang til for mange APIer, så vi anbefaler at konsumenter lager en ny klient ved å POSTe inn konfigurasjonen til denne:
+```
+POST /clients/
+{
+  "client_name": "string",
+  "client_type": "CONFIDENTIAL",
+  "description": "string",
+  "scopes": [   "difi:api3"  ],
+  "token_reference": "SELF_CONTAINED"
+}
+```
+Dersom du heller ønsker å endre en eksisterende klient, må du først hente ned aktuell klient-konfigurasjon med GET, og tar utgangspunkt i denne for å generere et modifisert objekt  tilbake:
 
 ```
 PUT /clients/if2018_apikonsument HTTP/1.1
@@ -127,7 +138,7 @@ PUT /clients/if2018_apikonsument HTTP/1.1
 }
 ```
 
-Dette betyr at konsumenten må manuelt provisjoneres for bruk av selvbetjenings-APIet, dersom dette ikke er etablert fra før.  Konsumenter må bruke "idporten:dcr.write" scopet (evt. "idporten:supplier" dersom klienten tilhører en leverandør) for bruk av selvbetjenings-APIet.
+I begge tilfeller betyr dette at konsumenten må manuelt provisjoneres for bruk av selvbetjenings-APIet, dersom dette ikke er etablert fra før.  Konsumenter må bruke "idporten:dcr.write" scopet (evt. "idporten:supplier" dersom klienten tilhører en leverandør) for bruk av selvbetjenings-APIet.
 
 
 
