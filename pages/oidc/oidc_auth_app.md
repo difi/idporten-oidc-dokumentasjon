@@ -18,51 +18,42 @@ I [OAuth 2.0 for Native Apps](https://tools.ietf.org/html/draft-ietf-oauth-nativ
 * PKCE må brukes for å beskytte seg mot app'er som kan sniffe trafikken og stjele dialogen.
 * Implisittflyt er _ikke_ anbefalt for mobil-app'er.
 
-En mobil-app vil typisk integerere med kundens eget API ("app backend"). Det er opp til kunden om han vil bruke ID-portens access_token til sikring av dette APIet direkte, eller omsette ID-portens token til sine egne tokens.
+En mobil-app vil typisk integerere med kundens eget API ("app backend"). Det er opp til kunden om han vil bruke ID-porten sine access_token til sikring av dette APIet direkte, eller omsette ID-portens token til sine egne tokens.
+
+Vanligvis er det backend-en som er registrert som klient i ID-porten, ikke selve app'en.
 
 ## Sentral oversikt og revokasjon
 
 Difi krever at kunder som omsetter punkt-autentiseringen fra ID-porten til en langt-levende innlogging, oppfyller følgende krav:
 
-- Har lokal sikring av app vha. touchID, ansiktsgjenkjenning el. lignende
-- Aktive innlogginger skal vises på sentrale oversikt i ID-portens brukerprofil
-- Håndterer innbygger-initiert revokasjon av innloggingen fra ID-portens brukerprofil
+* Har lokal sikring av app vha. touchID, ansiktsgjenkjenning el. lignende
+* Aktive innlogginger skal vises på sentrale oversikt i ID-portens brukerprofil
+* Håndterer sentral innbygger-initiert revokasjon av innloggingen fra ID-portens brukerprofil
 
-Oversikt over innlogginger med revokasjonsmulighet for innlogget innbygger er tilgjengelig på et API, slik at kunden kan velge å også tilby slik funksjonalitet i egen selvbetjeningsløsning.
+Oversikt over innlogginger med revokasjonsmulighet for innlogget innbygger er også tilgjengelig [på et eget API](oidc_api_autorisasjoner.html), slik at kunden kan velge å også tilby slik funksjonalitet integrert i egen selvbetjeningsløsning.
 
 ### Teknisk beskrivelse
 
-Den enkleste måten å håndtere kravene ovenfor, er som følger:
-- Kunde oppretter eget *oauth2 scope* med innbygger-venlig beskrivelse og egen, valgfri levetid
-- Ved innlogging mottar klienten access_token med dette scopet (mao. ikke id_token som vanlig) og lagrer dette trygt i egen backend så lenge innloggingen er gyldig
-- Validerer at access_tokenet fremdeles er gyldig ved å sjekke det mot ID-portens /tokeninfo-endepunkt ved brukerhandlinger
-- På grunn av den lange levetiden, bør ikke ID-portens token flyte ut til app'en, men istedet omsettes til egne token for sikring mellom app og egen backend
+Den enkleste måten å håndtere kravene ovenfor, er å bruke et **langt-levende access_token** som manifestasjon av den lange innloggingen.  I praksis vil dette medføre:
+1. Kunde registrerer et eget *oauth2 scope* i ID-porten.  Dette må ha følgende egenskaper:
+    - en innbygger-vennlig beskrivelse
+    - en levetid, basert på kundens egen risikovurdering
+    - flagg som bestemmer om ID-porten skal spørre innbyggeren om et samtykke til den lange innloggingen.
+3. Ved innlogging mottar klienten et *access_token* knyttet til innbyggeren med dette scopet og lagrer dette trygt i egen backend så lenge innloggingen er gyldig.  
+4. Validerer at access_tokenet fremdeles er gyldig ved å sjekke det mot ID-portens /tokeninfo-endepunkt ved brukerhandlinger
+5. På grunn av den lange levetiden, bør ikke ID-portens token flyte ut til app'en, men istedet omsettes til egne token for sikring mellom app og egen backend.
+
+Alternativt  kan kunden bruke en variant med kort-levde access_token i kombinasjon med refresh_tokens.
+
+## Beskrivelse av innloggingsflyten for mobil-app'er
+
+Flyten er identisk som for [autorisasjonskode-flyten](oidc_auth_codeflow.html), men med bruk av [PKCE](oidc_func_pkce.html):
+
+I tilegg må kunden forespørre eget scope som hører til den langt-levende innloggingen og behandle dette som forklart i forrige avsnitt.
 
 
-## Beskrivelse av flyten for mobil-app'er
+## Struktur på token
 
-Flyten er identisk som for [autorisasjonskode-flyten](oidc_auth_codeflow.html), men med bruk av [PKCE](oidc_func_pkce.html).
+ID-tokenet er identisk som ved bruk av [autorisasjonskode-flyten](oidc_auth_codeflow#idtoken).  Selv om det er access_tokenet som skal benyttes videre, må kunden først validere id_tokenet ihht vanlig beste praksis for OIDC.
 
-
-### Autentiseringsforespørsel til autorisasjons-endepunktet
-
-Følgende ekstra attributter må settes på request:
-
-| Parameter  | Verdi |
-| --- | --- |
-| t(code_verifier) | hash'et hemmelighet |
-| code_challenge_method | Kun `S256` er støttet i ID-porten.  |
-
-
-### Utstedelse av token fra token-endepunktet
-
-Følgende ekstra attributter må sendes inn i requesten:
-
-| Attributt  | Verdi |
-| --- | --- |
-| code_verifier | hemmelighet i klartekst. Påkrevd dersom t(code_verifier) ble sendt i autentiseringsforspørsel. |
-
-
-## Struktur på Id token
-
-ID-tokenet er identisk som ved bruk av [autorisasjonskode-flyten](oidc_auth_codeflow#idtoken).
+Access_tokenet vil inneholde fødseslnummer på innbyggeren, scopet som er registrert, og utløpstiden på tokenet.
