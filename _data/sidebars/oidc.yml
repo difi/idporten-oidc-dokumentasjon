@@ -150,6 +150,10 @@ entries:
         url: /oidc_api_logghistorikk.html
         output: web, pdf
 
+      - title: Innbyggers autorisasjoner
+        url: /oidc_api_autorisasjoner.html
+        output: web, pdf
+
 #      - title: Introduksjon
 #        url: /index.html
 #        output: web,pdf
