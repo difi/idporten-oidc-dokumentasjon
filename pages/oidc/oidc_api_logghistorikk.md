@@ -24,7 +24,12 @@ Denne tjenesten er en tilleggstjeneste i ID-porten. Se [https://samarbeid.difi.n
 
 REST-grensesnittet er sikret vha. [autentiseringsnær autorisasjon](https://difi.github.io/idporten-oidc-dokumentasjon/oidc_auth_oauth2.html).
 
-Scopet som gir tilgang til grensesnittet er `idporten:user.log.read`.
+
+Følgende scopes aksepteres av grensesnittet:
+
+| scope | beskrivelse |
+| - | - |   
+| `idporten:user.log.read`  |  Lese ut innloggingshistorikk  som innlogget bruker har til mine tjenester  |
 
 
 ## REST-grensesnittet

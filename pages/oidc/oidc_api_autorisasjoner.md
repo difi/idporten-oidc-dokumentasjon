@@ -1,5 +1,5 @@
 ---
-title: OAuth2 beskytta REST-API for autorisasjoner i OIDC-provider
+title: REST-API for autorisasjoner i OIDC-provider
 description: API for autorisasjoner i OIDC provider
 summary: "Innbygger sine autorisasjoner i ID-portens OIDC provider er tilgjengelig på et REST-api, for kundens egen oversikt.  Typiske autorisasjoner er såkalte langt-levende innlogginger til mobil-apper."
 permalink: oidc_api_autorisasjoner.html
@@ -24,9 +24,15 @@ Denne tjenesten er en tilleggstjeneste i ID-porten. Se [https://samarbeid.difi.n
 
 ## REST-grensesnittet
 
-REST-grensesnittet er basert på at innkommende access token tilhører innlogget bruker,  såkalt  [autentiseringsnær autorisasjon](https://difi.github.io/idporten-oidc-dokumentasjon/oidc_auth_oauth2.html), kunden skal derfor ikke oppgi fødselsnummer selv.
+REST-grensesnittet er beskyttet med Oauth2 og er basert på at innkommende access token tilhører innlogget bruker,  såkalt  [autentiseringsnær autorisasjon](https://difi.github.io/idporten-oidc-dokumentasjon/oidc_auth_oauth2.html), kunden skal derfor ikke oppgi fødselsnummer selv.
 
-Oauth2 scopet som gir tilgang til grensesnittet er `idporten:authorizations.read` eller `idporten:authorizations.revoke`.
+Følgende scopes aksepteres av grensesnittet:
+
+| scope | beskrivelse |
+| - | - |   
+| `idporten:authorizations.read`  |  Lese ut alle autorisasjoner som innlogget bruker har til mine tjenester  |
+| `idporten:authorizations.revoke`  | Som over, men fir i tillegg mulighet til å slette en autorisasjon  |
+
 
 Grensesnittet er dokumentert vha. Swagger [her-TBD]().
 
@@ -66,7 +72,8 @@ Autorisasjonene kan tilhøre scopes som kunden selv eier, samt scopes som eies a
 
 Normalt vil en kunde slette en autorisasjon ved at klienten som fikk utstedt det aktuelle tokenet kaller /revoke-endepunktet til ID-porten med tokenet (access eller fortrinnvis refresh) som skal slettes.
 
-Dersom kunden ønsker å revokere fra en annen klient enn den som fikk tokenet utdelt, må denne klienten kalle
+Dette API-kallet gir derimot kunden anledning til å revokere fra en annen klient enn den som fikk tokenet utdelt.  Ved sletting av autorisasjon, blir alle tilhørende aktive access_token og refresh_token invalideret.   (Merk at evt. allerede utstedte self-contained access_token fremdeles vil fremstå som gyldige, dersom de ikke valideres via nettverkskall mot ID-portens /tokeninfo-endepunkt).
+
 ```
 DELETE /authorizations/{authorization_id}
 Authorization: Bearer yyyyy
