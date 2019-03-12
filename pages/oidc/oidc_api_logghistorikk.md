@@ -20,30 +20,34 @@ Kunden mottar opplysningene for at innbyggeren kan lettere deteketere misbruk av
 Denne tjenesten er en tilleggstjeneste i ID-porten. Se [https://samarbeid.difi.no/difis-felleslosninger/tilleggstjenester](https://samarbeid.difi.no/difis-felleslosninger/tilleggstjenester) for generelle vilkår for tilleggstjenester.
 
 
-## Bruk av Oauth2
+## REST-grensesnittet
 
-REST-grensesnittet er sikret vha. [autentiseringsnær autorisasjon](https://difi.github.io/idporten-oidc-dokumentasjon/oidc_auth_oauth2.html).
+REST-grensesnittet er beskyttet med Oauth2 og er basert på at innkommende access token tilhører innlogget bruker,  såkalt  [autentiseringsnær autorisasjon](https://difi.github.io/idporten-oidc-dokumentasjon/oidc_auth_oauth2.html), kunden skal derfor ikke oppgi fødselsnummer selv.
 
-
-Følgende scopes aksepteres av grensesnittet:
+Følgende Oauth2 scopes aksepteres av grensesnittet:
 
 | scope | beskrivelse |
 | - | - |   
 | `idporten:user.log.read`  |  Lese ut innloggingshistorikk  som innlogget bruker har til mine tjenester  |
 
 
-## REST-grensesnittet
-
-REST-grensesnittet er basert på at innkommende access token tilhører innlogget bruker, kunden trenger derfor ikke oppgi fødselsnummer selv.  
-
 Kunden får kun se innloggingshistorikk til tjenester tilknyttet eget organisasjonsnummer.
 
 Grensesnittet er dokumenter vha. Swagger [her-TBD]().
 
+URL til tjenesten:
+
+| Miljø | URL |
+|-|-|
+|PROD  | https://api.idporten.difi.no/innlogginger  |
+|VER1  | TBD |
+|VER2  | TBD  |
+|YT2   | TBD |
+
 ## Eksempel
 
 ```
-GET /logg/idporten?maxhits=5 HTTP/1.1
+GET /innlogginger?maxhits=5 HTTP/1.1
 Authorization: Bearer U_3uI4GjxKbhc4jo54mbnozbSZdHLyw28ZQGnxsScmI=
 
 [
