@@ -1,7 +1,7 @@
 ---
-title: Autentisering til SPA'er
-description: Bruk av Idporten sin OpenID Connect provider til autentisering til Single  Page Applikasjoner
-summary: "Ved innlogging til en SPA, er det anbefalt å bruke code flow med PKCE og state"
+title: OIDC-client using React and code flow
+description: OIDC-client using React and code flow
+summary: "This is short how-to on using the code flow from a React-based javascript OIDC-client."
 permalink: oidc_sample_react.html
 
 layout: page
@@ -131,4 +131,3 @@ class AuthenticationStore {
 
 }
 ```
-Feel free to reach out if more clarification is needed.
