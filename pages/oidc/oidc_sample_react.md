@@ -9,15 +9,17 @@ sidebar: oidc
 ---
 
 
-This is short how-to on OAuth2 with code flow in React for Difi’s OIDC service. We are using the OIDC Client library from https://github.com/IdentityModel/oidc-client-js/wiki
+This is short how-to on building an OIDC single-page application in React towards   ID-portens OIDC service. We are using the OIDC Client library from https://github.com/IdentityModel/oidc-client-js/wiki
+
+Please note that the client uses the **code flow** as per [updated security recommendations from the IETF](https://tools.ietf.org/html/draft-ietf-oauth-browser-based-apps-00#section-4).
 
 
 The general process of authentication is:
-1)	Initialize OIDC client library
-2)	Redirect the browser to ID-porten OIDC provider through a library callback
-3)	< User performs authentication >
-4)	ID-porten redirects back to the browser (with query parameters – no access token)
-5)	Complete authentication through library callback (fetches access token)
+1.	Initialize OIDC client library
+2.	Redirect the browser to ID-porten OIDC provider through a library callback
+3.	< User performs authentication >
+4.	ID-porten redirects back to the browser (with query parameters – no access token)
+5.	Complete authentication through library callback (fetches access token)
 
 The process of logging out is analogous to logging in. Important to remember that you have two sessions – one client side, and one server side – and you need to close both sessions on logout.
 
