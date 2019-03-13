@@ -9,7 +9,7 @@ sidebar: oidc
 ---
 
 
-This is short how-to on building an OIDC single-page application in React towards   ID-portens OIDC service. We are using the OIDC Client library from https://github.com/IdentityModel/oidc-client-js/wiki
+This is short how-to on building an OIDC single-page application in React towards   ID-portens OIDC service. We are using the OIDC Client library from [https://github.com/IdentityModel/oidc-client-js/wiki](https://github.com/IdentityModel/oidc-client-js/wiki).
 
 Please note that the client uses the **code flow** as per [updated security recommendations from the IETF](https://tools.ietf.org/html/draft-ietf-oauth-browser-based-apps-00#section-4).
 
