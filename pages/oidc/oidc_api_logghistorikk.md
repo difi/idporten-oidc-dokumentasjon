@@ -33,16 +33,16 @@ Følgende Oauth2 scopes aksepteres av grensesnittet:
 
 Kunden får kun se innloggingshistorikk til tjenester tilknyttet eget organisasjonsnummer.
 
-Grensesnittet er dokumenter vha. Swagger [her-TBD]().
+Grensesnittet er dokumenter vha. Swagger [https://api.idporten-ver2.difi.no/innlogginger#swagger-ui.html](https://api.idporten-ver2.difi.no/innlogginger#swagger-ui.html).
 
 URL til tjenesten:
 
 | Miljø | URL |
 |-|-|
 |PROD  | https://api.idporten.difi.no/innlogginger  |
-|VER1  | TBD |
-|VER2  | TBD  |
-|YT2   | TBD |
+|VER1  | https://api.idporten-ver1.difi.no/innlogginger |
+|VER2  | https://api.idporten-ver2.difi.no/innlogginger  |
+|YT2   | https://api.idporten-yt2.difi.eon.no/innlogginger |
 
 ## Eksempel
 

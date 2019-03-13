@@ -26,7 +26,7 @@ Denne tjenesten er en tilleggstjeneste i ID-porten. Se [https://samarbeid.difi.n
 
 REST-grensesnittet er beskyttet med Oauth2 og er basert på at innkommende access token tilhører innlogget bruker,  såkalt  [autentiseringsnær autorisasjon](https://difi.github.io/idporten-oidc-dokumentasjon/oidc_auth_oauth2.html), kunden skal derfor ikke oppgi fødselsnummer selv.
 
-Følgende scopes aksepteres av grensesnittet:
+Følgende Oauth2 scopes aksepteres av grensesnittet:
 
 | scope | beskrivelse |
 | - | - |   
@@ -34,7 +34,16 @@ Følgende scopes aksepteres av grensesnittet:
 | `idporten:authorizations.revoke`  | Som over, men fir i tillegg mulighet til å slette en autorisasjon  |
 
 
-Grensesnittet er dokumentert vha. Swagger [her-TBD]().
+Grensesnittet er dokumentert ihht OpenAPI her: [https://api.idporten-ver2.difi.no/authorizations#swagger-ui.html](https://api.idporten-ver2.difi.no/authorizations#swagger-ui.html).
+
+URL til tjenesten:
+
+| Miljø | URL |
+|-|-|
+|PROD  | https://api.idporten.difi.no/authorizations  |
+|VER1  | https://api.idporten-ver1.difi.no/authorizations |
+|VER2  | https://api.idporten-ver2.difi.no/authorizations  |
+|YT2   | https://api.idporten-yt2.difi.eon.no/authorizations |
 
 REST-grensesnittet tilbyr to hovedmetoder:
 
