@@ -24,7 +24,13 @@ Denne tjenesten er en tilleggstjeneste i ID-porten. Se [https://samarbeid.difi.n
 
 REST-grensesnittet er sikret vha. [server-til-server Oauth](https://difi.github.io/idporten-oidc-dokumentasjon//4_server-to-server-oauth2.html).
 
-Scopet som gir tilgang til grensesnittet er `global/idporten.authlevel.read`.
+
+Følgende scopes aksepteres av grensesnittet:
+
+| scope | beskrivelse |
+| - | - |   
+| `global/idporten.authlevel.read`  |  Lese ut innbygger  som innlogget bruker har til mine tjenester  |
+
 
 Kunden må i bestillingen oppi organisasjonsnummeret som brukes i virksomhetssertifikatet som generer JWT-førespørselen.  Sertifikatet må være virksomhetssertifikat fra Buypass eller Commfides, med key usage: Digital Signature.
 

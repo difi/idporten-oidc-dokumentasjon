@@ -31,3 +31,7 @@ I praksis er flyten den samme som [ordinær autorisasjonskodeflyt](oidc_auth_cod
 - Det registreres ingen client-secret
 - Bruk av [PKCE](oidc_func_pkce.html) er påkrevd
 - Bruk av `state`-claimet i autorisasjonsforespørsel er påkrevd
+
+## Example
+
+Sjå [eksempel med React-klient](oidc_sample_react.html)
