@@ -64,7 +64,7 @@ Først må du bli manuelt provisjonert som API-tilbyder:  Du må bestemme:
 
 og sende dette til idporten (at) difi.no
 
-Du må så lage en tilhørende Oauth2-klient som benytter selvbetjeningsAPIet til Maskinporten.  Se [oidc_api_admin_maskinporten.html](oidc_api_admin_maskinporten.html) for detaljer.
+Du må så lage en tilhørende selvbetjenings-klient som benytter selvbetjeningsAPIet til Maskinporten.  Se [oidc_api_admin_maskinporten.html](oidc_api_admin_maskinporten.html) for detaljer.  (For å komme raskt igang kan du [bruke Postman](oidc_sample_jwtgrant_postman.html). )
 
 ### 2: Opprette et API
 
