@@ -68,8 +68,7 @@ Dersom minimum følgende claims er tilstede ved opprettelse/endring, vil kliente
 |client_name|Navn på klient, blir vist ved innlogging|
 |description|Beskrivelse av klienten, ikke synlig for innbyggere, men blir lagret i Difis støttesystemer|
 |client_uri|URL til klient (blir brukt på tilbake-knapp og ved feil)|
-|logo_uri| URL til logo som vises ved innlogging|
-|scopes| Må være minst `["openid"]`|
+||scopes| Må være minst `["openid"]`|
 |redirect_uris| liste med redirect-uri'er|
 
 ### 2: Maskin-til-maskin-integrasjonar
@@ -123,13 +122,11 @@ Respons:
 			"onbehalfof": "example_onbehalfof",
 			"display_name": "Eksempelregistrering for onbehalof"
 			"orgno": "991825828"
-			"logo-url": "https://service.eksempel.no/logo.png"
 			"url": "https://service.eksempel.no"
 		}, {
 			"onbehalfof": "example_onbehalfof_2",
 			"display_name": "En annen eksempelregistrering for onbehalof"
 			"orgno": "991825829"
-			"logo-url": "https://otherservice.eksempel.no/logo.png"
 			"url": "https://otherservice.eksempel.no"
 		}
 	],

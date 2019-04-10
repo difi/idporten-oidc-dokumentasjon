@@ -90,13 +90,11 @@ Respons:
 			"onbehalfof": "example_onbehalfof",
 			"display_name": "Eksempelregistrering for onbehalof"
 			"orgno": "991825828"
-			"logo-url": "https://service.eksempel.no/logo.png"
 			"url": "https://service.eksempel.no"
 		}, {
 			"onbehalfof": "example_onbehalfof_2",
 			"display_name": "En annen eksempelregistrering for onbehalof"
 			"orgno": "991825829"
-			"logo-url": "https://otherservice.eksempel.no/logo.png"
 			"url": "https://otherservice.eksempel.no"
 		}
 	],
@@ -121,7 +119,6 @@ Status code 200
 	"onbehalfof": "example_onbehalfof",
 	"display_name": "Eksempelregistrering for onbehalof"
 	"orgno": "991825828"
-	"logo-url": "https://service.eksempel.no/logo.png"
 	"url": "https://service.eksempel.no"
 }
 
@@ -138,7 +135,6 @@ Authorization: Bearer <my_access_token_value>
 	"onbehalfof": "new_example_onbehalof",
 	"display_name": "Eksempelregistrering for onbehalof"
 	"orgno": "991825828"
-	"logo-url": "https://service.eksempel.no/logo.png"
 	"url": "https://service.eksempel.no"
 }
 ```
@@ -151,7 +147,6 @@ Status code 200
 	"onbehalfof": "new_example_onbehalof",
 	"display_name": "Eksempelregistrering for onbehalof"
 	"orgno": "991825828"
-	"logo-url": "https://service.eksempel.no/logo.png"
 	"url": "https://service.eksempel.no"
 }
 
@@ -169,10 +164,9 @@ Authorization: Bearer <my_access_token_value>
 	"onbehalfof": "example_onbehalof",
 	"display_name": "Modified display_name value"
 	"orgno": "991825828"
-	"logo-url": "https://service.eksempel.no/logo.png"
 	"url": "https://service.eksempel.no"
 }
-``` 
+```
 
 Tilsvarende respons som ved nyregistrering
 
@@ -182,6 +176,6 @@ Forespørsel
 ```
 DELETE /client/oidc/oidc_eksempel_klient/onbehalof/example_onbehalof
 Authorization: Bearer <my_access_token_value>
-``` 
+```
 
 Får respons med statuskode 200, og tom body.
