@@ -151,7 +151,6 @@ Status code 200
 	"onbehalfof": "example_onbehalfof",
 	"display_name": "Eksempelregistrering for onbehalof"
 	"orgno": "991825828"
-	"logo-url": "https://service.eksempel.no/logo.png"
 	"url": "https://service.eksempel.no"
 }
 
@@ -168,7 +167,6 @@ Authorization: Bearer <my_access_token_value>
 	"onbehalfof": "new_example_onbehalof",
 	"display_name": "Eksempelregistrering for onbehalof"
 	"orgno": "991825828"
-	"logo-url": "https://service.eksempel.no/logo.png"
 	"url": "https://service.eksempel.no"
 }
 ```
@@ -181,7 +179,6 @@ Status code 200
 	"onbehalfof": "new_example_onbehalof",
 	"display_name": "Eksempelregistrering for onbehalof"
 	"orgno": "991825828"
-	"logo-url": "https://service.eksempel.no/logo.png"
 	"url": "https://service.eksempel.no"
 }
 
@@ -199,7 +196,6 @@ Authorization: Bearer <my_access_token_value>
 	"onbehalfof": "example_onbehalof",
 	"display_name": "Modified display_name value"
 	"orgno": "991825828"
-	"logo-url": "https://service.eksempel.no/logo.png"
 	"url": "https://service.eksempel.no"
 }
 ```
