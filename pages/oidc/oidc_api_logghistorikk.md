@@ -19,6 +19,9 @@ Kunden mottar opplysningene for at innbyggeren kan lettere deteketere misbruk av
 
 Denne tjenesten er en tilleggstjeneste i ID-porten. Se [https://samarbeid.difi.no/difis-felleslosninger/tilleggstjenester](https://samarbeid.difi.no/difis-felleslosninger/tilleggstjenester) for generelle vilkår for tilleggstjenester.
 
+## Brukergrensesnitt
+
+Innbyggere kan gå til [https://brukerprofil.idporten.no/](https://brukerprofil.idporten.no/) for å se sin innloggingshistorikk.
 
 ## REST-grensesnittet
 
