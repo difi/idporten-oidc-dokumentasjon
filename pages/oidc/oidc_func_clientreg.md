@@ -8,14 +8,25 @@ layout: page
 sidebar: oidc
 ---
 
-## Typer klienter
+## Bakgrunn
 
 ID-porten støtter flere typer klienter, og det er kundens ansvar å sørge for at det faktiske bruksmønsteret er i samsvar med registreringen. Korrekt registrering er spesielt viktig for klienter som konsumerer APIer tilbudt av andre, og ID-porten og API-tilbyders bruksavtaler regulerer dette ansvarsforholdet.
 
 Valg av klient-type er en sikkerhetsvurdering kunden skal utføre.  Vi kategoriserer klienter ved hvordan de autentiserer og identifiserer seg opp mot ID-porten. Dette er i sin tur avhengig av kjøretidsmiljøet til klienten. Vi legger til grunn  på definisjonene fra  [Oauth2 kap 2.1](https://tools.ietf.org/html/rfc6749#section-2.1).
 
-Difi forutsetter at
-**skriv noko om rutiner for utstedelse, identifikasjon,  oppbevaring av nøkler**
+Difi forutsetter at API-tilbyder og API-konsument håndterer sertifikat og nøkler på en måte som sikrer at ikke uvedkommende kan misbruke disse.
+
+## Tilgjengelige typer  integrasjoner
+
+Kunden kan lage integrasjoner selv via [selvbetjening på Samarbeidsportalen](https://selvbetjening-samarbeid.difi.no/#/).  Her kan en velge mellom:
+
+* ID-porten
+* Kontaktregisteret
+* Maskinporten
+* API-klient innlogget bruker
+* (eFormidling integrasjonspunkt)
+
+Det er viktig å være klar over at alle disse integrasjonstypene rent teknisk er standard Oauth2 klienter, men med ulike egenskaper.  Se detaljert lenger ned.
 
 ### 1: Standard-klient
 
@@ -27,7 +38,7 @@ Vi tilbyr tre ulike metoder for klientautentisering for slike klienter:
 
 |Metode|Beskrivelse|
 |-|-|
-| Statisk hemmelighet | En statisk hemmelighet (*client_secret*) som Difi genererer og blir utvekslet manuelt, eller tilgjengeliggjort via selvbetjening.  Maks tillatt levetid er satt til 180 dager. Det er kundens ansvar å få rotert hemmeligheten før utløp for å sikre kontinuerlig tjenesteleveranse. |
+| Statisk hemmelighet | En statisk hemmelighet (*client_secret*) som Difi genererer og blir utvekslet manuelt, eller tilgjengeliggjort via selvbetjening.  Maks tillatt levetid er satt til 360 dager. Det er kundens ansvar å få rotert hemmeligheten før utløp for å sikre kontinuerlig tjenesteleveranse. |
 | Virksomhetssertifikat   |  Klienten bruker et gyldig virksomhetssertifikat fra Buypass eller Commfides. Organisasjonsnummeret i sertifikatet må stemme med klient-registreringa. Kunden kan valgfritt velge å "låse" klienten til bare et spesifikt virksomhetssertifikat. |
 | Asymmetrisk nøkkel  | Den offentlige nøkkelen fra et egen-generert asymmetrisk nøkkelpar blir registrert på klient, og klienten bruker privatnøkkelen til å autentisere seg.  For å få lov til å registere slike klienter, må kunden etablere en [egen  selvbetjeningsapplikasjon](oidc_api_admin.html) (som selv må bruke virksomhetssertifikat)  |
 
@@ -42,7 +53,9 @@ Typisk en javascript-klient som fullt og helt lever i brukerens browser.  En sli
 
 Vi følger [de siste anbefalingene fra IETF](https://tools.ietf.org/html/draft-ietf-oauth-browser-based-apps-00), som sier at slike klienter skal bruke autorisasjonskodeflyten, og at både PKCE og state-parameter er påkrevd.
 
-Merk at vi tidligere støttet *implicit* flyt for slike klienter.  Denne støtten vil bli faset ut.   Vi støtter heller ikke prompt=none.
+Merk at vi tidligere støttet *implicit* flyt for slike klienter.  Denne støtten vil bli faset ut.   
+
+Vi støtter heller ikke prompt=none, da vi på grunn av intern arkitektur ikke kan garantere spec'ens krav om at det aldri skal bli vist en brukerdialog.
 
 
 ### 3: Mobil-app
@@ -55,7 +68,15 @@ Mobil-apper skal bruke autorisasjonskodeflyten og bruk av PKCE er påkrevd.
 
 #### Oppsummert: tabell over klient-typer
 
-Tabellen viser hvordan de ulike klient-typene vil se ut ved registrering over selvbetjeningsapi:
+Tabellen viser hvordan de ulike klient-typene ser ut:
+
+| Integrasjon | Faste scopes | Kan legge til scopes? | tillatte `token_endpoint_auth_method` | tillatte `grant_types` |
+|-|-|-|-|-|
+|ID-porten|<ul><li>openid</li><li>profile</li></ul> |nei|<ul><li>client_secret_basic</li><li>client_secret_post</li><li>private_key_jwt</li><li>none</li></ul>    | <ul><li>code</li><li>refresh_token</li></ul> |
+|KRR| global/kontaktinformasjon.read global/spraak.read global/sikkerdigitalpost.read global/sertifikat.read global/varslingsstatus.read |nei|private_key_jwt  | jwt_bearer_token |
+|ID-porten|openid profile|nei|client_secret_basic client_secret_post private_key_jwt none | code refresh_token |
+
+Ved bruk av selvbetjenings-API, må kunden passe på å sende konfigurasjoner som er kompatible med tabellen over, ellers risikerer man å ende opp med en ubrukelig klient.
 
 ![klienttyper](assets/oidc_func_clientreg-1ef33602.png)
 
