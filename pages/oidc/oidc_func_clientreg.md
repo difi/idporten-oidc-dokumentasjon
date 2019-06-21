@@ -74,13 +74,12 @@ Tabellen viser hvordan de ulike klient-typene ser ut:
 
 | Integrasjon | Faste scopes | Kan legge til scopes? | tillatte `token_endpoint_auth_method` | tillatte `grant_types` |
 |-|-|-|-|-|
-|ID-porten| <ul><li>openid</li><li>profile</li></ul> |nei|<ul><li>client_secret_basic</li><li>client_secret_post</li><li>private_key_jwt</li><li>none</li></ul>    | <ul><li>code</li><li>refresh_token</li></ul> |
-|KRR| global/kontaktinformasjon.read global/spraak.read global/sikkerdigitalpost.read global/sertifikat.read global/varslingsstatus.read |nei|private_key_jwt  | jwt_bearer_token |
-|ID-porten|openid profile|nei|client_secret_basic client_secret_post private_key_jwt none | code refresh_token |
+|ID-porten| openid profile | nei |client_secret_basic client_secret_post private_key_jwt none     | code refresh_token  |
+|API-klient innlogget bruker |openid profile| ja |client_secret_basic client_secret_post private_key_jwt none | code refresh_token |
+|Maskinporten|  |ja|private_key_jwt  | jwt_bearer_token |
+|Kontaktregisteret| global/kontaktinformasjon.read global/spraak.read global/sikkerdigitalpost.read global/sertifikat.read global/varslingsstatus.read |nei|private_key_jwt  | jwt_bearer_token |
 
 Ved bruk av selvbetjenings-API, må kunden passe på å sende konfigurasjoner som er kompatible med tabellen over, ellers risikerer man å ende opp med en ubrukelig klient.
-
-![klienttyper](assets/oidc_func_clientreg-1ef33602.png)
 
 ## Metadata
 
