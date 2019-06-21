@@ -26,7 +26,7 @@ Kunden kan lage integrasjoner selv via [selvbetjening på Samarbeidsportalen](ht
 * API-klient innlogget bruker
 * (eFormidling integrasjonspunkt)
 
-Det er viktig å være klar over at alle disse integrasjonstypene rent teknisk er standard Oauth2 klienter, men med ulike egenskaper.  Se detaljert lenger ned.
+Det er viktig å være klar over at disse integrasjonstypene rent teknisk alle er standard Oauth2 klienter, men med ulike egenskaper.  Se detaljert lenger ned.
 
 ### 1: Standard-klient
 
@@ -49,7 +49,7 @@ Maskin-til-maskin klienter faller alltid i 'standardklient'-kategorien, men her 
 
 ### 2: Brower-basert applikasjon / SPA
 
-Typisk en javascript-klient som fullt og helt lever i brukerens browser.  En slik klient kan ikke beskytte en klient-hemmelighet/virksomhetssertfikat, og blir derfor en *public* klient.
+Typisk en javascript-klient som fullt og helt lever i brukerens browser.  En slik klient kan ikke beskytte en klient-hemmelighet/virksomhetssertfikat, og blir derfor en *public* klient, den har ingen klientautentisering (`token_endpoint_auth_method = none`)
 
 Vi følger [de siste anbefalingene fra IETF](https://tools.ietf.org/html/draft-ietf-oauth-browser-based-apps-00), som sier at slike klienter skal bruke autorisasjonskodeflyten, og at både PKCE og state-parameter er påkrevd.
 
@@ -64,6 +64,8 @@ En mobil-app kalles *native app* i Oauth2-spesifikasjonene.  [RFC8252](https://t
 
 Mobil-apper skal bruke autorisasjonskodeflyten og bruk av PKCE er påkrevd.
 
+Mobil-apper er opså public-klienter med  `token_endpoint_auth_method = none`.
+
 [Les mer om mobil-app'er](oidc_auth_app.html).
 
 #### Oppsummert: tabell over klient-typer
@@ -72,7 +74,7 @@ Tabellen viser hvordan de ulike klient-typene ser ut:
 
 | Integrasjon | Faste scopes | Kan legge til scopes? | tillatte `token_endpoint_auth_method` | tillatte `grant_types` |
 |-|-|-|-|-|
-|ID-porten|<ul><li>openid</li><li>profile</li></ul> |nei|<ul><li>client_secret_basic</li><li>client_secret_post</li><li>private_key_jwt</li><li>none</li></ul>    | <ul><li>code</li><li>refresh_token</li></ul> |
+|ID-porten| <ul><li>openid</li><li>profile</li></ul> |nei|<ul><li>client_secret_basic</li><li>client_secret_post</li><li>private_key_jwt</li><li>none</li></ul>    | <ul><li>code</li><li>refresh_token</li></ul> |
 |KRR| global/kontaktinformasjon.read global/spraak.read global/sikkerdigitalpost.read global/sertifikat.read global/varslingsstatus.read |nei|private_key_jwt  | jwt_bearer_token |
 |ID-porten|openid profile|nei|client_secret_basic client_secret_post private_key_jwt none | code refresh_token |
 
