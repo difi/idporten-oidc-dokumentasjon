@@ -66,6 +66,28 @@ For integrasjoner som bruker symmetrisk nøkkel (client_secret) som klientautent
 
 Merk: Difi vil på sikt innføre maks-levetid på client_secret.
 
+## Bruk av asymmetrisk nøkkel
+
+Man kan sende inn en [JWKS-struktur (RFC7517)](https://tools.ietf.org/html/rfc7517), dvs. en array av flere (inntil 5) JWK-representasjoner.
+
+Er modellert som egen ressurs under klient `/clients/{client_id}/jwks`
+
+Kan ikke gjøre operasjoner på enkelt-nøkler, kun hele settet, dvs. både POST og PUT erstatter evt. eksisterende JWKS.
+
+Kun RS256 støttes som algoritme.
+
+```
+POST /clients/{client_id}/jwk
+
+{
+  [
+     jwk1,
+		 jwk2
+	]
+}
+```
+
+
 ## REST-grensesnittet
 
 Se Open-API dokumentasjon her:
