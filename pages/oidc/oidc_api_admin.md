@@ -57,23 +57,8 @@ Ved endring og sletting tillater APIet kun operasjoner på integrasjoner der ege
 
 ## Ulike typer integrasjonar
 
-Man kan opprette to typer integrajonser over APIet:
+Man kan opprette ulike typer integrajonser over APIet.  Det er klient-autentiseringsmetode og grant-type som bestemmer hvilken integrasjon som blir opprettet. ID-porten har validering som hindrer at ulovlige kombinasjoner blir opprettet. Se [klient-registrering](oidc_func_clientreg.html) for detaljer.
 
-### 1: OIDC-integrasjon for person-autentisering
-
-Dersom minimum følgende claims er tilstede ved opprettelse/endring, vil klienten bli aktivert for person-innlogging.
-
-|claim|beskrivelse|
-|-|-|
-|client_name|Navn på klient, blir vist ved innlogging|
-|description|Beskrivelse av klienten, ikke synlig for innbyggere, men blir lagret i Difis støttesystemer|
-|client_uri|URL til klient (blir brukt på tilbake-knapp og ved feil)|
-||scopes| Må være minst `["openid"]`|
-|redirect_uris| liste med redirect-uri'er|
-
-### 2: Maskin-til-maskin-integrasjonar
-
-Registreringer som ikke oppfyller kravene i forrige avsnitt, blir opprettet som maskin-til-maskin integrasjoner.  Personinnlogging vil ikke fungere.
 
 ## Rotering av client_secret
 
