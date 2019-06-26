@@ -87,6 +87,7 @@ POST /clients/{client_id}/jwk
 }
 ```
 
+`kid` må være unik.   Ved klient-autentisering mot /token-endepunktet, og ved bruk av JWT bearer grants, må man bruke `kid`-parameteren i jwt-headeren istedenfor x5c.
 
 ## REST-grensesnittet
 
