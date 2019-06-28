@@ -166,7 +166,7 @@ samt at følgende attributter må sendes inn i requesten:
 | Attributt  | Verdi |
 | --- | --- |
 | client_id | Klientens ID |
-| grant_type | Valgt grant-metode, en av: <ul><li>`authorization_code`</li><li>`refresh_token`</li></ul>|
+| grant_type | Valgt grant-metode, en av: `authorization_code`, `refresh_token`|
 | code | autorisasjonskode (*code*) motatt i [autentiseringsresponsen](#authresponse).   |
 | redirect_uri | ønsket redirect_uri, skal være identisk med verdi brukt i autentiseringsforespørsel |
 
