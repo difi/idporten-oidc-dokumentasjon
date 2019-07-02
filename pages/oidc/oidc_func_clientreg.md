@@ -36,6 +36,11 @@ Vi har 3 måter du kan få registrert din integrasjon:
 
 Dette avsnittet detaljerer noen viktige Oauth2 egenskaper som kategoriserer våre klienter.  Se gjerne [Oauth2 Dynamic Client Registration for mer informasjon (RFC7591)](https://tools.ietf.org/html/rfc7591#section-2).
 
+I utgangspunktet kan du som kunde velge Oauth2-egenskaper fritt etter egen risikovurdering. De som konsumerer API tilbudt av andre må være oppmerksom på at API-tilbyder kan stille krav til spesifikke egenskaper.   Validering av slike krav skjer som hovedregel kun run-time ved tokenutstedelse og ikke ved klient-registrering.
+
+
+
+
 ### Klient-autentisering
 
 Alt etter bruksområde, så tilbyr vi forskjellige metoder for autentisering av din klient.  Dette blir styrt av attributtet `token_endpoint_auth_method`:
@@ -54,17 +59,19 @@ Difi forutsetter at API-tilbyder og API-konsument håndterer sertifikat og nøkl
 
 ### Grant-typer
 
-Et grant representerer brukerens samtykke til å hente et access token (som i sin tur brukes til hente den beskytta ressurs tilhørende brukeren, se [Oauth2, kap 1.3](https://tools.ietf.org/html/rfc6749#section-1.3) )
+Et grant representerer brukerens samtykke til å hente et access token (som i sin tur brukes til hente den beskytta ressurs tilhørende brukeren, se [Oauth2, kap 1.3](https://tools.ietf.org/html/rfc6749#section-1.3) samt [`grant_types` i DCR kap. 2](https://tools.ietf.org/html/rfc7591#section-2) )
 
 ID-porten støtter følgende grants:
 
 |Grant-type|Beskrivelse|
 |-|-|
-|code         | Autorisasjonskode-flyten  |
-|refresh      | Klienten bruker refresh token for å hente nytt access token   |
-|jwt-bearer   | En signert JWT ihht [RFC7523](https://tools.ietf.org/html/rfc7523#section-2.1). Kan enten bruke virksomhetssertifikat eller forhåndsregistrert asymmetrisk nøkkel.  |
+|authorization_code         | Autorisasjonskode-flyten, som beskrevet i [RFC 6749 kap 4.1](https://tools.ietf.org/html/rfc6749#section-4.1)  |
+|refresh_token      | Klienten bruker eit refresh-token for å hente nytt access-token. Bruker blir (normalt) ikke involvert.  |
+|jwt-bearer   | En signert JWT ihht [RFC7523](https://tools.ietf.org/html/rfc7523#section-2.1). Kan enten bruke virksomhetssertifikat eller forhåndsregistrert asymmetrisk nøkkel.   |
 
-Vi støtter ikke implicit eller client-credentials grant.
+Maskinporten-klinter skal alltid bruke `jwt-bearer`.
+
+Vi støtter ikke implicit, password eller client-credentials grant.
 
 ### Klient-typer
 
@@ -91,8 +98,10 @@ Tabellen under oppsummerer sammenhengen mellom de ulike egenskapene:
 
 | Integrasjon | Tillatte klient-typer |  tillatte `token_endpoint_auth_method` | tillatte `grant_types` | scope | Kan legge til scopes? |
 |-|-|-|-|-|-|
-|ID-porten| web, browser, native |  client_secret_basic client_secret_post private_key_jwt none     | code refresh_token  |openid profile | nei |
-|API-klient innlogget bruker | web, browser, native |client_secret_basic client_secret_post private_key_jwt none | code refresh_token |openid profile| ja |
+|ID-porten| web |  client_secret_basic client_secret_post private_key_jwt      | code refresh_token  |openid profile | nei |
+||  browser |  none     | code   |openid profile | nei |
+||  native |   none     | code   |openid profile | nei |
+|API-klient innlogget bruker  <td colspan="4">samme som for idporten </td> | ja |
 |Maskinporten| web |private_key_jwt  | jwt_bearer_token | |ja|
 |Kontaktregisteret| web | private_key_jwt  | jwt_bearer_token |global/kontaktinformasjon.read global/spraak.read global/sikkerdigitalpost.read global/sertifikat.read global/varslingsstatus.read |nei|
 
@@ -117,7 +126,7 @@ Følgende metadata er felles for alle typer klienter:
 |attributt|Påkrevd?|beskrivelse|
 |-|-|-|
 | client_id | Ja |Unik identifikator for klienten. Blir tildelt av Difi. |
-| client_orgno | Ja |Klientens organisasjonsnummer.   |
+| client_orgno | Ja |Klientens organisasjonsnummer.  Utleveres som "consumer_orgno" i tokens |
 | supplier_orgno   | Nei  | Leverandørens organisansjonummer, dersom integrasjonen er kontrollert av leverandør  |
 | scopes | Ja |Liste over scopes som klienten kan forespørre. For innlogging må alltid *openid* være tilstede. |
 
