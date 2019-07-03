@@ -101,7 +101,7 @@ Tabellen under oppsummerer sammenhengen mellom de ulike egenskapene:
 |ID-porten| web |  client_secret_basic client_secret_post private_key_jwt      | code refresh_token  |openid profile | nei |
 ||  browser |  none     | code   |openid profile | nei |
 ||  native |   none     | code   |openid profile | nei |
-|API-klient innlogget bruker  <td colspan="4">samme som for idporten </td> | ja |
+|API-klient innlogget bruker  |samme som for idporten ||| | ja |
 |Maskinporten| web |private_key_jwt  | jwt_bearer_token | |ja|
 |Kontaktregisteret| web | private_key_jwt  | jwt_bearer_token |global/kontaktinformasjon.read global/spraak.read global/sikkerdigitalpost.read global/sertifikat.read global/varslingsstatus.read |nei|
 
@@ -126,7 +126,7 @@ Følgende metadata er felles for alle typer klienter:
 |attributt|Påkrevd?|beskrivelse|
 |-|-|-|
 | client_id | Ja |Unik identifikator for klienten. Blir tildelt av Difi. |
-| client_orgno | Ja |Klientens organisasjonsnummer.  Utleveres som "consumer_orgno" i tokens |
+| client_orgno | Ja |Klientens organisasjonsnummer.  Juridisk konsument dersom leverandør-styrt integrasjon. Utleveres som "consumer_orgno" i tokens |
 | supplier_orgno   | Nei  | Leverandørens organisansjonummer, dersom integrasjonen er kontrollert av leverandør  |
 | scopes | Ja |Liste over scopes som klienten kan forespørre. For innlogging må alltid *openid* være tilstede. |
 
