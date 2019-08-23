@@ -8,10 +8,10 @@ layout: page
 sidebar: oidc
 ---
 
-```
-OBS! Dokumentasjon av OIDC vedlikeholdes ikke lenger her. Dokumentasjon av alle Difis fellesløsninger finner du her: [https://difi.github.io/felleslosninger/](https://difi.github.io/felleslosninger/). Gå direkte til oppdatert [OIDC-dokumentasjon](https://difi.github.io/felleslosninger/oidc_index.html)
 
-```
+### OBS! Dokumentasjon av OIDC vedlikeholdes ikke lenger her! 
+Dokumentasjon av alle Difis fellesløsninger finner du her: [https://difi.github.io/felleslosninger/](https://difi.github.io/felleslosninger/). Gå direkte til oppdatert [OIDC-dokumentasjon](https://difi.github.io/felleslosninger/oidc_index.html)
+
 
 ## Hvem kan bruke ID-porten OpenID Connect provider?
 Tjenesteeiere som har godtatt ID-porten sine bruksvilkår kan ta i bruk denne tjenesten i produksjonsmiljø. Man kan gjerne teste løsningen i testmiljø før man godtar bruksvilkårene.
