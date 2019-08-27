@@ -2,7 +2,7 @@
 title: OIDC arkitektur
 description: Arkitekturen til ID-portens OIDC Provider
 summary: "OIDC Provideren til ID-porten er realisert som en frittstående applikasjon 'foran' ID-porten"
-permalink: oidc_arch.html
+redirect_to: https://difi.github.io/felleslosninger/oidc_arch.html
 
 layout: page
 sidebar: oidc
