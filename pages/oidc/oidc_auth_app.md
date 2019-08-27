@@ -2,7 +2,7 @@
 title: Autentisering til mobil-app'er
 description: Bruk av Idporten sin OpenID Connect provider til autentisering til mobil-app'er
 summary: "Ved innlogging til en mobil-app, er det anbefalt å bruke PKCE sammen med autorisasjonskode-flyten"
-permalink: oidc_auth_app.html
+redirect_to: https://difi.github.io/felleslosninger/oidc_auth_app.html
 
 layout: page
 sidebar: oidc
@@ -20,17 +20,19 @@ I [OAuth 2.0 for Native Apps](https://tools.ietf.org/html/draft-ietf-oauth-nativ
 
 En mobil-app vil typisk integerere med kundens eget API ("app backend"). Det er opp til kunden om han vil bruke ID-porten sine access_token til sikring av dette APIet direkte, eller omsette ID-portens token til sine egne tokens.
 
-Vanligvis er det backend-en som er registrert som klient i ID-porten, ikke selve app'en.
+Vanligvis er det backend'en som er registrert som klient i ID-porten, ikke selve app'en.
 
 ## Sentral oversikt og revokasjon
 
 Difi krever at kunder som omsetter punkt-autentiseringen fra ID-porten til en langt-levende innlogging, oppfyller følgende krav:
 
 * Har lokal sikring av app vha. touchID, ansiktsgjenkjenning el. lignende
-* Aktive innlogginger skal vises på sentrale oversikt i ID-portens brukerprofil
-* Håndterer sentral innbygger-initiert revokasjon av innloggingen fra ID-portens brukerprofil
+* Aktive innlogginger skal vises på sentral oversikt i ID-portens brukerprofil
+* Håndterer innbygger-initiert revokasjon av innloggingen fra ID-portens brukerprofil
 
 Oversikt over innlogginger med revokasjonsmulighet for innlogget innbygger er også tilgjengelig [på et eget API](oidc_api_autorisasjoner.html), slik at kunden kan velge å også tilby slik funksjonalitet integrert i egen selvbetjeningsløsning.
+
+Innbyggere kan gå til [https://brukerprofil.idporten.no/](https://brukerprofil.idporten.no/) for å se sine aktive innlogginger, samt generell innloggingshistorikk.  
 
 ### Teknisk beskrivelse
 

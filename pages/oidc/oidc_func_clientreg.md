@@ -2,7 +2,7 @@
 title: Registrering av OIDC klienter
 description: Registrering av OIDC klienter
 summary: "ID-porten støtter flere typer klienter. Klienter må forhåndsregisteres, og korrekt registering av klient er viktig at sikkerheten skal være ivaretatt."
-permalink: oidc_func_clientreg.html
+redirect_to: https://difi.github.io/felleslosninger/oidc_func_clientreg.html
 
 layout: page
 sidebar: oidc
@@ -67,9 +67,10 @@ ID-porten støtter følgende grants:
 |-|-|
 |authorization_code         | Autorisasjonskode-flyten, som beskrevet i [RFC 6749 kap 4.1](https://tools.ietf.org/html/rfc6749#section-4.1)  |
 |refresh_token      | Klienten bruker eit refresh-token for å hente nytt access-token. Bruker blir (normalt) ikke involvert.  |
-|jwt-bearer   | En signert JWT ihht [RFC7523](https://tools.ietf.org/html/rfc7523#section-2.1). Kan enten bruke virksomhetssertifikat eller forhåndsregistrert asymmetrisk nøkkel.   |
+|urn:ietf:params:oauth:grant-type:jwt-bearer|En signert JWT ihht [RFC7523](https://tools.ietf.org/html/rfc7523#section-2.1). Kan enten bruke virksomhetssertifikat i `x5c` eller `kid` til forhåndsregistrert asymmetrisk nøkkel.|  
+|jwt_bearer_token   | kortform av urn:ietf:params:oauth:grant-type:jwt-bearer    |
 
-Maskinporten-klinter skal alltid bruke `jwt-bearer`.
+Maskinporten-klienter skal alltid bruke `jwt_bearer_token`.
 
 Vi støtter ikke implicit, password eller client-credentials grant.
 
@@ -96,11 +97,11 @@ Merk at klient-type ikke blir lagret som del av klient-registreringen, men utled
 Tabellen under oppsummerer sammenhengen mellom de ulike egenskapene:
 
 
-| Integrasjon | Tillatte klient-typer |  tillatte `token_endpoint_auth_method` | tillatte `grant_types` | scope | Kan legge til scopes? |
+| Integrasjon | Klient-type |  tillatte `token_endpoint_auth_method` | tillatte `grant_types` | scope | Kan legge til scopes? |
 |-|-|-|-|-|-|
-|ID-porten| web |  client_secret_basic client_secret_post private_key_jwt      | code refresh_token  |openid profile | nei |
-||  browser |  none     | code   |openid profile | nei |
-||  native |   none     | code   |openid profile | nei |
+|ID-porten| web |  client_secret_basic client_secret_post private_key_jwt      | authorization_code refresh_token  |openid profile | nei |
+||  browser |  none     | authorization_code   |openid profile | nei |
+||  native |   none     | authorization_code   |openid profile | nei |
 |API-klient innlogget bruker  |samme som for idporten ||| | ja |
 |Maskinporten| web |private_key_jwt  | jwt_bearer_token | |ja|
 |Kontaktregisteret| web | private_key_jwt  | jwt_bearer_token |global/kontaktinformasjon.read global/spraak.read global/sikkerdigitalpost.read global/sertifikat.read global/varslingsstatus.read |nei|
